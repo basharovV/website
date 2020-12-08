@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="theme-color" content="#333333">
+	
+	<title>Vyacheslav Basharov - Full Stack Developer & Composer</title>
+	<meta name="title" content="Vyacheslav Basharov - Full Stack Developer & Composer">
+	<meta name="description"
+	content="Hello! I make software and compose music. This website is a showcase of my work.">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://vyacheslavbasharov.com">
+	<meta property="og:title" content="Vyacheslav Basharov - Full Stack Developer & Composer">
+	<meta property="og:description"
+		content="Hello! I make software and compose music. This website is a showcase of my work.">
+
+	<!-- <meta property="og:image" content=""> -->
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://vyacheslavbasharov.com">
+	<meta property="twitter:title" content="Vyacheslav Basharov - Full Stack Developer & Composer">
+	<meta property="twitter:description"
+	content="Hello! I make software and compose music. This website is a showcase of my work.">
+
+
+	%sapper.base%
+
+	<link rel="stylesheet" href="global.css">
+	<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+	<link rel="icon" type="image/png" href="favicon.svg">
+
+	<!-- Sapper creates a <script> tag containing `src/client.js`
+	     and anything else it needs to hydrate the app and
+	     initialise the router -->
+	%sapper.scripts%
+
+	<!-- Sapper generates a <style> tag containing critical CSS
+	     for the current page. CSS for the rest of the app is
+	     lazily loaded when it precaches secondary pages -->
+	%sapper.styles%
+
+	<!-- This contains the contents of the <svelte:head> component, if
+	     the current page has one -->
+	%sapper.head%
+</head>
+
+<body>
+	<!-- The application will be rendered inside this element,
+	     because `src/client.js` references it -->
+	<div id="sapper">%sapper.html%</div>
+</body>
+
+</html>
