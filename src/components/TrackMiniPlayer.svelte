@@ -7,6 +7,7 @@
 <div
     style="background:{isDarkModeEnabled ? 'black' : 'white'};position: relative;border-radius: 15px;padding: 4px 6px;display: flex;align-items: center;margin: 4px 0;">
     <iframe
+        loading="lazy"
         style="background:{isDarkModeEnabled ? 'black' : 'white'};margin: auto;"
         width="100%"
         height="20"

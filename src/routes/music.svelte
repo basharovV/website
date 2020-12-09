@@ -401,6 +401,7 @@
                     on:load={() => {
                         refresh += 1;
                     }}
+                    loading="lazy"
                     width="400px"
                     height="250px"
                     src="https://www.youtube-nocookie.com/embed/KPugdlU8GRs"
@@ -419,6 +420,7 @@
 
             <div class="embed">
                 <iframe
+                    loading="lazy"
                     width="400px"
                     height="250px"
                     src="https://player.vimeo.com/video/215550767"
