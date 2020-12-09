@@ -1,8 +1,33 @@
 <script>
-import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
+	import { onMount } from "svelte";
 
+	import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
+
+	let darkMode;
+	let mounted;
+
+	onMount(() => {
+		darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+		mounted = true;
+	});
+
+	$: if (mounted) {
+		if (darkMode) window.document.body.classList.add("dark-mode");
+		else window.document.body.classList.remove("dark-mode");
+	}
 </script>
+
 <style lang="scss">
+	:global(body) {
+		transition: background-color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
+		// transition: color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
+	}
+
+	:global(.dark-mode) {
+		background-color: black !important;
+		color: white;
+	}
+
 	.container {
 		padding-top: 4em;
 		max-width: 900px;
@@ -63,9 +88,29 @@ import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
 		}
 	}
 
+	footer {
+		display: flex;
+		flex-direction: column;
+		font-family: Snake, Georgia, "Times New Roman", Times, serif;
+		font-size: 2em;
+		margin: 3em auto 0;
+		> p {
+			text-align: center;
+		}
+		> div {
+			margin: auto;
+			display: flex;
+			flex-direction: row;
+			gap: 10px;
+		}
+	}
+
+	.invert img {
+		filter: invert(1);
+	}
 </style>
 
-<div class="container">
+<div class="container {darkMode ? 'invert' : ''}">
 	<img
 		style="grid-area: a;margin:auto;width: 30px;"
 		alt="Logo"
@@ -98,10 +143,11 @@ import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
 			</p>
 			<a href="https://tbxproject.com"> Visit site -> </a>
 			<h3>Latest article</h3>
-			<p>
-				On self-tracking, exobrains and quantified self
-			</p>
-			<a href="https://existentialist.xyz/on-self-tracking-exobrains-and-quantified-self/"> Read -> </a>
+			<p>On self-tracking, exobrains and quantified self</p>
+			<a
+				href="https://existentialist.xyz/on-self-tracking-exobrains-and-quantified-self/">
+				Read ->
+			</a>
 		</section>
 		<section style="grid-area: d;">
 			<img
@@ -115,9 +161,23 @@ import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
 			</p>
 
 			<h3>Latest tracks</h3>
-				<TrackMiniPlayer trackId="818507320" />
-				<TrackMiniPlayer trackId="940950685" />
+			<TrackMiniPlayer trackId="818507320" accent="1e2424" />
+			<TrackMiniPlayer trackId="940950685" accent="1e2424" />
 		</section>
 	</div>
 
+	<footer class={darkMode ? 'invert' : ''}>
+		<p>Vyacheslav Basharov</p>
+		<div>
+			<a href="https://github.com/basharovV"><img
+					alt="github"
+					src="github.svg" /></a>
+			<a href="https://soundcloud.com/vbash"><img
+					alt="soundcloud"
+					src="soundcloud.svg" /></a>
+			<a href="mailto:contact@vyacheslavbasharov.com"><img
+					alt="email"
+					src="email.svg" /></a>
+		</div>
+	</footer>
 </div>

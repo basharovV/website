@@ -2,19 +2,21 @@
     import { onMount } from "svelte";
 
     import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
+    import { isDarkModeEnabled } from "../store/state.js";
 
     let refresh = 0;
 
-    let darkMode;
     let mounted;
 
     onMount(() => {
-        darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        isDarkModeEnabled.set(
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+        );
         mounted = true;
     });
 
     $: if (mounted) {
-        if (darkMode) window.document.body.classList.add("dark-mode");
+        if ($isDarkModeEnabled) window.document.body.classList.add("dark-mode");
         else window.document.body.classList.remove("dark-mode");
     }
 </script>
@@ -133,8 +135,69 @@
         }
     }
 
-    .dark-footer img {
+    .invert img {
         filter: invert(1);
+    }
+
+    .embed {
+        width: 400px;
+        height: 250px;
+
+        @media only screen and (max-width: 522px) {
+            width: 100%;
+        }
+
+        > iframe {
+            position: absolute;
+            border-radius: 10px;
+            border: 2px solid #c1c1c1;
+            padding: 2px;
+
+            @media only screen and (max-width: 522px) {
+                position: absolute;
+                left: 0;
+                right: 0;
+                box-sizing: border-box;
+                border: none;
+                width: 100%;
+            }
+        }
+    }
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 200px;
+        z-index: -1;
+
+        #image {
+            height: 100%;
+            opacity: 0.1;
+            background-image: url("/header-bg.jpg");
+            background-size: cover;
+            background-position-y: bottom;
+
+            &.invert {
+                opacity: 0.3;
+            }
+        }
+
+        #gradient {
+            position: absolute;
+            z-index: 1;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, white, transparent);
+            transition: all cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
+
+            &.invert {
+                filter: invert(1);
+            }
+        }
     }
 </style>
 
@@ -143,10 +206,17 @@
 </svelte:head>
 
 <div class="container">
+    <div class="background">
+        <div class={$isDarkModeEnabled ? 'invert' : ''} id="image" />
+        <div class={$isDarkModeEnabled ? 'invert' : ''} id="gradient" />
+    </div>
     <header>
         <h2 style="margin-bottom: 0;">Vyacheslav Basharov</h2>
 
-        <a style="display: flex;" href="/"><img
+        <a
+            class={$isDarkModeEnabled ? 'invert' : ''}
+            style="display: flex;"
+            href="/"><img
                 style="margin:auto;width: 30px;"
                 alt="Logo"
                 src="logo.svg" /></a>
@@ -158,7 +228,7 @@
 
     <section>
         <p style="opacity: 0.6;">
-            I'm a composer and pianist, always looking for new sounds, but still
+            I'm a composer and pianist, always looking for new sounds, but
             staying true to cinematic, electronic and jazz elements. This page
             is a demo reel/showcase/portfolio of my music. Thanks for checking
             it out!<a href="https://soundcloud.com/vbash">More music on my
@@ -170,7 +240,10 @@
         class="theme-toggle"
         style="display: flex;justify-content: flex-end;align-items: center;">
         <small>Theme:&nbsp;</small>
-        <svg on:click={() => (darkMode = true)} height="20px" width="20px">
+        <svg
+            on:click={() => isDarkModeEnabled.set(true)}
+            height="20px"
+            width="20px">
             <circle
                 cx="10"
                 cy="10"
@@ -179,7 +252,10 @@
                 stroke-width="3"
                 fill="black" />
         </svg>
-        <svg on:click={() => (darkMode = false)} height="20px" width="20px">
+        <svg
+            on:click={() => isDarkModeEnabled.set(false)}
+            height="20px"
+            width="20px">
             <circle
                 cx="10"
                 cy="10"
@@ -191,6 +267,35 @@
     </div>
     <div class="content">
         <section>
+            <h3>🎧 Featured music</h3>
+            <p>
+                I regularly upload cinematic, experimental, progressive,
+                electronic and jazzy tracks on my SoundCloud. Sometimes I also
+                do covers and remixes, and publish unedited live jam sessions.
+            </p>
+
+            <TrackMiniPlayer
+                trackId="940950685"
+                isDarkModeEnabled={$isDarkModeEnabled}
+                accent="e60303" />
+            <TrackMiniPlayer
+                trackId="806529274"
+                isDarkModeEnabled={$isDarkModeEnabled}
+                accent="e60303" />
+            <TrackMiniPlayer
+                trackId="341813329"
+                isDarkModeEnabled={$isDarkModeEnabled}
+                accent="e60303" />
+            <TrackMiniPlayer
+                trackId="500505501"
+                isDarkModeEnabled={$isDarkModeEnabled}
+                accent="e60303" />
+            <TrackMiniPlayer
+                trackId="531832953"
+                isDarkModeEnabled={$isDarkModeEnabled}
+                accent="e60303" />
+        </section>
+        <section>
             <h3>🎹 Pianosphere</h3>
             <p>
                 Pianosphere is neo-classical album I'm working on to explore and
@@ -198,9 +303,15 @@
                 demo recordings, some of which can be heard on my SoundCloud:
             </p>
 
-            <TrackMiniPlayer trackId="817156018" {darkMode} />
-            <TrackMiniPlayer trackId="818507320" {darkMode} />
-            <TrackMiniPlayer trackId="814447339" {darkMode} />
+            <TrackMiniPlayer
+                trackId="817156018"
+                isDarkModeEnabled={$isDarkModeEnabled} />
+            <TrackMiniPlayer
+                trackId="818507320"
+                isDarkModeEnabled={$isDarkModeEnabled} />
+            <TrackMiniPlayer
+                trackId="814447339"
+                isDarkModeEnabled={$isDarkModeEnabled} />
             <br />
             <div class="image-grid">
                 <img src="music/pianosphere/MVIMG_20200421_194344.jpg" />
@@ -221,7 +332,16 @@
         </section>
 
         <section style="break-before: column;">
-            <h3>🎬 Film scoring</h3>
+            <div
+                style="display: grid; grid-template-columns: 1fr auto;margin-top: 2em;align-items: center;">
+                <h3 style="width: fit-content;margin: 0;">🎬 Film scoring</h3>
+                <small>
+                    <a
+                        style="color: grey;"
+                        href="https://www.imdb.com/name/nm9098356/?ref_=ttfc_fc_cr5">
+                        My IMDB -></a>
+                </small>
+            </div>
             <p>
                 Film music composition is an amazing art that I've been
                 attracted to ever since I've had the pleasure of composing for a
@@ -254,11 +374,15 @@
                 </div>
 
                 <div>
-                    <TrackMiniPlayer trackId="337202935" {darkMode} />
-                    <TrackMiniPlayer trackId="337202945" {darkMode} />
+                    <TrackMiniPlayer
+                        trackId="337202935"
+                        isDarkModeEnabled={$isDarkModeEnabled} />
+                    <TrackMiniPlayer
+                        trackId="337202945"
+                        isDarkModeEnabled={$isDarkModeEnabled} />
                     <small><a
                             href="https://soundcloud.com/vbash/sets/into-the-loo-short-film-soundtrack">Full
-                            album on SoundCloud</a>
+                            album on SoundCloud -></a>
                     </small>
                 </div>
             </div>
@@ -270,18 +394,11 @@
                 Audio and HBO, scoring a car chase sequence from Westworld
                 season 3. Have a look at my entry on YouTube:
             </p>
-            <div
-                style="
-                width: 400px;
-                height: 250px;">
+            <div class="embed">
                 <iframe
                     on:load={() => {
                         refresh += 1;
                     }}
-                    style="position: absolute;
-                    border-radius: 10px;
-                    border: 2px solid black;
-                    padding: 2px;"
                     width="400px"
                     height="250px"
                     src="https://www.youtube-nocookie.com/embed/KPugdlU8GRs"
@@ -290,9 +407,27 @@
                     allowfullscreen />
             </div>
         </section>
+        <section>
+            <h3>🎞 Stranger Things title sequence re-score</h3>
+            <p>
+                A good exercise as a composer is to re-score existing clips or
+                scenes, and this was my attempt at doing so for the iconic
+                Stranger Things title sequence. Excuse the bad mix...
+            </p>
+
+            <div class="embed">
+                <iframe
+                    width="400px"
+                    height="250px"
+                    src="https://player.vimeo.com/video/215550767"
+                    frameborder="0"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen />
+            </div>
+        </section>
     </div>
 
-    <footer class={darkMode ? 'dark-footer' : ''}>
+    <footer class={$isDarkModeEnabled ? 'invert' : ''}>
         <p>Vyacheslav Basharov</p>
         <div>
             <a href="https://github.com/basharovV"><img

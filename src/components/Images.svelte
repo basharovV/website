@@ -28,7 +28,7 @@
         left: 0;
         right: 0;
         z-index: 100;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.7);
 
         > img {
             margin: auto;
@@ -115,7 +115,7 @@
             src={fullScreenImg} />
         <h1
             on:click={() => (fullScreenImg = null)}
-            style="position: fixed; top: 1em; right: 1em;">
+            style="color: white;position: fixed; top: 1em; right: 1em;">
             X
         </h1>
     </div>

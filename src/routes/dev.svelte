@@ -2,18 +2,19 @@
 	import { onMount } from "svelte";
 
 	import Images from "../components/Images.svelte";
-import Nav from "../components/Nav.svelte";
+	import { isDarkModeEnabled } from "../store/state.js";
 
-	let darkMode;
 	let mounted;
 
 	onMount(() => {
-		darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+		isDarkModeEnabled.set(
+			window.matchMedia("(prefers-color-scheme: dark)").matches
+		);
 		mounted = true;
 	});
 
 	$: if (mounted) {
-		if (darkMode) window.document.body.classList.add("dark-mode");
+		if ($isDarkModeEnabled) window.document.body.classList.add("dark-mode");
 		else window.document.body.classList.remove("dark-mode");
 	}
 </script>
@@ -62,42 +63,44 @@ import Nav from "../components/Nav.svelte";
 		}
 	}
 
-    header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-    }
+	header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	}
 
-    footer {
-        display: flex;
-        flex-direction: column;
-        font-family: Snake, Georgia, "Times New Roman", Times, serif;
-        font-size: 2em;
-        margin: 3em auto 0;
-        > p {
-            text-align: center;
-        }
-        > div {
-            margin: auto;
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-        }
-    }
+	footer {
+		display: flex;
+		flex-direction: column;
+		font-family: Snake, Georgia, "Times New Roman", Times, serif;
+		font-size: 2em;
+		margin: 3em auto 0;
+		> p {
+			text-align: center;
+		}
+		> div {
+			margin: auto;
+			display: flex;
+			flex-direction: row;
+			gap: 10px;
+		}
+	}
 
-    .invert img {
-        filter: invert(1);
-    }
+	.invert img {
+		filter: invert(1);
+	}
 </style>
 
 <svelte:head>
 	<title>Vyacheslav Basharov • Full Stack Developer</title>
 </svelte:head>
-<header  class={darkMode ? 'invert' : ''}>
-	<h2 style="margin-bottom: 0;">Vyacheslav Basharov</h2>
-
+<header class={$isDarkModeEnabled ? 'invert' : ''}>
+	<div>
+		<h2 style="margin-bottom: 0;">Vyacheslav Basharov</h2>
+		<small style="margin-bottom: 0;">Full-stack developer</small>
+	</div>
 	<a style="display: flex;" href="/"><img
 			style="margin:auto;width: 30px;"
 			alt="Logo"
@@ -114,7 +117,10 @@ import Nav from "../components/Nav.svelte";
 	class="theme-toggle"
 	style="display: flex;justify-content: flex-end;align-items: center;">
 	<small>Theme:&nbsp;</small>
-	<svg on:click={() => (darkMode = true)} height="20px" width="20px">
+	<svg
+		on:click={() => ($isDarkModeEnabled = true)}
+		height="20px"
+		width="20px">
 		<circle
 			cx="10"
 			cy="10"
@@ -123,7 +129,10 @@ import Nav from "../components/Nav.svelte";
 			stroke-width="3"
 			fill="black" />
 	</svg>
-	<svg on:click={() => (darkMode = false)} height="20px" width="20px">
+	<svg
+		on:click={() => ($isDarkModeEnabled = false)}
+		height="20px"
+		width="20px">
 		<circle
 			cx="10"
 			cy="10"
@@ -190,7 +199,8 @@ import Nav from "../components/Nav.svelte";
 		<li>
 			<p>
 				🔈
-				<b>whatsound</b>: An audio classifier using Essentia and PyBrain.
+				<b>whatsound</b>: An audio classifier using Essentia and
+				PyBrain.
 				<a href="https://github.com/basharovV/whatsound">
 					See on GitHub ->
 				</a>
@@ -244,12 +254,12 @@ import Nav from "../components/Nav.svelte";
 				but might come back to it at some point.
 			</p>
 			<Images
-				images={['designs/modos_1.png', 'designs/modos_2.png', 'designs/modos_3.png']} />
+				images={['designs/modos_1.jpg', 'designs/modos_2.png', 'designs/modos_3.png']} />
 		</li>
 	</ul>
 </section>
 
-<footer class={darkMode ? 'invert' : ''}>
+<footer class={$isDarkModeEnabled ? 'invert' : ''}>
 	<p>Vyacheslav Basharov</p>
 	<div>
 		<a href="https://github.com/basharovV"><img

@@ -2,6 +2,11 @@ body {
 	font: 400 1em "IBM Plex Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #313131;
 	margin: auto;
+	overflow-x: hidden;
+}
+
+* {
+	box-sizing: border-box;
 }
 
 button {
