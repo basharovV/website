@@ -207,7 +207,9 @@
 
 <div class="container">
     <div class="background">
-        <div class={$isDarkModeEnabled ? 'invert' : ''} id="image" />
+        {#if $isDarkModeEnabled}
+            <div class={$isDarkModeEnabled ? 'invert' : ''} id="image" />
+        {/if}
         <div class={$isDarkModeEnabled ? 'invert' : ''} id="gradient" />
     </div>
     <header>
