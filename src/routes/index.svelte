@@ -157,7 +157,7 @@
 				src="arrow_right.svg" />
 
 			<p class="mobile-hide" style="opacity: 0.7;">
-				For music projects, tracks, blog, samples, presets
+				For music projects, tracks, samples, presets
 			</p>
 
 			<h3>Latest tracks</h3>
