@@ -215,11 +215,11 @@
 	<ul class="designs">
 		<li>
 			<p>
-				♫ A hackable music player concept. Instead of playlists we have
-				'playlets' - little musical programs that can be run inside the
+				♫ A hackable music player concept. What if we had <i>'user-generated software'</i> instead of <i>'user-generated content'</i>? In this mockup instead of playlists we have
+				<i>'playlets'</i> - little musical programs that can be run inside the
 				player, encouraging new ways to listen to and perceive music. As
 				an example I show a simple Wikipedia playlet, which brings up
-				songs together with their Wikipedia article.
+				songs together with their Wikipedia article. 
 			</p>
 			<Images
 				images={['designs/musicplayer.png', 'designs/musicplayer_2.png']} />

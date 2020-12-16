@@ -333,6 +333,25 @@
                 Freesound -></a>
         </section>
 
+        <section>
+            <h3>🎞 Sci-fi game trailer re-score</h3>
+            <p>
+                A re-score of a Sci-fi MMORPG game trailer as an epic orchestral
+                adventure theme.
+            </p>
+
+            <div class="embed">
+                <iframe
+                    loading="lazy"
+                    width="400px"
+                    height="250px"
+                    src="https://player.vimeo.com/video/491425916"
+                    frameborder="0"
+                    allow="autoplay; fullscreen"
+                    allowfullscreen />
+            </div>
+        </section>
+
         <section style="break-before: column;">
             <div
                 style="display: grid; grid-template-columns: 1fr auto;margin-top: 2em;align-items: center;">
@@ -411,7 +430,7 @@
             </div>
         </section>
         <section>
-            <h3>🎞 Stranger Things title sequence re-score</h3>
+            <h3>🎞 Stranger Things intro re-score</h3>
             <p>
                 A good exercise as a composer is to re-score existing clips or
                 scenes, and this was my attempt at doing so for the iconic
