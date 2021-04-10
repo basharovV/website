@@ -269,6 +269,28 @@
     </div>
     <div class="content">
         <section>
+            <h3>🔌 Rhodesian Keys </h3>
+            <p>
+                My first software instrument :)
+            </p>
+            <p>
+                I had to get my hands on a Rhodes, and when I did, I had to sample it! Rhodesian Keys is a software instrument sampled from a Rhodes Mark I 1973, and I'll be releasing this as a VST plugin on this website. 
+            </p>
+            <div class="embed">
+                <iframe
+                    on:load={() => {
+                        refresh += 1;
+                    }}
+                    loading="lazy"
+                    width="400px"
+                    height="250px"
+                    src="https://www.youtube-nocookie.com/embed/2PP0OrzS_k8"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen />
+            </div>
+        </section>
+        <section>
             <h3>🎧 Featured music</h3>
             <p>
                 I regularly upload cinematic, experimental, progressive,

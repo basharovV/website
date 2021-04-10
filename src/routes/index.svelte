@@ -161,6 +161,8 @@
 			</p>
 
 			<h3>Latest tracks</h3>
+			<TrackMiniPlayer trackId="1011296332" accent="1e2424" />
+			<TrackMiniPlayer trackId="963507499" accent="1e2424" />
 			<TrackMiniPlayer trackId="818507320" accent="1e2424" />
 			<TrackMiniPlayer trackId="940950685" accent="1e2424" />
 		</section>
