@@ -108,6 +108,41 @@
 	.invert img {
 		filter: invert(1);
 	}
+
+
+    .embed {
+        width: 400px;
+        height: 250px;
+
+        @media only screen and (max-width: 522px) {
+            width: 100%;
+        }
+
+        > iframe {
+            position: absolute;
+            border-radius: 10px;
+            border: 2px solid #c1c1c1;
+            padding: 2px;
+
+            @media only screen and (max-width: 522px) {
+                position: absolute;
+                left: 0;
+                right: 0;
+                box-sizing: border-box;
+                border: none;
+                width: 100%;
+            }
+        }
+    }
+
+	small {
+		margin: 0.5em 0 1em 0;
+	}
+
+	h4 {
+		margin-top: 1em;
+	}
+
 </style>
 
 <div class="container {darkMode ? 'invert' : ''}">
@@ -160,11 +195,34 @@
 				For music projects, tracks, samples, presets
 			</p>
 
-			<h3>Latest tracks</h3>
+			<h3>Latest release</h3>
+			<h4>Improv I</h4>
+			<small>A soft, contemporary classical recording, captured in an intimate setting on my childhood upright Petrof piano. </small>
+			<iframe style="border: 0; width: 350px; height: 442px;" src="https://bandcamp.com/EmbeddedPlayer/track=821474887/size=large/bgcol=ffffff/linkcol=63b2cc/tracklist=false/transparent=true/" seamless><a href="https://vyacheslavbasharov.bandcamp.com/track/improv-i">null by Vyacheslav Basharov</a></iframe>
+			
+			<h3>Other music</h3>
 			<TrackMiniPlayer trackId="1011296332" accent="1e2424" />
 			<TrackMiniPlayer trackId="963507499" accent="1e2424" />
-			<TrackMiniPlayer trackId="818507320" accent="1e2424" />
+			<!-- <TrackMiniPlayer trackId="818507320" accent="1e2424" /> -->
 			<TrackMiniPlayer trackId="940950685" accent="1e2424" />
+
+			<h3>Latest music project</h3>
+			<p>
+                Rhodesian Keys - a sample based software instrument, based on a Mark I 1973 Fender Rhodes
+            </p>
+			<div class="embed">
+                <iframe
+                    on:load={() => {
+                        refresh += 1;
+                    }}
+                    loading="lazy"
+                    width="400px"
+                    height="250px"
+                    src="https://www.youtube-nocookie.com/embed/2PP0OrzS_k8"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen />
+            </div>
 		</section>
 	</div>
 
