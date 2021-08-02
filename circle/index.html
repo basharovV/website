@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <style>
+        canvas {
+            border: 1px solid black;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body style="background:white">
+    <canvas width=1000 height=1000></canvas>
+</body>
+
+<script>
+
+    var dateMoving = -1;
+    var duration = 200;
+    var it = undefined;
+
+
+    var moves = [];
+    var currentMove;
+
+    var canvas = document.querySelector('canvas');
+    var ctx = canvas.getContext('2d');
+
+
+    var randomColor = function () {
+        return Math.floor(Math.random() * 255);
+    }
+    var color;
+    canvas.height = document.body.offsetHeight;
+    canvas.width = document.body.offsetWidth;
+    document.querySelector('body').onmousecircle = function (circle) {
+        console.log("CIRCLE");
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2, true);
+        ctx.fill();
+
+    }
+
+
+    document.querySelector('body').onmousemove = function (ev) {
+        var lastMove = dateMoving;
+        dateMoving = +new Date();
+        if (dateMoving - lastMove > duration) {
+            var color = "rgb(" + randomColor() + ',' + randomColor() + ',' + randomColor() + ')'
+            currentMove = [];
+            console.log("new moove");
+        }
+        it && clearInterval(it);
+        it = setTimeout(function () {
+            setTimeout(function () { checkMove(currentMove); }, 0);
+            moves.push(currentMove);
+            console.log("end of move");
+        }, duration);
+        ctx.fillStyle = color;
+        currentMove.push({ x: ev.clientX, y: ev.clientY });
+        if (currentMove.length > 7 &&
+            Math.sqrt(Math.pow(currentMove[0].x - ev.clientX, 2), Math.pow(currentMove[0].y - ev.clientY, 2)) < 20) {
+            checkMove(currentMove);
+
+            currentMove = [];
+        }
+
+
+    }
+
+    function checkMove(move) {
+        if (move.length < 5) { return };
+
+        var center = move.reduce(function (memo, point) {
+            return { x: memo.x + point.x, y: memo.y + point.y }
+        }, { x: 0, y: 0 });
+
+        center.x = center.x / move.length;
+        center.y = center.y / move.length;
+
+        var distance = move.reduce(function (memo, point) {
+            return { x: memo.x + Math.abs(point.x - center.x), y: memo.y + Math.abs(point.y - center.y) }
+        }, { x: 0, y: 0 });
+        distance.x = distance.x / move.length;
+        distance.y = distance.y / move.length;
+
+
+        if (distance.x > distance.y * 2 || distance.y > distance.x * 2 || (distance.x + distance.y) < 30) {
+            return;
+        }
+
+        var d = Math.sqrt(Math.pow(move[0].x - move[move.length - 1].x, 2), Math.pow(move[0].y - move[move.length - 1].y, 2));
+        if (d > 20) {
+            return;
+        }
+        (document.body.onmousecircle || function () { })({ x: center.x, y: center.y, radius: (distance.x + distance.y) / 1.4 });
+    }
+</script>
+
+</html>

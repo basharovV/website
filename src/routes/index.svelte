@@ -146,6 +146,7 @@
 </style>
 
 <div class="container {darkMode ? 'invert' : ''}">
+
 	<img
 		style="grid-area: a;margin:auto;width: 30px;"
 		alt="Logo"

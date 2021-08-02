@@ -34,6 +34,11 @@
 	<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
 	<link rel="icon" type="image/png" href="favicon.svg">
 
+	<!-- Snipcart -->
+	<link rel="preconnect" href="https://app.snipcart.com">
+	<link rel="preconnect" href="https://cdn.snipcart.com">
+	<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.css" />
+
 	<!-- Sapper creates a <script> tag containing `src/client.js`
 	     and anything else it needs to hydrate the app and
 	     initialise the router -->
@@ -52,8 +57,11 @@
 <body>
 	<!-- The application will be rendered inside this element,
 	     because `src/client.js` references it -->
+
 	<div id="sapper">%sapper.html%</div>
 	<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9b1308ae5cf44376a20174e5b0811681"}'></script><!-- End Cloudflare Web Analytics -->
+	<script async src="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.js"></script>
+
 </body>
 
 </html>
