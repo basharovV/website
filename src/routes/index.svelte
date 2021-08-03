@@ -3,7 +3,7 @@
   import { isDarkModeEnabled } from "../store/state.js";
 </script>
 
-<div class="container {isDarkModeEnabled ? 'invert' : ''}">
+<div class="container {$isDarkModeEnabled ? 'invert' : ''}">
   <img
     style="grid-area: a;margin:auto;width: 30px;"
     alt="Logo"
@@ -97,7 +97,7 @@
     </section>
   </div>
 
-  <footer class={isDarkModeEnabled ? "invert" : ""}>
+  <footer class={$isDarkModeEnabled ? "invert" : ""}>
     <p>Vyacheslav Basharov</p>
     <div>
       <a href="https://github.com/basharovV"

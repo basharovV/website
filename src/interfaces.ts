@@ -5,7 +5,10 @@ export interface Product {
     price: string,
     url: string,
     description: string,
+    longDescription: string,
     image: string,
     tags: string[],
-    size: string
+    size: string,
+    productId: string,
+    soundCloudDemoIds: string[],
 }

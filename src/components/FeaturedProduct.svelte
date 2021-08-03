@@ -1,5 +1,9 @@
 <script lang="ts">
-  export let product;
+  import type { Product } from "../interfaces";
+  import { isDarkModeEnabled } from "../store/state";
+  import TrackMiniPlayer from "./TrackMiniPlayer.svelte";
+
+  export let product: Product;
 </script>
 
 <div class="container">
@@ -23,14 +27,30 @@
     </a>
 
     <small>{product.description}</small>
-    <div class="custom">
-      <slot name="custom" />
-    </div>
+
+    {#if product.soundCloudDemoIds.length}
+      <h4>Listen to the demos:</h4>
+
+      {#each product.soundCloudDemoIds as trackId}
+        <TrackMiniPlayer
+          {trackId}
+          isDarkModeEnabled={$isDarkModeEnabled}
+          accent="e60303"
+        />
+      {/each}
+    {/if}
     <p class="size">{product.size}</p>
+
     <p>Price: up to you :)</p>
   </content>
-  <a href="https://payhip.com/b/MxG8Z" class="payhip-buy-button" data-product="MxG8Z" data-theme="none">Get it</a>
-
+  <a
+    href="https://payhip.com/b/{product.productId}"
+    class="payhip-buy-button"
+    data-message="🦊 Thanks Internet stranger! You can take this product for free, or pay what you want. If you have any feedback, email me on contact@vyacheslavbasharov.com"
+    data-title="Download {product.name}"
+    data-product={product.productId}
+    data-theme="none">Get it</a
+  >
 </div>
 
 <style lang="scss">
@@ -52,7 +72,7 @@
     text-decoration: none;
 
     &:hover {
-      background:rgb(0, 187, 255);
+      background: rgb(0, 187, 255);
     }
   }
 

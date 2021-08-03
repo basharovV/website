@@ -16,13 +16,13 @@
 
 <div class="header-container">
   <div class="header">
-    <div class="shop-logo">
+    <div class={$isDarkModeEnabled ? "invert shop-logo" : "shop-logo"} >
       <img
         style="grid-area: a;margin:auto;width: 30px;"
         alt="Logo"
         src="logo.svg"
       />
-      <h1>vb shop</h1>
+      <h1 style="margin:0">vb shop</h1>
     </div>
     <div>
       <h3>
