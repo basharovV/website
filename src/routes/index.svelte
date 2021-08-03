@@ -202,7 +202,7 @@
   }
 
   .invert img {
-    filter: invert(0);
+    filter: invert(1);
   }
 
   .embed {

@@ -14,17 +14,32 @@
   export let products;
 </script>
 
-<img style="grid-area: a;margin:auto;width: 30px;" alt="Logo" src="logo.svg" />
-<h1>vb shop</h1>
-<h3>An independent creative outlet of music, software and musical software.</h3>
+<div class="header-container">
+  <div class="header">
+    <div class="shop-logo">
+      <img
+        style="grid-area: a;margin:auto;width: 30px;"
+        alt="Logo"
+        src="logo.svg"
+      />
+      <h1>vb shop</h1>
+    </div>
+    <div>
+      <h3>
+        An independent creative outlet of music, software and musical software.
+      </h3>
+    </div>
+  </div>
+</div>
 
-<h2>📦 Products</h2>
-<p>
-  I'll be mainly focusing on two types of products: stuff for musicians (virtual
-  instruments, sample packs), and my own music, licensed for use in media.
-</p>
+<section>
+  <h2>📦 Products</h2>
+  <p class="label">
+    Mostly stuff for musicians (virtual instruments, sample packs), and my own music licensed for use in media.
+  </p>
 
-<FeaturedProducts {products} />
+  <FeaturedProducts {products} />
+</section>
 
 <small>Thanks for stopping by!</small>
 
@@ -57,16 +72,49 @@
     background-color: black !important;
     color: white;
   }
+
+  .header-container {
+    margin: auto;
+    width: fit-content;
+  }
+  .header {
+    display: grid;
+    grid-template-columns: 150px 200px;
+    align-items: center;
+    width: fit-content;
+
+    > div {
+      padding: 1em;
+    }
+
+    .shop-logo {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid rgb(222, 222, 222);
+    }
+  }
+
+  section {
+    border: 1px solid rgb(222, 222, 222);
+    padding: 1em;
+  }
+
   h1 {
     font-size: 3em !important;
     font-family: "Snake" !important;
   }
+
   h2 {
-    margin-top: 4em;
+    margin-top: 2em;
   }
 
   small {
-    margin-top: 3em;
+    margin: 3em 0;
+    display: block;
+  }
+
+  .label {
+    opacity: 0.5;
   }
 
   .invert img {
