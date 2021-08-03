@@ -1,24 +1,10 @@
 <script>
-  import { onMount } from "svelte";
 
   import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
   import { isDarkModeEnabled } from "../store/state.js";
 
   let refresh = 0;
 
-  let mounted;
-
-  onMount(() => {
-    isDarkModeEnabled.set(
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    );
-    mounted = true;
-  });
-
-  $: if (mounted) {
-    if ($isDarkModeEnabled) window.document.body.classList.add("dark-mode");
-    else window.document.body.classList.remove("dark-mode");
-  }
 </script>
 
 <svelte:head>
@@ -51,40 +37,6 @@
     >
   </header>
 
-  <div
-    class="theme-toggle"
-    style="display: flex;justify-content: flex-end;align-items: center;"
-  >
-    <small>Theme:&nbsp;</small>
-    <svg
-      on:click={() => isDarkModeEnabled.set(true)}
-      height="20px"
-      width="20px"
-    >
-      <circle
-        cx="10"
-        cy="10"
-        r="8"
-        stroke="white"
-        stroke-width="3"
-        fill="black"
-      />
-    </svg>
-    <svg
-      on:click={() => isDarkModeEnabled.set(false)}
-      height="20px"
-      width="20px"
-    >
-      <circle
-        cx="10"
-        cy="10"
-        r="8"
-        stroke="black"
-        stroke-width="3"
-        fill="white"
-      />
-    </svg>
-  </div>
   <section class="top-section">
     <left>
       <p style="opacity: 0.6;">

@@ -26,20 +26,11 @@
     <div class="custom">
       <slot name="custom" />
     </div>
-    <p>{product.size}</p>
-   {#if product.price} <p>${product.price}</p>{/if}
+    <p class="size">{product.size}</p>
+    <p>Price: up to you :)</p>
   </content>
-  <button
-    class="snipcart-add-itemTODO"
-    data-item-id={product.id}
-    data-item-price={product.price}
-    data-item-url={product.url}
-    data-item-description={product.description}
-    data-item-image={product.image}
-    data-item-name={product.name}
-  >
-    [COMING SOON!]
-  </button>
+  <a href="https://payhip.com/b/mdCY" class="payhip-buy-button" data-product="MxG8Z" data-theme="none">Get it</a>
+
 </div>
 
 <style lang="scss">
@@ -53,6 +44,21 @@
     position: relative;
   }
 
+  :global(.payhip-buy-button) {
+    background: rgb(50, 205, 50);
+    color: white;
+    padding: 0.4em 0.5em;
+    border-radius: 3px;
+    text-decoration: none;
+
+    &:hover {
+      background:rgb(0, 187, 255);
+    }
+  }
+
+  .size {
+    opacity: 0.5;
+  }
   content {
   }
 

@@ -4,19 +4,6 @@
 	import Images from "../components/Images.svelte";
 	import { isDarkModeEnabled } from "../store/state.js";
 
-	let mounted;
-
-	onMount(() => {
-		isDarkModeEnabled.set(
-			window.matchMedia("(prefers-color-scheme: dark)").matches
-		);
-		mounted = true;
-	});
-
-	$: if (mounted) {
-		if ($isDarkModeEnabled) window.document.body.classList.add("dark-mode");
-		else window.document.body.classList.remove("dark-mode");
-	}
 </script>
 
 <style lang="scss">
@@ -53,15 +40,6 @@
 		padding-inline-start: 0px;
 	}
 
-	.theme-toggle {
-		opacity: 0.7;
-		svg {
-			&:hover {
-				transform: scale(1.2);
-				cursor: pointer;
-			}
-		}
-	}
 
 	header {
 		display: flex;
@@ -113,35 +91,6 @@
 
 <!-- <Nav/> -->
 
-<div
-	class="theme-toggle"
-	style="display: flex;justify-content: flex-end;align-items: center;">
-	<small>Theme:&nbsp;</small>
-	<svg
-		on:click={() => ($isDarkModeEnabled = true)}
-		height="20px"
-		width="20px">
-		<circle
-			cx="10"
-			cy="10"
-			r="8"
-			stroke="white"
-			stroke-width="3"
-			fill="black" />
-	</svg>
-	<svg
-		on:click={() => ($isDarkModeEnabled = false)}
-		height="20px"
-		width="20px">
-		<circle
-			cx="10"
-			cy="10"
-			r="8"
-			stroke="black"
-			stroke-width="3"
-			fill="white" />
-	</svg>
-</div>
 <section>
 	<h3>Products & projects</h3>
 	<h4>

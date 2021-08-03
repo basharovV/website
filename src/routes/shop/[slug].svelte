@@ -50,17 +50,7 @@
     <p>{product.size}</p>
 	{#if product.price} <p>${product.price}</p>{/if}
 </content>
-  <button
-    class="snipcart-add-itemTODO"
-    data-item-id={product.id}
-    data-item-price={product.price}
-    data-item-url={product.url}
-    data-item-description={product.description}
-    data-item-image={product.image}
-    data-item-name={product.name}
-  >
-    COMING SOON
-  </button>
+<a href="https://payhip.com/b/mdCY" class="payhip-buy-button" data-product="MxG8Z" data-theme="none">Get it</a>
 </div>
 
 <style lang="scss">

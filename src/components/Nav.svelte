@@ -1,5 +1,21 @@
 <script>
   export let segment;
+  import { isDarkModeEnabled } from "../store/state.js";
+  import { onMount } from "svelte";
+
+  let mounted;
+
+  onMount(() => {
+    isDarkModeEnabled.set(
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    );
+    mounted = true;
+  });
+
+  $: if (mounted) {
+    if ($isDarkModeEnabled) window.document.body.classList.add("dark-mode");
+    else window.document.body.classList.remove("dark-mode");
+  }
 </script>
 
 <nav>
@@ -29,9 +45,53 @@
       >
     </li>
   </ul>
+
+  <div
+    class="theme-toggle"
+    style="display: flex;justify-content: flex-end;align-items: center;"
+  >
+    <small>Theme:&nbsp;</small>
+    <svg
+      on:click={() => isDarkModeEnabled.set(true)}
+      height="20px"
+      width="20px"
+    >
+      <circle
+        cx="10"
+        cy="10"
+        r="8"
+        stroke="white"
+        stroke-width="3"
+        fill="black"
+      />
+    </svg>
+    <svg
+      on:click={() => isDarkModeEnabled.set(false)}
+      height="20px"
+      width="20px"
+    >
+      <circle
+        cx="10"
+        cy="10"
+        r="8"
+        stroke="black"
+        stroke-width="3"
+        fill="white"
+      />
+    </svg>
+  </div>
 </nav>
 
 <style lang="scss">
+  .theme-toggle {
+    opacity: 0.7;
+    svg {
+      &:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+    }
+  }
   nav {
     border-bottom: 1px solid rgba(0, 115, 255, 0.1);
     font-weight: 300;
@@ -68,7 +128,7 @@
   [aria-current] {
     position: relative;
     display: inline-block;
-	opacity: 1;
+    opacity: 1;
   }
 
   [aria-current]::after {
@@ -84,13 +144,12 @@
   a {
     text-decoration: none;
     padding: 1em 0.5em;
-	opacity: 0.8;
+    opacity: 0.8;
     display: block;
 
-	&:hover {
-		font-weight: bold;
-		opacity: 1;
-	}
+    &:hover {
+      font-weight: bold;
+      opacity: 1;
+    }
   }
-
 </style>
