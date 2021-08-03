@@ -50,7 +50,7 @@
     <p>{product.size}</p>
 	{#if product.price} <p>${product.price}</p>{/if}
 </content>
-<a href="https://payhip.com/b/mdCY" class="payhip-buy-button" data-product="MxG8Z" data-theme="none">Get it</a>
+<a href="https://payhip.com/b/MxG8Z" class="payhip-buy-button" data-product="MxG8Z" data-theme="none">Get it</a>
 </div>
 
 <style lang="scss">

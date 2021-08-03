@@ -29,7 +29,7 @@
     <p class="size">{product.size}</p>
     <p>Price: up to you :)</p>
   </content>
-  <a href="https://payhip.com/b/mdCY" class="payhip-buy-button" data-product="MxG8Z" data-theme="none">Get it</a>
+  <a href="https://payhip.com/b/MxG8Z" class="payhip-buy-button" data-product="MxG8Z" data-theme="none">Get it</a>
 
 </div>
 
