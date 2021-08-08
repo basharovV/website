@@ -1,9 +1,8 @@
-
 <script lang="ts">
-  import FeaturedProduct from "./FeaturedProduct.svelte";
-  import TrackMiniPlayer from "./TrackMiniPlayer.svelte";
-  export let products;
+import type { Product } from "../interfaces";
 
+  import FeaturedProduct from "./FeaturedProduct.svelte";
+  export let products: Product[];
 </script>
 
 <div class="container">
@@ -24,14 +23,17 @@
 <style lang="scss">
   .container {
     overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(3, 300px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* gap: 1em; */
 
     .comingsoon {
       margin: auto;
-
+      width: 100%;
+      flex: 1 1 220px;
       p {
-        margin: auto;
+        text-align: center;
         color: rgb(187, 173, 173);
       }
     }

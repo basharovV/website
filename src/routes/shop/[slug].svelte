@@ -37,7 +37,7 @@
         <img src={product.image} />
       </a>
       <svg viewBox="0 0 100 100">
-        <rect width="100%" height="100%" />
+        <rect fill={product.color} width="100%" height="100%" />
       </svg>
     </div>
     <content>
@@ -62,18 +62,21 @@
         {/each}
       {/if}
       <p class="size">💾 {product.size}</p>
-      <p>Price: up to you :)</p>
 
-      {#if product.price} <p>${product.price}</p>{/if}
+      {#if product.price}
+        <p>€{product.price}</p>
+      {:else}
+        <p>Price: up to you :)</p>
+      {/if}
 
       <a
-      href="https://payhip.com/b/{product.productId}"
-      class="payhip-buy-button"
-      data-message="🦊 Thanks Internet stranger! You can take this product for free, or pay what you want. If you have any feedback, email me on contact@vyacheslavbasharov.com"
-      data-title="Download {product.name}"
-      data-product={product.productId}
-      data-theme="none">Get it</a
-    >
+        href="https://payhip.com/b/{product.productId}"
+        class="payhip-buy-button"
+        data-message={product.paymentDescription}
+        data-title="Download {product.name}"
+        data-product={product.productId}
+        data-theme="none">Get it</a
+      >
     </content>
   </div>
 </div>
@@ -163,7 +166,7 @@
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.411);
 
     rect {
-      fill: rgb(0, 187, 255);
+      /* fill: rgb(0, 187, 255); */
     }
   }
 </style>

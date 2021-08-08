@@ -11,4 +11,6 @@ export interface Product {
     size: string,
     productId: string,
     soundCloudDemoIds: string[],
+    color: string,
+    paymentDescription: string
 }

@@ -6,8 +6,9 @@
   export let product: Product;
 </script>
 
-<div class="container">
-  <div class="product-image">
+<div class="container {$isDarkModeEnabled ? 'invert' : ''}">
+
+  <div class="product-image-container">
     <div class="tags">
       {#each product.tags as tag}
         <div class="tag">{tag}</div>
@@ -15,10 +16,10 @@
     </div>
 
     <a rel="prefetch" href="shop/{product.id}">
-      <img src={product.image} />
+      <img class="product-image" src={product.image} />
     </a>
     <svg viewBox="0 0 100 100">
-      <rect width="100%" height="100%" />
+      <rect fill={product.color} width="100%" height="100%" />
     </svg>
   </div>
   <content>
@@ -29,7 +30,7 @@
     <small>{product.description}</small>
 
     {#if product.soundCloudDemoIds.length}
-      <h4>Listen to the demos:</h4>
+      <h4>🎧 Listen:</h4>
 
       {#each product.soundCloudDemoIds as trackId}
         <TrackMiniPlayer
@@ -41,26 +42,47 @@
     {/if}
     <p class="size">{product.size}</p>
 
-    <p>Price: up to you :)</p>
+    {#if product.price}
+      <p>€{product.price}</p>
+    {:else}
+      <p>Price: up to you :)</p>
+    {/if}
+
+    <a
+      href="https://payhip.com/b/{product.productId}"
+      class="payhip-buy-button"
+      data-message={product.paymentDescription}
+      data-title="Download {product.name}"
+      data-product={product.productId}
+      data-theme="none">Get it</a
+    >
   </content>
-  <a
-    href="https://payhip.com/b/{product.productId}"
-    class="payhip-buy-button"
-    data-message="🦊 Thanks Internet stranger! You can take this product for free, or pay what you want. If you have any feedback, email me on contact@vyacheslavbasharov.com"
-    data-title="Download {product.name}"
-    data-product={product.productId}
-    data-theme="none">Get it</a
-  >
 </div>
 
 <style lang="scss">
   .container {
-    padding: 1em;
-    border: 1px dashed rgb(220, 220, 220);
-    border-radius: 1em;
+    position: relative;
+    padding: 2em;
+    width: 100%;
+    flex: 1 1 220px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+    border-right: 1px solid rgba(0, 0, 0, 0.09);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    &:hover {
+      background-color: #00000010;
+    }
+
+    &.invert {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.194);
+      border-right: 1px solid rgba(255, 255, 255, 0.173);
+      &:hover {
+        background-color: #ffffff25;
+      }
+    }
   }
 
-  .product-image {
+  .product-image-container {
     position: relative;
   }
 
@@ -80,6 +102,8 @@
     opacity: 0.5;
   }
   content {
+    z-index: 1;
+    position: relative;
   }
 
   .custom {
@@ -106,7 +130,7 @@
     }
   }
 
-  img {
+  .product-image {
     width: 100%;
     height: auto;
     z-index: 3;
@@ -139,7 +163,7 @@
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.411);
 
     rect {
-      fill: rgb(0, 187, 255);
+      /* fill: #000000; */
     }
   }
 </style>

@@ -15,11 +15,11 @@
         frameborder="no"
         allow="autoplay"
         src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/{trackId}&color=%23{accent}&inverse={isDarkModeEnabled ? 'true' : 'false'}&sharing=false&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false" />
-    <div
-        style="background:{isDarkModeEnabled ? 'black' : 'white'};width: 100px;height:20px;position:absolute;right: 5px;z-index:2;">
+    <!-- <div
+        style="background:{isDarkModeEnabled ? 'black' : 'white'};width: 40px;height:20px;position:absolute;right: 5px;z-index:2;">
         <img
             style="float: right;height: 20px;margin-right: 10px;opacity: 0.5;"
             alt="soundcloud"
             src="soundcloud.svg" />
-    </div>
+    </div> -->
 </div>
