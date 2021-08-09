@@ -22,7 +22,7 @@
 </script>
 
 <svelte:head>
-  <title>{product.name}</title>
+  <title>{product.name} • {product.type} | Vyacheslav Basharov</title>
 </svelte:head>
 
 <a href="/shop">&lt- Back to shop</a>

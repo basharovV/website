@@ -8,6 +8,7 @@ export interface Product {
     longDescription: string,
     image: string,
     tags: string[],
+    type: string,
     size: string,
     productId: string,
     soundCloudDemoIds: string[],

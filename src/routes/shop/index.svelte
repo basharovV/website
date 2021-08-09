@@ -70,7 +70,7 @@
 </footer>
 
 <svelte:head>
-  <title>Shop</title>
+  <title>Vyacheslav Basharov • sample packs, libraries & instruments</title>
 </svelte:head>
 
 <style lang="scss">
