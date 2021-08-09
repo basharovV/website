@@ -32,7 +32,7 @@ const products = [
     description:
       "A sample pack full of metallic, atmospheric alien and spaceship effects designed to make you want to stay on planet Earth.",
     longDescription:
-      "<h4>Features</h4><ul><li>10 hand-crafted samples</li><li>WAV, uncompressed</li><li>Live steel tongue drum used for metallic sounds</li></ul>",
+      "<h4>Features</h4><ul><li>10 hand-crafted samples</li><li>WAV, uncompressed</li><li>Live steel tongue drum used for metallic sounds</li></ul><small>Art by <a href='https://www.artstation.com/conceptartist'>D.Ustinov.</a></small>",
     image: "product-assets/not-alone-in-space/square.png",
     bannerImage: "product-assets/not-alone-in-space/banner.png",
     name: "*NOT ALONE IN SPACE",
