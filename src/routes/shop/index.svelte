@@ -10,10 +10,12 @@
 
 <script lang="ts">
   import FeaturedProducts from "../../components/FeaturedProducts.svelte";
+import WarpSpeed from "../../components/WarpSpeed.svelte";
   import { isDarkModeEnabled } from "../../store/state.js";
   export let products;
 </script>
 
+<WarpSpeed />
 <div class="header-container">
   <div class="header">
     <div class="item {$isDarkModeEnabled ? 'invert shop-logo' : 'shop-logo'}">
