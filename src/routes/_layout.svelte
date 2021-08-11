@@ -22,7 +22,7 @@
     // position: relative;
     max-width: 56em;
     background-color: none;
-    padding: 2em;
+    padding: 0 2em 2em 2em;
     margin: 0 auto;
     box-sizing: border-box;
   }

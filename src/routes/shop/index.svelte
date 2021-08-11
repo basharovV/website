@@ -10,44 +10,45 @@
 
 <script lang="ts">
   import FeaturedProducts from "../../components/FeaturedProducts.svelte";
-import WarpSpeed from "../../components/WarpSpeed.svelte";
+  import WarpSpeed from "../../components/WarpSpeed.svelte";
   import { isDarkModeEnabled } from "../../store/state.js";
   export let products;
 </script>
 
-<WarpSpeed />
-<div class="header-container">
-  <div class="header">
-    <div class="item {$isDarkModeEnabled ? 'invert shop-logo' : 'shop-logo'}">
-      <div>
-        <img
-          style="grid-area: a;margin:auto;width: 30px;"
-          alt="Logo"
-          src="logo.svg"
-        />
-        <h1 style="margin:0">vb shop</h1>
+<div class="top">
+  <WarpSpeed/>
+  <div class="header-container">
+    <div class="header">
+      <div class="item {$isDarkModeEnabled ? 'invert shop-logo' : 'shop-logo'}">
+        <div>
+          <img
+            style="grid-area: a;margin:auto;width: 30px;"
+            alt="Logo"
+            src="logo.svg"
+          />
+          <h1 style="margin:0">vb shop</h1>
+        </div>
       </div>
-    </div>
 
-    <div class="vertical-line fill" />
+      <div class="vertical-line fill" />
 
-    <div class="item">
-      <div>
-        <h3>
-          An independent creative outlet of music, software and musical
-          software.
-        </h3>
+      <div class="item">
+        <div>
+          <h3>
+            An independent creative outlet of music, software and musical
+            software.
+          </h3>
+        </div>
       </div>
     </div>
   </div>
+
+  <small class="desc">
+    Mostly stuff for musicians (virtual instruments, sample packs), and my own
+    music licensed for use in media.
+  </small>
+  <div class="vertical-line" />
 </div>
-
-<small class="desc">
-  Mostly stuff for musicians (virtual instruments, sample packs), and my own
-  music licensed for use in media.
-</small>
-<div class="vertical-line" />
-
 <section>
   <!-- <h2>📦 Products</h2> -->
 
@@ -131,6 +132,9 @@ import WarpSpeed from "../../components/WarpSpeed.svelte";
     }
   }
 
+  .top {
+    /* position: relative; */
+  }
   section {
     border: 1px solid rgb(222, 222, 222);
   }
@@ -177,7 +181,10 @@ import WarpSpeed from "../../components/WarpSpeed.svelte";
   .vertical-line {
     width: 1px;
     height: 40px;
-    background-image: linear-gradient(90deg, silver 50%, transparent 50%), linear-gradient(90deg, silver 50%, transparent 50%), linear-gradient(0deg, silver 50%, transparent 50%), linear-gradient(0deg, silver 50%, transparent 50%);
+    background-image: linear-gradient(90deg, silver 50%, transparent 50%),
+      linear-gradient(90deg, silver 50%, transparent 50%),
+      linear-gradient(0deg, silver 50%, transparent 50%),
+      linear-gradient(0deg, silver 50%, transparent 50%);
     background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
     background-size: 100px 10px;
     background-position: left top;
