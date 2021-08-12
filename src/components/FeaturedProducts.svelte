@@ -1,11 +1,16 @@
 <script lang="ts">
 import type { Product } from "../interfaces";
+import { isDarkModeEnabled } from "../store/state";
 
   import FeaturedProduct from "./FeaturedProduct.svelte";
   export let products: Product[];
 </script>
 
 <div class="container">
+    <div class="banner">
+      <small>👋 Hola! I just launched this store! If you see "Price" up to you :)" it's technically free, but you can choose to pay a few bucks if you'd like to support my work. Thanks! - Slav</small>
+      <img src="profile.jpg" />
+    </div>
   {#each products as product}
     <FeaturedProduct {product}>
       <!-- <div slot="custom">
@@ -15,19 +20,40 @@ import type { Product } from "../interfaces";
       </div> -->
     </FeaturedProduct>
   {/each}
-  <div class="comingsoon">
+  <div class="comingsoon {$isDarkModeEnabled? 'invert' : ''}">
+    <img src="/bulby_bulb.png" />
     <p>More coming soon!</p>
   </div>
 </div>
 
 <style lang="scss">
   .container {
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
     /* gap: 1em; */
 
+    .banner {
+      padding: 0.5em 1em;
+      background: rgba(83, 199, 145, 0.187);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+      color: rgb(5, 182, 91);
+      text-align: center;
+      position: relative;
+
+      > img {
+        width: 40px;
+        position: absolute;
+        left: -20px;
+        top: 0;
+        bottom: 0;
+        border-radius: 50px;
+        border: 3px solid white;
+        margin: auto;
+      }
+    }
     .comingsoon {
       margin: auto;
       width: 100%;
@@ -35,6 +61,19 @@ import type { Product } from "../interfaces";
       p {
         text-align: center;
         color: rgb(187, 173, 173);
+      }
+
+      img {
+        width: 50%;
+        display: block;
+        margin: auto;
+        transition: filter cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s 0.02s;
+      }
+      &.invert {
+
+        img {
+          filter: invert(1);
+        }
       }
     }
   }

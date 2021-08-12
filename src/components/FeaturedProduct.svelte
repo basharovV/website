@@ -7,7 +7,6 @@
 </script>
 
 <div class="container {$isDarkModeEnabled ? 'invert' : ''}">
-
   <div class="product-image-container">
     <div class="tags">
       {#each product.tags as tag}
@@ -40,7 +39,7 @@
         />
       {/each}
     {/if}
-    <p class="size">{product.size}</p>
+    <small class="size">{product.size} zip file</small>
 
     {#if product.price}
       <p>€{product.price}</p>
@@ -99,6 +98,8 @@
   }
 
   .size {
+    margin-top: 1em;
+    display: block;
     opacity: 0.5;
   }
   content {
@@ -151,6 +152,10 @@
     to {
       filter: contrast(175%) brightness(100%) saturate(150%);
     }
+  }
+
+  .payhip-buy-button {
+    display: inline-block;
   }
 
   svg {

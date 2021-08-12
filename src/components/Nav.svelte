@@ -93,7 +93,7 @@
     }
   }
   nav {
-    border-bottom: 1px solid rgba(0, 115, 255, 0.1);
+    border-bottom: 1px solid rgba(74, 74, 74, 0.1);
     font-weight: 300;
     padding: 0;
     display: flex;

@@ -133,10 +133,11 @@
   }
 
   .top {
-    /* position: relative; */
+    position: relative;
   }
   section {
     border: 1px solid rgb(222, 222, 222);
+    overflow: visible;
   }
 
   h1 {
@@ -169,6 +170,7 @@
     margin: 3em auto 0;
     > p {
       text-align: center;
+      font-size: 2em;
     }
     > div {
       margin: auto;

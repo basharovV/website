@@ -38,7 +38,7 @@
       }
       this.myX += xMod + (this.myX - width / 2) * speedMult;
       this.myY += yMod + (this.myY - height / 2) * speedMult;
-      this.updateColor(this.myX > (width - 30) && this.myY > (height - 30));
+      this.updateColor();
 
       if (this.myX > width || this.myX < 0) {
         this.myX = Math.random() * width;
@@ -52,19 +52,20 @@
       }
     };
 
-    Star.prototype.updateColor = function (fadeOut) {
+    Star.prototype.updateColor = function () {
       if (this.step < 255) {
         this.step += 5;
         this.myColor += 5;
       } else {
         this.myColor = 255;
+        this.step = 0;
       }
     };
 
     var starField = [];
     var starCounter = 0;
 
-    while (starCounter < 300) {
+    while (starCounter < 250) {
       var newStar = new Star();
       starField.push(newStar);
       starCounter++;
@@ -108,9 +109,11 @@
     left: 0;
     z-index: -2;
     width: 100%;
+    margin: auto;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -50px;
+    bottom: -50px;
+    right: 0;
 
     @media only screen and (max-width: 500px) {
       display: none;
@@ -118,8 +121,8 @@
   }
   #myCanvas {
     background-color: transparent;
-    width: 100%;
-    height: 280px;
+    width: 70%;
+    height: 100%;
     margin: auto;
     display: block;
   }

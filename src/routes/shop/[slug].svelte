@@ -61,7 +61,7 @@
           />
         {/each}
       {/if}
-      <p class="size">💾 {product.size}</p>
+      <small class="size">💾 {product.size} zip file</small>
 
       {#if product.price}
         <p>€{product.price}</p>
@@ -122,6 +122,8 @@
   }
 
   .size {
+    margin-top: 1em;
+    display: block;
     opacity: 0.5;
   }
 
@@ -154,6 +156,10 @@
     position: relative;
     transition: all 1s ease-in-out;
     margin-bottom: 1em;
+  }
+
+  .payhip-buy-button {
+    display: inline-block;
   }
 
   svg {
