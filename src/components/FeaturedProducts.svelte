@@ -8,7 +8,7 @@ import { isDarkModeEnabled } from "../store/state";
 
 <div class="container">
     <div class="banner">
-      <small>👋 Hola! I just launched this store! If you see "Price" up to you :)" it's technically free, but you can choose to pay a few bucks if you'd like to support my work. Thanks! - Slav</small>
+      <small>👋 Hola! I just launched this store! If you see <i>"Price: up to you :)"</i> it's technically free, but you can choose to pay a few bucks if you'd like to support my work. Thanks! - Slav</small>
       <img src="profile.jpg" />
     </div>
   {#each products as product}
