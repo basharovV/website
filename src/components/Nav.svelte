@@ -43,6 +43,24 @@
         aria-current={segment === "shop" ? "page" : undefined}
         href="shop">shop</a
       >
+      {#if segment === undefined}
+        <div class="link-pointer">
+          <svg
+            width="12"
+            height="21"
+            viewBox="0 0 12 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.9368 0.559717C2.69367 0.428795 2.39043 0.519762 2.25951 0.762897L0.126031 4.725C-0.00489033 4.96813 0.0860765 5.27136 0.329211 5.40229C0.572345 5.53321 0.875577 5.44224 1.0065 5.19911L2.90293 1.67724L6.4248 3.57367C6.66793 3.70459 6.97116 3.61362 7.10208 3.37049C7.233 3.12735 7.14204 2.82412 6.8989 2.6932L2.9368 0.559717ZM11.1265 20.2963C6.65912 13.0736 5.53039 8.69562 3.17866 0.85628L2.22083 1.14362C4.5701 8.97477 5.73035 13.473 10.2761 20.8223L11.1265 20.2963Z"
+              fill="black"
+            />
+          </svg>
+
+          <small>just launched!</small>
+        </div>
+      {/if}
     </li>
   </ul>
 
@@ -123,6 +141,50 @@
   li {
     display: block;
     float: left;
+    position: relative;
+  }
+
+  .link-pointer {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    animation: bounce 1s alternate-reverse 1s infinite ease-in-out;
+    transform: rotate(5deg);
+    > svg {
+      align-self: flex-start;
+      height: 20px;
+      > path {
+        fill: rgb(0, 211, 137);
+      }
+    }
+    > small {
+      margin: 5px 0 0 0;
+      color: rgb(0, 211, 137);
+    }
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: rotate(5deg);
+    }
+    20% {
+      transform: rotate(10deg);
+    }
+    40% {
+      transform: rotate(5deg);
+    }
+    60% {
+      transform: rotate(10deg);
+    }
+    80% {
+      transform: rotate(5deg);
+    }
+    100% {
+      transform: rotate(5deg);
+    }
   }
 
   [aria-current] {

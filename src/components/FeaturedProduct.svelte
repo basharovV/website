@@ -22,14 +22,14 @@
     </svg>
   </div>
   <content>
-    <a rel="prefetch" href="shop/{product.id}">
-      <h3>{product.name}</h3>
+    <a class="title" rel="prefetch" href="shop/{product.id}">
+      <h4>{product.name}</h4>
     </a>
 
     <small>{product.description}</small>
 
     {#if product.soundCloudDemoIds.length}
-      <h4>🎧 Listen:</h4>
+      <h5>🎧 Listen:</h5>
 
       {#each product.soundCloudDemoIds as trackId}
         <TrackMiniPlayer
@@ -44,7 +44,10 @@
     {#if product.price}
       <p>€{product.price}</p>
     {:else}
-      <p>Price: up to you :)</p>
+      <span
+        ><p>Price:</p>
+        <p class="price-pwyw">up to you :)</p></span
+      >
     {/if}
 
     <a
@@ -97,10 +100,23 @@
     }
   }
 
+  .title {
+    text-decoration: none;
+  }
+
   .size {
     margin-top: 1em;
     display: block;
     opacity: 0.5;
+  }
+
+  span {
+  > * {
+      display: inline-block;
+    }
+  }
+  .price-pwyw {
+    color: rgb(0, 160, 0);
   }
   content {
     z-index: 1;

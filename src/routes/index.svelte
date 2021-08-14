@@ -10,9 +10,12 @@
     src="logo.svg"
   />
   <header>
-    <h2 style="text-align: center;">Hello! I’m Slav</h2>
+    <h3 style="margin: 0;text-align: center;font-family: Snake;font-size: 3em;">
+      Hello! I'm Slav
+    </h3>
+    <br />
     <h2 style="text-align: center;">
-      - I
+      I
       <a href="/dev">make software</a>
       and
       <a href="/music">compose music.</a>
@@ -56,7 +59,7 @@
       <p class="mobile-hide" style="opacity: 0.7;">
         For music projects, tracks, samples, presets
       </p>
-
+      <!-- 
       <h3>Latest release</h3>
       <h4>Improv I</h4>
       <small
@@ -76,19 +79,25 @@
       <TrackMiniPlayer trackId="1011296332" accent="1e2424" />
       <TrackMiniPlayer trackId="963507499" accent="1e2424" />
       <!-- <TrackMiniPlayer trackId="818507320" accent="1e2424" /> -->
-      <TrackMiniPlayer trackId="940950685" accent="1e2424" />
-
-      <h3>Latest music project</h3>
+      <!-- <TrackMiniPlayer trackId="940950685" accent="1e2424" />
+      -->
+      <h3>Latest release</h3>
       <p>
-        Rhodesian Keys - a sample based software instrument, based on a Mark I
-        1973 Fender Rhodes
+        <b>Improv I</b> - a soft, contemporary classical recording, captured in an
+        intimate setting on my childhood upright Petrof piano.
+      </p>
+      <p>
+        <a href="https://songwhip.com/vyacheslavbasharov/improv-i">
+          🎧 Listen on streaming services -></a
+        >
+        <small style="opacity: 0.5;">add it to your sleep + ambient playlists :)</small>
       </p>
       <div class="embed">
         <iframe
           loading="lazy"
           width="400px"
           height="250px"
-          src="https://www.youtube-nocookie.com/embed/2PP0OrzS_k8"
+          src="https://www.youtube-nocookie.com/embed/WxyupgszQec"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
