@@ -1,10 +1,8 @@
 <script>
-
   import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
   import { isDarkModeEnabled } from "../store/state.js";
 
   let refresh = 0;
-
 </script>
 
 <svelte:head>
@@ -19,8 +17,6 @@
     <div class={$isDarkModeEnabled ? "invert" : ""} id="gradient" />
   </div>
   <header>
-    <h2 style="margin-bottom: 0;">Vyacheslav Basharov</h2>
-
     <a
       class={$isDarkModeEnabled ? "invert" : ""}
       style="display: flex;"
@@ -36,7 +32,7 @@
       ></small
     >
   </header>
-
+  <!-- 
   <section class="top-section">
     <left>
       <p style="opacity: 0.6;">
@@ -45,38 +41,44 @@
         portfolio of my music. Thanks for checking it out!
       </p>
     </left>
-    <right>
+    
+
+  </section> -->
+
+  <div class="heading">
+    <div>
+      <h1 id="title">music portfolio 👇</h1>
+      <h2 id="subtitle">(in no particular order)</h2>
+    </div>
+    <div class="prompt">
+      <h4 style="display: inline;">I'm currently</h4>
+      <h4 style="display: inline;color: rgb(72, 199, 72);">available</h4>
+      <svg class="available-circle" width="10" height="10" viewBox="0 0 10 10">
+        <circle cx="5" cy="5" r="5" fill="green" />
+      </svg>
+      <br />
       <small
-        >Need original music? Want to collab? I'm open! Click below to send
-        me an email:
+        >for film scoring, session recordings, collabs. Click below to send me
+        an email:
       </small>
       <div class="contact">
         <img src="pigeon.png" />
         <a
           style="text-decoration: none"
-          href="mailto:contact@vyacheslavbasharov.com">
+          href="mailto:contact@vyacheslavbasharov.com"
+        >
           <button>Send an electronic pigeon</button>
         </a>
       </div>
-    </right>
-
-    <!-- <small >My email is contact@vyacheslavbasharov.com.</small> -->
-  </section>
-
-  <section class="heading">
-    <div>
-      <h1 id="title">music portfolio 👇</h1>
-      <h2 id="subtitle">(in no particular order)</h2>
     </div>
-  </section>
+  </div>
   <div class="content">
     <section>
-      <h3>🔌 Rhodesian Keys</h3>
-      <p>My first software instrument :)</p>
+      <h3>🔌 Improvisations</h3>
       <p>
-        I had to get my hands on a Rhodes, and when I did, I had to sample it!
-        Rhodesian Keys is a software instrument sampled from a Rhodes Mark I
-        1973, and I'll be releasing this as a VST plugin on this website.
+        A lot of my musical adventures have their roots in improvisation. As a
+        personal project, I'm recording some of my improv sessions, like this
+        one:
       </p>
       <div class="embed">
         <iframe
@@ -84,8 +86,32 @@
             refresh += 1;
           }}
           loading="lazy"
-          width="400px"
-          height="250px"
+          src="https://www.youtube-nocookie.com/embed/bSN3eBiGWIM"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      </div>
+    </section>
+    <section>
+      <h3>🔌 Rhodesian Keys</h3>
+      <p>My first software instrument :)</p>
+      <span style="display: block;margin: 1em 0;">
+        <p style="display: inline;">
+          I had to get my hands on a Rhodes, and when I did, I had to sample it!
+          Rhodesian Keys is a software instrument sampled from a Rhodes Mark I
+          1973, which I'll be releasing on this website at some point.
+        </p>
+        <p style="display: inline; color: orange;">
+          Update: you can now get it from <a href="/shop">the shop!</a>
+        </p>
+      </span>
+      <div class="embed">
+        <iframe
+          on:load={() => {
+            refresh += 1;
+          }}
+          loading="lazy"
           src="https://www.youtube-nocookie.com/embed/2PP0OrzS_k8"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -95,7 +121,7 @@
     </section>
     <section class="magic-touch">
       <h3>🥁 The Magic Touch Collective</h3>
-      <img src="music/magic-touch-logo.png" alt="Magic Touch Collective logo"/>
+      <img src="music/magic-touch-logo.png" alt="Magic Touch Collective logo" />
       <p>
         This is my band (fusion, latin, folk, rock), currently performing in
         Marbella and working on our debut album. Check us out on <a
@@ -191,8 +217,6 @@
       <div class="embed">
         <iframe
           loading="lazy"
-          width="400px"
-          height="250px"
           src="https://player.vimeo.com/video/491425916"
           frameborder="0"
           allow="autoplay; fullscreen"
@@ -203,7 +227,7 @@
 
     <section style="break-before: column;">
       <div
-        style="display: grid; grid-template-columns: 1fr auto;margin-top: 2em;align-items: center;"
+        style="display: grid; grid-template-columns: 1fr auto;align-items: center;"
       >
         <h3 style="width: fit-content;margin: 0;">🎬 Film scoring</h3>
         <small>
@@ -215,11 +239,7 @@
           >
         </small>
       </div>
-      <p>
-        Film music composition is an amazing art that I've been attracted to
-        ever since I've had the pleasure of composing for a couple of short
-        films:
-      </p>
+      <p>I've had the pleasure of composing for these short films:</p>
 
       <div style="display: grid;gap: 30px;">
         <div style="display: grid;grid-template-columns: 1fr 2fr;">
@@ -278,8 +298,6 @@
             refresh += 1;
           }}
           loading="lazy"
-          width="400px"
-          height="250px"
           src="https://www.youtube-nocookie.com/embed/KPugdlU8GRs"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -298,8 +316,6 @@
       <div class="embed">
         <iframe
           loading="lazy"
-          width="400px"
-          height="250px"
           src="https://player.vimeo.com/video/215550767"
           frameborder="0"
           allow="autoplay; fullscreen"
@@ -355,11 +371,11 @@
   }
 
   * {
-    font-family: "Snake" !important;
+    /* font-family: "Snake" !important; */
   }
 
   h3 {
-    margin-top: 2em;
+    margin-top: 0;
     background-color: black;
     color: white;
     width: fit-content;
@@ -378,12 +394,13 @@
   }
 
   .container {
-    font-size: 2em !important;
+    /* font-size: 2em !important; */
   }
 
   .content {
     column-count: 2;
 
+    margin-top: 2em;
     @media only screen and (max-width: 522px) {
       column-count: 1;
       display: inline;
@@ -391,6 +408,11 @@
   }
 
   section {
+    margin: 0.5em 0;
+    padding: 1em;
+    border: 1px solid rgba(121, 121, 121, 0.475);
+    /* box-shadow: inset 0px 0px 0px 2px rgba(121, 121, 121, 0.475); */
+    /* box-sizing: border-box; Include padding and border in element's */
   }
 
   figure {
@@ -422,6 +444,8 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    margin-top: 2em;
+    padding: 1em 0;
   }
 
   .theme-toggle {
@@ -456,8 +480,9 @@
   }
 
   .embed {
-    width: 400px;
-    height: 250px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
 
     @media only screen and (max-width: 522px) {
       width: 100%;
@@ -466,8 +491,13 @@
     > iframe {
       position: absolute;
       border-radius: 10px;
-      border: 2px solid #c1c1c1;
+      border: 2px solid #c1c1c15b;
       padding: 2px;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
 
       @media only screen and (max-width: 522px) {
         position: absolute;
@@ -531,20 +561,20 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    &:hover {
 
-        img {
-            animation: rotate 0.4s ease-in-out 1 forwards;
-        }
+    &:hover {
+      img {
+        animation: rotate 0.4s ease-in-out 1 forwards;
+      }
     }
 
     @keyframes rotate {
-        from {
-            transform: rotate(0deg) translateX(0px);
-        }
-        to {
-            transform: rotate(1turn) translateX(15px);
-        }
+      from {
+        transform: rotate(0deg) translateX(0px);
+      }
+      to {
+        transform: rotate(1turn) translateX(15px);
+      }
     }
     button {
       top: 0;
@@ -555,7 +585,7 @@
       }
     }
     img {
-      width: 80px;
+      width: 60px;
       z-index: 1;
       right: 0;
       position: absolute;
@@ -580,17 +610,11 @@
       display: block;
     }
     left {
-        p {
-            margin: 0;
-        }
+      p {
+        margin: 0;
+      }
     }
     right {
-        padding: 1em 0.8em;
-        /* border: 2px dashed rgb(235, 235, 235); */
-        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='gainsboro' stroke-width='4' stroke-dasharray='2%2c 8' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
-        small, h3 {
-            margin: 0;
-        }
     }
   }
 
@@ -599,9 +623,26 @@
     flex-direction: row;
     gap: 1em;
     justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
 
     a {
       height: fit-content;
+    }
+
+    .prompt {
+      padding: 1em 0.8em;
+      /* border: 2px dashed rgb(235, 235, 235); */
+      /* background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='gainsboro' stroke-width='4' stroke-dasharray='2%2c 8' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e"); */
+      small,
+      h3 {
+        margin: 0;
+      }
+      small {
+        margin: 1em 0;
+        display: block;
+      }
+      flex-basis: 400px;
     }
   }
 
@@ -613,10 +654,26 @@
   }
 
   .magic-touch {
-      img {
-          width: 200px;
-          margin: auto;
-          display: block;
-      }
+    img {
+      width: 200px;
+      margin: auto;
+      display: block;
+    }
+  }
+
+  .available-circle {
+    animation: fade 1.3s infinite alternate-reverse ease-in-out;
+    > circle {
+      fill: rgb(72, 199, 72);
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0.3;
+    }
+    to {
+      opacity: 1;
+    }
   }
 </style>
