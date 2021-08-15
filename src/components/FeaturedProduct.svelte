@@ -62,6 +62,11 @@
 </div>
 
 <style lang="scss">
+  :global(.dark-mode) {
+    .container {
+      background: rgba(0, 0, 0, 0.74) !important;
+    }
+  }
   .container {
     position: relative;
     padding: 2em;
@@ -71,6 +76,7 @@
     border-right: 1px solid rgba(0, 0, 0, 0.09);
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
+    background: rgba(255, 255, 255, 0.776) !important;
     &:hover {
       background-color: #00000010;
     }
@@ -111,7 +117,7 @@
   }
 
   span {
-  > * {
+    > * {
       display: inline-block;
     }
   }

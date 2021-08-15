@@ -82,15 +82,7 @@
 </div>
 
 <style lang="scss">
-  :global(body) {
-    transition: background-color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
-    // transition: color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
-  }
-
-  :global(.dark-mode) {
-    background-color: black !important;
-    color: white;
-  }
+  
   .container {
     padding: 1em;
     border: 1px dashed rgb(220, 220, 220);

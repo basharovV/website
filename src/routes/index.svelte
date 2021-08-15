@@ -95,8 +95,6 @@
       <div class="embed">
         <iframe
           loading="lazy"
-          width="400px"
-          height="250px"
           src="https://www.youtube-nocookie.com/embed/WxyupgszQec"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -123,16 +121,7 @@
 </div>
 
 <style lang="scss">
-  :global(body) {
-    transition: background-color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
-    // transition: color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
-  }
-
-  :global(.dark-mode) {
-    background-color: black !important;
-    color: white;
-  }
-
+  
   .container {
     padding-top: 4em;
     max-width: 900px;
@@ -212,31 +201,6 @@
 
   .invert img {
     filter: invert(1);
-  }
-
-  .embed {
-    width: 400px;
-    height: 250px;
-
-    @media only screen and (max-width: 522px) {
-      width: 100%;
-    }
-
-    > iframe {
-      position: absolute;
-      border-radius: 10px;
-      border: 2px solid #c1c1c1;
-      padding: 2px;
-
-      @media only screen and (max-width: 522px) {
-        position: absolute;
-        left: 0;
-        right: 0;
-        box-sizing: border-box;
-        border: none;
-        width: 100%;
-      }
-    }
   }
 
   small {

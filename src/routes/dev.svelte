@@ -7,16 +7,7 @@
 </script>
 
 <style lang="scss">
-	:global(body) {
-		transition: background-color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
-		// transition: color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
-	}
-
-	:global(.dark-mode) {
-		background-color: black !important;
-		color: white;
-	}
-
+	
 	img {
 		width: 100%;
 	}

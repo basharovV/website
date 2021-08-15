@@ -1,16 +1,21 @@
 <script lang="ts">
-import type { Product } from "../interfaces";
-import { isDarkModeEnabled } from "../store/state";
+  import type { Product } from "../interfaces";
+  import { isDarkModeEnabled } from "../store/state";
 
   import FeaturedProduct from "./FeaturedProduct.svelte";
   export let products: Product[];
 </script>
 
 <div class="container">
-    <div class="banner">
-      <small>👋 Hola! I just launched this store! If you see <i>"Price: up to you :)"</i> it's technically free, but you can choose to pay a few bucks if you'd like to support my work. Thanks! - Slav</small>
-      <img src="profile.jpg" />
-    </div>
+  <div class="banner">
+    <small
+      >👋 Hola! I just launched this store! If you see <i
+        >"Price: up to you :)"</i
+      > it's technically free, but you can choose to pay a few bucks if you'd like
+      to support my work. Thanks! - Slav</small
+    >
+    <img src="profile.jpg" />
+  </div>
   {#each products as product}
     <FeaturedProduct {product}>
       <!-- <div slot="custom">
@@ -20,7 +25,7 @@ import { isDarkModeEnabled } from "../store/state";
       </div> -->
     </FeaturedProduct>
   {/each}
-  <div class="comingsoon {$isDarkModeEnabled? 'invert' : ''}">
+  <div class="comingsoon {$isDarkModeEnabled ? 'invert' : ''}">
     <img src="/bulby_bulb.png" />
     <p>More coming soon!</p>
   </div>
@@ -54,6 +59,7 @@ import { isDarkModeEnabled } from "../store/state";
         margin: auto;
       }
     }
+
     .comingsoon {
       margin: auto;
       width: 100%;
@@ -65,12 +71,11 @@ import { isDarkModeEnabled } from "../store/state";
 
       img {
         width: 50%;
-        display: block;
+        display: block;      
         margin: auto;
         transition: filter cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s 0.02s;
       }
       &.invert {
-
         img {
           filter: invert(1);
         }
