@@ -3,13 +3,16 @@
   "description": "My personal website.",
   "version": "1.0.0",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development sapper dev",
+    "dev": "env-cmd sapper dev",
+    "post:dev": "node generate-sitemap.js",
     "build": "sapper build --legacy",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build"
   },
+  "type": "module",
   "dependencies": {
     "compression": "^1.7.1",
+    "env-cmd": "^10.1.0",
     "polka": "next",
     "sirv": "^1.0.0",
     "tslib": "^2.3.0"
