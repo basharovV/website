@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: vyacheslavbasharov.com
+Token: 75cbcbf33afe46cf8a2a638c82cbbcff3c74f38b560926357497a485a02a5cbc
