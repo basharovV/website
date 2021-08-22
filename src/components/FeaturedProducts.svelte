@@ -37,8 +37,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
-    /* gap: 1em; */
+    gap: 1em;
 
     .banner {
       padding: 0.5em 1em;

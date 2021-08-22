@@ -8,11 +8,7 @@
 
 <div class="container {$isDarkModeEnabled ? 'invert' : ''}">
   <div class="product-image-container">
-    <div class="tags">
-      {#each product.tags as tag}
-        <div class="tag">{tag}</div>
-      {/each}
-    </div>
+    <div class="tag">{product.tags[0]}</div>
 
     <a rel="prefetch" href="shop/{product.id}">
       <img class="product-image" src={product.image} />
@@ -22,7 +18,7 @@
     </svg>
   </div>
   <content>
-    <a class="title" rel="prefetch" href="shop/{product.id}">
+    <!-- <a class="title" rel="prefetch" href="shop/{product.id}">
       <h4>{product.name}</h4>
     </a>
 
@@ -39,25 +35,28 @@
         />
       {/each}
     {/if}
-    <small class="size">{product.size} zip file</small>
+    <small class="size">{product.size} zip file</small> -->
 
-    {#if product.price}
-      <p>€{product.price}</p>
-    {:else}
-      <span
-        ><p>Price:</p>
-        <p class="price-pwyw">up to you :)</p></span
+   
+    <div class="buttons">
+      <a class="details-button" href="shop/{product.id}">Details</a>
+      <a
+        href="https://payhip.com/b/{product.productId}"
+        class="payhip-buy-button"
+        data-message={product.paymentDescription}
+        data-title="Download {product.name}"
+        data-product={product.productId}
+        data-theme="none">Get it</a
       >
-    {/if}
-
-    <a
-      href="https://payhip.com/b/{product.productId}"
-      class="payhip-buy-button"
-      data-message={product.paymentDescription}
-      data-title="Download {product.name}"
-      data-product={product.productId}
-      data-theme="none">Get it</a
+    </div>
+    {#if product.price}
+    <p>€{product.price}</p>
+  {:else}
+    <span style="float: right;"
+      ><p>Price:</p>
+      <p class="price-pwyw">up to you :)</p></span
     >
+  {/if}
   </content>
 </div>
 
@@ -69,11 +68,11 @@
   }
   .container {
     position: relative;
-    padding: 2em;
+    /* padding: 2em; */
     width: 100%;
-    flex: 1 1 220px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-    border-right: 1px solid rgba(0, 0, 0, 0.09);
+    flex: 1 1 200px;
+    /* border: 1px solid rgba(0, 0, 0, 0.09); */
+    /* border-right: 1px solid rgba(0, 0, 0, 0.09); */
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     background: rgba(255, 255, 255, 0.776) !important;
@@ -82,8 +81,8 @@
     }
 
     &.invert {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.194);
-      border-right: 1px solid rgba(255, 255, 255, 0.173);
+      /* border: 1px solid rgba(255, 255, 255, 0.194); */
+      /* border-right: 1px solid rgba(255, 255, 255, 0.173); */
       &:hover {
         background-color: #ffffff25;
       }
@@ -134,23 +133,19 @@
     margin: 1em 0;
   }
 
-  .tags {
+  .tag {
     position: absolute;
-    top: 20px;
-    right: -60px;
+    top: -10px;
+    right: 0px;
+    left: 0px;
+    margin: 0 auto;
     z-index: 4;
-    $colors: rgb(120, 89, 193), rgb(210, 160, 68), rgb(56, 184, 163),
-      rgb(55, 155, 49) rgb(39, 39, 152) ue, rgb(53, 0, 128);
-
-    @for $i from 1 through length($colors) {
-      div:nth-child(#{length($colors)}n + #{$i}) {
-        background: nth($colors, $i);
-        width: fit-content;
-        margin: 0.2em;
-        color: white;
-        transform: skew(5deg, 1deg);
-      }
-    }
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 0.3em 1em;
+    width: fit-content;
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.507);
   }
 
   .product-image {
@@ -162,7 +157,7 @@
     /* animation: glow 1.5s ease-in-out infinite alternate-reverse; */
     margin-bottom: 1em;
     border: 1px solid white;
-    
+
     &:hover {
       transform: scale(0.95) rotate(5deg);
     }
@@ -177,8 +172,49 @@
     }
   }
 
+  .buttons {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: row;
+    gap: 10px;
+  }
+
   .payhip-buy-button {
+    flex-grow: 3;
     display: inline-block;
+    border-radius: 0px;
+    border: 2px solid rgb(0, 0, 0);
+    background: none;
+    text-align: center;
+    color: black;
+    &:hover {
+      background: rgba(0, 0, 0, 0.139);
+    }
+    :global(.dark-mode) & {
+      border-color: white;
+      color: white;
+      &:hover {
+        background: rgba(255, 255, 255, 0.139);
+      }
+    }
+  }
+  .details-button {
+    text-align: center;
+    flex-grow: 1;
+    text-decoration: none;
+    border: 2px solid rgba(0, 0, 0, 0.425);
+    /* border-radius: 5px; */
+    padding: 0.3em 1em;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.139);
+    }
+    :global(.dark-mode) & {
+      border-color: rgba(255, 255, 255, 0.434);
+      &:hover {
+        background: rgba(255, 255, 255, 0.139);
+      }
+    }
   }
 
   svg {

@@ -85,7 +85,7 @@
   
   .container {
     padding: 1em;
-    border: 1px dashed rgb(220, 220, 220);
+    /* border: 1px dashed rgb(220, 220, 220); */
     border-radius: 1em;
     box-shadow: 20px 80px 140px 20px rgba(0, 255, 255, 0.098);
   }

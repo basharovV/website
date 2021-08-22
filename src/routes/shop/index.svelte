@@ -129,7 +129,7 @@
     position: relative;
   }
   section {
-    border: 1px solid rgba(222, 222, 222, 0.452);
+    /* border: 1px solid rgba(222, 222, 222, 0.452); */
     overflow: visible;
   }
 
