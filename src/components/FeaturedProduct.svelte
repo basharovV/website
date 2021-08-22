@@ -159,9 +159,10 @@
     z-index: 3;
     position: relative;
     transition: all 0.2s ease-in;
-    animation: glow 1.5s ease-in-out infinite alternate-reverse;
+    /* animation: glow 1.5s ease-in-out infinite alternate-reverse; */
     margin-bottom: 1em;
-
+    border: 1px solid white;
+    
     &:hover {
       transform: scale(0.95) rotate(5deg);
     }

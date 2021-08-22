@@ -16,7 +16,7 @@
 </script>
 
 <div class="top">
-  <WarpSpeed/>
+  <WarpSpeed />
   <div class="header-container">
     <div class="header">
       <div class="item {$isDarkModeEnabled ? 'invert shop-logo' : 'shop-logo'}">
@@ -44,10 +44,13 @@
   </div>
 
   <small class="desc">
-    Mostly stuff for musicians (virtual instruments, sample packs), and my own
-    music licensed for use in media.
+    handcrafted sample packs, software instruments, audio plugins, royalty-free
+    music
   </small>
-  <div class="vertical-line" />
+  <div class="arrow">
+    <div class="vertical-line" />
+    <div class="down-arrow" />
+  </div>
 </div>
 <section>
   <!-- <h2>📦 Products</h2> -->
@@ -77,8 +80,6 @@
 </svelte:head>
 
 <style lang="scss">
-
-
   .header-container {
     margin: auto;
     display: flex;
@@ -128,7 +129,7 @@
     position: relative;
   }
   section {
-    border: 1px solid rgb(222, 222, 222);
+    border: 1px solid rgba(222, 222, 222, 0.452);
     overflow: visible;
   }
 
@@ -174,7 +175,7 @@
 
   .vertical-line {
     width: 1px;
-    height: 40px;
+    height: 20px;
     background-image: linear-gradient(90deg, silver 50%, transparent 50%),
       linear-gradient(90deg, silver 50%, transparent 50%),
       linear-gradient(0deg, silver 50%, transparent 50%),
@@ -201,8 +202,27 @@
 
   .desc {
     text-align: center;
-    max-width: 440px;
-    margin: 0 auto 1em;
+    max-width: 400px;
+    align-self: center;
     display: block;
+    margin: 0 auto;
+  }
+
+  .arrow {
+    margin: 1em auto;
+    width: fit-content;
+  }
+  .down-arrow {
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+
+    :global(.dark-mode) & {
+      border-color: rgb(255, 255, 255);
+    }
   }
 </style>

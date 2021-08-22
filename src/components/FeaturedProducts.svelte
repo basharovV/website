@@ -48,6 +48,12 @@
       text-align: center;
       position: relative;
 
+      @media only screen and (min-width: 1680px) {
+        position: absolute;
+        left: 50px;
+        width: 350px;
+      }
+
       > img {
         width: 40px;
         position: absolute;
@@ -71,7 +77,7 @@
 
       img {
         width: 50%;
-        display: block;      
+        display: block;
         margin: auto;
         transition: filter cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s 0.02s;
       }
