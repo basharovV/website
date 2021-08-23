@@ -51,7 +51,7 @@
       </a>
       <small>{product.description}</small>
       {@html product.longDescription}
-      {#if product.soundCloudDemoIds?.length}
+      {#if product.soundCloudDemoIds && product.soundCloudDemoIds.length}
         <h4>Listen to the demos:</h4>
         {#each product.soundCloudDemoIds as trackId}
           <TrackMiniPlayer
