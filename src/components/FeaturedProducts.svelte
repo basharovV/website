@@ -75,7 +75,7 @@
       }
 
       img {
-        width: 50%;
+        height: 200px;
         display: block;
         margin: auto;
         transition: filter cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s 0.02s;

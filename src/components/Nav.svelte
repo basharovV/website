@@ -19,6 +19,11 @@
 </script>
 
 <nav>
+
+	<a class="logo" href="/"><img
+    alt="Logo"
+    src="logo.svg" /></a>
+
   <div>
     <ul>
       <li>
@@ -135,7 +140,7 @@
     padding: 0;
     display: flex;
     justify-content: center;
-
+    position: relative;
     > div {
       max-width: 400px;
       width: 100%;
@@ -241,6 +246,21 @@
     &:hover {
       font-weight: bold;
       opacity: 1;
+    }
+  }
+  :global(.dark-mode) img {
+    filter: invert(1);
+  }
+
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 30px;
+    bottom: 0;
+
+    @media only screen and (max-width: 500px) {
+      display: none;
     }
   }
 </style>

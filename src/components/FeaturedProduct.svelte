@@ -61,11 +61,7 @@
 </div>
 
 <style lang="scss">
-  :global(.dark-mode) {
-    .container {
-      background: rgba(0, 0, 0, 0.74) !important;
-    }
-  }
+  
   .container {
     position: relative;
     /* padding: 2em; */
@@ -75,7 +71,6 @@
     /* border-right: 1px solid rgba(0, 0, 0, 0.09); */
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    background: rgba(255, 255, 255, 0.776) !important;
     &:hover {
       background-color: #00000010;
     }
@@ -153,13 +148,14 @@
     height: auto;
     z-index: 3;
     position: relative;
-    transition: all 0.2s ease-in;
+    transition: all 0.1s ease-in;
     /* animation: glow 1.5s ease-in-out infinite alternate-reverse; */
     margin-bottom: 1em;
     border: 1px solid white;
 
     &:hover {
       transform: scale(0.95) rotate(5deg);
+      filter: brightness(1.5);
     }
   }
 

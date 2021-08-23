@@ -48,6 +48,24 @@ const products = [
     color: "#E04C4C",
     paymentDescription: "Thanks! I hope you can use the samples in your projects. If you have any feedback, email me on contact@vyacheslavbasharov.com"
   },
+  {
+    id: "glass-and-metal",
+    description:
+      "Experimental sounds with metallic and glass objects. Includes 32 completely original samples of hits, phrases, coins shuffling, wine glass playing, knife sharpening and more!",
+    longDescription:
+      "<h4>Features</h4><ul><li>32 hand-crafted samples (13 glass and 19 metallic)</li><li>24-bit WAV files</li><li>Hits, stings, shakes, flings</li><li>Includes singing wine glass samples (musical glasses)</li></ul>",
+    image: "product-assets/glass-and-metal/square.png",
+    bannerImage: "product-assets/glass-and-metal/banner.png",
+    name: "Glass & Metal",
+    price: "",
+    url: "products/glass-and-metal",
+    tags: ["Sample pack", "Materials"],
+    type: 'Sample Pack',
+    size: "40 MB",
+    productId: "KLwmr",
+    color: "#71634c",
+    paymentDescription: "Thanks! I hope you can use the samples in your projects. If you have any feedback, email me on contact@vyacheslavbasharov.com"
+  },
 ];
 
 export default products;
