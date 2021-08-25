@@ -1,5 +1,5 @@
 import fs from "fs";
-const BASE_URL = 'https://vyacheslasbasharov.com/';
+const BASE_URL = 'https://vyacheslavbasharov.com/';
 const ROUTES = "./src/routes";
 import products from "./src/routes/shop/_products.js";
 
