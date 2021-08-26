@@ -3,7 +3,6 @@
   export let tracks;
   import { isDarkModeEnabled } from "../store/state.js";
   import TrackMiniPlayer from "./TrackMiniPlayer.svelte";
-  console.log(tracks)
 </script>
 
 <div class="container">
