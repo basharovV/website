@@ -19,11 +19,9 @@
 </script>
 
 <nav>
-
-	<a class="logo" href="/"><img
-    alt="Logo"
-    src="logo.svg" /></a>
-
+  {#if segment !== "music"}
+    <a class="logo" href="/"><img alt="Logo" src="logo.svg" /></a>
+  {/if}
   <div>
     <ul>
       <li>

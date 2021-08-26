@@ -1,5 +1,66 @@
+<script context="module">
+  const urls = [
+    "https://soundcloud.com/vbash/improv-i",
+    "https://soundcloud.com/vbash/inertia",
+    "https://soundcloud.com/vbash/species",
+    "https://soundcloud.com/vbash/revamped",
+    "https://soundcloud.com/vbash/rise-and-fall?in=vbash/sets/atmospheric-ambient",
+    "https://soundcloud.com/vbash/the-lab",
+    "https://soundcloud.com/vbash/space-exploration",
+    "https://soundcloud.com/vbash/phobia",
+    "https://soundcloud.com/vbash/singularity",
+  ];
+
+  const intoTheLooUrls = [
+    "https://soundcloud.com/vbash/2-before-the-loo",
+    "https://soundcloud.com/vbash/6-wake-up",
+  ];
+
+  const pianoTrackUrls = [
+    "https://soundcloud.com/vbash/improv-i",
+    "https://soundcloud.com/vbash/phantasiai-unreleased-new-album-demo",
+    "https://soundcloud.com/vbash/hammers-unreleased-new-album-demo",
+  ];
+
+  const artistFilter = "by Vyacheslav Basharov | composer";
+  const getTrack = async (url, ctx) => {
+    return ctx
+      .fetch(`https://soundcloud.com/oembed.json?url=${url}`)
+      .then((response) => response.json())
+      .then((response) => ({
+        ...response,
+        title: response.title.replace(artistFilter, ""),
+        iframeSrc:
+          response.html.match(new RegExp('src="' + "(.*)" + '"'))[1] +
+          `&sharing=false&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false`,
+      }));
+  };
+  export async function preload(page, session) {
+    console.log("PRELOADING");
+    const featuredTracks = await Promise.all(
+      urls.map((url) => getTrack(url, this))
+    );
+    const intoTheLooTracks = await Promise.all(
+      intoTheLooUrls.map((url) => getTrack(url, this))
+    );
+    const pianoTracks = await Promise.all(
+      pianoTrackUrls.map((url) => getTrack(url, this))
+    );
+
+    return { featuredTracks, intoTheLooTracks, pianoTracks };
+  }
+</script>
+
 <script>
+  export let featuredTracks;
+  export let intoTheLooTracks;
+  export let pianoTracks;
+
+  import FeaturedTracks from "../components/FeaturedTracks.svelte";
+  import TrackLargePlayer from "../components/TrackLargePlayer.svelte";
+
   import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
+  import YoutubeVideo from "../components/YoutubeVideo.svelte";
   import { isDarkModeEnabled } from "../store/state.js";
 
   let refresh = 0;
@@ -9,6 +70,10 @@
   <title>Vyacheslav Basharov • Composer</title>
 </svelte:head>
 
+<video autoplay muted loop playbackRate="1" id="bg">
+  <source src="dust.webm" type="video/webm" />
+</video>
+
 <div class="container">
   <div class="background">
     {#if $isDarkModeEnabled}
@@ -17,12 +82,16 @@
     <div class={$isDarkModeEnabled ? "invert" : ""} id="gradient" />
   </div>
   <header>
-    <a
-      class={$isDarkModeEnabled ? "invert" : ""}
-      style="display: flex;"
-      href="/"
-      ><img style="margin:auto;width: 30px;" alt="Logo" src="logo.svg" /></a
-    >
+    <div>
+      <a
+        class={$isDarkModeEnabled ? "invert" : ""}
+        style="display: flex;"
+        href="/"><img alt="Logo" src="logo.svg" /></a
+      >
+      <p style="font-family: Snake, Arial, sans-serif;font-size: 3em;">
+        I make thought-provoking music.
+      </p>
+    </div>
 
     <small style="opacity: 0.6;margin:0"
       ><a
@@ -32,34 +101,33 @@
       ></small
     >
   </header>
-  <!-- 
-  <section class="top-section">
-    <left>
-      <p style="opacity: 0.6;">
-        I'm a composer and pianist, always looking for new sounds, but staying
-        true to cinematic, electronic and jazz elements. This page is a
-        portfolio of my music. Thanks for checking it out!
-      </p>
-    </left>
-    
-
-  </section> -->
 
   <div class="heading">
     <div>
-      <h1 id="title">music portfolio 👇</h1>
-      <h2 id="subtitle">(in no particular order)</h2>
+      <h1>tracks</h1>
     </div>
+  </div>
+
+  <FeaturedTracks tracks={featuredTracks} />
+  <div class="prompt-container">
     <div class="prompt">
+      <h2>Licensing / using in your projects</h2>
+      <p>
+        <a href="mailto:contact@vyacheslavbasharov.com">Send me an email </a> with
+        the track(s) you like and what it's for, and I'll get back to you with license
+        details. Thanks!
+      </p>
+    </div>
+    <div>
+      <h2>🎻 Custom score</h2>
       <h4 style="display: inline;">I'm currently</h4>
       <h4 style="display: inline;color: rgb(72, 199, 72);">available</h4>
       <svg class="available-circle" width="10" height="10" viewBox="0 0 10 10">
         <circle cx="5" cy="5" r="5" fill="green" />
       </svg>
       <br />
-      <small
-        >for film scoring, session recordings, collabs. Click below to send me
-        an email:
+      <small style="opacity: 0.6;margin-top: 0.5em;display: block;"
+        >I especially welcome films of a contemplative nature.
       </small>
       <div class="contact">
         <img src="pigeon.png" />
@@ -72,6 +140,10 @@
       </div>
     </div>
   </div>
+  <div>
+    <h1 id="title">music projects 👇</h1>
+    <h2 id="subtitle">some things here and there...</h2>
+  </div>
   <div class="content">
     <section>
       <h3>🔌 Improvisations</h3>
@@ -80,7 +152,8 @@
         personal project, I'm recording some of my improv sessions, like this
         one:
       </p>
-      <div class="embed">
+      <YoutubeVideo videoId="bSN3eBiGWIM" platform="yt" />
+      <!-- <div class="embed">
         <iframe
           on:load={() => {
             refresh += 1;
@@ -91,7 +164,7 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         />
-      </div>
+      </div> -->
     </section>
     <section>
       <h3>🔌 Rhodesian Keys</h3>
@@ -106,18 +179,7 @@
           Update: you can now get it from <a href="/shop">the shop!</a>
         </p>
       </span>
-      <div class="embed">
-        <iframe
-          on:load={() => {
-            refresh += 1;
-          }}
-          loading="lazy"
-          src="https://www.youtube-nocookie.com/embed/2PP0OrzS_k8"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        />
-      </div>
+      <YoutubeVideo videoId="2PP0OrzS_k8" platform="yt" />
     </section>
     <section class="magic-touch">
       <h3>🥁 The Magic Touch Collective</h3>
@@ -139,27 +201,7 @@
         and publish unedited live jam sessions.
       </p>
       <TrackMiniPlayer
-        trackId="940950685"
-        isDarkModeEnabled={$isDarkModeEnabled}
-        accent="e60303"
-      />
-      <TrackMiniPlayer
-        trackId="806529274"
-        isDarkModeEnabled={$isDarkModeEnabled}
-        accent="e60303"
-      />
-      <TrackMiniPlayer
-        trackId="341813329"
-        isDarkModeEnabled={$isDarkModeEnabled}
-        accent="e60303"
-      />
-      <TrackMiniPlayer
-        trackId="500505501"
-        isDarkModeEnabled={$isDarkModeEnabled}
-        accent="e60303"
-      />
-      <TrackMiniPlayer
-        trackId="531832953"
+        track={pianoTracks[0]}
         isDarkModeEnabled={$isDarkModeEnabled}
         accent="e60303"
       />
@@ -171,21 +213,12 @@
         the sound of the piano in new ways.
       </p>
 
-      <iframe
-        style="border: 0; width: 100%; height: 42px;"
-        src="https://bandcamp.com/EmbeddedPlayer/track=821474887/size=small/bgcol=ffffff/linkcol=63b2cc/transparent=true/"
-        seamless
-        ><a href="https://vyacheslavbasharov.bandcamp.com/track/improv-i"
-          >null by Vyacheslav Basharov</a
-        ></iframe
-      >
-
       <TrackMiniPlayer
-        trackId="817156018"
+        track={pianoTracks[1]}
         isDarkModeEnabled={$isDarkModeEnabled}
       />
       <TrackMiniPlayer
-        trackId="814447339"
+        track={pianoTracks[2]}
         isDarkModeEnabled={$isDarkModeEnabled}
       />
       <br />
@@ -198,31 +231,10 @@
     </section>
     <section>
       <h3>🔉 Samples</h3>
-      <h4>VB Materials - Glass</h4>
       <p>
-        I've recorded a few glass percussion samples if you'd like to use them.
+        If you're looking for distinct sounds to use in your projects, head over
+        to the <a href="/shop">shop!</a>
       </p>
-      <a href="https://freesound.org/people/basharov/packs/22959/"
-        >Go to Freesound -></a
-      >
-    </section>
-
-    <section>
-      <h3>🎞 Sci-fi game trailer re-score</h3>
-      <p>
-        A re-score of a Sci-fi MMORPG game trailer as an epic orchestral
-        adventure theme.
-      </p>
-
-      <div class="embed">
-        <iframe
-          loading="lazy"
-          src="https://player.vimeo.com/video/491425916"
-          frameborder="0"
-          allow="autoplay; fullscreen"
-          allowfullscreen
-        />
-      </div>
     </section>
 
     <section style="break-before: column;">
@@ -269,11 +281,11 @@
 
         <div>
           <TrackMiniPlayer
-            trackId="337202935"
+            track={intoTheLooTracks[0]}
             isDarkModeEnabled={$isDarkModeEnabled}
           />
           <TrackMiniPlayer
-            trackId="337202945"
+            track={intoTheLooTracks[1]}
             isDarkModeEnabled={$isDarkModeEnabled}
           />
           <small
@@ -292,18 +304,7 @@
         HBO, scoring a car chase sequence from Westworld season 3. Have a look
         at my entry on YouTube:
       </p>
-      <div class="embed">
-        <iframe
-          on:load={() => {
-            refresh += 1;
-          }}
-          loading="lazy"
-          src="https://www.youtube-nocookie.com/embed/KPugdlU8GRs"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        />
-      </div>
+      <YoutubeVideo videoId="KPugdlU8GRs" platform="yt" />
     </section>
     <section>
       <h3>🎞 Stranger Things intro re-score</h3>
@@ -312,16 +313,16 @@
         and this was my attempt at doing so for the iconic Stranger Things title
         sequence. Excuse the bad mix...
       </p>
+      <YoutubeVideo videoId="215550767" platform="vimeo" />
+    </section>
 
-      <div class="embed">
-        <iframe
-          loading="lazy"
-          src="https://player.vimeo.com/video/215550767"
-          frameborder="0"
-          allow="autoplay; fullscreen"
-          allowfullscreen
-        />
-      </div>
+    <section>
+      <h3>🎞 Sci-fi game trailer re-score</h3>
+      <p>
+        A re-score of a Sci-fi MMORPG game trailer as an epic orchestral
+        adventure theme.
+      </p>
+      <YoutubeVideo videoId="491425916" platform="vimeo" />
     </section>
   </div>
   <small
@@ -354,6 +355,19 @@
 </div>
 
 <style lang="scss">
+  #bg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    filter: invert(1);
+
+    :global(.dark-mode) & {
+      filter: invert(0);
+    }
+  }
   a {
     &:hover {
       opacity: 0.6;
@@ -393,7 +407,6 @@
     margin-top: 2em;
     @media only screen and (max-width: 522px) {
       column-count: 1;
-      display: inline;
     }
   }
 
@@ -406,7 +419,7 @@
     margin: 0.5em 0;
     padding: 1em;
     border: 1px solid rgba(121, 121, 121, 0.475);
-    background: rgba(255, 255, 255, 0.776) !important;;
+    background: rgba(255, 255, 255, 0.776) !important;
     /* box-shadow: inset 0px 0px 0px 2px rgba(121, 121, 121, 0.475); */
     /* box-sizing: border-box; Include padding and border in element's */
   }
@@ -437,6 +450,26 @@
     flex-wrap: wrap;
     margin-top: 2em;
     padding: 1em 0;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      p {
+        margin: 0;
+      }
+    }
+    > div > a {
+      opacity: 0.5;
+      margin-right: 1em;
+      display: inline;
+
+      > img {
+        height: 40px;
+        width: 40px;
+      }
+    }
   }
 
   .theme-toggle {
@@ -453,7 +486,7 @@
     display: flex;
     flex-direction: column;
     font-family: Snake, Georgia, "Times New Roman", Times, serif;
-    // font-size: 2em;
+    font-size: 2em;
     margin: 3em auto 0;
     > p {
       text-align: center;
@@ -498,7 +531,7 @@
       left: 0;
       right: 0;
       background: linear-gradient(to top, white, transparent);
-      transition: all cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
+      /* transition: all cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s; */
 
       &.invert {
         filter: invert(1);
@@ -516,7 +549,7 @@
   }
 
   .contact {
-    margin-top: 0;
+    margin-top: 0.5em;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -589,25 +622,51 @@
     a {
       height: fit-content;
     }
+  }
 
-    .prompt {
-      padding: 1em 0.8em;
-      /* border: 2px dashed rgb(235, 235, 235); */
-      /* background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='gainsboro' stroke-width='4' stroke-dasharray='2%2c 8' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e"); */
-      small,
-      h3 {
-        margin: 0;
-      }
-      small {
-        margin: 1em 0;
-        display: block;
-      }
-      flex-basis: 400px;
+  .prompt-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: auto;
+    margin: 2em 0;
+    padding: 1em 1em 2em 1em;
+    color: white;
+    display: grid;
+    grid-template-columns: minmax(200px, 450px) minmax(200px, 450px);
+    justify-content: center;
+    gap: 0 4em;
+    background: rgba(29, 29, 29, 0.7);
+
+    @media only screen and (max-width: 622px) {
+      display: block;
     }
+  }
+  .prompt {
+    max-width: 53em;
+    margin: 0 auto;
+    /* border: 2px dashed rgb(235, 235, 235); */
+    /* background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='gainsboro' stroke-width='4' stroke-dasharray='2%2c 8' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e"); */
+    small,
+    h3 {
+      margin: 0;
+    }
+    small {
+      margin: 1em 0;
+      display: block;
+    }
+    flex-basis: 400px;
   }
 
   #title {
-    margin: 0;
+    margin-top: 260px;
+    margin-bottom: 0;
+    @media only screen and (max-width: 822px) {
+      margin-top: 320px;
+    }
+    @media only screen and (max-width: 622px) {
+      margin-top: 380px;
+    }
   }
   #subtitle {
     margin: 0;
