@@ -1,4 +1,9 @@
-<script context="module">
+<script>
+  import FeaturedTracks from "../components/FeaturedTracks.svelte";
+
+  import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
+  import YoutubeVideo from "../components/YoutubeVideo.svelte";
+  import { isDarkModeEnabled } from "../store/state.js";
   const urls = [
     "https://soundcloud.com/vbash/improv-i",
     "https://soundcloud.com/vbash/inertia",
@@ -23,9 +28,8 @@
   ];
 
   const artistFilter = "by Vyacheslav Basharov | composer";
-  const getTrack = async (url, ctx) => {
-    return ctx
-      .fetch(`https://soundcloud.com/oembed.json?url=${url}`)
+  const getTrack = async (url) => {
+    return fetch(`https://soundcloud.com/oembed.json?url=${url}`)
       .then((response) => response.json())
       .then((response) => ({
         ...response,
@@ -35,35 +39,30 @@
           `&sharing=false&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false`,
       }));
   };
-  export async function preload(page, session) {
-    console.log("PRELOADING");
-    const featuredTracks = await Promise.all(
-      urls.map((url) => getTrack(url, this))
-    );
+  async function getTracks() {
+    const featuredTracks = await Promise.all(urls.map((url) => getTrack(url)));
     const intoTheLooTracks = await Promise.all(
-      intoTheLooUrls.map((url) => getTrack(url, this))
+      intoTheLooUrls.map((url) => getTrack(url))
     );
     const pianoTracks = await Promise.all(
-      pianoTrackUrls.map((url) => getTrack(url, this))
+      pianoTrackUrls.map((url) => getTrack(url))
     );
+    console.log(featuredTracks);
 
     return { featuredTracks, intoTheLooTracks, pianoTracks };
   }
-</script>
 
-<script>
-  export let featuredTracks;
-  export let intoTheLooTracks;
-  export let pianoTracks;
-
-  import FeaturedTracks from "../components/FeaturedTracks.svelte";
-  import TrackLargePlayer from "../components/TrackLargePlayer.svelte";
-
-  import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
-  import YoutubeVideo from "../components/YoutubeVideo.svelte";
-  import { isDarkModeEnabled } from "../store/state.js";
-
-  let refresh = 0;
+  let featuredTracks = urls.map(url => undefined);
+  let intoTheLooTracks = [];
+  let pianoTracks = [];
+  if (typeof window !== "undefined") {
+    (async () => {
+      let tracks = await getTracks();
+      featuredTracks = tracks.featuredTracks;
+      intoTheLooTracks = tracks.intoTheLooTracks;
+      pianoTracks = tracks.pianoTracks;
+    })();
+  }
 </script>
 
 <svelte:head>
@@ -636,7 +635,11 @@
     grid-template-columns: minmax(200px, 450px) minmax(200px, 450px);
     justify-content: center;
     gap: 0 4em;
-    background: rgba(29, 29, 29, 0.7);
+    background: black;
+
+    :global(.dark-mode) & {
+      background:rgba(103, 103, 103, 0.564)
+    }
 
     @media only screen and (max-width: 622px) {
       display: block;

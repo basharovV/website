@@ -1,4 +1,3 @@
-
 <script>
   export let tracks;
   import { isDarkModeEnabled } from "../store/state.js";
@@ -6,12 +5,11 @@
 </script>
 
 <div class="container">
-  {#each tracks as track, idx}
-    <TrackMiniPlayer
-      {track}
-      isDarkModeEnabled={$isDarkModeEnabled}
-    />
-  {/each}
+  {#if tracks}
+    {#each tracks as track, idx}
+      <TrackMiniPlayer {track} isDarkModeEnabled={$isDarkModeEnabled} />
+    {/each}
+  {/if}
   <div>
     <h3>
       + more on <a href="https://soundcloud.com/vbash">Soundcloud! </a>

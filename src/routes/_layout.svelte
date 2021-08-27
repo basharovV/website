@@ -11,7 +11,7 @@
   <slot />
 </main>
 
-<GdprBanner cookieName="foo" description="bar" />
+<!-- <GdprBanner cookieName="foo" description="bar" /> -->
 
 <style lang="scss">
   main {
