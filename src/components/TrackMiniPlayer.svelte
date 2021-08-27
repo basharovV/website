@@ -28,6 +28,8 @@
       frameborder="no"
       allow="autoplay"
       src={track.iframeSrc}
+      alt={track.title}
+      title={track.title}
     />
   {:else}
     <div
@@ -36,14 +38,14 @@
         expand();
       }}
     >
-      <img class="background" src={track ? track.thumbnail_url : ""} />
+      <img aria-hidden="true" alt="background" class="background" src={track ? track.thumbnail_url : ""} />
       <div class="placeholder-content">
         <div class="play-button"><PlayIcon {isDarkModeEnabled} /></div>
         <span>
           <p>{track ? track.title : "getting track..."}</p>
           <small>{track ? "Click to listen on Soundcloud" : "one sec"}</small>
         </span>
-        <img class="thumbnail" src={track ? track.thumbnail_url : ""} />
+        <img class="thumbnail" src={track ? track.thumbnail_url : ""} alt="thumbnail for {track? track.title : 'track'}"/>
       </div>
     </div>
   {/if}

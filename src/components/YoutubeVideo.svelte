@@ -21,7 +21,7 @@
       ? `https://img.youtube.com/vi/${videoId}/sddefault.jpg`
       : vimeoThumbnail;
 
-  if (platform === "vimeo") {
+  if (typeof window !== "undefined" && platform === "vimeo") {
     getVimeoThumbnail();
   }
 </script>
@@ -29,6 +29,7 @@
 <div class="embed">
   {#if loadIframe}
     <iframe
+      alt="One of my videos"
       loading="lazy"
       src={platform === "yt"
         ? `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`
@@ -43,7 +44,7 @@
         loadIframe = true;
       }}
     >
-      <img src={thumbnail} />
+      <img alt="thumbnail" src={thumbnail} />
       <div class="play-button" />
     </div>
   {/if}
