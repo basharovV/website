@@ -1,5 +1,6 @@
 <script>
   import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
+  import YoutubeVideo from "../components/YoutubeVideo.svelte";
   import { isDarkModeEnabled } from "../store/state.js";
 </script>
 
@@ -90,17 +91,11 @@
         <a href="https://songwhip.com/vyacheslavbasharov/improv-i">
           🎧 Listen on streaming services -></a
         >
-        <small style="opacity: 0.5;">add it to your sleep + ambient playlists :)</small>
+        <small style="opacity: 0.5;"
+          >add it to your sleep + ambient playlists :)</small
+        >
       </p>
-      <div class="embed">
-        <iframe
-          loading="lazy"
-          src="https://www.youtube-nocookie.com/embed/WxyupgszQec"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        />
-      </div>
+      <YoutubeVideo videoId="WxyupgszQec" platform="yt"/>
     </section>
   </div>
 
@@ -121,7 +116,6 @@
 </div>
 
 <style lang="scss">
-  
   .container {
     padding-top: 4em;
     max-width: 900px;

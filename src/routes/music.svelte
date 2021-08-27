@@ -69,10 +69,6 @@
   <title>Vyacheslav Basharov • Composer</title>
 </svelte:head>
 
-<video autoplay muted loop playbackRate="1" id="bg">
-  <source src="dust.webm" type="video/webm" />
-</video>
-
 <div class="container">
   <div class="background">
     {#if $isDarkModeEnabled}
@@ -354,19 +350,7 @@
 </div>
 
 <style lang="scss">
-  #bg {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -1;
-    filter: invert(1);
-
-    :global(.dark-mode) & {
-      filter: invert(0);
-    }
-  }
+ 
   a {
     &:hover {
       opacity: 0.6;
@@ -406,6 +390,7 @@
     margin-top: 2em;
     @media only screen and (max-width: 522px) {
       column-count: 1;
+      display: inline;
     }
   }
 
@@ -669,6 +654,9 @@
     }
     @media only screen and (max-width: 622px) {
       margin-top: 380px;
+    }
+    @media only screen and (max-width: 454px) {
+      margin-top: 460px;
     }
   }
   #subtitle {
