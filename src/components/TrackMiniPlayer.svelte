@@ -3,6 +3,7 @@
 
   let accent = "e60303";
   let loadIframe = false;
+  let isLoading = false;
 
   let isExpanded = false;
 
@@ -10,6 +11,7 @@
     isExpanded = true;
     setTimeout(() => {
       loadIframe = true;
+      isLoading = true;
     }, 300);
   };
 
@@ -27,10 +29,16 @@
       scrolling="no"
       frameborder="no"
       allow="autoplay"
+      on:load={() => {
+        isLoading = false;
+      }}
       src={track.iframeSrc}
       alt={track.title}
       title={track.title}
     />
+    {#if isLoading}
+      <p class="loading">loading...</p>
+    {/if}
   {:else}
     <div
       class="placeholder"
@@ -38,14 +46,18 @@
         expand();
       }}
     >
-      <img aria-hidden="true" alt="background" class="background" src={track ? track.thumbnail_url : ""} />
+      <img
+        aria-hidden="true"
+        class="background"
+        src={track ? track.thumbnail_url : ""}
+      />
       <div class="placeholder-content">
         <div class="play-button"><PlayIcon {isDarkModeEnabled} /></div>
         <span>
           <p>{track ? track.title : "getting track..."}</p>
           <small>{track ? "Click to listen on Soundcloud" : "one sec"}</small>
         </span>
-        <img class="thumbnail" src={track ? track.thumbnail_url : ""} alt="thumbnail for {track? track.title : 'track'}"/>
+        <img class="thumbnail" src={track ? track.thumbnail_url : ""} />
       </div>
     </div>
   {/if}
@@ -73,6 +85,16 @@
       background: black;
     }
 
+    .loading {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: fit-content;
+      height: fit-content;
+      margin: auto;
+    }
     &.is-expanded {
       height: 140px;
 

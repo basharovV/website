@@ -19,7 +19,7 @@ const getRoutes = (root) => {
         pages.push(directory.replace(ROUTES + "/", ""));
 
         products.forEach((product) => {
-          pages.push("shop/" + product.url);
+          pages.push(product.url);
         });
       } else if (fs.lstatSync(directory).isDirectory()) {
         pages.push(directory.replace(ROUTES + "/", ""));
