@@ -1,12 +1,30 @@
 <script context="module">
+  const artistFilter = "by Vyacheslav Basharov | composer";
+
+  const getTrack = async (url, ctx) => {
+    return ctx
+      .fetch(`https://soundcloud.com/oembed.json?url=${url}`)
+      .then((response) => response.json())
+      .then((response) => ({
+        ...response,
+        title: response.title.replace(artistFilter, ""),
+        iframeSrc:
+          response.html.match(new RegExp('src="' + "(.*)" + '"'))[1] +
+          `&sharing=false&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false`,
+      }));
+  };
   export async function preload({ params }) {
     // the `slug` parameter is available because
     // this file is called [slug].svelte
     const res = await this.fetch(`shop/${params.slug}.json`);
     const data = await res.json();
 
+    const tracks = await Promise.all(
+      data.trackUrls.map((url) => getTrack(url, this))
+    );
+
     if (res.status === 200) {
-      return { product: data };
+      return { product: data, tracks };
     } else {
       this.error(res.status, data.message);
     }
@@ -17,13 +35,33 @@
   import FeaturedProduct from "../../components/FeaturedProduct.svelte";
   import TrackMiniPlayer from "../../components/TrackMiniPlayer.svelte";
   import { isDarkModeEnabled } from "../../store/state";
+  import SvelteSeo from "svelte-seo";
 
   export let product;
+  export let tracks;
+
+  export let seoTitle = `${product.name} | ${product.price ? 'free' : ''} ${product.type} | vb shop`;
+
 </script>
 
-<svelte:head>
-  <title>{product.name} • {product.type} | Vyacheslav Basharov</title>
-</svelte:head>
+<SvelteSeo
+  title={seoTitle}
+  description={product.description}
+  openGraph={{
+    title: seoTitle,
+    description: product.description,
+    url: `https://vyacheslavbasharov.com/${product.url}`,
+    type: 'website',
+    images: [
+      {
+        url: product.image,
+        width: 850,
+        height: 650,
+        alt: product.title
+      }
+     ]
+  }}
+/>
 
 <a href="/shop">&lt- Back to shop</a>
 <br />
@@ -51,11 +89,11 @@
       </a>
       <small>{product.description}</small>
       {@html product.longDescription}
-      {#if product.soundCloudDemoIds && product.soundCloudDemoIds.length}
+      {#if tracks && tracks.length}
         <h4>Listen to the demos:</h4>
-        {#each product.soundCloudDemoIds as trackId}
+        {#each tracks as track}
           <TrackMiniPlayer
-            {trackId}
+            {track}
             isDarkModeEnabled={$isDarkModeEnabled}
             accent="e60303"
           />
@@ -82,7 +120,6 @@
 </div>
 
 <style lang="scss">
-  
   .container {
     padding: 1em;
     /* border: 1px dashed rgb(220, 220, 220); */

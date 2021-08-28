@@ -24,7 +24,7 @@ const products = [
     size: "682.9 MB",
     video: "https://www.youtube-nocookie.com/embed/2PP0OrzS_k8",
     productId: "MxG8Z",
-    soundCloudDemoIds: ["1099457419"],
+    trackUrls: ["https://soundcloud.com/vbash/rhodesian-keys-edition-i-demos"],
     color: "#00bbff",
     paymentDescription: "🦊 Thanks Internet stranger! You can take this product for free, or pay what you want. If you have any feedback, email me on contact@vyacheslavbasharov.com"
   },
@@ -42,9 +42,8 @@ const products = [
     tags: ["Sample pack", "Space FX"],
     type: 'Sample Pack',
     size: "19.8 MB",
-    video: "https://www.youtube-nocookie.com/embed/2PP0OrzS_k8",
     productId: "l19Z5",
-    soundCloudDemoIds: ["1102572859"],
+    trackUrls: ["https://soundcloud.com/vbash/not-alone-in-space-fx-sample-pack"],
     color: "#E04C4C",
     paymentDescription: "Thanks! I hope you can use the samples in your projects. If you have any feedback, email me on contact@vyacheslavbasharov.com"
   },

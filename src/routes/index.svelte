@@ -2,8 +2,27 @@
   import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
   import YoutubeVideo from "../components/YoutubeVideo.svelte";
   import { isDarkModeEnabled } from "../store/state.js";
+  import SvelteSeo from "svelte-seo";
 </script>
 
+<SvelteSeo
+  title="Vyacheslav Basharov | Developer & Composer"
+  description="I make music, software and musical software."
+  openGraph={{
+    title: "Vyacheslav Basharov | Developer & Composer",
+    description: "I make music, software and musical software.",
+    url: `https://vyacheslavbasharov.com`,
+    type: "website",
+    images: [
+      {
+        url: "logo-512.png",
+        width: 850,
+        height: 650,
+        alt: "logo",
+      },
+    ],
+  }}
+/>
 <div class="container {$isDarkModeEnabled ? 'invert' : ''}">
   <img
     style="grid-area: a;margin:auto;width: 30px;"
@@ -95,7 +114,7 @@
           >add it to your sleep + ambient playlists :)</small
         >
       </p>
-      <YoutubeVideo videoId="WxyupgszQec" platform="yt"/>
+      <YoutubeVideo videoId="WxyupgszQec" platform="yt" />
     </section>
   </div>
 

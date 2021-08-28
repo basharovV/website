@@ -24,10 +24,10 @@
 
     <small>{product.description}</small>
 
-    {#if product.soundCloudDemoIds.length}
+    {#if product.trackUrls.length}
       <h5>🎧 Listen:</h5>
 
-      {#each product.soundCloudDemoIds as trackId}
+      {#each product.trackUrls as trackId}
         <TrackMiniPlayer
           {trackId}
           isDarkModeEnabled={$isDarkModeEnabled}

@@ -15,7 +15,7 @@
     }, 300);
   };
 
-  export let track;
+  export let track; 
   export let isDarkModeEnabled = false;
 </script>
 

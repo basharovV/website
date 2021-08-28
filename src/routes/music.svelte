@@ -4,6 +4,8 @@
   import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
   import YoutubeVideo from "../components/YoutubeVideo.svelte";
   import { isDarkModeEnabled } from "../store/state.js";
+  import SvelteSeo from "svelte-seo";
+
   const urls = [
     "https://soundcloud.com/vbash/improv-i",
     "https://soundcloud.com/vbash/inertia",
@@ -65,10 +67,24 @@
   }
 </script>
 
-<svelte:head>
-  <title>Vyacheslav Basharov • Composer</title>
-</svelte:head>
-
+<SvelteSeo
+  title="Vyacheslav Basharov | Music"
+  description="I make thought-provoking music for use in your projects. Listen to tracks, license music or hire me as a composer."
+  openGraph={{
+    title: "Vyacheslav Basharov | Music",
+    description: "I make thought-provoking music for use in your projects. Listen to tracks, license music or hire me as a composer.",
+    url: `https://vyacheslavbasharov.com/music`,
+    type: "website",
+    images: [
+      {
+        url: "logo-512.png",
+        width: 850,
+        height: 650,
+        alt: "logo",
+      },
+    ],
+  }}
+/>
 <div class="container">
   <div class="background">
     {#if $isDarkModeEnabled}
