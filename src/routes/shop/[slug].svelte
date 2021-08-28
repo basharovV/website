@@ -19,9 +19,12 @@
     const res = await this.fetch(`shop/${params.slug}.json`);
     const data = await res.json();
 
-    const tracks = await Promise.all(
-      data.trackUrls.map((url) => getTrack(url, this))
-    );
+    let tracks = [];
+    if (data.trackUrls) {
+      tracks = await Promise.all(
+        data.trackUrls.map((url) => getTrack(url, this))
+      );
+    }
 
     if (res.status === 200) {
       return { product: data, tracks };
@@ -40,8 +43,9 @@
   export let product;
   export let tracks;
 
-  export let seoTitle = `${product.name} | ${product.price ? 'free' : ''} ${product.type} | vb shop`;
-
+  export let seoTitle = `${product.name} | ${product.price ? "free" : ""} ${
+    product.type
+  } | vb shop`;
 </script>
 
 <SvelteSeo
@@ -51,15 +55,15 @@
     title: seoTitle,
     description: product.description,
     url: `https://vyacheslavbasharov.com/${product.url}`,
-    type: 'website',
+    type: "website",
     images: [
       {
         url: product.image,
         width: 850,
         height: 650,
-        alt: product.title
-      }
-     ]
+        alt: product.title,
+      },
+    ],
   }}
 />
 
