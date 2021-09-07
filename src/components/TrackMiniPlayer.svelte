@@ -78,11 +78,12 @@
     box-sizing: border-box;
     border-radius: 10px;
 
-    border: 2px solid #c1c1c15b;
+    /* border: 2px solid #c1c1c15b; */
     transition: height 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
     :global(.dark-mode) & {
       background: black;
+        border: 2px solid #ffffff29;
     }
 
     .loading {
@@ -143,6 +144,8 @@
         object-fit: cover;
         transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
         filter: opacity(0.1);
+        /* filter: opacity(0.7) brightness(0.4); */
+
       }
       .placeholder-content {
         z-index: 2;
@@ -165,6 +168,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           padding-right: 1em;
+          z-index: 2;
         }
         p {
           margin: 0;

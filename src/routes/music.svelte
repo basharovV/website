@@ -54,7 +54,7 @@
     return { featuredTracks, intoTheLooTracks, pianoTracks };
   }
 
-  let featuredTracks = urls.map(url => undefined);
+  let featuredTracks = urls.map((url) => undefined);
   let intoTheLooTracks = [];
   let pianoTracks = [];
   if (typeof window !== "undefined") {
@@ -72,7 +72,8 @@
   description="I make thought-provoking music for use in your projects. Listen to tracks, license music or hire me as a composer."
   openGraph={{
     title: "Vyacheslav Basharov | Music",
-    description: "I make thought-provoking music for use in your projects. Listen to tracks, license music or hire me as a composer.",
+    description:
+      "I make thought-provoking music for use in your projects. Listen to tracks, license music or hire me as a composer.",
     url: `https://vyacheslavbasharov.com/music`,
     type: "website",
     images: [
@@ -366,7 +367,6 @@
 </div>
 
 <style lang="scss">
- 
   a {
     &:hover {
       opacity: 0.6;
@@ -530,10 +530,10 @@
       top: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, white, transparent);
       /* transition: all cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s; */
 
       &.invert {
+        background: linear-gradient(to top, white, transparent);
         filter: invert(1);
       }
     }
@@ -639,7 +639,7 @@
     background: black;
 
     :global(.dark-mode) & {
-      background:rgba(103, 103, 103, 0.564)
+      background: rgba(103, 103, 103, 0.564);
     }
 
     @media only screen and (max-width: 622px) {

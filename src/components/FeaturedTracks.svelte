@@ -34,7 +34,7 @@
         flex-wrap: wrap;
         gap: 0 5px; */
     column-count: 1;
-
+    filter: drop-shadow(2px 20px 20px rgba(0, 0, 0, 0.139));
     @media only screen and (min-width: 700px) {
       column-count: 2;
       :global(:nth-child(6)) {

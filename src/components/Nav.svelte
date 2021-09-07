@@ -111,10 +111,19 @@
     transition: background-color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
     // transition: color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
 
-    background: url("/white-paper-texture.jpeg");
-    background-size: auto;
-    background-position: 0 -500px;
-    background-attachment: fixed;
+    background:  url("/white-paper-texture.jpeg") ;
+    background-size: cover;
+    background-position: center -1500px;
+    background-attachment: inherit;
+    background-repeat: no-repeat;
+
+    @media only screen and (min-width: 2800px) {
+      background-position: center 290%;
+    }
+
+    @media only screen and (max-width: 500px) {
+      background: none;
+    }
   }
 
   :global(.dark-mode) {
