@@ -7,7 +7,7 @@
 <div class="container">
   {#if tracks}
     {#each tracks as track, idx}
-      <TrackMiniPlayer {track} isDarkModeEnabled={$isDarkModeEnabled} />
+      <TrackMiniPlayer {track} isDarkModeEnabled={$isDarkModeEnabled} autoPlay={true}/>
     {/each}
   {/if}
   <div>

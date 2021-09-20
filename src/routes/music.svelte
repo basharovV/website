@@ -5,6 +5,8 @@
   import YoutubeVideo from "../components/YoutubeVideo.svelte";
   import { isDarkModeEnabled } from "../store/state.js";
   import SvelteSeo from "svelte-seo";
+  import GlobalPlayer from "../components/GlobalPlayer.svelte";
+  import embeds from "./../embeds";
 
   const urls = [
     "https://soundcloud.com/vbash/improv-i",
@@ -35,14 +37,26 @@
       .then((response) => response.json())
       .then((response) => ({
         ...response,
+        url,
         title: response.title.replace(artistFilter, ""),
         iframeSrc:
           response.html.match(new RegExp('src="' + "(.*)" + '"'))[1] +
           `&sharing=false&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false`,
       }));
   };
+
+  const transformTrack = (track) => {
+    return {
+      ...track,
+      title: track.title.replace(artistFilter, ""),
+      iframeSrc:
+        track.html.match(new RegExp('src="' + "(.*)" + '"'))[1] +
+        `&sharing=false&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false`,
+    };
+  };
+
   async function getTracks() {
-    const featuredTracks = await Promise.all(urls.map((url) => getTrack(url)));
+    const featuredTracks = embeds.tracks.map(transformTrack);
     const intoTheLooTracks = await Promise.all(
       intoTheLooUrls.map((url) => getTrack(url))
     );
@@ -53,8 +67,11 @@
 
     return { featuredTracks, intoTheLooTracks, pianoTracks };
   }
-
+  let searchQuery = "";
   let featuredTracks = urls.map((url) => undefined);
+  $: filteredTracks = featuredTracks.filter((t) =>
+    t ? t.title.toLowerCase().includes(searchQuery.toLowerCase()) : true
+  );
   let intoTheLooTracks = [];
   let pianoTracks = [];
   if (typeof window !== "undefined") {
@@ -87,6 +104,7 @@
   }}
 />
 <div class="container">
+  <GlobalPlayer />
   <div class="background">
     {#if $isDarkModeEnabled}
       <div class={$isDarkModeEnabled ? "invert" : ""} id="image" />
@@ -115,12 +133,12 @@
   </header>
 
   <div class="heading">
-    <div>
-      <h1>tracks</h1>
-    </div>
+    <h1>tracks</h1>
+    <!-- <input type="text" placeholder="Search" bind:value={searchQuery} />
+    <div></div> -->
   </div>
 
-  <FeaturedTracks tracks={featuredTracks} />
+  <FeaturedTracks tracks={filteredTracks} />
   <div class="prompt-container">
     <div class="prompt">
       <h2>Licensing / using in your projects</h2>
@@ -320,11 +338,7 @@
     </section>
     <section>
       <h3>🎞 Stranger Things intro re-score</h3>
-      <p>
-        A good exercise as a composer is to re-score existing clips or scenes,
-        and this was my attempt at doing so for the iconic Stranger Things title
-        sequence. Excuse the bad mix...
-      </p>
+      <p>An attempt at rescoring the iconic Stranger Things title sequence.</p>
       <YoutubeVideo videoId="215550767" platform="vimeo" />
     </section>
 
@@ -622,6 +636,19 @@
     a {
       height: fit-content;
     }
+    input {
+      margin-top: 20px;
+      border: none;
+      background: none;
+      border-bottom: 2px solid lightgrey;
+      font-size: 1.2em;
+      outline: none;
+      text-align: center;
+    }
+  }
+
+  ::placeholder {
+    opacity: 0.4;
   }
 
   .prompt-container {
@@ -631,12 +658,12 @@
     height: auto;
     margin: 2em 0;
     padding: 1em 1em 2em 1em;
-    color: white;
+    /* color: white; */
     display: grid;
     grid-template-columns: minmax(200px, 450px) minmax(200px, 450px);
     justify-content: center;
     gap: 0 4em;
-    background: black;
+    /* background: black; */
 
     :global(.dark-mode) & {
       background: rgba(103, 103, 103, 0.564);

@@ -1,5 +1,6 @@
 <script>
   import PlayIcon from "../../static/icons/PlayIcon.svelte";
+  import { currentlyPlayingWidgetId, currentTrack } from "../store/state";
 
   let accent = "e60303";
   let loadIframe = false;
@@ -7,23 +8,30 @@
 
   let isExpanded = false;
 
-  const expand = () => {
+  export let track;
+  export let isDarkModeEnabled = false;
+  export let autoPlay = false;
+
+  $: trackParts = track && track.url && track.url.split("/");
+  $: slug = trackParts && `vb-track-${trackParts[trackParts.length - 1]}`;
+
+  const play = () => {
     isExpanded = true;
     setTimeout(() => {
       loadIframe = true;
       isLoading = true;
     }, 300);
   };
-
-  export let track; 
-  export let isDarkModeEnabled = false;
 </script>
 
 <div class="embed {isExpanded ? 'is-expanded' : ''}">
   {#if loadIframe && track.iframeSrc}
     <iframe
+      id={slug}
       loading="lazy"
-      style="background:{isDarkModeEnabled ? 'black' : 'white'};margin: auto;"
+      style="background:{isDarkModeEnabled
+        ? 'black'
+        : 'white'};margin: auto;transform: scaleX(1.02) scaleY(1.04);"
       width="100%"
       height="100%"
       scrolling="no"
@@ -31,11 +39,17 @@
       allow="autoplay"
       on:load={() => {
         isLoading = false;
+        // Global store
+        currentlyPlayingWidgetId.set(slug);
+        currentTrack.set(track);
       }}
-      src={track.iframeSrc}
+      src={autoPlay
+        ? track.iframeSrc.replace("&auto_play=false", "&auto_play=true")
+        : track.iframeSrc}
       alt={track.title}
       title={track.title}
     />
+    <button>License</button>
     {#if isLoading}
       <p class="loading">loading...</p>
     {/if}
@@ -43,7 +57,7 @@
     <div
       class="placeholder"
       on:click={() => {
-        expand();
+        play();
       }}
     >
       <img
@@ -68,6 +82,7 @@
     position: relative;
     padding: 3px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin: 4px 0;
     background: white;
@@ -83,7 +98,7 @@
 
     :global(.dark-mode) & {
       background: black;
-        border: 2px solid #ffffff29;
+      border: 2px solid #ffffff29;
     }
 
     .loading {
@@ -114,7 +129,7 @@
         cursor: pointer;
 
         img {
-          transform: scale(1.1);
+          transform: scale(1.2);
         }
 
         .background {
@@ -145,7 +160,6 @@
         transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
         filter: opacity(0.1);
         /* filter: opacity(0.7) brightness(0.4); */
-
       }
       .placeholder-content {
         z-index: 2;
@@ -186,16 +200,15 @@
 
       .play-button {
         display: block;
-        width: 50px;
-        height: 50px;
+        width: 35px;
+        height: 35px;
         padding: 0.5em 1em;
         transition: 100ms width, height, opacity ease;
         cursor: pointer;
         margin: auto;
         z-index: 2;
         &:hover {
-          width: 55px;
-          height: 55px;
+          transform: scale(1.1);
           opacity: 0.8;
         }
       }
@@ -203,6 +216,7 @@
       .thumbnail {
         width: 60px;
         height: auto;
+        transform: scale(1.1);
         transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);
       }
     }

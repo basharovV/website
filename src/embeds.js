@@ -1,0 +1,156 @@
+export default {
+  tracks: [
+    {
+      version: 1.0,
+      type: "rich",
+      provider_name: "SoundCloud",
+      provider_url: "https://soundcloud.com",
+      height: 400,
+      width: "100%",
+      title: "Improv I by Vyacheslav Basharov | composer",
+      description:
+        "An intimate felt piano improvisation, recorded during quarantine. \n\nAlso with calming visuals: https://youtu.be/WxyupgszQec\n\n🎧 Out now on streaming platforms! \nAdd 'Improv I' to your sleep / ambient playlists: \nhttps://songwhip.com/vyacheslavbasharov/improv-i",
+      thumbnail_url:
+        "https://i1.sndcdn.com/artworks-NM2tYPveAT4cpCSo-mFDYcA-t500x500.jpg",
+      html: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F818507320&show_artwork=true"></iframe>',
+      author_name: "Vyacheslav Basharov | composer",
+      author_url: "https://soundcloud.com/vbash",
+      url: "https://soundcloud.com/vbash/improv-i",
+    },
+    {
+      version: 1.0,
+      type: "rich",
+      provider_name: "SoundCloud",
+      provider_url: "https://soundcloud.com",
+      height: 400,
+      width: "100%",
+      title: "Inertia by Vyacheslav Basharov | composer",
+      description:
+        "An evening improvisation turned into this fun, evolving track, featuring a synth lead solo. A mix of minimalism, funk, acid jazz, and more. Influenced by the liked of Snarky Puppy, GoGo Penguin. Hope you enjoy :)",
+      thumbnail_url:
+        "https://i1.sndcdn.com/artworks-dgBHqnmsiColqZh0-4blk4w-t500x500.jpg",
+      html: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F940950685&show_artwork=true"></iframe>',
+      author_name: "Vyacheslav Basharov | composer",
+      author_url: "https://soundcloud.com/vbash",
+      url: "https://soundcloud.com/vbash/inertia",
+    },
+    {
+      version: 1.0,
+      type: "rich",
+      provider_name: "SoundCloud",
+      provider_url: "https://soundcloud.com",
+      height: 400,
+      width: "100%",
+      title: "Species by Vyacheslav Basharov | composer",
+      description:
+        "A rhythm on the tongue drum became into this evolving piece of film music. Picture this: A higher order species is letting out its last breath while life itself flashes before its eyes.\n\nStuff used on this track:\n\nLive:\n- Steel tongue drum\n- Rhodes Mark I 1973\n- Viola\n- Technics U-90 organ\n\nSoftware:\n- Family Grand from pianobook: https://www.pianobook.co.uk/library/family-grand/ \n- Spitfire Audio's LABS Strings, Albion One\n- Metropolis ARK\n- The Total Composure Orchestra (free & public domain!)\n- A bunch of samples from freesound.org\n- Surge synth\n\nHeadphones recommended. \nThere is no compression on this track.",
+      thumbnail_url:
+        "https://i1.sndcdn.com/artworks-jS4DRXKKpveHTfdX-I3yTyg-t500x500.jpg",
+      html: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1081997986&show_artwork=true"></iframe>',
+      author_name: "Vyacheslav Basharov | composer",
+      author_url: "https://soundcloud.com/vbash",
+      url: "https://soundcloud.com/vbash/species",
+    },
+    {
+      version: 1.0,
+      type: "rich",
+      provider_name: "SoundCloud",
+      provider_url: "https://soundcloud.com",
+      height: 400,
+      width: "100%",
+      title: "Revamped by Vyacheslav Basharov | composer",
+      description:
+        "#pianoday2021\n\nA live recording of some piano improv drowned in fx, going through a guitar amp  and back into the mix.",
+      thumbnail_url:
+        "https://i1.sndcdn.com/artworks-6yNWY1fowk1ND4ft-eBUNAg-t500x500.jpg",
+      html: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F963507499&show_artwork=true"></iframe>',
+      author_name: "Vyacheslav Basharov | composer",
+      author_url: "https://soundcloud.com/vbash",
+      url: "https://soundcloud.com/vbash/revamped",
+    },
+    {
+      version: 1.0,
+      type: "rich",
+      provider_name: "SoundCloud",
+      provider_url: "https://soundcloud.com",
+      height: 400,
+      width: "100%",
+      title: "Rise and Fall by Vyacheslav Basharov | composer",
+      description: "An epic resolution to a story of empires.",
+      thumbnail_url:
+        "https://i1.sndcdn.com/artworks-000222440782-oa2xp6-t500x500.jpg",
+      html: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F322445445&show_artwork=true"></iframe>',
+      author_name: "Vyacheslav Basharov | composer",
+      author_url: "https://soundcloud.com/vbash",
+      url: "https://soundcloud.com/vbash/rise-and-fall"
+    },
+    {
+      version: 1.0,
+      type: "rich",
+      provider_name: "SoundCloud",
+      provider_url: "https://soundcloud.com",
+      height: 400,
+      width: "100%",
+      title: "The Lab by Vyacheslav Basharov | composer",
+      description:
+        "This is a track that originated as part of a jam in London late 2019. I made this loop and we jammed over it with prog guitar, violin, drums and rhode. \n\nNow listening to it again it created a very interesting vibe with the plucky rhythm and textures, the bass sounding like almost like morse code signals being sent, and the whole soundscape reminds me of sneaking into a private futuristic physics laboratory, where ethics and research methods are questionable...",
+      thumbnail_url:
+        "https://i1.sndcdn.com/artworks-lVBAuIQ903tIMBII-yfgg8w-t500x500.jpg",
+      html: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F876227299&show_artwork=true"></iframe>',
+      author_name: "Vyacheslav Basharov | composer",
+      author_url: "https://soundcloud.com/vbash",
+      url: "https://soundcloud.com/vbash/the-lab",
+    },
+    {
+      version: 1.0,
+      type: "rich",
+      provider_name: "SoundCloud",
+      provider_url: "https://soundcloud.com",
+      height: 400,
+      width: "100%",
+      title: "Space Exploration by Vyacheslav Basharov | composer",
+      description:
+        "Found this buried in my hard drive, with the name 'Space exploration'. A synth buildup and release with a sense of hope and wonder. Can't find the original project, but I do remember using my Roland Juno D sounds for the synths, which sound great. Enjoy :)",
+      thumbnail_url:
+        "https://i1.sndcdn.com/artworks-uRhIJssY8JxshSx5-68ePjg-t500x500.jpg",
+      html: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F820668457&show_artwork=true"></iframe>',
+      author_name: "Vyacheslav Basharov | composer",
+      author_url: "https://soundcloud.com/vbash",
+      url: "https://soundcloud.com/vbash/space-exploration",
+    },
+    {
+      version: 1.0,
+      type: "rich",
+      provider_name: "SoundCloud",
+      provider_url: "https://soundcloud.com",
+      height: 400,
+      width: "100%",
+      title: "Phobia by Vyacheslav Basharov | composer",
+      description:
+        "A crazy dark electronic track, with an abundance of effects and general glitchiness.",
+      thumbnail_url:
+        "https://i1.sndcdn.com/artworks-000442140525-bifctm-t500x500.jpg",
+      html: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F531832953&show_artwork=true"></iframe>',
+      author_name: "Vyacheslav Basharov | composer",
+      author_url: "https://soundcloud.com/vbash",
+      url: "https://soundcloud.com/vbash/phobia",
+    },
+    {
+      version: 1.0,
+      type: "rich",
+      provider_name: "SoundCloud",
+      provider_url: "https://soundcloud.com",
+      height: 400,
+      width: "100%",
+      title: "Singularity by Vyacheslav Basharov | composer",
+      description:
+        "A soundtrack for 'bootstrapping consciousness' in droids. \n\nStuff used in this track:\n- VCV rack (Eurorack simulator)\n- Orchestral Tools Solo Violin, Cello\n- Surge synth\n- VSTSpeek \n- A few Omnisphere presets\n- ARK metropolis brass, timpani\n- Winter Voices sample library\n- Chris Henson's Binaural piano library\n- Lots of samples from Freesound",
+      thumbnail_url:
+        "https://i1.sndcdn.com/artworks-B5JG18odVRl9ljtg-wazUAQ-t500x500.jpg",
+      html: '<iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F973424590&show_artwork=true"></iframe>',
+      author_name: "Vyacheslav Basharov | composer",
+      author_url: "https://soundcloud.com/vbash",
+      url: "https://soundcloud.com/vbash/singularity",
+    },
+  ],
+};
