@@ -171,6 +171,7 @@
     height: 65px;
     padding: 1em 1em;
     align-items: center;
+    justify-content: space-between;
     gap: 1em;
 
     background: rgba(0, 0, 0, 0.954);
@@ -207,7 +208,6 @@
   }
 
   .info {
-    flex: 1 1;
     max-width: 300px;
     overflow: hidden;
     text-overflow: ellipsis;

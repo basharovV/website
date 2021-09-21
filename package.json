@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "front-matter": "^4.0.2",
+    "marked": "^3.0.4",
     "polka": "next",
     "sirv": "^1.0.0",
     "tslib": "^2.3.0"

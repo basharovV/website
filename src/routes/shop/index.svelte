@@ -80,6 +80,7 @@
 </svelte:head>
 
 <style lang="scss">
+
   .header-container {
     margin: auto;
     display: flex;

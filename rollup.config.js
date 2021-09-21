@@ -8,7 +8,7 @@ import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
-
+import fs from 'fs';
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
@@ -92,7 +92,15 @@ export default {
 			resolve({
 				dedupe: ['svelte']
 			}),
-			commonjs()
+			commonjs(),
+			{
+				buildStart() {
+					const files = fs.readdirSync('./static/posts/');
+					files.forEach(file => {
+						this.addWatchFile('static/posts/' + file)
+					});
+				}
+			  }
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 

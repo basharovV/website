@@ -78,8 +78,8 @@
 
     function draw(event) {
       if (warpSpeed == 0) {
-        ctx.fillStyle = $isDarkModeEnabled ? "black" : "white";
-        ctx.fillRect(0, 0, width, height);
+        // ctx.fillStyle = $isDarkModeEnabled ? "black" : "white";
+        ctx.clearRect(0, 0, width, height);
       }
       for (var i = 0; i < starField.length; i++) {
         ctx.fillStyle =

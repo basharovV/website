@@ -7,6 +7,7 @@
   import SvelteSeo from "svelte-seo";
   import GlobalPlayer from "../components/GlobalPlayer.svelte";
   import embeds from "./../embeds";
+  import WarpSpeed from "../components/WarpSpeed.svelte";
 
   const urls = [
     "https://soundcloud.com/vbash/improv-i",
@@ -137,8 +138,10 @@
     <!-- <input type="text" placeholder="Search" bind:value={searchQuery} />
     <div></div> -->
   </div>
-
-  <FeaturedTracks tracks={filteredTracks} />
+  <div class="featured-tracks">
+    <div class="warp-speed"><WarpSpeed /></div>
+    <FeaturedTracks tracks={filteredTracks} />
+  </div>
   <div class="prompt-container">
     <div class="prompt">
       <h2>Licensing / using in your projects</h2>
@@ -381,6 +384,7 @@
 </div>
 
 <style lang="scss">
+
   a {
     &:hover {
       opacity: 0.6;
@@ -412,6 +416,17 @@
 
   .container {
     /* font-size: 2em !important; */
+  }
+
+  .featured-tracks {
+    .warp-speed {
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
   }
 
   .content {
@@ -547,8 +562,8 @@
       /* transition: all cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s; */
 
       &.invert {
-        background: linear-gradient(to top, white, transparent);
-        filter: invert(1);
+        background: linear-gradient(to top, rgb(24, 24, 24), transparent);
+        /* filter: invert(1); */
       }
     }
   }
@@ -666,7 +681,7 @@
     /* background: black; */
 
     :global(.dark-mode) & {
-      background: rgba(103, 103, 103, 0.564);
+      /* background: rgba(103, 103, 103, 0.564); */
     }
 
     @media only screen and (max-width: 622px) {

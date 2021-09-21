@@ -15,6 +15,11 @@
   $: if (mounted) {
     if ($isDarkModeEnabled) window.document.body.classList.add("dark-mode");
     else window.document.body.classList.remove("dark-mode");
+
+    // CHange background if music
+    if (segment === "music") {
+      window.document.body.classList.add("nav-music");
+    } else window.document.body.classList.remove("nav-music");
   }
 </script>
 
@@ -34,6 +39,15 @@
           >dev</a
         >
       </li>
+
+      <li>
+        <a
+          rel="prefetch"
+          aria-current={segment === "blog" ? "page" : undefined}
+          href="blog">blog</a
+        >
+      </li>
+
       <li>
         <a aria-current={segment === "music" ? "page" : undefined} href="music"
           >music</a
@@ -111,14 +125,27 @@
     transition: background-color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
     // transition: color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
 
-    background:  url("/white-paper-texture.jpeg") ;
-    background-size: cover;
+  }
+  :global(.nav-music) {
+    background-image: url("/white-paper-texture.jpeg");
+    /* background-size: cover;
     background-position: center -1500px;
-    background-attachment: inherit;
+    background-attachment: inherit; */
+    background-size: contain;
+    background-position: center 2vh;
+    background-attachment: scroll;
     background-repeat: no-repeat;
 
+    @media only screen and (min-width: 1000px) {
+      background-position: 0 -5vh;
+    }
+
+    @media only screen and (min-width: 2000px) {
+      background-position: 0 -250px;
+    }
+
     @media only screen and (min-width: 2800px) {
-      background-position: center 290%;
+      /* background-position: center 290%; */
     }
 
     @media only screen and (max-width: 500px) {
@@ -129,7 +156,7 @@
   :global(.dark-mode) {
     /* background-color: black !important; */
     color: white;
-    background: black !important;
+    background: rgb(24, 24, 24) !important;
   }
 
   .theme-toggle {
