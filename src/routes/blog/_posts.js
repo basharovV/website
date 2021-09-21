@@ -2,8 +2,8 @@ const fs = require('fs');
 const frontMatter = require('front-matter');
 const marked = require('marked');
 
-const posts = fs.readdirSync('./static/posts').map(postFilename => {
-  const postContent = fs.readFileSync(`./static/posts/${postFilename}`, {
+const posts = fs.readdirSync('./src/posts').map(postFilename => {
+  const postContent = fs.readFileSync(`./src/posts/${postFilename}`, {
     encoding: 'utf8'
   });
   const postFrontMatter = frontMatter(postContent);
