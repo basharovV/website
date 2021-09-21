@@ -39,10 +39,24 @@
 		all elements inside .content
 	*/
 
+  @font-face {
+    font-family: "IBM Plex Sans";
+    src: url("fonts/IBMPlex/IBMPlexSans-Regular.ttf");
+  }
+
+  @font-face {
+    font-family: "IBM Plex Sans";
+    font-weight: bold;
+    src: url("fonts/IBMPlex/IBMPlexSans-Bold.ttf");
+  }
   post {
-	display: block;
+    display: block;
     max-width: 45em;
-	margin: auto;
+    margin: auto;
+  }
+
+  .content :global(img) {
+    width: 100%;
   }
 
   .content :global(h2) {
@@ -50,13 +64,17 @@
     font-weight: 500;
   }
 
+  .content :global(li),
   .content :global(p) {
     line-height: 2em;
-	opacity: 0.8;
+    opacity: 0.85;
+    font-size: 1.2em;
+    font-family: "IBM Plex Sans", Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0.04em;
   }
 
   .content :global(pre) {
-    background-color: #f9f9f9;
+    background-color: rgb(57, 57, 57);
     box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
     padding: 0.5em;
     border-radius: 2px;
