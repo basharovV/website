@@ -95,9 +95,9 @@ export default {
 			commonjs(),
 			{
 				buildStart() {
-					const files = fs.readdirSync('./src/posts/');
+					const files = fs.readdirSync('./static/posts/');
 					files.forEach(file => {
-						this.addWatchFile('src/posts/' + file)
+						this.addWatchFile('static/posts/' + file)
 					});
 				}
 			  }

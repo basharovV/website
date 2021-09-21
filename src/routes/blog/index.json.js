@@ -1,17 +1,30 @@
-import posts from './_posts.js';
+const fs = require('fs');
+const frontMatter = require('front-matter');
+const path = require('path');
 
-const contents = JSON.stringify(posts.map(post => {
-	return {
-		title: post.title,
-		slug: post.slug,
-		tags: post.tags
-	};
-}));
+const getAllPosts = () => {
+  try {
+    return fs.readdirSync("static/posts/").map((fileName) => {
+      const post = fs.readFileSync(
+        path.resolve("static/posts", fileName),
+        "utf-8"
+      );
+      const postFrontMatter = frontMatter(post);
+      return {
+        title: postFrontMatter.attributes.title,
+        slug: postFrontMatter.attributes.slug,
+        tags: postFrontMatter.attributes.tags,
+        // Add html if needed
+      };
+    });
+  } catch (e) {
+    return [];
+  }
+}
 
 export function get(req, res) {
-	res.writeHead(200, {
-		'Content-Type': 'application/json'
-	});
-
-	res.end(contents);
+  res.writeHead(200, {
+    "Content-Type": "application/json",
+  });
+  res.end(JSON.stringify(getAllPosts()));
 }
