@@ -8,6 +8,7 @@
   import GlobalPlayer from "../components/GlobalPlayer.svelte";
   import embeds from "./../embeds";
   import WarpSpeed from "../components/WarpSpeed.svelte";
+  import FlyingBirds from "../components/FlyingBirds.svelte";
 
   const urls = [
     "https://soundcloud.com/vbash/improv-i",
@@ -105,6 +106,9 @@
   }}
 />
 <div class="container">
+  {#if !$isDarkModeEnabled}
+    <FlyingBirds />
+  {/if}
   <GlobalPlayer />
   <div class="background">
     {#if $isDarkModeEnabled}
@@ -384,7 +388,6 @@
 </div>
 
 <style lang="scss">
-
   a {
     &:hover {
       opacity: 0.6;

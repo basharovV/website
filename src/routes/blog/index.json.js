@@ -1,6 +1,6 @@
-const fs = require('fs');
-const frontMatter = require('front-matter');
-const path = require('path');
+const fs = require("fs");
+const frontMatter = require("front-matter");
+const path = require("path");
 
 const getAllPosts = () => {
   try {
@@ -14,13 +14,14 @@ const getAllPosts = () => {
         title: postFrontMatter.attributes.title,
         slug: postFrontMatter.attributes.slug,
         tags: postFrontMatter.attributes.tags,
+        published: postFrontMatter.attributes.published
         // Add html if needed
       };
-    });
+    }).filter(post => post.published);
   } catch (e) {
     return [];
   }
-}
+};
 
 export function get(req, res) {
   res.writeHead(200, {

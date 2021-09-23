@@ -15,6 +15,10 @@
 
 <script>
   export let post;
+  let tags = post.tags
+    .split(",")
+    .map((t) => `#${t}`)
+    .slice(0, 2);
 </script>
 
 <svelte:head>
@@ -22,14 +26,20 @@
 </svelte:head>
 <post>
   <h1>{post.title}</h1>
-  <small>posted on {post.date} by {post.author}</small>
-
+  <div class="info">
+    <small>posted on {post.date}</small>
+    <div class="tags">
+      {#each tags as tag}
+        <p class="tag">{tag}</p>
+      {/each}
+    </div>
+  </div>
   <div class="content">
     {@html post.html}
   </div>
 </post>
 
-<style>
+<style lang="scss">
   /*
 		By default, CSS is locally scoped to the component,
 		and any unused styles are dead-code-eliminated.
@@ -49,10 +59,40 @@
     font-weight: bold;
     src: url("fonts/IBMPlex/IBMPlexSans-Bold.ttf");
   }
+
+  h1 {
+    font-family: Snake;
+    font-size: 4em;
+    margin-bottom: 0;
+    text-align: center;
+  }
   post {
     display: block;
     max-width: 45em;
     margin: auto;
+
+    > p {
+      text-align: center;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .tags {
+    display: flex;
+    gap: 1em;
+    flex-direction: row;
+    .tag {
+      padding: 0.3em 0.5em;
+      width: max-content;
+      /* border: 2px solid rgba(255, 255, 255, 0.2); */
+    }
   }
 
   .content :global(img) {
@@ -74,16 +114,26 @@
   }
 
   .content :global(pre) {
-    background-color: rgb(57, 57, 57);
+    background-color: rgb(223, 223, 223);
     box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
     padding: 0.5em;
     border-radius: 2px;
     overflow-x: auto;
+
+    :global(.dark-mode) & {
+      background-color: rgb(57, 57, 57);
+      color:rgb(223, 223, 223);
+    }
   }
 
   .content :global(pre) :global(code) {
     background-color: transparent;
     padding: 0;
+    color:rgb(57, 57, 57);
+    :global(.dark-mode) & {
+      background-color: rgb(57, 57, 57);
+      color:rgb(223, 223, 223);
+    }
   }
 
   .content :global(ul) {

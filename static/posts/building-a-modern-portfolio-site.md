@@ -5,6 +5,7 @@ date: '2021-09-21'
 tags: dev,composer,site,music,portfolio
 description: "A multi-faceted website for mu"
 author: "Slav"
+published: true
 ---
 
 ```
@@ -24,12 +25,12 @@ You can check out the code [here](https://github.com/basharovV/website).
 
 Portfolio sites are all over the Internet. Artists, [musicians](https://olafurarnalds.com/), [researchers](https://andymatuschak.org/), [developers](https://peterthaleikis.com/), designers and creatives of all types share their work with the world in a public display. It's a very personal thing - each portfolio should represent the unqeuivocable uniquess of it's owner. We want our portfolios to be welcoming to visitors and hopefully spark a conversation or business opportunity. 
 
-In my case I wanted something that was both form and function, with an artistic quality but minimal enough to make room for content (blog, shop, music, projects, etc).
+
+
+In my case I wanted something that was both form and function, with an artistic quality but minimal enough to make room for content (blog, shop, music, projects, etc). It also had to reflect the duality of my work in a way that isn't too messy (hopefully).
 <br>
 
-I'll now run through a few bits of the site and explain how they work. 
-
-<br>
+Let me run through some of the features of the site: 
 
 ## A music player that uses Soundcloud embeds
 ![player](/post-media/building-a-modern-portfolio-site/player.jpg)

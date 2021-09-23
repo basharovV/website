@@ -4,10 +4,10 @@
   import TrackMiniPlayer from "./TrackMiniPlayer.svelte";
 </script>
 
-<div class="container">
+<div class="container" >
   {#if tracks}
     {#each tracks as track, idx}
-      <TrackMiniPlayer {track} isDarkModeEnabled={$isDarkModeEnabled} autoPlay={true}/>
+      <TrackMiniPlayer  {track} isDarkModeEnabled={$isDarkModeEnabled} autoPlay={true}/>
     {/each}
   {/if}
   <div>
