@@ -3,7 +3,9 @@
   import { isDarkModeEnabled } from "../store/state";
 
   import FeaturedProduct from "./FeaturedProduct.svelte";
+
   export let products: Product[];
+
 </script>
 
 <div class="container">
@@ -16,8 +18,8 @@
     >
     <img src="profile.jpg" />
   </div>
-  {#each products as product}
-    <FeaturedProduct {product}>
+  {#each products as product, index}
+    <FeaturedProduct {product} {index}>
       <!-- <div slot="custom">
         <h4>Audio samples:</h4>
         <TrackMiniPlayer trackId="1011296332" accent="1e2424" />
@@ -37,15 +39,15 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1em;  
-    margin-top: 4em;  
+    gap: 1em;
+    margin-top: 4em;
     &::before {
       content: "";
       height: 10px;
       width: 10px;
       border-radius: 200%;
       /* box-shadow: -100px -200px 600px 400px rgba(0, 0, 0, 0.7), */
-   
+
       /* background: white; */
       position: absolute;
       top: 0;

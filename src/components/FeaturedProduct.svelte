@@ -3,7 +3,17 @@
   import { isDarkModeEnabled } from "../store/state";
   import TrackMiniPlayer from "./TrackMiniPlayer.svelte";
 
+  let highlight;
+  export let index = 0;
   export let product: Product;
+
+  setTimeout(() => {
+    highlight = true;
+
+    setTimeout(() => {
+      highlight = false;
+    }, 200);
+  }, 200 + (300 * (index + 1)));
 </script>
 
 <div class="container {$isDarkModeEnabled ? 'invert' : ''}">
@@ -11,7 +21,10 @@
     <div class="tag">{product.tags[0]}</div>
 
     <a rel="prefetch" href="shop/{product.id}">
-      <img class="product-image" src={product.image} />
+      <img
+        class="product-image {highlight ? 'highlight' : ''}"
+        src={product.image}
+      />
     </a>
     <svg viewBox="0 0 100 100">
       <rect fill={product.color} width="100%" height="100%" />
@@ -51,8 +64,8 @@
     {#if product.price}
       <p>€{product.price}</p>
     {:else}
-      <span style="float: right;"
-        ><p>Price:</p>
+      <span class="price"
+        ><p style="opacity:0.7;margin-right: 0.5em">Price:</p>
         <p class="price-pwyw">up to you :)</p></span
       >
     {/if}
@@ -92,7 +105,6 @@
 
   .product-image-container {
     position: relative;
-
   }
 
   :global(.payhip-buy-button) {
@@ -122,8 +134,24 @@
       display: inline-block;
     }
   }
-  .price-pwyw {
-    color: rgb(0, 160, 0);
+
+  .price {
+    margin: 1em auto 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      margin: 0;
+    }
+
+    .price-pwyw {
+      background:rgba(50, 205, 50, 0.132);
+      border-radius: 20px;
+      padding: 0.2em 0.8em;
+      color: rgb(0, 160, 0);
+    }
   }
   content {
     z-index: 1;
@@ -137,20 +165,20 @@
 
   .tag {
     position: absolute;
-    top: -20px;
+    top: -35px;
     right: 0px;
     left: 0px;
     margin: 0 auto;
-    z-index: 4;
+    z-index: 2;
     /* background-color: rgb(0, 0, 0); */
-    background: rgb(24, 24, 24);
+    /* background: rgb(24, 24, 24); */
     /* background: black; */
     backdrop-filter: blur(1.4px);
-    color: rgb(187, 187, 187);
-    padding: 0.3em 1em;
+    color: rgb(123, 123, 123);
+    padding: 0.5em 1em 1em 1em;
     width: fit-content;
-    border-radius: 20px;
-    border: 1.5px solid rgba(184, 184, 184, 0.064);
+    /* border-radius: 15px; */
+    border: 1.8px solid rgba(130, 130, 130, 0.209);
     transform: scale(0.9);
     /* box-shadow: 2px 10px 10px black; */
     /* border: 7px solid rgb(24, 24, 24); */
@@ -161,14 +189,17 @@
     height: auto;
     z-index: 3;
     position: relative;
-    transition: all 0.1s ease-in;
+    transition: all 0.1s cubic-bezier(0.47, 0, 0.745, 0.715);
     /* animation: glow 1.5s ease-in-out infinite alternate-reverse; */
     margin-bottom: 1em;
-    border: 1.8px solid white;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
     border-radius: 4px;
-    outline: 3px solid transparent;
-    &:hover {
-      /* transform: scale(1.05); */
+    outline: 2px solid transparent;
+    box-sizing: border-box;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.166);
+    &:hover,
+    &.highlight {
+      transform: translate(-3px, -3px);
       filter: brightness(1.5);
     }
   }
@@ -233,6 +264,7 @@
     position: absolute;
     top: 5px;
     left: 5px;
+    border-radius: 4px;
     z-index: 1;
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.411);
 

@@ -6,8 +6,8 @@
   
   {#key refresh}
     <div
-      in:fade="{{ y: -15, duration: 190, delay: 300}}"
-      out:fade="{{ y: -15, duration: 190 }}" 
+      in:fade="{{ y: -15, duration: 120, delay: 300}}"
+      out:fade="{{ y: -15, duration: 120 }}" 
       >
       <slot/>
     </div>

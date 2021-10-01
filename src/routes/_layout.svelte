@@ -8,9 +8,7 @@
 <Nav {segment} />
 
 <main>
-  <PageTransitions refresh={segment}>
     <slot />
-  </PageTransitions>
 </main>
 
 <!-- <GdprBanner cookieName="foo" description="bar" /> -->
