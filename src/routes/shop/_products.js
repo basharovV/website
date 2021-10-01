@@ -11,7 +11,7 @@ const products = [
   {
     id: "rhodesian-keys",
     description:
-      "Rhodesian Keys is the original soft sound of the 1973 Rhodes Mark I, sampled directly from the instrument. Nothing more, nothing less.",
+      "The original soft sound of the 1973 Rhodes Mark I as a sample library for Kontakt. Nothing more, nothing less.",
     longDescription:
       "<h4>Features</h4><ul><li>Kontakt 5+ instrument</li><li>73 keys</li><li>511 samples. 6-10 velocity layers</li><li>Key press + release noises</li></ul><small>Disclaimer: I don't have any association or endorsement by the Rhodes brand. Any references to the Rhodes brand are provided for description purposes only.</small>",
     image: "product-assets/rhodesian-keys/rhodesian-keys-bg.png",
@@ -20,7 +20,7 @@ const products = [
     price: "",
     url: "shop/rhodesian-keys",
     tags: ["Kontakt instrument", "Sample library"],
-    type: 'Kontakt library',
+    type: 'Free Rhodes sample library',
     size: "682.9 MB",
     video: "https://www.youtube-nocookie.com/embed/2PP0OrzS_k8",
     productId: "MxG8Z",

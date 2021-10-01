@@ -1,6 +1,6 @@
 <script>
   import Nav from "../components/Nav.svelte";
-  import GdprBanner from "@beyonk/gdpr-cookie-consent-banner";
+  import PageTransitions from "../components/PageTransitions.svelte";
 
   export let segment;
 </script>
@@ -8,11 +8,12 @@
 <Nav {segment} />
 
 <main>
-  <slot />
+  <PageTransitions refresh={segment}>
+    <slot />
+  </PageTransitions>
 </main>
 
 <!-- <GdprBanner cookieName="foo" description="bar" /> -->
-
 <style lang="scss">
   main {
     // position: relative;

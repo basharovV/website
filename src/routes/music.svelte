@@ -143,7 +143,7 @@
     <div></div> -->
   </div>
   <div class="featured-tracks">
-    <div class="warp-speed"><WarpSpeed /></div>
+    <!-- <div class="warp-speed"><WarpSpeed /></div> -->
     <FeaturedTracks tracks={filteredTracks} />
   </div>
   <div class="prompt-container">

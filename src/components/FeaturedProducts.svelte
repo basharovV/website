@@ -37,9 +37,28 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 1em;  
+    margin-top: 4em;  
+    &::before {
+      content: "";
+      height: 10px;
+      width: 10px;
+      border-radius: 200%;
+      /* box-shadow: -100px -200px 600px 400px rgba(0, 0, 0, 0.7), */
+   
+      /* background: white; */
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -4;
+      margin: auto;
+      box-sizing: border-box;
+    }
 
     .banner {
+      top: -3em;
       padding: 0.5em 1em;
       background: rgba(83, 199, 145, 0.187);
       border-bottom: 1px solid rgba(0, 0, 0, 0.09);

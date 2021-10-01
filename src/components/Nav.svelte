@@ -49,7 +49,7 @@
       </li>
 
       <li>
-        <a aria-current={segment === "music" ? "page" : undefined} href="music"
+        <a aria-current={segment === "music" ? "page" : undefined} href="music" rel="prefetch"
           >music</a
         >
       </li>

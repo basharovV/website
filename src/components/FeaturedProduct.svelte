@@ -37,7 +37,6 @@
     {/if}
     <small class="size">{product.size} zip file</small> -->
 
-   
     <div class="buttons">
       <a class="details-button" href="shop/{product.id}">Details</a>
       <a
@@ -50,18 +49,17 @@
       >
     </div>
     {#if product.price}
-    <p>€{product.price}</p>
-  {:else}
-    <span style="float: right;"
-      ><p>Price:</p>
-      <p class="price-pwyw">up to you :)</p></span
-    >
-  {/if}
+      <p>€{product.price}</p>
+    {:else}
+      <span style="float: right;"
+        ><p>Price:</p>
+        <p class="price-pwyw">up to you :)</p></span
+      >
+    {/if}
   </content>
 </div>
 
 <style lang="scss">
-  
   .container {
     position: relative;
     /* padding: 2em; */
@@ -72,20 +70,29 @@
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     &:hover {
-      background-color: #00000010;
+      .product-image-container {
+      }
+      /* background-color: #00000010; */
     }
 
     &.invert {
       /* border: 1px solid rgba(255, 255, 255, 0.194); */
       /* border-right: 1px solid rgba(255, 255, 255, 0.173); */
       &:hover {
-        background-color: #ffffff25;
+        /* background-color: #ffffff25; */
+
+        .product-image-container {
+          &::before {
+            background: #ffffff25;
+          }
+        }
       }
     }
   }
 
   .product-image-container {
     position: relative;
+
   }
 
   :global(.payhip-buy-button) {
@@ -130,17 +137,23 @@
 
   .tag {
     position: absolute;
-    top: -10px;
+    top: -20px;
     right: 0px;
     left: 0px;
     margin: 0 auto;
     z-index: 4;
-    background-color: rgb(0, 0, 0);
-    color: white;
+    /* background-color: rgb(0, 0, 0); */
+    background: rgb(24, 24, 24);
+    /* background: black; */
+    backdrop-filter: blur(1.4px);
+    color: rgb(187, 187, 187);
     padding: 0.3em 1em;
     width: fit-content;
-    border-radius: 50px;
-    border: 2px solid rgba(255, 255, 255, 0.507);
+    border-radius: 20px;
+    border: 1.5px solid rgba(184, 184, 184, 0.064);
+    transform: scale(0.9);
+    /* box-shadow: 2px 10px 10px black; */
+    /* border: 7px solid rgb(24, 24, 24); */
   }
 
   .product-image {
@@ -151,10 +164,11 @@
     transition: all 0.1s ease-in;
     /* animation: glow 1.5s ease-in-out infinite alternate-reverse; */
     margin-bottom: 1em;
-    border: 1px solid white;
-
+    border: 1.8px solid white;
+    border-radius: 4px;
+    outline: 3px solid transparent;
     &:hover {
-      transform: scale(0.95) rotate(5deg);
+      /* transform: scale(1.05); */
       filter: brightness(1.5);
     }
   }
