@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import PlayIcon from "../../static/icons/PlayIcon.svelte";
   import { currentlyPlayingWidgetId, currentTrack } from "../store/state";
 
@@ -11,6 +11,10 @@
   export let track;
   export let isDarkModeEnabled = false;
   export let autoPlay = false;
+
+  // $: {
+  //   if ($currentTrack?.id)
+  // }
 
   $: trackParts = track && track.url && track.url.split("/");
   $: slug = trackParts && `vb-track-${trackParts[trackParts.length - 1]}`;

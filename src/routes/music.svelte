@@ -6,7 +6,7 @@
   import { isDarkModeEnabled } from "../store/state.js";
   import SvelteSeo from "svelte-seo";
   import GlobalPlayer from "../components/GlobalPlayer.svelte";
-  import embeds from "./../embeds";
+  import tracks from "../tracks";
   import WarpSpeed from "../components/WarpSpeed.svelte";
   import FlyingBirds from "../components/FlyingBirds.svelte";
 
@@ -58,7 +58,7 @@
   };
 
   async function getTracks() {
-    const featuredTracks = embeds.tracks.map(transformTrack);
+    const featuredTracks = tracks.tracks.map(transformTrack);
     const intoTheLooTracks = await Promise.all(
       intoTheLooUrls.map((url) => getTrack(url))
     );

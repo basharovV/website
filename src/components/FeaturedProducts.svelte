@@ -5,7 +5,6 @@
   import FeaturedProduct from "./FeaturedProduct.svelte";
 
   export let products: Product[];
-
 </script>
 
 <div class="container">
@@ -40,71 +39,55 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1em;
-    margin-top: 4em;
-    &::before {
-      content: "";
-      height: 10px;
-      width: 10px;
-      border-radius: 200%;
-      /* box-shadow: -100px -200px 600px 400px rgba(0, 0, 0, 0.7), */
+    margin-top: 1em;
+  }
 
-      /* background: white; */
+  .banner {
+    padding: 0.5em 1em;
+    background: rgba(83, 199, 145, 0.187);
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.09); */
+    color: rgb(5, 182, 91);
+    text-align: center;
+    position: relative;
+
+    @media only screen and (min-width: 1650px) {
       position: absolute;
+      left: 50px;
+      width: 350px;
+      top: 22.5em;
+    }
+
+    > img {
+      width: 40px;
+      position: absolute;
+      left: -20px;
       top: 0;
-      left: 0;
-      right: 0;
       bottom: 0;
-      z-index: -4;
+      border-radius: 50px;
+      border: 3px solid white;
       margin: auto;
-      box-sizing: border-box;
     }
+  }
 
-    .banner {
-      top: -3em;
-      padding: 0.5em 1em;
-      background: rgba(83, 199, 145, 0.187);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-      color: rgb(5, 182, 91);
+  .comingsoon {
+    margin: auto;
+    width: 100%;
+    flex: 1 1 220px;
+    padding: 2em 0;
+    p {
       text-align: center;
-      position: relative;
-
-      @media only screen and (min-width: 1680px) {
-        position: absolute;
-        left: 50px;
-        width: 350px;
-      }
-
-      > img {
-        width: 40px;
-        position: absolute;
-        left: -20px;
-        top: 0;
-        bottom: 0;
-        border-radius: 50px;
-        border: 3px solid white;
-        margin: auto;
-      }
+      color: rgb(187, 173, 173);
     }
 
-    .comingsoon {
+    img {
+      height: 150px;
+      display: block;
       margin: auto;
-      width: 100%;
-      flex: 1 1 220px;
-      p {
-        text-align: center;
-        color: rgb(187, 173, 173);
-      }
-
+      transition: filter cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s 0.02s;
+    }
+    &.invert {
       img {
-        height: 200px;
-        display: block;
-        margin: auto;
-        transition: filter cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s 0.02s;
-      }
-      &.invert {
-        img {
-          filter: invert(1);
-        }
+        filter: invert(1);
       }
     }
   }

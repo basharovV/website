@@ -39,6 +39,7 @@
   import TrackMiniPlayer from "../../components/TrackMiniPlayer.svelte";
   import { isDarkModeEnabled } from "../../store/state";
   import SvelteSeo from "svelte-seo";
+  import Error from "../_error.svelte";
 
   export let product;
   export let tracks;
@@ -67,42 +68,56 @@
   }}
 />
 
-<a href="/shop">&lt- Back to shop</a>
+<!-- <a href="/shop">&lt- Back to shop</a> -->
 <br />
 <br />
 <div class="container">
-  <img src={product.bannerImage} />
+  <div class="tags">
+    {#each product.tags as tag}
+      <div class="tag">{tag}</div>
+    {/each}
+  </div>
+  <img class="banner" src={product.bannerImage} />
 
+  <div class="description"><p>{product.description}</p></div>
+  {#if tracks && tracks.length}
+    <h4>Listen to the demos:</h4>
+
+    <div class="listen">
+      {#each tracks as track}
+        <TrackMiniPlayer {track} isDarkModeEnabled={true} accent="e60303" />
+      {/each}
+
+      <div>
+        <a
+          href="https://payhip.com/b/{product.productId}"
+          class="payhip-buy-button"
+          data-message={product.paymentDescription}
+          data-title="Download {product.name}"
+          data-product={product.productId}
+          data-theme="none">Get it</a
+        >
+      </div>
+    </div>
+  {/if}
+  <div class="gradient" />
   <div class="item-grid">
-    <div class="product-image">
+    <!-- <div class="product-image">
       <a rel="prefetch" href="shop/{product.id}">
         <img src={product.image} />
       </a>
       <svg viewBox="0 0 100 100">
         <rect fill={product.color} width="100%" height="100%" />
       </svg>
-    </div>
+    </div> -->
     <content>
-      <div class="tags">
-        {#each product.tags as tag}
-          <div class="tag">{tag}</div>
-        {/each}
-      </div>
-      <a rel="prefetch" href="shop/{product.id}">
-        <h3>{product.name}</h3>
-      </a>
-      <small>{product.description}</small>
+      {#if product.screenshot}<img
+          class="screenshot"
+          src={product.screenshot}
+        />{/if}
+
       {@html product.longDescription}
-      {#if tracks && tracks.length}
-        <h4>Listen to the demos:</h4>
-        {#each tracks as track}
-          <TrackMiniPlayer
-            {track}
-            isDarkModeEnabled={$isDarkModeEnabled}
-            accent="e60303"
-          />
-        {/each}
-      {/if}
+
       <small class="size">💾 {product.size} zip file</small>
 
       {#if product.price}
@@ -124,11 +139,23 @@
 </div>
 
 <style lang="scss">
+  .description {
+    margin: auto;
+    text-align: center;
+    max-width: 490px;
+    /* background: rgba(0, 0, 0, 0.783); */
+    color: white;
+    padding: 0 2em;
+    /* border: 2px solid black; */
+    z-index: 2;
+    /* border-radius: 3px; */
+    /* backdrop-filter: blur(4px); */
+  }
+
   .container {
     padding: 1em;
-    /* border: 1px dashed rgb(220, 220, 220); */
-    border-radius: 1em;
-    box-shadow: 20px 80px 140px 20px rgba(0, 255, 255, 0.098);
+    text-align: center;
+    /* background: rgba(255, 255, 255, 0.262); */
   }
 
   .product-image {
@@ -139,6 +166,7 @@
   .item-grid {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 
     @media only screen and (max-width: 600px) {
       flex-direction: column;
@@ -146,17 +174,62 @@
     }
   }
 
+  .listen {
+    display: grid;
+    max-width: 600px;
+    margin: auto;
+    align-items: center;
+    grid-template-columns: 2fr 1fr;
+
+    > div {
+    }
+  }
+
   content {
     padding: 0 2em 2em 2em;
+    :global(li) {
+      width: fit-content !important;
+      margin: auto;
+    }
   }
 
   h4 {
     margin: 1em 0;
   }
 
+  .screenshot {
+    margin: 2em 0;
+    border: 2px solid rgb(133, 133, 133);
+  }
+
   .banner {
     width: 100%;
-    height: auto;
+    height: 350px;
+    z-index: -2;
+    position: absolute;
+    top: -2em;
+    left: 0;
+    right: 0;
+    object-fit: cover;
+  }
+  .gradient {
+    position: absolute;
+    z-index: -1;
+    height: 350px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+      to top,
+      rgb(255, 255, 255) 10%,
+      rgba(255, 255, 255, 0.5) 30%,
+      transparent
+    );
+
+    :global(.dark-mode) & {
+      background: linear-gradient(to top, rgb(24, 24, 24) 4%, transparent 50%);
+    }
   }
 
   .size {
@@ -171,18 +244,27 @@
   }
 
   .tags {
-    display: inline-flex;
+    margin-top: 6em;
+    margin-bottom: 1.5em;
+    display: flex;
     z-index: 4;
+    align-items: center;
+    justify-content: center;
+
     $colors: rgb(120, 89, 193), rgb(210, 160, 68), rgb(56, 184, 163),
       rgb(55, 155, 49) rgb(39, 39, 152) ue, rgb(53, 0, 128);
 
     @for $i from 1 through length($colors) {
       div:nth-child(#{length($colors)}n + #{$i}) {
-        background: nth($colors, $i);
+        padding: 0.5em 1em;
+        margin: 0.2em 0.3em;
         width: fit-content;
-        margin: 0.2em;
-        color: white;
-        transform: skew(5deg, 1deg);
+        border-radius: 15px;
+        border: 1.8px solid rgba(130, 130, 130, 0.209);
+        backdrop-filter: blur(1.8px);
+        background: rgba(46, 46, 46, 0.571);
+        color: rgb(210, 210, 210);
+        transform: scale(0.9);
       }
     }
   }

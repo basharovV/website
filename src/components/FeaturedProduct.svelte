@@ -17,8 +17,9 @@
 </script>
 
 <div class="container {$isDarkModeEnabled ? 'invert' : ''}">
+  <div class="tag">{product.tags[0]}</div>
+
   <div class="product-image-container">
-    <div class="tag">{product.tags[0]}</div>
 
     <a rel="prefetch" href="shop/{product.id}">
       <img
@@ -51,7 +52,7 @@
     <small class="size">{product.size} zip file</small> -->
 
     <div class="buttons">
-      <a class="details-button" href="shop/{product.id}">Details</a>
+      <a rel="prefetch" class="details-button" href="shop/{product.id}">Details</a>
       <a
         href="https://payhip.com/b/{product.productId}"
         class="payhip-buy-button"
@@ -164,10 +165,8 @@
   }
 
   .tag {
-    position: absolute;
-    top: -35px;
-    right: 0px;
-    left: 0px;
+    position: relative;
+    top: 10px;
     margin: 0 auto;
     z-index: 2;
     /* background-color: rgb(0, 0, 0); */

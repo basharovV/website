@@ -2,8 +2,11 @@
   export let segment;
   import { isDarkModeEnabled } from "../store/state.js";
   import { onMount } from "svelte";
+  import { stores } from "@sapper/app";
+  const { page } = stores();
 
   let mounted;
+  let forceDarkMode;
 
   onMount(() => {
     isDarkModeEnabled.set(
@@ -13,7 +16,8 @@
   });
 
   $: if (mounted) {
-    if ($isDarkModeEnabled) window.document.body.classList.add("dark-mode");
+    if ($isDarkModeEnabled || forceDarkMode)
+      window.document.body.classList.add("dark-mode");
     else window.document.body.classList.remove("dark-mode");
 
     // CHange background if music
@@ -21,9 +25,12 @@
       window.document.body.classList.add("nav-music");
     } else window.document.body.classList.remove("nav-music");
   }
+  // console.log(page);
+  $: isProduct = $page.path.includes("shop/");
+  $: forceDarkMode = isProduct;
 </script>
 
-<nav>
+<nav class={isProduct ? "frosted" : ""}>
   {#if segment !== "music"}
     <a class="logo" href="/"><img alt="Logo" src="logo.svg" /></a>
   {/if}
@@ -49,8 +56,10 @@
       </li>
 
       <li>
-        <a aria-current={segment === "music" ? "page" : undefined} href="music" rel="prefetch"
-          >music</a
+        <a
+          aria-current={segment === "music" ? "page" : undefined}
+          href="music"
+          rel="prefetch">music</a
         >
       </li>
 
@@ -83,40 +92,42 @@
       </li>
     </ul>
 
-    <div
-      class="theme-toggle"
-      style="display: flex;justify-content: flex-end;align-items: center;"
-    >
-      <small>Theme:&nbsp;</small>
-      <svg
-        on:click={() => isDarkModeEnabled.set(true)}
-        height="20px"
-        width="20px"
+    {#if !forceDarkMode}
+      <div
+        class="theme-toggle"
+        style="display: flex;justify-content: flex-end;align-items: center;"
       >
-        <circle
-          cx="10"
-          cy="10"
-          r="8"
-          stroke="white"
-          stroke-width="3"
-          fill="black"
-        />
-      </svg>
-      <svg
-        on:click={() => isDarkModeEnabled.set(false)}
-        height="20px"
-        width="20px"
-      >
-        <circle
-          cx="10"
-          cy="10"
-          r="8"
-          stroke="black"
-          stroke-width="3"
-          fill="white"
-        />
-      </svg>
-    </div>
+        <small>Theme:&nbsp;</small>
+        <svg
+          on:click={() => isDarkModeEnabled.set(true)}
+          height="20px"
+          width="20px"
+        >
+          <circle
+            cx="10"
+            cy="10"
+            r="8"
+            stroke="white"
+            stroke-width="3"
+            fill="black"
+          />
+        </svg>
+        <svg
+          on:click={() => isDarkModeEnabled.set(false)}
+          height="20px"
+          width="20px"
+        >
+          <circle
+            cx="10"
+            cy="10"
+            r="8"
+            stroke="black"
+            stroke-width="3"
+            fill="white"
+          />
+        </svg>
+      </div>
+    {/if}
   </div>
 </nav>
 
@@ -124,7 +135,6 @@
   :global(body) {
     transition: background-color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
     // transition: color cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s;
-
   }
   :global(.nav-music) {
     background-image: url("/white-paper-texture.jpeg");
@@ -156,7 +166,7 @@
   :global(.dark-mode) {
     /* background-color: black !important; */
     color: white;
-    background: rgb(24, 24, 24) !important;
+    background: #181818 !important;
   }
 
   .theme-toggle {
@@ -179,6 +189,12 @@
       max-width: 400px;
       width: 100%;
       display: inline-flex;
+    }
+
+    &.frosted {
+      color: white;
+      backdrop-filter: blur(3px);
+      border-bottom: 1.5px solid rgba(128, 128, 128, 0.1);
     }
 
     @media only screen and (max-width: 500px) {

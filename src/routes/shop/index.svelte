@@ -12,8 +12,30 @@
   import FeaturedProducts from "../../components/FeaturedProducts.svelte";
   import WarpSpeed from "../../components/WarpSpeed.svelte";
   import { isDarkModeEnabled } from "../../store/state.js";
+  import SvelteSeo from "svelte-seo";
   export let products;
 </script>
+
+<SvelteSeo
+  title="vb shop | free sample packs, libraries and instruments | Vyacheslav Basharov"
+  description="Free sample packs, sample libraries and instruments. An independent creative outlet by Vyacheslav Basharov"
+  openGraph={{
+    title:
+      "vb shop | free sample packs, libraries and instruments | Vyacheslav Basharov",
+    description:
+      "Free sample packs, sample libraries and instruments. An independent creative outlet by Vyacheslav Basharov",
+    url: `https://vyacheslavbasharov.com/shop`,
+    type: "website",
+    images: [
+      {
+        url: "logo-512.png",
+        width: 850,
+        height: 650,
+        alt: "logo",
+      },
+    ],
+  }}
+/>
 
 <div class="top">
   <WarpSpeed />
@@ -75,12 +97,7 @@
   </div>
 </footer>
 
-<svelte:head>
-  <title>Vyacheslav Basharov • sample packs, libraries & instruments</title>
-</svelte:head>
-
 <style lang="scss">
-
   .header-container {
     margin: auto;
     display: flex;
