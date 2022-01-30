@@ -44,7 +44,7 @@
   export let product;
   export let tracks;
 
-  export let seoTitle = `${product.name} | ${product.price ? "free" : ""} ${
+  export let seoTitle = `${product.name} | ${product.price ? "" : "free"} ${
     product.type
   } | vb shop`;
 </script>
@@ -210,7 +210,9 @@
     top: -2em;
     left: 0;
     right: 0;
-    object-fit: cover;
+    object-fit: cover;   
+    animation: float-and-scale 3s infinite ease-in-out;
+
   }
   .gradient {
     position: absolute;
@@ -232,6 +234,30 @@
     }
   }
 
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes float-and-scale {
+    0% {
+      transform: scale(1) translateY(0);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+    100% {
+      transform: scale(1) translateY(0px);
+    }
+  }
+
   .size {
     margin-top: 1em;
     display: block;
@@ -250,6 +276,7 @@
     z-index: 4;
     align-items: center;
     justify-content: center;
+    animation: float 3s 0.2s infinite ease-in-out;
 
     $colors: rgb(120, 89, 193), rgb(210, 160, 68), rgb(56, 184, 163),
       rgb(55, 155, 49) rgb(39, 39, 152) ue, rgb(53, 0, 128);
@@ -260,7 +287,7 @@
         margin: 0.2em 0.3em;
         width: fit-content;
         border-radius: 15px;
-        border: 1.8px solid rgba(130, 130, 130, 0.209);
+        outline: 1.8px solid rgba(130, 130, 130, 0.209);
         backdrop-filter: blur(1.8px);
         background: rgba(46, 46, 46, 0.571);
         color: rgb(210, 210, 210);

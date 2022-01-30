@@ -15,7 +15,7 @@
   import SvelteSeo from "svelte-seo";
   export let products;
 </script>
-
+  
 <SvelteSeo
   title="vb shop | free sample packs, libraries and instruments | Vyacheslav Basharov"
   description="Free sample packs, sample libraries and instruments. An independent creative outlet by Vyacheslav Basharov"

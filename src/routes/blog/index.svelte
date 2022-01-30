@@ -53,6 +53,9 @@
     list-style: none;
     padding: 0;
   }
+  li {
+    padding: 0.5em 0;
+  }
   .comingsoon {
     margin: 3em auto 0;
     width: 100%;

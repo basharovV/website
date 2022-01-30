@@ -6,7 +6,7 @@
     const data = await res.json();
 
     if (res.status === 200) {
-      return { post: data };
+      return { post: data, slug: params.slug };
     } else {
       this.error(res.status, data.message);
     }
@@ -14,7 +14,10 @@
 </script>
 
 <script>
+  import FullAlbums from "../../components/FullAlbums.svelte";
+
   export let post;
+  export let slug;
   let tags = post.tags
     .split(",")
     .map((t) => `#${t}`)
@@ -24,10 +27,14 @@
 <svelte:head>
   <title>{post.title}</title>
 </svelte:head>
+
 <post>
   <h1>{post.title}</h1>
+  {#if post.description}
+    <small>{post.description}</small>
+  {/if}
   <div class="info">
-    <small>posted on {post.date}</small>
+    <small>updated on {post.updated} ❖ posted on {post.date}</small>
     <div class="tags">
       {#each tags as tag}
         <p class="tag">{tag}</p>
@@ -35,7 +42,11 @@
     </div>
   </div>
   <div class="content">
-    {@html post.html}
+    {#if slug === "full-albums-worth-listening-to"}
+      <FullAlbums />
+    {:else}
+      {@html post.html}
+    {/if}
   </div>
 </post>
 
@@ -76,6 +87,13 @@
     }
   }
 
+  small {
+    text-align: center;
+    display: block;
+    max-width: 40em;
+    margin: auto;
+  }
+
   .info {
     display: flex;
     flex-direction: row;
@@ -108,7 +126,7 @@
   .content :global(p) {
     line-height: 2em;
     opacity: 0.85;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-family: "IBM Plex Sans", Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 0.04em;
   }
@@ -122,17 +140,17 @@
 
     :global(.dark-mode) & {
       background-color: rgb(57, 57, 57);
-      color:rgb(223, 223, 223);
+      color: rgb(223, 223, 223);
     }
   }
 
   .content :global(pre) :global(code) {
     background-color: transparent;
     padding: 0;
-    color:rgb(57, 57, 57);
+    color: rgb(57, 57, 57);
     :global(.dark-mode) & {
       background-color: rgb(57, 57, 57);
-      color:rgb(223, 223, 223);
+      color: rgb(223, 223, 223);
     }
   }
 
