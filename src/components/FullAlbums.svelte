@@ -10,8 +10,7 @@
             Jazz, improvisation, electronic, ambient. \
             Each track is an individual space that brings \
             you in and doesn't let go. And just look at that artwork!",
-      artwork:
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.musikexpress.de%2Fwp-content%2Fuploads%2F2021%2F09%2F03%2F10%2Fnala-sinephro-space-1-8.jpg&f=1&nofb=1",
+      artwork: "/post-media/full-albums/space-1-8.jpeg",
       link: "https://www.youtube.com/watch?v=Qqi_EZ0DgrA",
       linkText: "YouTube link (official channel)",
     },
@@ -22,8 +21,7 @@
       review:
         "Features the first appearance of the popular standard 'Blue Bossa', \
         a great classic jazz album that stands the test of time.",
-      artwork:
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F71QubkT%252BwwL._AC_SL1200_.jpg&f=1&nofb=1",
+      artwork: "/post-media/full-albums/page-one.jpeg",
       link: "https://www.youtube.com/watch?v=yaHl83qK0eM",
       linkText: "YouTube link (vinyl rip - Side A)",
       linkB: "https://www.youtube.com/watch?v=2lGPBce-FRo",
@@ -34,8 +32,8 @@
       title: "Noneto",
       year: 2021,
       review:
-        "A wonderfully crafted Andalusian jazz record from Nacho Loring's nine-piece band",
-      artwork: "https://f4.bcbits.com/img/a3519593757_16.jpg",
+        "Something from the local jazz scene in Malaga, Spain. A wonderfully crafted Andalusian jazz record from Nacho Loring, composed for a nine piece band.",
+      artwork: "/post-media/full-albums/noneto.jpeg",
       link: "https://www.youtube.com/watch?v=7fqmRGv4SJw&list=OLAK5uy_lf66koFRm7PxsUqDZFtEU5geAefJiet04",
       linkText: "YouTube link (official channel)",
     },
@@ -45,8 +43,29 @@
       year: 2021,
       review:
         "Dreamy vocals with lo-fi production. Worth listening the whole way through. Favourite tracks: Swallow Your Pride.",
-      artwork: "https://f4.bcbits.com/img/a2947954285_16.jpg",
+      artwork: "/post-media/full-albums/solomon.jpeg",
       link: "https://www.youtube.com/channel/UCeGioxzXtvkbEVZdLs3bHMQ",
+      linkText: "YouTube link (official channel)",
+    },
+    {
+      artist: "e.s.t. Esbjörn Svensson Trio",
+      title: "Seven Days of Falling",
+      year: 2003,
+      review:
+        "Really captivating blend of jazz and minimalism with a Scandinavian touch from the late Esbjörn Svensson.",
+      artwork: "/post-media/full-albums/seven-days-of-falling.jpeg",
+      link: "https://www.youtube.com/channel/UCeGioxzXtvkbEVZdLs3bHMQ",
+      linkText: "YouTube link (official channel)",
+      liveLink: "https://www.youtube.com/watch?v=D7KXq6RJ0PA",
+    },
+    {
+      artist: "Banda Magda",
+      title: "Tigre",
+      year: 2017,
+      review:
+        "A multilingual record from the multi-talented Magda Giannikou, telling tales of courage through music. The album has a sense of continuity despite jumping between French, Spanish, Greek and Portuguese.",
+      artwork: "/post-media/full-albums/tigre.jpeg",
+      link: "https://www.youtube.com/playlist?list=OLAK5uy_m3h0VamCCD1kAjRSvyvIjHFhbDPB3xANI",
       linkText: "YouTube link (official channel)",
     },
   ];
@@ -70,6 +89,12 @@
             {#if album.linkB}
               <a href={album.linkB}
                 >{album.linkBText ? album.linkBText : "Link B"}</a
+              >
+            {/if}
+            {#if album.liveLink}
+              <span
+                >You should also hear it
+                <a href={album.liveLink}>live</a></span
               >
             {/if}
           </div>
@@ -106,6 +131,17 @@
     grid-template-columns: 20em 1fr;
     grid-template-rows: auto auto auto 1fr;
     column-gap: 2em;
+
+    @media only screen and (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        > img {
+            width: 70%;
+            margin-bottom: 1em;
+        }
+    }
     > img {
       grid-row: 1 / span 4;
       grid-column: 1;

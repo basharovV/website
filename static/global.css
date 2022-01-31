@@ -54,7 +54,7 @@ h2 {
 
 p {
 	line-height: 1.7em;
-	opacity: 0.9;
+	/* opacity: 0.9; */
 }
 
 a {

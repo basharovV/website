@@ -190,6 +190,9 @@
         one:
       </p>
       <YoutubeVideo videoId="bSN3eBiGWIM" platform="yt" />
+      <p>or this one:</p>
+      <YoutubeVideo videoId="-imEDkQukVY" platform="yt" />
+
       <!-- <div class="embed">
         <iframe
           on:load={() => {
@@ -219,61 +222,24 @@
       <YoutubeVideo videoId="2PP0OrzS_k8" platform="yt" />
     </section>
     <section class="magic-touch">
-      <h3>🥁 The Magic Touch Collective</h3>
-      <img src="music/magic-touch-logo.png" alt="Magic Touch Collective logo" />
+      <h3>🦆 El Pato Records</h3>
+      <img src="music/el-pato-records.png" alt="El Pato Records logo" />
       <p>
-        This is my band (fusion, latin, folk, rock), currently performing in
-        Marbella and working on our debut album. Check us out on <a
-          href="https://magictouchband.com">magictouchband.com</a
+        A little record label and collective of musicians started by me and some
+        friends. Check us out our music on <a
+          href="https://soundcloud.com/elpatorecords">SoundCloud</a
         >
         or follow us on
-        <a href="https://instagram.com/magictouchmarbella">Instagram</a>
-      </p>
-    </section>
-    <section>
-      <h3>🎧 Featured music</h3>
-      <p>
-        I regularly upload cinematic, experimental, progressive, electronic and
-        jazzy tracks on my SoundCloud. Sometimes I also do covers and remixes,
-        and publish unedited live jam sessions.
-      </p>
-      <TrackMiniPlayer
-        track={pianoTracks[0]}
-        isDarkModeEnabled={$isDarkModeEnabled}
-        accent="e60303"
-      />
-    </section>
-    <section>
-      <h3>🎹 Pianosphere</h3>
-      <p>
-        Pianosphere is neo-classical album I'm working on to explore and capture
-        the sound of the piano in new ways.
-      </p>
-
-      <TrackMiniPlayer
-        track={pianoTracks[1]}
-        isDarkModeEnabled={$isDarkModeEnabled}
-      />
-      <TrackMiniPlayer
-        track={pianoTracks[2]}
-        isDarkModeEnabled={$isDarkModeEnabled}
-      />
-      <br />
-      <div class="image-grid">
-        <img src="music/pianosphere/MVIMG_20200421_194344.jpg" />
-        <img src="music/pianosphere/MVIMG_20200504_151957.jpg" />
-        <!-- <img src="music/pianosphere/MVIMG_20200509_141820.jpg" /> -->
-        <img src="music/pianosphere/MVIMG_20200510_171435.jpg" />
-      </div>
-    </section>
-    <section>
-      <h3>🔉 Samples</h3>
-      <p>
-        If you're looking for distinct sounds to use in your projects, head over
-        to the <a href="/shop">shop!</a>
+        <a href="https://instagram.com/elpatoyoan">Instagram</a>
       </p>
     </section>
 
+    <section>
+      <h3>🎞 Stranger Things intro re-score</h3>
+      <p>An attempt at rescoring the iconic Stranger Things title sequence.</p>
+      <YoutubeVideo videoId="215550767" platform="vimeo" />
+    </section>
+    
     <section style="break-before: column;">
       <div
         style="display: grid; grid-template-columns: 1fr auto;align-items: center;"
@@ -335,6 +301,50 @@
       </div>
     </section>
     <section>
+      <h3>🎧 Featured music</h3>
+      <p>
+        I regularly upload cinematic, experimental, progressive, electronic and
+        jazzy tracks on my SoundCloud. Sometimes I also do covers and remixes,
+        and publish unedited live jam sessions.
+      </p>
+      <TrackMiniPlayer
+        track={pianoTracks[0]}
+        isDarkModeEnabled={$isDarkModeEnabled}
+        accent="e60303"
+      />
+    </section>
+    <section>
+      <h3>🎹 Pianosphere</h3>
+      <p>
+        Pianosphere is neo-classical album I'm working on to explore and capture
+        the sound of the piano in new ways.
+      </p>
+
+      <TrackMiniPlayer
+        track={pianoTracks[1]}
+        isDarkModeEnabled={$isDarkModeEnabled}
+      />
+      <TrackMiniPlayer
+        track={pianoTracks[2]}
+        isDarkModeEnabled={$isDarkModeEnabled}
+      />
+      <br />
+      <div class="image-grid">
+        <img src="music/pianosphere/MVIMG_20200421_194344.jpg" />
+        <img src="music/pianosphere/MVIMG_20200504_151957.jpg" />
+        <!-- <img src="music/pianosphere/MVIMG_20200509_141820.jpg" /> -->
+        <img src="music/pianosphere/MVIMG_20200510_171435.jpg" />
+      </div>
+    </section>
+    <section>
+      <h3>🔉 Samples</h3>
+      <p>
+        If you're looking for distinct sounds to use in your projects, head over
+        to the <a href="/shop">shop!</a>
+      </p>
+    </section>
+
+    <section>
       <h3>🎬 Westworld Competition</h3>
       <p>
         I took part in the online film music competition from Spitfire Audio and
@@ -343,12 +353,7 @@
       </p>
       <YoutubeVideo videoId="KPugdlU8GRs" platform="yt" />
     </section>
-    <section>
-      <h3>🎞 Stranger Things intro re-score</h3>
-      <p>An attempt at rescoring the iconic Stranger Things title sequence.</p>
-      <YoutubeVideo videoId="215550767" platform="vimeo" />
-    </section>
-
+    <!-- 
     <section>
       <h3>🎞 Sci-fi game trailer re-score</h3>
       <p>
@@ -356,7 +361,7 @@
         adventure theme.
       </p>
       <YoutubeVideo videoId="491425916" platform="vimeo" />
-    </section>
+    </section> -->
   </div>
   <small
     >You didn't have to scroll all the way down here :) That's too kind. <small

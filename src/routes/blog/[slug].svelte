@@ -34,7 +34,7 @@
     <small>{post.description}</small>
   {/if}
   <div class="info">
-    <small>updated on {post.updated} ❖ posted on {post.date}</small>
+    <small class="updated-date">{post.updated ? `updated on ${post.updated} ❖ ` : `posted on ${post.date}`}</small>
     <div class="tags">
       {#each tags as tag}
         <p class="tag">{tag}</p>
@@ -94,12 +94,17 @@
     margin: auto;
   }
 
+  .updated-date {
+    margin: 0;
+  }
+
   .info {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 1em;
+    opacity: 0.5;
   }
 
   .tags {

@@ -3,7 +3,7 @@ slug: building-a-modern-portfolio-site
 title: 'Building a modern portfolio site'
 date: '2021-09-21'
 tags: dev,composer,site,music,portfolio
-description: "A multi-faceted website for mu"
+description: "Some things I used to make this site"
 author: "Slav"
 published: true
 ---
