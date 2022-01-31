@@ -110,6 +110,10 @@
     margin: 1em auto;
     width: fit-content;
     display: block;
+    border: 1.8px solid rgba(128, 128, 128, 0.282);
+    border-radius: 40px;
+    padding: 0.3em 1em;
+    text-decoration: none;
   }
   .full-albums {
     position: absolute;

@@ -80,7 +80,7 @@
   <FeaturedProducts {products} />
 </section>
 
-<small>Thanks for stopping by!</small>
+<small style="text-align:center;">Thanks for stopping by!</small>
 
 <footer class={$isDarkModeEnabled ? "invert" : ""}>
   <p>Vyacheslav Basharov</p>

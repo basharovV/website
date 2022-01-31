@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
 
   import Images from "../components/Images.svelte";
+  import YoutubeVideo from "../components/YoutubeVideo.svelte";
   import { isDarkModeEnabled } from "../store/state.js";
 </script>
 
@@ -13,49 +14,68 @@
   />
 </svelte:head>
 <header class={$isDarkModeEnabled ? "invert" : ""}>
-  <div>
+  <!-- <div>
     <h2 style="margin-bottom: 0;">Vyacheslav Basharov</h2>
     <small style="margin-bottom: 0;">Full-stack developer</small>
-  </div>
-  <a style="display: flex;" href="/"
+  </div> -->
+  <!-- <a style="display: flex;" href="/"
     ><img style="margin:auto;width: 30px;" alt="Logo" src="logo.svg" /></a
-  >
-
-  <small style="opacity: 0.6;margin:0"
-    ><a
-      style="text-decoration: none"
-      href="mailto:contact@vyacheslavbasharov.com"
-      >contact@vyacheslavbasharov.com</a
-    ></small
-  >
+  > -->
 </header>
 
 <!-- <Nav/> -->
+<p style="text-align: center;">
+  a list of some things I've built, have a look around!
+</p>
+<small style="opacity: 0.6;margin:0;text-align:center;display:block"
+  >Questions? -> <a
+    style="text-decoration: none"
+    href="mailto:contact@vyacheslavbasharov.com"
+    >contact@vyacheslavbasharov.com</a
+  ></small
+>
 
 <section>
-  <h3>Products & projects</h3>
-  <h4>
-    from full-fledged products, to failed startups, to fun mini side projects:
-  </h4>
+  <h3>♪ Music tech</h3>
+  <p>
+    💡 Integrating <span style="color: #00ffb3">REAPER</span> and a smart bulb to turn <span style="color: red">red</span> when recording.
+  </p>
+
+  <YoutubeVideo videoId="CaTaeP-j7Uk" platform="yt" />
+  <p>
+    More info on the <a href="https://forum.cockos.com/showthread.php?t=261061"
+      >Cockos forums</a
+    >
+  </p>
+  <br/>
+
+
+  <h3>👨‍💻 Apps & Extensions</h3>
+  <div class="products">
+    <a href="https://tbxproject.com">
+      <div>
+        <img src="dev/logo-tbx.png" />
+        <p>tbx - Team Browser Extension</p>
+        <small
+          >A browser extension to browse together in real-time, and do online
+          research seamlessly in the browser.</small
+        >
+      </div>
+    </a>
+    <a href="https://github.com/basharovV/StumbleUponAwesome">
+      <div>
+        <img src="dev/logo-sua.png" />
+        <p>StumbleUponAwesome</p>
+        <small>
+          A fun StumbleUpon-like extension for those interested in development,
+          tech and science.
+        </small>
+      </div>
+    </a>
+  </div>
+
+  <h3>Other projects</h3>
   <ul>
-    <li>
-      <p>
-        🧩
-        <b>tbx</b>: A browser extension to browse together in real-time, and do
-        online research seamlessly in the browser.
-        <a href="https://tbxproject.com"> Learn more at tbxproject.com -> </a>
-      </p>
-    </li>
-    <li>
-      <p>
-        🖌
-        <b>existentialist</b>: A publication about the intersection of
-        technology, science and art.
-        <a href="https://existentialist.xyz">
-          Have a read at existentialist.xyz ->
-        </a>
-      </p>
-    </li>
     <li>
       <p>
         📲
@@ -71,16 +91,6 @@
           href="https://medium.com/milly-works/loyalty-schemes-suck-90c4f2f15de6"
           >read this explanatory blog post -></a
         >
-      </p>
-    </li>
-    <li>
-      <p>
-        ⚡️
-        <b>StumbleUponAwesome</b>: A fun StumbleUpon-like extension for
-        developers, tech and science enthusiasts.
-        <a href="https://github.com/basharovV/StumbleUponAwesome">
-          Check out StumbleUponAwesome ->
-        </a>
       </p>
     </li>
     <li>
@@ -179,6 +189,36 @@
   section {
     padding: 1em 0;
     position: relative;
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    text-align: center;
+    margin-bottom: 4em;
+    margin-top: 1em;
+
+    small {
+      max-width: 250px;
+      margin-bottom: 2em;
+      display: block;
+    }
+
+    > a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid rgb(0, 255, 179);
+      border-radius: 3px;
+      padding: 0.5em;
+      text-decoration: none;
+    }
+
+    img {
+      height: 10em;
+      width: auto;
+    }
   }
 
   .designs {
