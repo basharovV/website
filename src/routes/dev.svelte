@@ -209,7 +209,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: 1px solid rgb(0, 255, 179);
+      border: 1px solid rgba(116, 116, 116, 0.249);
       border-radius: 3px;
       padding: 0.5em;
       text-decoration: none;

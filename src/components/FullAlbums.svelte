@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from "svelte";
+
   const albums = [
     {
       artist: "Nala Sinephro",
@@ -67,17 +69,30 @@
       artwork: "/post-media/full-albums/tigre.jpeg",
       link: "https://www.youtube.com/playlist?list=OLAK5uy_m3h0VamCCD1kAjRSvyvIjHFhbDPB3xANI",
       linkText: "YouTube link (official channel)",
-    },
+    }
   ];
+
+  let postHeight = 0;
+  let fullAlbums;
+  let youtubeLink;
+
+  onMount(() => {
+    console.log('albums height:', fullAlbums.offsetHeight);
+    console.log('youtube height:', youtubeLink.offsetHeight);
+    const fullAlbumsMarginTop = parseInt(window.getComputedStyle(fullAlbums).getPropertyValue('margin-top').slice(0, -2));
+    const youtubeLinkMargin = parseInt(window.getComputedStyle(youtubeLink).getPropertyValue('margin-top').slice(0, -2)) * 2;
+    console.log('fullAlbumsMarginTop height:', fullAlbumsMarginTop);
+    postHeight = fullAlbums.offsetHeight + fullAlbumsMarginTop + youtubeLink.clientHeight + youtubeLinkMargin + 50;
+  });
 </script>
 
-<div class="post">
-  <a
+<div class="post" style="height: {postHeight}px;">
+  <a bind:this={youtubeLink}
     class="playlist"
     href="https://www.youtube.com/playlist?list=PL_6G6za9bUylqt1k56FWGJJbAV0HU3bTr"
     >📺 YouTube playlist here</a
   >
-  <div class="full-albums">
+  <div class="full-albums" bind:this={fullAlbums}>
     <div class="albums">
       {#each albums as album}
         <div class="album">
@@ -106,6 +121,9 @@
 </div>
 
 <style lang="scss">
+  .container {
+    position: relative;
+  }
   .playlist {
     margin: 1em auto;
     width: fit-content;
@@ -137,14 +155,14 @@
     column-gap: 2em;
 
     @media only screen and (max-width: 800px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        > img {
-            width: 70%;
-            margin-bottom: 1em;
-        }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      > img {
+        width: 70%;
+        margin-bottom: 1em;
+      }
     }
     > img {
       grid-row: 1 / span 4;
