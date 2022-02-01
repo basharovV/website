@@ -14,9 +14,9 @@
 
   const setPageId = () => {
     if (typeof window !== "undefined") {
-      pageId = window.location.href.split("https://vyacheslavbasharov.com");
+      pageId = window.location.href.split("https://vyacheslavbasharov.com").filter(a=>a.length);
       if (pageId.length !== 1) {
-        pageId = window.location.href.split("http://localhost:3000");
+        pageId = window.location.href.split("http://localhost:3000").filter(a=>a.length);
         if (pageId) {
           pageId = pageId[1];
         }
