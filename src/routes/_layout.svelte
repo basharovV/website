@@ -24,7 +24,7 @@
         pageId = "home";
       }
 
-      if (pageId[0] === "/") {
+      if (page && pageId.charAt(0) === "/") {
         pageId = pageId.slice(1);
       }
     }
