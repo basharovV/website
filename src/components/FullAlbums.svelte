@@ -69,25 +69,46 @@
       artwork: "/post-media/full-albums/tigre.jpeg",
       link: "https://www.youtube.com/playlist?list=OLAK5uy_m3h0VamCCD1kAjRSvyvIjHFhbDPB3xANI",
       linkText: "YouTube link (official channel)",
-    }
+    },
   ];
 
   let postHeight = 0;
   let fullAlbums;
   let youtubeLink;
 
-  onMount(() => {
-    console.log('albums height:', fullAlbums.offsetHeight);
-    console.log('youtube height:', youtubeLink.offsetHeight);
-    const fullAlbumsMarginTop = parseInt(window.getComputedStyle(fullAlbums).getPropertyValue('margin-top').slice(0, -2));
-    const youtubeLinkMargin = parseInt(window.getComputedStyle(youtubeLink).getPropertyValue('margin-top').slice(0, -2)) * 2;
-    console.log('fullAlbumsMarginTop height:', fullAlbumsMarginTop);
-    postHeight = fullAlbums.offsetHeight + fullAlbumsMarginTop + youtubeLink.clientHeight + youtubeLinkMargin + 50;
-  });
+  const calculateLayout = () => {
+    console.log("albums height:", fullAlbums.offsetHeight);
+    console.log("youtube height:", youtubeLink.offsetHeight);
+    const fullAlbumsMarginTop = parseInt(
+      window
+        .getComputedStyle(fullAlbums)
+        .getPropertyValue("margin-top")
+        .slice(0, -2)
+    );
+    const youtubeLinkMargin =
+      parseInt(
+        window
+          .getComputedStyle(youtubeLink)
+          .getPropertyValue("margin-top")
+          .slice(0, -2)
+      ) * 2;
+    console.log("fullAlbumsMarginTop height:", fullAlbumsMarginTop);
+    postHeight =
+      fullAlbums.offsetHeight +
+      fullAlbumsMarginTop +
+      youtubeLink.clientHeight +
+      youtubeLinkMargin +
+      50;
+  };
+
+  onMount(() => calculateLayout());
 </script>
 
+<svelte:window on:resize={() => calculateLayout()} />
+
 <div class="post" style="height: {postHeight}px;">
-  <a bind:this={youtubeLink}
+  <a
+    bind:this={youtubeLink}
     class="playlist"
     href="https://www.youtube.com/playlist?list=PL_6G6za9bUylqt1k56FWGJJbAV0HU3bTr"
     >📺 YouTube playlist here</a
