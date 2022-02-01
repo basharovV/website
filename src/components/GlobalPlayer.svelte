@@ -55,7 +55,6 @@
   };
 
   const onSeek = async (e) => {
-    console.log(e);
 
     const percent = e.offsetX / e.target.offsetWidth;
     const milli = await new Promise((resolve, reject) => {
@@ -79,7 +78,6 @@
     }
   };
   const updateTrack = (widgetId) => {
-    console.log("currentlyPlayingWidget: ", widgetId);
     if (SC && widgetId) {
       widget = SC.Widget(widgetId);
 

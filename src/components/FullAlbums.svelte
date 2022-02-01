@@ -77,8 +77,6 @@
   let youtubeLink;
 
   const calculateLayout = () => {
-    console.log("albums height:", fullAlbums.offsetHeight);
-    console.log("youtube height:", youtubeLink.offsetHeight);
     const fullAlbumsMarginTop = parseInt(
       window
         .getComputedStyle(fullAlbums)
@@ -92,7 +90,6 @@
           .getPropertyValue("margin-top")
           .slice(0, -2)
       ) * 2;
-    console.log("fullAlbumsMarginTop height:", fullAlbumsMarginTop);
     postHeight =
       fullAlbums.offsetHeight +
       fullAlbumsMarginTop +

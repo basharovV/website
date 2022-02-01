@@ -65,7 +65,6 @@
     const pianoTracks = await Promise.all(
       pianoTrackUrls.map((url) => getTrack(url))
     );
-    console.log(featuredTracks);
 
     return { featuredTracks, intoTheLooTracks, pianoTracks };
   }

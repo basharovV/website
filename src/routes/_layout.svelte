@@ -21,12 +21,10 @@
           .split("https://vyacheslavbasharov.com")
           .filter((a) => a.length && a !== "/");
       } else if (window.location.href.includes("http://localhost:3000")) {
-        console.log("href", window.location.href);
         pageId = window.location.href
           .split("http://localhost:3000")
           .filter((a) => a.length && a !== "/");
       }
-      console.log("pageId afterURL", pageId);
 
       // Default to home
       if (pageId.length) {
@@ -35,12 +33,9 @@
         pageId = "home";
       }
 
-      console.log("pageId", pageId);
       // Remove leading /
       if (pageId && pageId.charAt(0) === "/") {
-        console.log("pageId before slice", pageId);
         pageId = pageId.slice(1);
-        console.log("pageId after slice", pageId);
       }
     }
   };
@@ -103,7 +98,6 @@
         typeof window !== "undefined" &&
         typeof window.CUSDIS !== "undefined"
       ) {
-        console.log("reloading cusdis");
         window.CUSDIS.initial();
       }
     } else {
