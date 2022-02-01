@@ -39,6 +39,21 @@
   {/each}
 </ul>
 
+<footer class={$isDarkModeEnabled ? "invert" : ""}>
+  <p>Vyacheslav Basharov</p>
+  <div>
+    <a href="https://github.com/basharovV"
+      ><img alt="github" src="github.svg" /></a
+    >
+    <a href="https://soundcloud.com/vbash"
+      ><img alt="soundcloud" src="soundcloud.svg" /></a
+    >
+    <a href="mailto:contact@vyacheslavbasharov.com"
+      ><img alt="email" src="email.svg" /></a
+    >
+  </div>
+</footer>
+
 <div class="comingsoon {$isDarkModeEnabled ? 'invert' : ''}">
   <img src="/bulby_bulb.png" />
 </div>
@@ -75,6 +90,27 @@
       img {
         filter: invert(1);
       }
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    font-family: Snake, Georgia, "Times New Roman", Times, serif;
+    font-size: 2em;
+    margin: 3em auto 0;
+    > p {
+      text-align: center;
+    }
+    > div {
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    &.invert img {
+      filter: invert(1);
     }
   }
 </style>

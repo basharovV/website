@@ -15,6 +15,7 @@
 
 <script>
   import FullAlbums from "../../components/FullAlbums.svelte";
+  import { isDarkModeEnabled } from "../../store/state.js";
 
   export let post;
   export let slug;
@@ -34,7 +35,11 @@
     <small>{post.description}</small>
   {/if}
   <div class="info">
-    <small class="updated-date">{post.updated ? `updated on ${post.updated} ❖ ` : `posted on ${post.date}`}</small>
+    <small class="updated-date"
+      >{post.updated
+        ? `updated on ${post.updated} ❖ `
+        : `posted on ${post.date}`}</small
+    >
     <div class="tags">
       {#each tags as tag}
         <p class="tag">{tag}</p>
@@ -49,6 +54,21 @@
     {/if}
   </div>
 </post>
+
+<footer class={$isDarkModeEnabled ? "invert" : ""}>
+  <p>Vyacheslav Basharov</p>
+  <div>
+    <a href="https://github.com/basharovV"
+      ><img alt="github" src="github.svg" /></a
+    >
+    <a href="https://soundcloud.com/vbash"
+      ><img alt="soundcloud" src="soundcloud.svg" /></a
+    >
+    <a href="mailto:contact@vyacheslavbasharov.com"
+      ><img alt="email" src="email.svg" /></a
+    >
+  </div>
+</footer>
 
 <style lang="scss">
   /*
@@ -165,5 +185,26 @@
 
   .content :global(li) {
     margin: 0 0 0.5em 0;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    font-family: Snake, Georgia, "Times New Roman", Times, serif;
+    font-size: 2em;
+    margin: 3em auto 0;
+    > p {
+      text-align: center;
+    }
+    > div {
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
+
+  .invert img {
+    filter: invert(1);
   }
 </style>
