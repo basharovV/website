@@ -11,33 +11,53 @@
   export let segment;
   let hasLoaded = false;
   let pageId;
+  let cusdisElement;
 
   const setPageId = () => {
+    // Get the page from the URL
     if (typeof window !== "undefined") {
-      pageId = window.location.href.split("https://vyacheslavbasharov.com").filter(a=>a.length);
-      if (pageId.length !== 1) {
-        pageId = window.location.href.split("http://localhost:3000").filter(a=>a.length);
-        if (pageId) {
-          pageId = pageId[1];
-        }
+      if (window.location.href.includes("https://vyacheslavbasharov.com")) {
+        pageId = window.location.href
+          .split("https://vyacheslavbasharov.com")
+          .filter((a) => a.length && a !== "/");
+      } else if (window.location.href.includes("http://localhost:3000")) {
+        console.log("href", window.location.href);
+        pageId = window.location.href
+          .split("http://localhost:3000")
+          .filter((a) => a.length && a !== "/");
+      }
+      console.log("pageId afterURL", pageId);
+
+      // Default to home
+      if (pageId.length) {
+        pageId = pageId[0];
       } else {
         pageId = "home";
       }
 
+      console.log("pageId", pageId);
+      // Remove leading /
       if (pageId && pageId.charAt(0) === "/") {
+        console.log("pageId before slice", pageId);
         pageId = pageId.slice(1);
+        console.log("pageId after slice", pageId);
       }
     }
-    console.log("pageId", pageId);
   };
 
   onMount(() => {
+    // Start up observer
     setPageId();
-    initCusdis();
+
+    const observer = new MutationObserver((records) => {
+      // Page Id changed
+      initCusdis();
+    });
+
+    observer.observe(cusdisElement, { attributeFilter: ["data-page-id"] });
   });
 
   const onScriptLoaded = () => {
-    console.log("Cusdis loaded");
     hasLoaded = true;
   };
 
@@ -55,7 +75,7 @@
       enabled !== currentTheme
     ) {
       //changed
-      window.CUSDIS.setTheme(enabled ? 'dark' : 'light');
+      window.CUSDIS.setTheme(enabled ? "dark" : "light");
     }
 
     currentTheme = enabled;
@@ -83,6 +103,7 @@
         typeof window !== "undefined" &&
         typeof window.CUSDIS !== "undefined"
       ) {
+        console.log("reloading cusdis");
         window.CUSDIS.initial();
       }
     } else {
@@ -96,7 +117,7 @@
         onScriptLoaded();
       };
       js.src =
-        "https://website-comments-6yo47knvo-basharov.vercel.app/js/cusdis.es.js";
+        "https://website-comments.vercel.app/js/cusdis.es.js";
       head.appendChild(js);
     }
   };
@@ -108,8 +129,9 @@
   <slot />
   {#if isClient && pageId}
     <div
+      bind:this={cusdisElement}
       id="cusdis_thread"
-      data-host="https://website-comments-6yo47knvo-basharov.vercel.app"
+      data-host="https://website-comments.vercel.app"
       data-app-id="d95890c3-822f-40ee-81ad-2432b0ff0244"
       data-page-id={pageId}
       data-page-url={window.location.href}
