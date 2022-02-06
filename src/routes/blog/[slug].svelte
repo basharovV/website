@@ -157,7 +157,7 @@
   }
 
   .content :global(pre) {
-    background-color: rgb(223, 223, 223);
+    background-color: ivory;
     box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
     padding: 0.5em;
     border-radius: 2px;

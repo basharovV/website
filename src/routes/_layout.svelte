@@ -1,15 +1,14 @@
 <script>
   import { onMount } from "svelte";
+  import { stores } from "@sapper/app";
+
+  const { page } = stores();
 
   import Nav from "../components/Nav.svelte";
-  import PageTransitions from "../components/PageTransitions.svelte";
   import { isDarkModeEnabled } from "../store/state";
-
-  let isHome = true;
 
   let isClient = false;
   export let segment;
-  let hasLoaded = false;
   let pageId;
   let cusdisElement;
 
@@ -40,27 +39,45 @@
     }
   };
 
-  onMount(() => {
-    // Start up observer
-    setPageId();
-
-    const observer = new MutationObserver((records) => {
-      // Page Id changed
-      initCusdis();
-    });
-
-    observer.observe(cusdisElement, { attributeFilter: ["data-page-id"] });
-  });
-
-  const onScriptLoaded = () => {
-    hasLoaded = true;
+  
+  const initCusdis = () => {
+    let head = document.getElementsByTagName("head")[0];
+    if (document.getElementById("cusdis-sdk")) {
+      // ReInit existing script
+      if (
+        typeof window !== "undefined" &&
+        typeof window.CUSDIS !== "undefined"
+      ) {
+        window.CUSDIS.initial();
+      }
+    } else {
+      // Create it
+      let js = document.createElement("script");
+      js.id = "cusdis-sdk";
+      js.async = true;
+      js.src = "https://website-comments.vercel.app/js/cusdis.es.js";
+      head.appendChild(js);
+    }
   };
 
+  /*
+  The Cusdis SDK grabs the pageId from the DOM, so we need to observe when it's changed. 
+  */
+  onMount(() => {
+    new MutationObserver(initCusdis).observe(cusdisElement, {
+      attributeFilter: ["data-page-id"],
+    });
+
+    setPageId();
+  });
+
   if (typeof window !== "undefined") {
-    // client-only code here
     isClient = true;
   }
 
+  /*
+  Update the Cusdis theme to match the site theme when it changes. 
+  */
   let currentTheme;
 
   isDarkModeEnabled.subscribe((enabled) => {
@@ -70,51 +87,25 @@
       enabled !== currentTheme
     ) {
       //changed
-      window.CUSDIS.setTheme(enabled ? "dark" : "light");
+      typeof window !== "undefined" &&
+        typeof window.CUSDIS !== "undefined" &&
+        window.CUSDIS.setTheme(enabled ? "dark" : "light");
     }
 
     currentTheme = enabled;
   });
 
+  /*
+  Listen for page changes and set the current page ID to pass into the SDK.
+  */
   $: {
     if (typeof window !== "undefined") {
-      if (segment) {
-        // trigger it
+      if ($page.path) {
         setPageId();
-        initCusdis();
-      } else {
-        setPageId();
-        initCusdis();
       }
     }
   }
 
-  const initCusdis = () => {
-    let head = document.getElementsByTagName("head")[0];
-    if (document.getElementById("cusdis-sdk")) {
-      // ReInit existing script ;
-
-      if (
-        typeof window !== "undefined" &&
-        typeof window.CUSDIS !== "undefined"
-      ) {
-        window.CUSDIS.initial();
-      }
-    } else {
-      // Create it
-
-      let js = document.createElement("script");
-      js.id = "cusdis-sdk";
-      js.async = true;
-      js.onload = function () {
-        // remote script has loaded
-        onScriptLoaded();
-      };
-      js.src =
-        "https://website-comments.vercel.app/js/cusdis.es.js";
-      head.appendChild(js);
-    }
-  };
 </script>
 
 <Nav {segment} />

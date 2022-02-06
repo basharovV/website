@@ -158,7 +158,7 @@
     margin-top: 4em;
   }
   .albums {
-    width: 90%;
+    width: 95%;
     margin: auto;
     display: flex;
     gap: 2em;
