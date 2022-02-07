@@ -1,25 +1,20 @@
 ---
 slug: adding-comments-to-static-site
-title: 'Adding comments to a static site using Cusdis'
-date: '2022-02-02'
+title: "Adding comments to a static site using Cusdis"
+date: "2022-02-02"
 tags: dev,composer,site,music,portfolio
 description: "A fast and easy way to add comments to your site, and for free!"
 author: "Slav"
 published: false
 ---
 
-If you operate a static site, you might be interested in adding a comments section. 
-There's many options out there, in my case I wanted something that's:
-- Private and lightweight
-- Self hosted
-- Free and easy to setup
-- Customizable
+This tutorial is on how to implement Cusdis comments into a Sapper + Svelte site.
 
-This tutorial is on how to implement Cusdis into a Sapper + Svelte site. 
+### Pre-requisite:
+First you need to [Self-host Cusdis](https://cusdis.com/doc#/self-host/vercel). You can use the free Heroku Postgres as your database. 
 
-Assuming you've already followed the instructions to host Cusdis (either on your own server, Vercel, or on Cusdis servers), we can get started!
-
-In your Svelte `_layout.svelte` template, you can define the element where the comments secion iframe will be loaded. This is also how we pass our config to the SDK (it will read from this element). 
+## Adding Cusdis to Svelte site
+To add comments support on any page of your static site, you need to add the Cusdis element in your `_layout.svelte` template - this is where the comments secion iframe will be loaded into. This is also how we pass our config to the SDK (it will read from this element).
 
 ```
 <main>
@@ -33,13 +28,21 @@ In your Svelte `_layout.svelte` template, you can define the element where the c
       data-page-id={pageId}
       data-page-url={window.location.href}
       data-page-title={document.title}
-      data-theme={$isDarkModeEnabled ? "dark" : "light"}
+      data-theme='dark'
     />
   {/if}
 </main>
 ```
 
-The Cusdis SDK needs a `pageId` to know which page to load comments for. Let's generate a `pageId` from the current URL:
+Now let's define `cusdisElement` (to bind the comments element), `pageId` (to tell the SDK about URL changes, so comments are associated with the right page).
+
+```
+let pageId;
+let cusdisElement;
+```
+
+## Dynamic pageId
+And now let's write a function that will set the `pageId`. This could be a unique ID, or based on the URL. I used the URL path (without the domain) as the `pageId`. Eg. if the current URL is **https://vyacheslavbasharov.com/blog/adding-comments-to-static-site** the `pageId` is **blog/adding-comments-to-static-site**
 
 ```
 let pageId;
@@ -70,3 +73,42 @@ const setPageId = () => {
     }
 };
 ```
+
+We need to update the `pageId` automatically whenever the route changes. To do this, we import the `page` store which will fire on update:
+
+```
+import { stores } from "@sapper/app";
+
+const { page } = stores();
+```
+
+We can now listen for changes and update the `pageId` like this:
+
+```
+  /*
+  Listen for page changes and set the current page ID to pass into the SDK.
+  */
+  $: {
+    if (typeof window !== "undefined") {
+      if ($page.path) {
+        setPageId();
+      }
+    }
+  }
+
+  /*
+  The Cusdis SDK grabs the pageId from the DOM, so we need to observe when it's changed.
+  */
+  onMount(() => {
+    new MutationObserver(initCusdis).observe(cusdisElement, {
+      attributeFilter: ["data-page-id"],
+    });
+
+    setPageId();
+  });
+
+  if (typeof window !== "undefined") {
+    isClient = true;
+  }
+```
+

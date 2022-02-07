@@ -16,6 +16,32 @@
 <script>
   import FullAlbums from "../../components/FullAlbums.svelte";
   import { isDarkModeEnabled } from "../../store/state.js";
+  import copy from "copy-to-clipboard";
+  import { onMount } from "svelte";
+
+  let content;
+  /**
+   * This function will go through all the 'pre' elements on the page and add a copy button to them.
+   */
+  onMount(() => {
+    // content is now binded
+    const codeBlocks = document.querySelectorAll("pre");
+    console.log("codeBlocks", codeBlocks);
+    codeBlocks.forEach((block) => {
+      const copyPrompt = document.createElement("p");
+      copyPrompt.className = "copy-prompt";
+      copyPrompt.innerHTML = "👆 Click to copy";
+      block.appendChild(copyPrompt);
+      block.addEventListener("click", (evt) => {
+        copy(block.querySelector('code').textContent);
+        block.getElementsByClassName("copy-prompt")[0].innerHTML = "Copied!";
+        setInterval(() => {
+          block.getElementsByClassName("copy-prompt")[0].innerHTML =
+            "👆 Click to copy";
+        }, 1000);
+      });
+    });
+  });
 
   export let post;
   export let slug;
@@ -46,7 +72,7 @@
       {/each}
     </div>
   </div>
-  <div class="content">
+  <div class="content" bind:this={content}>
     {#if slug === "full-albums-worth-listening-to"}
       <FullAlbums />
     {:else}
@@ -157,19 +183,53 @@
   }
 
   .content :global(pre) {
-    background-color: ivory;
+    background-color: rgb(245, 242, 239);
     box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
     padding: 0.5em;
+    padding-left: 1em;
     border-radius: 2px;
     overflow-x: auto;
-
+    line-height: 1.7em;
+    border-left: 2px dashed rgba(106, 106, 106, 0.379);
+    transition: 0.1s all ease-in;
     :global(.dark-mode) & {
-      background-color: rgb(57, 57, 57);
+      background: none;
       color: rgb(223, 223, 223);
+    }
+    :global(.copy-prompt) {
+      position: absolute;
+      top: 1em;
+      right: 1em;
+      color: white;
+      opacity: 0;
+      top: -5px;
+      transition: 0.2s all ease-in;
+    }
+    &:hover {
+      background: rgba(96, 96, 96, 0.235);
+      cursor: pointer;
+      transform: scale(1.01);
+      :global(.copy-prompt) {
+        opacity: 1;
+        top: 0;
+      }
     }
   }
 
-  .content :global(pre) :global(code) {
+  .content :global(code) {
+    background: none;
+  }
+
+  .content > :global(p) > :global(code) {
+    color: rgb(251, 140, 140);
+    background-color: #343434;
+    font-family: menlo, inconsolata, monospace;
+    font-size: calc(1em - 2px);
+    padding: 0.2em 0.4em;
+    border-radius: 2px;
+  }
+
+  /* .content :global(pre) :global(code) {
     background-color: transparent;
     padding: 0;
     color: rgb(57, 57, 57);
@@ -177,7 +237,7 @@
       background-color: rgb(57, 57, 57);
       color: rgb(223, 223, 223);
     }
-  }
+  } */
 
   .content :global(ul) {
     line-height: 1.5;

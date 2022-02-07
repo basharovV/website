@@ -17,7 +17,7 @@ const getPost = (fileName) => {
   // use hljs to highlight our blocks codes
   renderer.code = (source, lang) => {
     const { value: highlighted } = hljs.highlightAuto(source);
-    return `<pre ><code>${highlighted}</code></pre>`;
+    return `<pre><code>${highlighted}</code></pre>`;
   };
 
   return {
