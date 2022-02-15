@@ -8,9 +8,6 @@ author: "Slav"
 published: true
 ---
 
-```
-const thisSite = portfolio.combine(dev, music);
-```
 ![img](/post-media/building-a-modern-portfolio-site/photo.jpg)
 
 This site is powered by:
