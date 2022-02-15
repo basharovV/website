@@ -67,18 +67,6 @@ a:hover {
 	color:rgb(255, 115, 115);
 }
 
-pre {
-	background-color: ivory;
-}
-
-code {
-	font-family: menlo, inconsolata, monospace;
-	font-size: calc(1em - 2px);
-	color: rgb(155, 155, 155);
-	background-color: #f0f0f0;
-	padding: 0.2em 0.4em;
-	border-radius: 2px;
-}
 
 @media (min-width: 400px) {
 	body {

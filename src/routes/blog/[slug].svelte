@@ -33,7 +33,7 @@
       copyPrompt.innerHTML = "👆 Click to copy";
       block.appendChild(copyPrompt);
       block.addEventListener("click", (evt) => {
-        copy(block.querySelector('code').textContent);
+        copy(block.querySelector("code").textContent);
         block.getElementsByClassName("copy-prompt")[0].innerHTML = "Copied!";
         setInterval(() => {
           block.getElementsByClassName("copy-prompt")[0].innerHTML =
@@ -164,6 +164,18 @@
     }
   }
 
+  .content :global(hr) {
+    max-width: 5em;
+    opacity: 0.5;
+  }
+
+  .content :global(h1),
+  .content :global(h2),
+  .content :global(h3),
+  .content :global(h4) {
+    position: relative;
+    left: -0.75em;
+  }
   .content :global(img) {
     width: 100%;
   }
@@ -192,6 +204,7 @@
     line-height: 1.7em;
     border-left: 2px dashed rgba(106, 106, 106, 0.379);
     transition: 0.1s all ease-in;
+    position: relative;
     :global(.dark-mode) & {
       background: none;
       color: rgb(223, 223, 223);
@@ -222,11 +235,15 @@
 
   .content > :global(p) > :global(code) {
     color: rgb(251, 140, 140);
-    background-color: #343434;
+    background-color: #ededed;
     font-family: menlo, inconsolata, monospace;
     font-size: calc(1em - 2px);
     padding: 0.2em 0.4em;
     border-radius: 2px;
+
+    :global(.dark-mode) & {
+      background-color: #343434;
+    }
   }
 
   /* .content :global(pre) :global(code) {
