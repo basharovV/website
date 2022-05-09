@@ -23,7 +23,14 @@
     // CHange background if music
     if (segment === "music") {
       window.document.body.classList.add("nav-music");
-    } else window.document.body.classList.remove("nav-music");
+      window.document.body.classList.remove("nav-blog");
+    } else if (segment === "blog") {
+      window.document.body.classList.remove("nav-music");
+      window.document.body.classList.add("nav-blog");
+    } else {
+      window.document.body.classList.remove("nav-music");
+      window.document.body.classList.remove("nav-blog");
+    }
   }
   // console.log(page);
   $: isProduct = $page.path.includes("shop/");

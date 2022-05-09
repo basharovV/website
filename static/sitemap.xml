@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url><loc>https://vyacheslavbasharov.com/</loc></url>
+<url><loc>https://vyacheslavbasharov.com/blog</loc></url>
+<url><loc>https://vyacheslavbasharov.com/shop/rhodesian-keys</loc></url>
+<url><loc>https://vyacheslavbasharov.com/shop/not-alone-in-space</loc></url>
+<url><loc>https://vyacheslavbasharov.com/shop/glass-and-metal</loc></url>
 <url><loc>https://vyacheslavbasharov.com/dev</loc></url>
 <url><loc>https://vyacheslavbasharov.com/music</loc></url>
 <url><loc>https://vyacheslavbasharov.com/shop</loc></url>
 <url><loc>https://vyacheslavbasharov.com/shop/rhodesian-keys</loc></url>
 <url><loc>https://vyacheslavbasharov.com/shop/not-alone-in-space</loc></url>
 <url><loc>https://vyacheslavbasharov.com/shop/glass-and-metal</loc></url>
+<url><loc>https://vyacheslavbasharov.com/blog/adding-comments-to-static-site</loc></url>
+<url><loc>https://vyacheslavbasharov.com/blog/building-a-modern-portfolio-site</loc></url>
+<url><loc>https://vyacheslavbasharov.com/blog/full-albums-worth-listening-to</loc></url>
 </urlset>

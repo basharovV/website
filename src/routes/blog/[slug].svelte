@@ -125,11 +125,16 @@
   }
   post {
     display: block;
-    max-width: 45em;
+    max-width: 50em;
     margin: auto;
 
     > p {
       text-align: center;
+    }
+
+    .content {
+      max-width: 45em;
+      margin: auto;
     }
   }
 
@@ -205,6 +210,7 @@
     border-left: 2px dashed rgba(106, 106, 106, 0.379);
     transition: 0.1s all ease-in;
     position: relative;
+    transform: scale(0.95);
     :global(.dark-mode) & {
       background: none;
       color: rgb(223, 223, 223);
@@ -219,9 +225,9 @@
       transition: 0.2s all ease-in;
     }
     &:hover {
-      background: rgba(96, 96, 96, 0.235);
+      background: rgba(96, 96, 96, 0.057);
       cursor: pointer;
-      transform: scale(1.01);
+      transform: scale(0.96);
       :global(.copy-prompt) {
         opacity: 1;
         top: 0;

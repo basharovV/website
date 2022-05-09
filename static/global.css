@@ -1,75 +1,99 @@
 body {
-	font: 400 1em "IBM Plex Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #313131;
-	margin: auto;
-	overflow-x: hidden;
+  font: 400 1em "IBM Plex Mono", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #313131;
+  margin: auto;
+  overflow-x: hidden;
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 button {
-	font-family: "IBM Plex Mono";
-	font-weight: bold;
+  font-family: "IBM Plex Mono";
+  font-weight: bold;
 }
 
 @font-face {
-	font-family: "Lack";
-	src: url("fonts/Lack/Lack-Regular.otf") format("opentype");
+  font-family: "Lack";
+  src: url("fonts/Lack/Lack-Regular.otf") format("opentype");
 }
 
 @font-face {
-	font-family: "Snake";
-	src: url("fonts/Snake/Snake.ttf");
+  font-family: "Snake";
+  src: url("fonts/Snake/Snake.ttf");
 }
 
 @font-face {
-	font-family: "IBM Plex Mono";
-	src: url("fonts/IBMPlex/IBMPlexMono-Regular.ttf");
+  font-family: "IBM Plex Mono";
+  src: url("fonts/IBMPlex/IBMPlexMono-Regular.ttf");
 }
 
 @font-face {
-	font-family: "IBM Plex Mono";
-	font-weight: bold;
-	src: url("fonts/IBMPlex/IBMPlexMono-Bold.ttf");
+  font-family: "IBM Plex Mono";
+  font-weight: bold;
+  src: url("fonts/IBMPlex/IBMPlexMono-Bold.ttf");
 }
 
-
-h1, h2, h3, h4, h5, h6, input {
-	margin: 1em 0 0.5em 0;
-	font-weight: 400;
-	line-height: 1.2;
-	font-family: Lack, Arial, Helvetica, sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input {
+  margin: 1em 0 0.5em 0;
+  font-weight: 400;
+  line-height: 1.2;
+  font-family: Lack, Arial, Helvetica, sans-serif;
 }
-
 
 h1 {
-	font-size: 2em;
+  font-size: 2em;
 }
 
 h2 {
-	font-size: 1.4em;
+  font-size: 1.4em;
 }
 
 p {
-	line-height: 1.7em;
-	/* opacity: 0.9; */
+  line-height: 1.7em;
+  /* opacity: 0.9; */
 }
 
 a {
-	color: inherit;
-	cursor: pointer;
-	text-underline-offset: 5px;
+  color: inherit;
+  cursor: pointer;
+  text-underline-offset: 5px;
 }
 
 a:hover {
-	color:rgb(255, 115, 115);
+  color: rgb(255, 115, 115);
 }
 
-
 @media (min-width: 400px) {
-	body {
-		font-size: 16px;
-	}
+  body {
+    font-size: 16px;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.392);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+  width: 20px;
 }
