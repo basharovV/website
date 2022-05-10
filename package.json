@@ -2,6 +2,9 @@
   "name": "vb-website",
   "description": "My personal website.",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.13"
+  },
   "scripts": {
     "dev": "sapper dev",
     "post:dev": "node generate-sitemap.js",
