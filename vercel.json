@@ -1,0 +1,3 @@
+{
+  "builds": [{ "src": "*.md", "use": "@vercel/static" }]
+}
