@@ -9,7 +9,7 @@
     "dev": "svelte-kit dev",
     "post:dev": "node generate-sitemap.js",
     "build": "svelte-kit build",
-    "export": "sveltekit build",
+    "export": "svelte-kit build",
     "start": "node build"
   },
   "type": "module",
