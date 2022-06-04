@@ -1,12 +1,17 @@
 // svelte.config.js
-import adapter from '@sveltejs/adapter-static';
-import preprocess from 'svelte-preprocess';
+import adapter from "@sveltejs/adapter-static";
+import preprocess from "svelte-preprocess";
 
 const config = {
   kit: {
-    adapter: adapter()
+    adapter: adapter(),
+    vite: {
+      optimizeDeps: {
+        include: ["highlight.js", "highlight.js/lib/core"],
+      },
+    },
   },
-  preprocess: preprocess()
+  preprocess: preprocess(),
   // ...other svelte options
 };
 

@@ -203,9 +203,9 @@
       }
 
       .play-button {
-        display: block;
-        width: 35px;
-        height: 35px;
+        display: flex;
+        width: auto;
+        height: 30px;
         padding: 0.5em 1em;
         transition: 100ms width, height, opacity ease;
         cursor: pointer;

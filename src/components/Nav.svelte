@@ -95,7 +95,7 @@
               />
             </svg>
 
-            <small>just launched!</small>
+            <small>sample packs + <br/>virtual instruments!</small>
           </div>
         {/if}
       </li>
@@ -241,7 +241,7 @@
     position: absolute;
     top: 50px;
     left: 20px;
-    min-width: 115px;
+    min-width: 200px;
     display: flex;
     flex-direction: column;
     animation: bounce 1s alternate-reverse 1s infinite ease-in-out;

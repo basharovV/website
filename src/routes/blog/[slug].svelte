@@ -4,17 +4,19 @@
     // the `slug` parameter is available because
     // this file is called [slug].svelte
     try {
-      const res = await fetch(`/blog/${params.slug}.json`).then((r) => r.json());
+      const res = await fetch(`/blog/${params.slug}.json`).then((r) =>
+        r.json()
+      );
       return {
         props: {
           post: res,
           slug: params.slug,
         },
-      }; 
+      };
     } catch (err) {
       return {
         status: 404,
-        error: 'Not found!'
+        error: "Not found!",
       };
     }
   }
@@ -25,28 +27,35 @@
   import { isDarkModeEnabled } from "../../store/state.js";
   import copy from "copy-to-clipboard";
   import { onMount } from "svelte";
+  import "highlight.js/styles/atom-one-dark-reasonable.css";
 
   let content;
   /**
-   * This function will go through all the 'pre' elements on the page and add a copy button to them.
+   * This function will go through all the 'pre' elements
+   * on the page and add a copy button to them.
    */
   onMount(() => {
-    // content is now binded
     const codeBlocks = document.querySelectorAll("pre");
-    console.log("codeBlocks", codeBlocks);
     codeBlocks.forEach((block) => {
-      const copyPrompt = document.createElement("p");
+      const copyPrompt = document.createElement("div");
       copyPrompt.className = "copy-prompt";
-      copyPrompt.innerHTML = "👆 Click to copy";
+      const copyPromptText = document.createElement("p");
+      copyPromptText.innerHTML = "👆 Click here to copy";
+      const copyIcon = document.createElement("img");
+      copyIcon.src = "/icons/ic_copy.svg";
+      copyPrompt.appendChild(copyIcon);
+      copyPrompt.appendChild(copyPromptText);
       block.appendChild(copyPrompt);
-      block.addEventListener("click", (evt) => {
-        copy(block.querySelector("code").textContent);
-        block.getElementsByClassName("copy-prompt")[0].innerHTML = "Copied!";
-        setInterval(() => {
-          block.getElementsByClassName("copy-prompt")[0].innerHTML =
-            "👆 Click to copy";
-        }, 1000);
-      });
+      block
+        .querySelector(".copy-prompt > p")
+        .addEventListener("click", (evt) => {
+          copy(block.querySelector("code").textContent);
+          block.querySelector(".copy-prompt > p").innerHTML = "Copied!";
+          setTimeout(() => {
+            block.querySelector(".copy-prompt > p").innerHTML =
+              "👆 Click to copy";
+          }, 1000);
+        });
     });
   });
 
@@ -78,6 +87,12 @@
         <p class="tag">{tag}</p>
       {/each}
     </div>
+    {#if post.language}
+      <p>{post.language}</p>
+    {/if}
+    {#if post.framework}
+      <p>{post.framework}</p>
+    {/if}
   </div>
   <div class="content" bind:this={content}>
     {#if slug === "full-albums-worth-listening-to"}
@@ -126,7 +141,7 @@
 
   h1 {
     font-family: Snake;
-    font-size: 4em;
+    font-size: 3.85em;
     margin-bottom: 0;
     text-align: center;
   }
@@ -207,7 +222,7 @@
   }
 
   .content :global(pre) {
-    background-color: rgb(245, 242, 239);
+    background-color: rgba(42, 42, 42, 0.863);
     box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
     padding: 0.5em;
     padding-left: 1em;
@@ -215,35 +230,60 @@
     overflow-x: auto;
     line-height: 1.7em;
     border-left: 2px dashed rgba(106, 106, 106, 0.379);
-    transition: 0.1s all ease-in;
     position: relative;
-    transform: scale(0.95);
+
     :global(.dark-mode) & {
       background: none;
       color: rgb(223, 223, 223);
     }
     :global(.copy-prompt) {
       position: absolute;
-      top: 1em;
       right: 1em;
       color: white;
-      opacity: 0;
-      top: -5px;
-      transition: 0.2s all ease-in;
-    }
-    &:hover {
-      background: rgba(96, 96, 96, 0.057);
-      cursor: pointer;
-      transform: scale(0.96);
-      :global(.copy-prompt) {
-        opacity: 1;
-        top: 0;
+      top: 0em;
+      margin: 0.2em 0 0 0;
+
+      :global(p) {
+        margin: 0;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        display: block;
+        transition: 0.1s opacity ease-in;
       }
+      :global(img) {
+        height: 35px;
+        width: 20px;
+        opacity: 1;
+        transition: 0.1s opacity ease-in;
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    &:hover {
+      :global(.copy-prompt > p) {
+        opacity: 1;
+      }
+      :global(.copy-prompt > img) {
+        opacity: 0;
+      }
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 
   .content :global(code) {
     background: none;
+    color: rgb(228, 228, 228);
   }
 
   .content > :global(p) > :global(code) {
