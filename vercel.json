@@ -1,8 +1,9 @@
 {
   "builds": [
     {
-      "src/**": {
-        "includeFiles": "static/posts"
+      "src": "package.json",
+      "config": {
+        "include": ["static/posts"]
       }
     }
   ]
