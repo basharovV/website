@@ -30,7 +30,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.0.0",
     "@beyonk/gdpr-cookie-consent-banner": "^7.1.1",
-    "@beyonk/svelte-carousel": "^2.8.0",
+    "@beyonk/svelte-carousel": "git+https://github.com/beyonk-adventures/svelte-carousel.git",
     "@sveltejs/adapter-vercel": "^1.0.0-next.58",
     "@sveltejs/kit": "next",
     "@tsconfig/svelte": "^2.0.1",

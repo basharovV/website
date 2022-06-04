@@ -7,3 +7,4 @@ yarn-error.log
 exported-tracks.csv
 generate_tracks.js
 /build/
+.vercel_build_output
