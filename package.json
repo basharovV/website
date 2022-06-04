@@ -10,7 +10,7 @@
     "post:dev": "node generate-sitemap.js",
     "build": "svelte-kit build",
     "export": "svelte-kit build",
-    "start": "node build"
+    "start": "svelte-kit preview"
   },
   "type": "module",
   "dependencies": {

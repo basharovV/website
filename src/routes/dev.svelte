@@ -34,7 +34,7 @@
     💡 Integrating <span style="color: #00ffb3">REAPER</span> and a smart bulb to turn <span style="color: red">red</span> when recording.
   </p>
 
-  <YoutubeVideo videoId="CaTaeP-j7Uk" platform="yt" />
+  <YoutubeVideo videoId="CaTaeP-j7Uk" platform="yt" showTitle={false}/>
   <p>
     More info on the <a href="https://forum.cockos.com/showthread.php?t=261061"
       >Cockos forums</a

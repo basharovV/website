@@ -44,7 +44,7 @@
 
     div {
       border-radius: 10px;
-      height: 70px;
+      height: 50px;
       display: flex;
       box-sizing: border-box;
       background: rgba(128, 128, 128, 0.05);

@@ -1,15 +1,32 @@
 <script>
   export let videoId;
   export let platform;
+  export let showTitle = true;
 
   let vimeoThumbnail;
+  let title;
 
   async function getVimeoThumbnail() {
-    await fetch(`https://vimeo.com/api/oembed.json?url=https%3A//vimeo.com/${videoId}&width=480&height=360`)
+    await fetch(
+      `https://vimeo.com/api/oembed.json?url=https%3A//vimeo.com/${videoId}&width=480&height=360`
+    )
       .then((response) => response.json())
       .then((response) => {
         if (response) {
-          vimeoThumbnail = response.thumbnail_url.replace('295x166', '480x360');
+          vimeoThumbnail = response.thumbnail_url.replace("295x166", "480x360");
+        }
+      });
+  }
+
+  async function getYouTubeTitle() {
+    await fetch(
+      `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&feature=emb_logo&format=json`
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log("response", response);
+        if (response) {
+          title = response.title;
         }
       });
   }
@@ -21,8 +38,12 @@
       ? `https://img.youtube.com/vi/${videoId}/sddefault.jpg`
       : vimeoThumbnail;
 
-  if (typeof window !== "undefined" && platform === "vimeo") {
-    getVimeoThumbnail();
+  if (typeof window !== "undefined") {
+    if (platform === "vimeo") {
+      getVimeoThumbnail();
+    } else if (platform === "yt") {
+      getYouTubeTitle();
+    }
   }
 </script>
 
@@ -46,6 +67,7 @@
     >
       <img alt="thumbnail" src={thumbnail} />
       <div class="play-button" />
+      {#if showTitle}<p>{title}</p>{/if}
     </div>
   {/if}
 </div>
@@ -62,6 +84,18 @@
     border: 2px solid #c1c1c15b;
     @media only screen and (max-width: 522px) {
       width: 100%;
+    }
+
+    p {
+      position: absolute;
+      color: white;
+      left: 1em;
+      top: 1em;
+      margin: 0;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.72);
+      padding: 0 0.3em;
+      border-radius: 5px;
     }
 
     &:hover {
