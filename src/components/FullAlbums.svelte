@@ -70,6 +70,15 @@
       link: "https://www.youtube.com/playlist?list=OLAK5uy_m3h0VamCCD1kAjRSvyvIjHFhbDPB3xANI",
       linkText: "YouTube link (official channel)",
     },
+    {
+      artist: "Roy Hargrove",
+      title: "With The Tenors of Our Time",
+      year: 1994,
+      review: "Ney York style 90s jazz, what's not to like?",
+      artwork: "/post-media/full-albums/tenors-of-our-time.jpeg",
+      link: "https://www.youtube.com/watch?v=ERsjIjpfdlI&list=OLAK5uy_l6XTw0ghE72lUCToRVDKNJ1NHEwqJ80sU",
+      linkText: "YouTube link (official channel)",
+    },
   ];
 
   let postHeight = 0;
@@ -139,6 +148,7 @@
 </div>
 
 <style lang="scss">
+
   .container {
     position: relative;
   }
@@ -192,12 +202,14 @@
       margin-bottom: 0;
       grid-row: 1;
       grid-column: 2;
+      left: 0 !important;
     }
     > h3 {
       margin-top: 0.5em;
       margin-bottom: 1em;
       grid-row: 2;
       grid-column: 2;
+      left: 0 !important;
     }
     > .links {
       grid-row: 3;

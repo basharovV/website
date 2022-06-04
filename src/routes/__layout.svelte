@@ -1,16 +1,21 @@
 <script>
+  import "../global.css";
   import { onMount } from "svelte";
-  import { stores } from "@sapper/app";
+  import { getStores } from "$app/stores";
 
-  const { page } = stores();
+  const { page } = getStores();
 
   import Nav from "../components/Nav.svelte";
   import { isDarkModeEnabled } from "../store/state";
 
   let isClient = false;
-  export let segment;
   let pageId;
   let cusdisElement;
+
+  $: pathname = $page?.url?.pathname;
+
+  // console.log($page);
+  $: isProduct = pathname.includes("/shop/");
 
   const setPageId = () => {
     // Get the page from the URL
@@ -76,13 +81,33 @@
   /*
   Update the Cusdis theme to match the site theme when it changes. 
   */
-  let currentTheme;
+  let isDark;
+
+  $: {
+    if (isProduct) {
+      if (
+        typeof window !== "undefined" &&
+        typeof window.CUSDIS !== "undefined"
+      ) {
+        isDark = true;
+        window.CUSDIS.setTheme("dark");
+      }
+    } else {
+      if (
+        typeof window !== "undefined" &&
+        typeof window.CUSDIS !== "undefined"
+      ) {
+        isDark = $isDarkModeEnabled;
+        window.CUSDIS.setTheme(isDark ? 'dark' : 'light');
+      }
+    }
+  }
 
   isDarkModeEnabled.subscribe((enabled) => {
     if (
       typeof window !== "undefined" &&
       typeof window.CUSDIS !== "undefined" &&
-      enabled !== currentTheme
+      enabled !== isDark
     ) {
       //changed
       typeof window !== "undefined" &&
@@ -90,7 +115,7 @@
         window.CUSDIS.setTheme(enabled ? "dark" : "light");
     }
 
-    currentTheme = enabled;
+    isDark = enabled;
   });
 
   /*
@@ -98,14 +123,14 @@
   */
   $: {
     if (typeof window !== "undefined") {
-      if ($page.path) {
+      if ($page.url) {
         setPageId();
       }
     }
   }
 </script>
 
-<Nav {segment} />
+<Nav />
 
 <main>
   <slot />
@@ -119,7 +144,7 @@
       data-page-id={pageId}
       data-page-url={window.location.href}
       data-page-title={document.title}
-      data-theme={$isDarkModeEnabled ? "dark" : "light"}
+      data-theme={isDark ? "dark" : "light"}
     />
   {/if}
 </main>
@@ -139,5 +164,4 @@
   :global(#cusdis_thread) {
     margin-top: 2em;
   }
-
 </style>

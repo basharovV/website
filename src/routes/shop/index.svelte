@@ -1,10 +1,10 @@
 <script context="module">
-  export function preload() {
-    return this.fetch(`shop.json`)
-      .then((r) => r.json())
-      .then((products) => {
-        return { products };
-      });
+  export async function load({ params, query, fetch }) {
+    const products = await fetch(`/shop.json`).then((r) => r.json());
+    console.log('products', products);
+    return {
+      props: { products },
+    };
   }
 </script>
 
@@ -15,7 +15,7 @@
   import SvelteSeo from "svelte-seo";
   export let products;
 </script>
-  
+
 <SvelteSeo
   title="vb shop | free sample packs, libraries and instruments | Vyacheslav Basharov"
   description="Free sample packs, sample libraries and instruments. An independent creative outlet by Vyacheslav Basharov"
@@ -46,7 +46,7 @@
           <img
             style="grid-area: a;margin:auto;width: 30px;"
             alt="Logo"
-            src="logo.svg"
+            src="/logo.svg"
           />
           <h1 style="margin:0">vb shop</h1>
         </div>
@@ -86,13 +86,13 @@
   <p>Vyacheslav Basharov</p>
   <div>
     <a href="https://github.com/basharovV"
-      ><img alt="github" src="github.svg" /></a
+      ><img alt="github" src="/github.svg" /></a
     >
     <a href="https://soundcloud.com/vbash"
-      ><img alt="soundcloud" src="soundcloud.svg" /></a
+      ><img alt="soundcloud" src="/soundcloud.svg" /></a
     >
     <a href="mailto:contact@vyacheslavbasharov.com"
-      ><img alt="email" src="email.svg" /></a
+      ><img alt="email" src="/email.svg" /></a
     >
   </div>
 </footer>

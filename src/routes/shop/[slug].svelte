@@ -1,9 +1,8 @@
 <script context="module">
   const artistFilter = "by Vyacheslav Basharov | composer";
 
-  const getTrack = async (url, ctx) => {
-    return ctx
-      .fetch(`https://soundcloud.com/oembed.json?url=${url}`)
+  const getTrack = async (url, fetch) => {
+    return fetch(`https://soundcloud.com/oembed.json?url=${url}`)
       .then((response) => response.json())
       .then((response) => ({
         ...response,
@@ -13,23 +12,31 @@
           `&sharing=false&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false`,
       }));
   };
-  export async function preload({ params }) {
+
+  export async function load({ params, fetch }) {
     // the `slug` parameter is available because
     // this file is called [slug].svelte
-    const res = await this.fetch(`shop/${params.slug}.json`);
+    const res = await fetch(`/shop/${params.slug}.json`);
     const data = await res.json();
 
     let tracks = [];
     if (data.trackUrls) {
       tracks = await Promise.all(
-        data.trackUrls.map((url) => getTrack(url, this))
+        data.trackUrls.map((url) => getTrack(url, fetch))
       );
     }
 
-    if (res.status === 200) {
-      return { product: data, tracks };
+    if (data) {
+      return {
+        props: {
+          product: data,
+          tracks,
+        },
+      };
     } else {
-      this.error(res.status, data.message);
+      return {
+        error: "Not found",
+      };
     }
   }
 </script>
@@ -39,7 +46,8 @@
   import TrackMiniPlayer from "../../components/TrackMiniPlayer.svelte";
   import { isDarkModeEnabled } from "../../store/state";
   import SvelteSeo from "svelte-seo";
-  import Error from "../_error.svelte";
+  import Error from "../__error.svelte";
+  import { onMount } from "svelte";
 
   export let product;
   export let tracks;
@@ -210,9 +218,8 @@
     top: -2em;
     left: 0;
     right: 0;
-    object-fit: cover;   
+    object-fit: cover;
     animation: float-and-scale 3s infinite ease-in-out;
-
   }
   .gradient {
     position: absolute;

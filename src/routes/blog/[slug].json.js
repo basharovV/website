@@ -1,14 +1,14 @@
-const fs = require("fs");
-const frontMatter = require("front-matter");
-const marked = require("marked");
-const path = require("path");
+import fs from "fs";
+import frontMatter from "front-matter";
+import path from "path";
+import marked from "marked";
 import hljs from "highlight.js";
-const hljs_svelte = require('highlightjs-svelte');
+import hljs_svelte from "highlightjs-svelte";
 hljs_svelte(hljs);
 
 const getPost = (fileName) => {
   const postContent = fs.readFileSync(
-    path.resolve("static/posts/", `${fileName}.md`),
+    path.resolve("src/posts/", `${fileName}.md`),
     "utf-8"
   );
   const postFrontMatter = frontMatter(postContent);
@@ -30,23 +30,20 @@ const getPost = (fileName) => {
 export function get(req, res, next) {
   // the `slug` parameter is available because
   // this file is called [slug].json.js
+  console.log('reqparams', req.params);
   const { slug } = req.params;
   const post = getPost(slug);
+  console.log("POST", post);
   if (post.html) {
-    res.writeHead(200, {
-      "Content-Type": "application/json",
-    });
-
-    res.end(JSON.stringify(post));
+    return {
+      body: post,
+    };
   } else {
-    res.writeHead(404, {
-      "Content-Type": "application/json",
-    });
-
-    res.end(
-      JSON.stringify({
-        message: `Not found`,
-      })
-    );
+    return {
+      status: 404,
+      body: {
+        message: "Not found",
+      },
+    };
   }
 }

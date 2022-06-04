@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import PauseIcon from "../../static/icons/PauseIcon.svelte";
-  import PlayIcon from "../../static/icons/PlayIcon.svelte";
+  import PauseIcon from "./PauseIcon.svelte";
+  import PlayIcon from "./PlayIcon.svelte";
   import {
     currentlyPlayingWidgetId,
     currentTrack,

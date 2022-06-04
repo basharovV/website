@@ -1,11 +1,7 @@
-import posts from './_products.js';
+import products from "./_products.js";
 
-const contents = JSON.stringify(posts);
-
-export function get(req, res) {
-	res.writeHead(200, {
-		'Content-Type': 'application/json'
-	});
-
-	res.end(contents);
+export async function get(req, res) {
+  return {
+    body: products,
+  };
 }

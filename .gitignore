@@ -5,3 +5,4 @@ yarn-error.log
 /__sapper__/build
 /__sapper__/dev
 /__sapper__/export
+/.svelte-kit

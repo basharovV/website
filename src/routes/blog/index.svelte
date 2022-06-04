@@ -1,10 +1,10 @@
 <script context="module">
-  export function preload({ params, query }) {
-    return this.fetch(`blog.json`)
-      .then((r) => r.json())
-      .then((posts) => {
-        return { posts };
-      });
+  export async function load({ params, query, fetch }) {
+    const posts = await fetch(`/blog.json`).then((r) => r.json());
+    console.log("postsF", posts);
+    return {
+      props: { posts },
+    };
   }
 </script>
 
@@ -43,13 +43,13 @@
   <p>Vyacheslav Basharov</p>
   <div>
     <a href="https://github.com/basharovV"
-      ><img alt="github" src="github.svg" /></a
+      ><img alt="github" src="/github.svg" /></a
     >
     <a href="https://soundcloud.com/vbash"
-      ><img alt="soundcloud" src="soundcloud.svg" /></a
+      ><img alt="soundcloud" src="/soundcloud.svg" /></a
     >
     <a href="mailto:contact@vyacheslavbasharov.com"
-      ><img alt="email" src="email.svg" /></a
+      ><img alt="email" src="/email.svg" /></a
     >
   </div>
 </footer>

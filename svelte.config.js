@@ -1,9 +1,13 @@
 // svelte.config.js
-const sveltePreprocess = require('svelte-preprocess');
+import adapter from '@sveltejs/adapter-static';
+import preprocess from 'svelte-preprocess';
 
-module.exports = {
-  preprocess: sveltePreprocess({
-    // ...svelte-preprocess options
-  }),
+const config = {
+  kit: {
+    adapter: adapter()
+  },
+  preprocess: preprocess()
   // ...other svelte options
 };
+
+export default config;

@@ -3,17 +3,17 @@
   "description": "My personal website.",
   "version": "1.0.0",
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "scripts": {
-    "dev": "sapper dev",
+    "dev": "svelte-kit dev",
     "post:dev": "node generate-sitemap.js",
-    "build": "sapper build --legacy",
-    "export": "sapper export --legacy",
-    "start": "node __sapper__/build"
+    "build": "svelte-kit build",
+    "export": "sveltekit build",
+    "start": "node build"
   },
+  "type": "module",
   "dependencies": {
-    "compression": "^1.7.1",
     "copy-to-clipboard": "^3.3.1",
     "csv": "^5.5.3",
     "csvtojson": "^2.0.10",
@@ -21,9 +21,6 @@
     "highlight.js": "^11.4.0",
     "highlightjs-svelte": "^1.0.6",
     "marked": "^3.0.4",
-    "node-fetch": "^3.0.0",
-    "polka": "next",
-    "sirv": "^1.0.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -34,22 +31,14 @@
     "@babel/runtime": "^7.0.0",
     "@beyonk/gdpr-cookie-consent-banner": "^7.1.1",
     "@beyonk/svelte-carousel": "^2.8.0",
-    "@rollup/plugin-babel": "^5.0.0",
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-node-resolve": "^8.0.0",
-    "@rollup/plugin-replace": "^2.2.0",
-    "@rollup/plugin-typescript": "^8.2.5",
-    "@rollup/plugin-url": "^5.0.0",
     "@tsconfig/svelte": "^2.0.1",
     "autoprefixer": "^9.8.6",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
-    "node-sass": "^4.14.1",
-    "rollup": "^2.3.4",
-    "rollup-plugin-svelte": "^6.0.0",
-    "rollup-plugin-terser": "^7.0.0",
-    "sapper": "^0.28.0",
-    "svelte": "^3.17.3",
+    "sass": "1.52.1",
+    "svelte": "^3.48.0",
+    "@sveltejs/kit": "next",
+    "@sveltejs/adapter-static": "next",
     "svelte-check": "^2.2.4",
     "svelte-clipboard": "^1.0.0",
     "svelte-preprocess": "^4.7.4",

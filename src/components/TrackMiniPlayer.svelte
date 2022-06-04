@@ -1,5 +1,5 @@
 <script lang="ts">
-  import PlayIcon from "../../static/icons/PlayIcon.svelte";
+  import PlayIcon from "./PlayIcon.svelte";
   import { currentlyPlayingWidgetId, currentTrack } from "../store/state";
 
   let accent = "e60303";
@@ -73,7 +73,7 @@
         <div class="play-button"><PlayIcon {isDarkModeEnabled} /></div>
         <span>
           <p>{track ? track.title : "getting track..."}</p>
-          <small>{track ? "Click to listen on Soundcloud" : "one sec"}</small>
+          <!-- <small>{track ? "Click to listen on Soundcloud" : "one sec"}</small> -->
         </span>
         <img class="thumbnail" src={track ? track.thumbnail_url : ""} />
       </div>
@@ -92,7 +92,7 @@
     background: white;
     flex-grow: 1;
     flex-basis: 350px;
-    height: 70px;
+    height: 50px;
     overflow: hidden;
     box-sizing: border-box;
     border-radius: 10px;
@@ -218,7 +218,7 @@
       }
 
       .thumbnail {
-        width: 60px;
+        width: 40px;
         height: auto;
         transform: scale(1.1);
         transition: all 0.1s cubic-bezier(0.165, 0.84, 0.44, 1);

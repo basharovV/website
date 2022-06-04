@@ -120,7 +120,7 @@
       <a
         class={$isDarkModeEnabled ? "invert" : ""}
         style="display: flex;"
-        href="/"><img alt="Logo" src="logo.svg" /></a
+        href="/"><img alt="Logo" src="/logo.svg" /></a
       >
       <p style="font-family: Snake, Arial, sans-serif;font-size: 3em;">
         I make thought-provoking music.
@@ -378,13 +378,13 @@
       <p>Vyacheslav Basharov</p>
       <div>
         <a href="https://github.com/basharovV"
-          ><img alt="github" src="github.svg" /></a
+          ><img alt="github" src="/github.svg" /></a
         >
         <a href="https://soundcloud.com/vbash"
-          ><img alt="soundcloud" src="soundcloud.svg" /></a
+          ><img alt="soundcloud" src="/soundcloud.svg" /></a
         >
         <a href="mailto:contact@vyacheslavbasharov.com"
-          ><img alt="email" src="email.svg" /></a
+          ><img alt="email" src="/email.svg" /></a
         >
       </div>
     </footer>

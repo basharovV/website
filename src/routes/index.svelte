@@ -27,7 +27,7 @@
   <img
     style="grid-area: a;margin:auto;width: 30px;"
     alt="Logo"
-    src="logo.svg"
+    src="/logo.svg"
   />
   <header>
     <h3 style="margin: 0;text-align: center;font-family: Snake;font-size: 3em;">
@@ -40,6 +40,7 @@
       and
       <a href="/music">compose music.</a>
     </h2>
+    <img alt="cd" src="icons/cd6.gif" />
   </header>
 
   <div>
@@ -54,12 +55,24 @@
         For projects, dev blog, UI mockups and more, go here!
       </p>
 
-      <h3>Latest project</h3>
+      <h3>Recent tech</h3>
       <p>
-        A browser extension to browse together in real-time, and do online
-        research seamlessly in the browser.
+        <a href="https://tbxproject.com">tbx</a>: browser extension for
+        collaborative browsing
       </p>
-      <a href="https://tbxproject.com"> Visit site -> </a>
+
+      <p>
+        <a href="https://github.com/basharovV/StumbleUponAwesome"
+          >StumbleUponAwesome</a
+        >: remember StumbleUpon? It's like that, but for tech sites.
+        <a href="https://github.com/basharovV/StumbleUponAwesome">
+          <img
+            class="stars"
+            src="https://img.shields.io/github/stars/basharovV/stumbleuponawesome.svg?style=social&label=Star&maxAge=2592000"
+          />
+        </a>
+      </p>
+
       <h3>Latest article</h3>
       <p>On self-tracking, exobrains and quantified self</p>
       <a
@@ -79,42 +92,15 @@
       <p class="mobile-hide" style="opacity: 0.7;">
         For music projects, tracks, samples, presets
       </p>
-      <!-- 
-      <h3>Latest release</h3>
-      <h4>Improv I</h4>
-      <small
-        >A soft, contemporary classical recording, captured in an intimate
-        setting on my childhood upright Petrof piano.
-      </small>
-      <iframe
-        style="border: 0; width: 350px; height: 442px;"
-        src="https://bandcamp.com/EmbeddedPlayer/track=821474887/size=large/bgcol=ffffff/linkcol=63b2cc/tracklist=false/transparent=true/"
-        seamless
-        ><a href="https://vyacheslavbasharov.bandcamp.com/track/improv-i"
-          >null by Vyacheslav Basharov</a
-        ></iframe
-      >
-
-      <h3>Other music</h3>
-      <TrackMiniPlayer trackId="1011296332" accent="1e2424" />
-      <TrackMiniPlayer trackId="963507499" accent="1e2424" />
-      <!-- <TrackMiniPlayer trackId="818507320" accent="1e2424" /> -->
-      <!-- <TrackMiniPlayer trackId="940950685" accent="1e2424" />
-      -->
-      <h3>Latest release</h3>
+      <h3>Recent music</h3>
       <p>
-        <b>Improv I</b> - a soft, contemporary classical recording, captured in an
-        intimate setting on my childhood upright Petrof piano.
-      </p>
-      <p>
-        <a href="https://songwhip.com/vyacheslavbasharov/improv-i">
-          🎧 Listen on streaming services -></a
-        >
-        <small style="opacity: 0.5;"
-          >add it to your sleep + ambient playlists :)</small
+        <b>Improv I</b>
+        <small
+          ><a href="https://songwhip.com/vyacheslavbasharov/improv-i">
+            Streaming links</a
+          ></small
         >
       </p>
-      <YoutubeVideo videoId="WxyupgszQec" platform="yt" />
     </section>
   </div>
 
@@ -122,13 +108,13 @@
     <p>Vyacheslav Basharov</p>
     <div>
       <a href="https://github.com/basharovV"
-        ><img alt="github" src="github.svg" /></a
+        ><img alt="github" src="/github.svg" /></a
       >
       <a href="https://soundcloud.com/vbash"
-        ><img alt="soundcloud" src="soundcloud.svg" /></a
+        ><img alt="soundcloud" src="/soundcloud.svg" /></a
       >
       <a href="mailto:contact@vyacheslavbasharov.com"
-        ><img alt="email" src="email.svg" /></a
+        ><img alt="email" src="/email.svg" /></a
       >
     </div>
   </footer>
@@ -157,6 +143,14 @@
         flex-direction: column;
       }
     }
+  }
+
+  .stars {
+    height: 21px;
+    width: auto;
+    object-fit: contain;
+    vertical-align: sub;
+    opacity: 0.5;
   }
 
   section {

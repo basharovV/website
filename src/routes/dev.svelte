@@ -19,7 +19,7 @@
     <small style="margin-bottom: 0;">Full-stack developer</small>
   </div> -->
   <!-- <a style="display: flex;" href="/"
-    ><img style="margin:auto;width: 30px;" alt="Logo" src="logo.svg" /></a
+    ><img style="margin:auto;width: 30px;" alt="Logo" src="/logo.svg" /></a
   > -->
 </header>
 
@@ -27,13 +27,6 @@
 <p style="text-align: center;">
   a list of some things I've built, have a look around!
 </p>
-<small style="opacity: 0.6;margin:0;text-align:center;display:block"
-  >Questions? -> <a
-    style="text-decoration: none"
-    href="mailto:contact@vyacheslavbasharov.com"
-    >contact@vyacheslavbasharov.com</a
-  ></small
->
 
 <section>
   <h3>♪ Music tech</h3>
@@ -170,13 +163,13 @@
   <p>Vyacheslav Basharov</p>
   <div>
     <a href="https://github.com/basharovV"
-      ><img alt="github" src="github.svg" /></a
+      ><img alt="github" src="/github.svg" /></a
     >
     <a href="https://soundcloud.com/vbash"
-      ><img alt="soundcloud" src="soundcloud.svg" /></a
+      ><img alt="soundcloud" src="/soundcloud.svg" /></a
     >
     <a href="mailto:contact@vyacheslavbasharov.com"
-      ><img alt="email" src="email.svg" /></a
+      ><img alt="email" src="/email.svg" /></a
     >
   </div>
 </footer>

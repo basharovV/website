@@ -1,14 +1,21 @@
 <script context="module">
-  export async function preload({ params, query }) {
+  export async function load({ params, fetch }) {
+    console.log("params", params);
     // the `slug` parameter is available because
     // this file is called [slug].svelte
-    const res = await this.fetch(`blog/${params.slug}.json`);
-    const data = await res.json();
-
-    if (res.status === 200) {
-      return { post: data, slug: params.slug };
-    } else {
-      this.error(res.status, data.message);
+    try {
+      const res = await fetch(`/blog/${params.slug}.json`).then((r) => r.json());
+      return {
+        props: {
+          post: res,
+          slug: params.slug,
+        },
+      }; 
+    } catch (err) {
+      return {
+        status: 404,
+        error: 'Not found!'
+      };
     }
   }
 </script>
@@ -85,13 +92,13 @@
   <p>Vyacheslav Basharov</p>
   <div>
     <a href="https://github.com/basharovV"
-      ><img alt="github" src="github.svg" /></a
+      ><img alt="github" src="/github.svg" /></a
     >
     <a href="https://soundcloud.com/vbash"
-      ><img alt="soundcloud" src="soundcloud.svg" /></a
+      ><img alt="soundcloud" src="/soundcloud.svg" /></a
     >
     <a href="mailto:contact@vyacheslavbasharov.com"
-      ><img alt="email" src="email.svg" /></a
+      ><img alt="email" src="/email.svg" /></a
     >
   </div>
 </footer>
@@ -108,13 +115,13 @@
 
   @font-face {
     font-family: "IBM Plex Sans";
-    src: url("fonts/IBMPlex/IBMPlexSans-Regular.ttf");
+    src: url("/fonts/IBMPlex/IBMPlexSans-Regular.ttf");
   }
 
   @font-face {
     font-family: "IBM Plex Sans";
     font-weight: bold;
-    src: url("fonts/IBMPlex/IBMPlexSans-Bold.ttf");
+    src: url("/fonts/IBMPlex/IBMPlexSans-Bold.ttf");
   }
 
   h1 {

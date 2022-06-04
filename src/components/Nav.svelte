@@ -1,9 +1,8 @@
 <script>
-  export let segment;
   import { isDarkModeEnabled } from "../store/state.js";
   import { onMount } from "svelte";
-  import { stores } from "@sapper/app";
-  const { page } = stores();
+  import { getStores } from "$app/stores";
+  const { page } = getStores();
 
   let mounted;
   let forceDarkMode;
@@ -15,16 +14,19 @@
     mounted = true;
   });
 
+  $: pathname = $page?.url?.pathname;
+  console.log('pathname', pathname);
+
   $: if (mounted) {
     if ($isDarkModeEnabled || forceDarkMode)
       window.document.body.classList.add("dark-mode");
     else window.document.body.classList.remove("dark-mode");
 
     // CHange background if music
-    if (segment === "music") {
+    if (pathname === "/music") {
       window.document.body.classList.add("nav-music");
       window.document.body.classList.remove("nav-blog");
-    } else if (segment === "blog") {
+    } else if (pathname === "/blog") {
       window.document.body.classList.remove("nav-music");
       window.document.body.classList.add("nav-blog");
     } else {
@@ -32,24 +34,24 @@
       window.document.body.classList.remove("nav-blog");
     }
   }
-  // console.log(page);
-  $: isProduct = $page.path.includes("shop/");
+  // console.log($page);
+  $: isProduct = pathname.includes("/shop/");
   $: forceDarkMode = isProduct;
 </script>
 
 <nav class={isProduct ? "frosted" : ""}>
-  {#if segment !== "music"}
-    <a class="logo" href="/"><img alt="Logo" src="logo.svg" /></a>
+  {#if pathname !== "/music"}
+    <a class="logo" href="/"><img alt="Logo" src="/logo.svg" /></a>
   {/if}
   <div>
     <ul>
       <li>
-        <a aria-current={segment === undefined ? "page" : undefined} href="."
+        <a aria-current={pathname === "/" ? "page" : undefined} href="."
           >home</a
         >
       </li>
       <li>
-        <a aria-current={segment === "dev" ? "page" : undefined} href="dev"
+        <a aria-current={pathname?.includes("/dev") ? "page" : undefined} href="/dev"
           >dev</a
         >
       </li>
@@ -57,15 +59,15 @@
       <li>
         <a
           rel="prefetch"
-          aria-current={segment === "blog" ? "page" : undefined}
-          href="blog">blog</a
+          aria-current={pathname?.includes("/blog") ? "page" : undefined}
+          href="/blog">blog</a
         >
       </li>
 
       <li>
         <a
-          aria-current={segment === "music" ? "page" : undefined}
-          href="music"
+          aria-current={pathname?.includes("/music") ? "page" : undefined}
+          href="/music"
           rel="prefetch">music</a
         >
       </li>
@@ -75,10 +77,10 @@
       <li>
         <a
           rel="prefetch"
-          aria-current={segment === "shop" ? "page" : undefined}
-          href="shop">shop</a
+          aria-current={pathname?.includes("/shop") ? "page" : undefined}
+          href="/shop">shop</a
         >
-        {#if segment === undefined}
+        {#if pathname === "/"}
           <div class="link-pointer">
             <svg
               width="12"
