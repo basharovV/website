@@ -5,10 +5,10 @@ import path from "path";
 const getAllPosts = () => {
   try {
     return fs
-      .readdirSync("src/posts/")
+      .readdirSync("static/posts/")
       .map((fileName) => {
         const post = fs.readFileSync(
-          path.resolve("src/posts", fileName),
+          path.resolve("static/posts", fileName),
           "utf-8"
         );
         const postFrontMatter = frontMatter(post);
@@ -27,7 +27,6 @@ const getAllPosts = () => {
 };
 
 export async function get() {
-  console.log("getAllPosts");
   const posts = getAllPosts();
   return {
     body: posts

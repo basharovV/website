@@ -8,7 +8,7 @@ hljs_svelte(hljs);
 
 const getPost = (fileName) => {
   const postContent = fs.readFileSync(
-    path.resolve("src/posts/", `${fileName}.md`),
+    path.resolve("static/posts/", `${fileName}.md`),
     "utf-8"
   );
   const postFrontMatter = frontMatter(postContent);
@@ -16,7 +16,6 @@ const getPost = (fileName) => {
   const renderer = new marked.Renderer();
   // use hljs to highlight our blocks codes
   renderer.code = (source, lang) => {
-    console.log('lang?', lang);
     const { value: highlighted } = lang ? hljs.highlight(lang, source) : hljs.highlightAuto(source);
     return `<pre><code>${highlighted}</code></pre>`;
   };
@@ -31,10 +30,8 @@ const getPost = (fileName) => {
 export function get(req, res, next) {
   // the `slug` parameter is available because
   // this file is called [slug].json.js
-  console.log('reqparams', req.params);
   const { slug } = req.params;
   const post = getPost(slug);
-  console.log("POST", post);
   if (post.html) {
     return {
       body: post,
