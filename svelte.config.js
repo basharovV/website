@@ -9,6 +9,17 @@ const config = {
       optimizeDeps: {
         include: ["highlight.js", "highlight.js/lib/core"],
       },
+      build: {
+        sourcemap: false,
+      },
+      assetsInclude: [".md"],
+      publicDir: "static",
+      server: {
+        fs: {
+          // Allow serving files from one level up to the project root
+          allow: ["/src", "/static", "/static/posts"],
+        },
+      },
     },
   },
   preprocess: preprocess(),
