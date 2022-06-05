@@ -69,6 +69,7 @@
           <img
             class="stars"
             src="https://img.shields.io/github/stars/basharovV/stumbleuponawesome.svg?style=social&label=Star&maxAge=2592000"
+            alt=""
           />
         </a>
       </p>
@@ -214,7 +215,4 @@
     margin: 0.5em 0 1em 0;
   }
 
-  h4 {
-    margin-top: 1em;
-  }
 </style>

@@ -1,10 +1,19 @@
 // svelte.config.js
-import adapter from "@sveltejs/adapter-vercel";
+import adapter from "@sveltejs/adapter-static";
 import preprocess from "svelte-preprocess";
 
 const config = {
   kit: {
-    adapter: adapter(),
+    adapter: adapter({
+      // default options are shown
+      pages: 'build',
+      assets: 'build',
+      fallback: null,
+      precompress: true,
+    }),
+    prerender: {
+      default: true,
+    },
     vite: {
       optimizeDeps: {
         include: ["highlight.js", "highlight.js/lib/core"],
@@ -13,13 +22,6 @@ const config = {
         sourcemap: false,
       },
       assetsInclude: [".md"],
-      publicDir: "static",
-      server: {
-        fs: {
-          // Allow serving files from one level up to the project root
-          allow: ["/src", "/static", "/static/posts"],
-        },
-      },
     },
   },
   preprocess: preprocess(),

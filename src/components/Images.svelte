@@ -56,11 +56,6 @@
         }
     }
 
-    .disabled {
-        opacity: 0.5;
-        cursor: initial;
-    }
-
     :global(.left) {
         left: -15px !important;
     }

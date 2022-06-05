@@ -1,7 +1,7 @@
 ---
 slug: adding-click-to-copy-code-markdown-blog
 title: "Adding 'click to copy code' on your Markdown blog"
-date: "2022-02-07"
+date: "2022-06-04"
 tags: code,blog,copy,markdown,svelte
 description: "Help other developers by making it easy to copy code from your site."
 framework: "SvelteKit"

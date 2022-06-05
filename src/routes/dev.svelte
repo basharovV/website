@@ -47,7 +47,7 @@
   <div class="products">
     <a href="https://tbxproject.com">
       <div>
-        <img src="dev/logo-tbx.png" />
+        <img src="/dev/logo-tbx.png" />
         <p>tbx - Team Browser Extension</p>
         <small
           >A browser extension to browse together in real-time, and do online
@@ -57,7 +57,7 @@
     </a>
     <a href="https://github.com/basharovV/StumbleUponAwesome">
       <div>
-        <img src="dev/logo-sua.png" />
+        <img src="/dev/logo-sua.png" alt="StumbleUponAwesome logo"/>
         <p>StumbleUponAwesome</p>
         <small>
           A fun StumbleUpon-like extension for those interested in development,
@@ -113,31 +113,18 @@
         article.
       </p>
       <Images
-        images={["designs/musicplayer.png", "designs/musicplayer_2.png"]}
+        images={["/designs/musicplayer.png", "/designs/musicplayer_2.png"]}
       />
     </li>
     <li>
       <p>
-        🔨A concept UI for the data science world: a command-based data tool
+        🔨 A concept UI for the data science world: a command-based data tool
         that can perform smart transformations on documents using natural
         language commands instead of Excel-like formulas or menus.
       </p>
-      <Images images={["designs/nlp_2.png", "designs/nlp_1.png"]} />
+      <Images images={["/designs/nlp_2.png", "/designs/nlp_1.png"]} />
     </li>
-    <li>
-      <p>
-        🎨 A logo I made when I was working on a social media app for students
-        during my final year. The shape and two-in-one aspect are interesting,
-        but I haven't found a use for it since.
-      </p>
-      <Images
-        images={[
-          "designs/peek_1.png",
-          "designs/peek_3.png",
-          "designs/peek_2.png",
-        ]}
-      />
-    </li>
+   
     <li>
       <p>
         Modos: a concept I started thinking about to re-imagine window and
@@ -150,9 +137,9 @@
       </p>
       <Images
         images={[
-          "designs/modos_1.jpg",
-          "designs/modos_2.png",
-          "designs/modos_3.png",
+          "/designs/modos_1.jpg",
+          "/designs/modos_2.png",
+          "/designs/modos_3.png",
         ]}
       />
     </li>
@@ -214,10 +201,6 @@
     }
   }
 
-  .designs {
-    // columns: 2;
-    // column-gap: 2em;
-  }
   a {
     &:hover {
       opacity: 0.6;

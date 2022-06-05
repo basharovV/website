@@ -115,26 +115,7 @@
     {/if}
     <div class={$isDarkModeEnabled ? "invert" : ""} id="gradient" />
   </div>
-  <header>
-    <div>
-      <a
-        class={$isDarkModeEnabled ? "invert" : ""}
-        style="display: flex;"
-        href="/"><img alt="Logo" src="/logo.svg" /></a
-      >
-      <p style="font-family: Snake, Arial, sans-serif;font-size: 3em;">
-        I make thought-provoking music.
-      </p>
-    </div>
-
-    <small style="opacity: 0.6;margin:0"
-      ><a
-        style="text-decoration: none"
-        href="mailto:contact@vyacheslavbasharov.com"
-        >contact@vyacheslavbasharov.com</a
-      ></small
-    >
-  </header>
+  <header />
 
   <div class="heading">
     <h1>tracks</h1>
@@ -144,251 +125,35 @@
   <div class="featured-tracks">
     <!-- <div class="warp-speed"><WarpSpeed /></div> -->
     <FeaturedTracks tracks={filteredTracks} />
+    <small>
+      Want to use some of my music in your projects? Send me an email to <a
+        style="text-decoration: none"
+        href="mailto:contact@vyacheslavbasharov.com"
+        >contact@vyacheslavbasharov.com</a
+      >
+    </small>
   </div>
-  <div class="prompt-container">
-    <div class="prompt">
-      <h2>Licensing / using in your projects</h2>
-      <p>
-        <a href="mailto:contact@vyacheslavbasharov.com">Send me an email </a> with
-        the track(s) you like and what it's for, and I'll get back to you with license
-        details. Thanks!
-      </p>
-    </div>
+
+  <h1>videos</h1>
+  <div class="improv-videos">
+    <YoutubeVideo videoId="bSN3eBiGWIM" platform="yt" />
+    <YoutubeVideo videoId="-imEDkQukVY" platform="yt" />
+  </div>
+
+  <footer class={$isDarkModeEnabled ? "invert" : ""}>
+    <p>Vyacheslav Basharov</p>
     <div>
-      <h2>🎻 Custom score</h2>
-      <h4 style="display: inline;">I'm currently</h4>
-      <h4 style="display: inline;color: rgb(72, 199, 72);">available</h4>
-      <svg class="available-circle" width="10" height="10" viewBox="0 0 10 10">
-        <circle cx="5" cy="5" r="5" fill="green" />
-      </svg>
-      <br />
-      <small style="opacity: 0.6;margin-top: 0.5em;display: block;"
-        >I especially welcome films of a contemplative nature.
-      </small>
-      <div class="contact">
-        <img src="pigeon.png" />
-        <a
-          style="text-decoration: none"
-          href="mailto:contact@vyacheslavbasharov.com"
-        >
-          <button>Send an electronic pigeon</button>
-        </a>
-      </div>
+      <a href="https://github.com/basharovV"
+        ><img alt="github" src="/github.svg" /></a
+      >
+      <a href="https://soundcloud.com/vbash"
+        ><img alt="soundcloud" src="/soundcloud.svg" /></a
+      >
+      <a href="mailto:contact@vyacheslavbasharov.com"
+        ><img alt="email" src="/email.svg" /></a
+      >
     </div>
-  </div>
-  <div>
-    <h1 id="title">music projects 👇</h1>
-    <h2 id="subtitle">some things here and there...</h2>
-  </div>
-  <div class="content">
-    <section>
-      <h3>🔌 Improvisations</h3>
-      <p>
-        A lot of my musical adventures have their roots in improvisation. As a
-        personal project, I'm recording some of my improv sessions, like this
-        one:
-      </p>
-      <YoutubeVideo videoId="bSN3eBiGWIM" platform="yt" />
-      <p>or this one:</p>
-      <YoutubeVideo videoId="-imEDkQukVY" platform="yt" />
-
-      <!-- <div class="embed">
-        <iframe
-          on:load={() => {
-            refresh += 1;
-          }}
-          loading="lazy"
-          src="https://www.youtube-nocookie.com/embed/bSN3eBiGWIM"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        />
-      </div> -->
-    </section>
-    <section>
-      <h3>🔌 Rhodesian Keys</h3>
-      <p>My first software instrument :)</p>
-      <span style="display: block;margin: 1em 0;">
-        <p style="display: inline;">
-          I had to get my hands on a Rhodes, and when I did, I had to sample it!
-          Rhodesian Keys is a software instrument sampled from a Rhodes Mark I
-          1973, which I'll be releasing on this website at some point.
-        </p>
-        <p style="display: inline; color: orange;">
-          Update: you can now get it from <a href="/shop">the shop!</a>
-        </p>
-      </span>
-      <YoutubeVideo videoId="2PP0OrzS_k8" platform="yt" />
-    </section>
-    <section class="magic-touch">
-      <h3>🦆 El Pato Records</h3>
-      <img src="music/el-pato-records.png" alt="El Pato Records logo" />
-      <p>
-        A little record label and collective of musicians started by me and some
-        friends. Check us out our music on <a
-          href="https://soundcloud.com/elpatorecords">SoundCloud</a
-        >
-        or follow us on
-        <a href="https://instagram.com/elpatoyoan">Instagram</a>
-      </p>
-    </section>
-
-    <section>
-      <h3>🎞 Stranger Things intro re-score</h3>
-      <p>An attempt at rescoring the iconic Stranger Things title sequence.</p>
-      <YoutubeVideo videoId="215550767" platform="vimeo" />
-    </section>
-    
-    <section style="break-before: column;">
-      <div
-        style="display: grid; grid-template-columns: 1fr auto;align-items: center;"
-      >
-        <h3 style="width: fit-content;margin: 0;">🎬 Film scoring</h3>
-        <small>
-          <a
-            style="color: grey;"
-            href="https://www.imdb.com/name/nm9098356/?ref_=ttfc_fc_cr5"
-          >
-            My IMDB -></a
-          >
-        </small>
-      </div>
-      <p>I've had the pleasure of composing for these short films:</p>
-
-      <div style="display: grid;gap: 30px;">
-        <div style="display: grid;grid-template-columns: 1fr 2fr;">
-          <img
-            style="float:left;"
-            src="https://i1.sndcdn.com/artworks-000331072095-0k7jva-t500x500.jpg"
-          />
-          <small style="display:block;padding: 0px 10px;margin: 0;">
-            Blood of Poet is an experimental short film I scored based on
-            philosophical poetry by Diego de Los Andes.
-            <a href="https://www.youtube.com/watch?v=yjVuJdENXTk"
-              >Watch on YouTube</a
-            >
-          </small>
-        </div>
-
-        <div style="display: grid;grid-template-columns: 2fr 1fr;">
-          <small style="display:block;padding: 0px 10px;margin: 0;">
-            Into The Loo is a fun student short film about a boy shutting away
-            the outside world by locking himself in the loo.
-          </small>
-          <img
-            style="float:right;"
-            src="https://i1.sndcdn.com/artworks-000237636541-hf6qgz-t500x500.jpg"
-          />
-        </div>
-
-        <div>
-          <TrackMiniPlayer
-            track={intoTheLooTracks[0]}
-            isDarkModeEnabled={$isDarkModeEnabled}
-          />
-          <TrackMiniPlayer
-            track={intoTheLooTracks[1]}
-            isDarkModeEnabled={$isDarkModeEnabled}
-          />
-          <small
-            ><a
-              href="https://soundcloud.com/vbash/sets/into-the-loo-short-film-soundtrack"
-              >Full album on SoundCloud -></a
-            >
-          </small>
-        </div>
-      </div>
-    </section>
-    <section>
-      <h3>🎧 Featured music</h3>
-      <p>
-        I regularly upload cinematic, experimental, progressive, electronic and
-        jazzy tracks on my SoundCloud. Sometimes I also do covers and remixes,
-        and publish unedited live jam sessions.
-      </p>
-      <TrackMiniPlayer
-        track={pianoTracks[0]}
-        isDarkModeEnabled={$isDarkModeEnabled}
-        accent="e60303"
-      />
-    </section>
-    <section>
-      <h3>🎹 Pianosphere</h3>
-      <p>
-        Pianosphere is neo-classical album I'm working on to explore and capture
-        the sound of the piano in new ways.
-      </p>
-
-      <TrackMiniPlayer
-        track={pianoTracks[1]}
-        isDarkModeEnabled={$isDarkModeEnabled}
-      />
-      <TrackMiniPlayer
-        track={pianoTracks[2]}
-        isDarkModeEnabled={$isDarkModeEnabled}
-      />
-      <br />
-      <div class="image-grid">
-        <img src="music/pianosphere/MVIMG_20200421_194344.jpg" />
-        <img src="music/pianosphere/MVIMG_20200504_151957.jpg" />
-        <!-- <img src="music/pianosphere/MVIMG_20200509_141820.jpg" /> -->
-        <img src="music/pianosphere/MVIMG_20200510_171435.jpg" />
-      </div>
-    </section>
-    <section>
-      <h3>🔉 Samples</h3>
-      <p>
-        If you're looking for distinct sounds to use in your projects, head over
-        to the <a href="/shop">shop!</a>
-      </p>
-    </section>
-
-    <section>
-      <h3>🎬 Westworld Competition</h3>
-      <p>
-        I took part in the online film music competition from Spitfire Audio and
-        HBO, scoring a car chase sequence from Westworld season 3. Have a look
-        at my entry on YouTube:
-      </p>
-      <YoutubeVideo videoId="KPugdlU8GRs" platform="yt" />
-    </section>
-    <!-- 
-    <section>
-      <h3>🎞 Sci-fi game trailer re-score</h3>
-      <p>
-        A re-score of a Sci-fi MMORPG game trailer as an epic orchestral
-        adventure theme.
-      </p>
-      <YoutubeVideo videoId="491425916" platform="vimeo" />
-    </section> -->
-  </div>
-  <small
-    >You didn't have to scroll all the way down here :) That's too kind. <small
-    />
-    <br />
-    <small
-      >If you'd like to hear more, there's <a
-        href="https://soundcloud.com/vbash"
-      >
-        -> more music on my SoundCloud</a
-      ></small
-    >
-
-    <footer class={$isDarkModeEnabled ? "invert" : ""}>
-      <p>Vyacheslav Basharov</p>
-      <div>
-        <a href="https://github.com/basharovV"
-          ><img alt="github" src="/github.svg" /></a
-        >
-        <a href="https://soundcloud.com/vbash"
-          ><img alt="soundcloud" src="/soundcloud.svg" /></a
-        >
-        <a href="mailto:contact@vyacheslavbasharov.com"
-          ><img alt="email" src="/email.svg" /></a
-        >
-      </div>
-    </footer>
-  </small>
+  </footer>
 </div>
 
 <style lang="scss">
@@ -398,9 +163,6 @@
     }
   }
 
-  * {
-    /* font-family: "Snake" !important; */
-  }
 
   h3 {
     margin-top: 0;
@@ -413,16 +175,12 @@
     width: 100%;
     border-radius: 4px;
     display: inline-block;
-    // filter: grayscale(1);
-
-    // &:hover {
-    //     filter: grayscale(0);
-    // }
-    /* vertical-align: top; */
   }
 
-  .container {
-    /* font-size: 2em !important; */
+
+  .improv-videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   .featured-tracks {
@@ -433,6 +191,11 @@
       left: 0;
       right: 0;
       bottom: 0;
+    }
+
+    small {
+      margin-top: 2em;
+      display: block;
     }
   }
 
@@ -456,8 +219,6 @@
     padding: 1em;
     border: 1px solid rgba(121, 121, 121, 0.475);
     background: rgba(255, 255, 255, 0.776) !important;
-    /* box-shadow: inset 0px 0px 0px 2px rgba(121, 121, 121, 0.475); */
-    /* box-sizing: border-box; Include padding and border in element's */
   }
 
   figure {
@@ -643,8 +404,6 @@
         margin: 0;
       }
     }
-    right {
-    }
   }
 
   .heading {
@@ -686,10 +445,6 @@
     justify-content: center;
     gap: 0 4em;
     /* background: black; */
-
-    :global(.dark-mode) & {
-      /* background: rgba(103, 103, 103, 0.564); */
-    }
 
     @media only screen and (max-width: 622px) {
       display: block;

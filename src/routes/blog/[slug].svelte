@@ -1,6 +1,5 @@
 <script context="module">
   export async function load({ params, fetch }) {
-    console.log("params", params);
     // the `slug` parameter is available because
     // this file is called [slug].svelte
     try {
@@ -150,9 +149,6 @@
     max-width: 50em;
     margin: auto;
 
-    > p {
-      text-align: center;
-    }
 
     .content {
       max-width: 45em;

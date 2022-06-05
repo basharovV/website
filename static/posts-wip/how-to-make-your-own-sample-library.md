@@ -2,10 +2,10 @@
 slug: how-to-make-your-own-sample-library
 title: 'How to make your own sample library'
 date: '2021-09-22'
-tags: sample library, kontakt, music
+tags: sample library,kontakt music
 description: "with a custom UI and everything"
 author: "Slav"
-published: false
+published: true
 ---
 
 ![img](post-media/how-to-make-your-own-sample-library/screenshot.jpg)

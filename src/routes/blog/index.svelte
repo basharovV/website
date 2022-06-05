@@ -1,7 +1,6 @@
 <script context="module">
   export async function load({ params, query, fetch }) {
     const posts = await fetch(`/blog.json`).then((r) => r.json());
-    console.log("postsF", posts);
     return {
       props: { posts },
     };
@@ -27,7 +26,10 @@
 				the user hovers over the link or taps it, instead of
 				waiting for the 'click' event -->
     <li>
-      <a rel="prefetch" href="blog/{post.slug}">{post.title}</a>
+      <a rel="prefetch" href="/blog/{post.slug}">{post.title}</a>
+      {#if !post.published}
+        <small class="wip">WIP</small>
+      {/if}
       <span style="opacity: 0.6;"
         >{post.tags
           .split(",")
@@ -55,7 +57,7 @@
 </footer>
 
 <div class="comingsoon {$isDarkModeEnabled ? 'invert' : ''}">
-  <img src="/bulby_bulb.png" />
+  <img src="/bulby_bulb.png" alt="" />
 </div>
 
 <style lang="scss">
@@ -68,6 +70,12 @@
     list-style: none;
     padding: 0;
   }
+
+  .wip {
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 3px 5px;
+  }
   li {
     padding: 0.5em 0;
   }
@@ -75,10 +83,6 @@
     margin: 3em auto 0;
     width: 100%;
     flex: 1 1 220px;
-    p {
-      text-align: center;
-      color: rgb(187, 173, 173);
-    }
 
     img {
       height: 150px;

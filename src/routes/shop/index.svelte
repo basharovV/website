@@ -1,7 +1,6 @@
 <script context="module">
   export async function load({ params, query, fetch }) {
     const products = await fetch(`/shop.json`).then((r) => r.json());
-    console.log('products', products);
     return {
       props: { products },
     };

@@ -21,10 +21,11 @@
 
   <div class="product-image-container">
 
-    <a rel="prefetch" href="shop/{product.id}">
+    <a rel="prefetch" href="/shop/{product.id}">
       <img
         class="product-image {highlight ? 'highlight' : ''}"
         src={product.image}
+        alt="product"
       />
     </a>
     <svg viewBox="0 0 100 100">
@@ -52,7 +53,7 @@
     <small class="size">{product.size} zip file</small> -->
 
     <div class="buttons">
-      <a rel="prefetch" class="details-button" href="shop/{product.id}">Details</a>
+      <a rel="prefetch" class="details-button" href="/shop/{product.id}">Details</a>
       <a
         href="https://payhip.com/b/{product.productId}"
         class="payhip-buy-button"
@@ -83,11 +84,7 @@
     /* border-right: 1px solid rgba(0, 0, 0, 0.09); */
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    &:hover {
-      .product-image-container {
-      }
-      /* background-color: #00000010; */
-    }
+   
 
     &.invert {
       /* border: 1px solid rgba(255, 255, 255, 0.194); */
@@ -120,15 +117,6 @@
     }
   }
 
-  .title {
-    text-decoration: none;
-  }
-
-  .size {
-    margin-top: 1em;
-    display: block;
-    opacity: 0.5;
-  }
 
   span {
     > * {
@@ -159,10 +147,6 @@
     position: relative;
   }
 
-  .custom {
-    display: flex;
-    margin: 1em 0;
-  }
 
   .tag {
     position: relative;
@@ -267,8 +251,5 @@
     z-index: 1;
     box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.411);
 
-    rect {
-      /* fill: #000000; */
-    }
   }
 </style>

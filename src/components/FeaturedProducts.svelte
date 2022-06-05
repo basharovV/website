@@ -15,7 +15,7 @@
       > it's technically free, but you can choose to pay a few bucks if you'd like
       to support my work. Thanks! - Slav</small
     >
-    <img src="profile.jpg" />
+    <img src="/profile.jpg" alt="Slav"/>
   </div>
   {#each products as product, index}
     <FeaturedProduct {product} {index}>
@@ -27,7 +27,7 @@
     </FeaturedProduct>
   {/each}
   <div class="comingsoon {$isDarkModeEnabled ? 'invert' : ''}">
-    <img src="/bulby_bulb.png" />
+    <img src="/bulby_bulb.png" alt=""/>
     <p>More coming soon!</p>
   </div>
 </div>

@@ -15,7 +15,6 @@
   });
 
   $: pathname = $page?.url?.pathname;
-  console.log('pathname', pathname);
 
   $: if (mounted) {
     if ($isDarkModeEnabled || forceDarkMode)
@@ -46,7 +45,7 @@
   <div>
     <ul>
       <li>
-        <a aria-current={pathname === "/" ? "page" : undefined} href="."
+        <a aria-current={pathname === "/" ? "page" : undefined} href="/"
           >home</a
         >
       </li>

@@ -9,7 +9,7 @@ published: true
 ---
 
 <p style="text-align:center;margin:auto;">
-  <a href="blog/adding-comments-to-static-site#cusdis_thread">👇See an exampe at the bottom of this page.👇</a>
+  <a href="/blog/adding-comments-to-static-site#cusdis_thread">👇See an exampe at the bottom of this page.👇</a>
 </p>
 
 This tutorial is for a [Svelte + Sapper] site, but code examples can easily be adapted to other frameworks.
@@ -30,7 +30,7 @@ At the end of this tutorial you'll have:
 ### Pre-requisite:
 
 1. [Self-host Cusdis](https://cusdis.com/doc#/self-host/vercel).
-2. Get yourself a database - the free [Heroku](heroku.com) Postgres will do.
+2. Get yourself a database - the free [Heroku](https://heroku.com) Postgres will do.
 
 <br/>
 
