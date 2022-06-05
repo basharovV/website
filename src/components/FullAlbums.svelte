@@ -74,7 +74,7 @@
       artist: "Roy Hargrove",
       title: "With The Tenors of Our Time",
       year: 1994,
-      review: "Ney York style 90s jazz, what's not to like?",
+      review: "New York style 90s jazz, what's not to like?",
       artwork: "/post-media/full-albums/tenors-of-our-time.jpeg",
       link: "https://www.youtube.com/watch?v=ERsjIjpfdlI&list=OLAK5uy_l6XTw0ghE72lUCToRVDKNJ1NHEwqJ80sU",
       linkText: "YouTube link (official channel)",

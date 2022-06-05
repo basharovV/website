@@ -14,6 +14,7 @@ const config = {
     prerender: {
       default: true,
     },
+    trailingSlash: "never",
     vite: {
       optimizeDeps: {
         include: ["highlight.js", "highlight.js/lib/core"],
