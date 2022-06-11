@@ -1,37 +1,23 @@
 import fs from "fs";
 import frontMatter from "front-matter";
 import path from "path";
-import marked from "marked";
-import hljs from "highlight.js";
-import hljs_svelte from "highlightjs-svelte";
-hljs_svelte(hljs);
 
-const getPost = (fileName) => {
-  const postContent = fs.readFileSync(
-    path.resolve("static/posts/", `${fileName}.md`),
-    "utf-8"
-  );
-  const postFrontMatter = frontMatter(postContent);
 
-  const renderer = new marked.Renderer();
-  // use hljs to highlight our blocks codes
-  renderer.code = (source, lang) => {
-    const { value: highlighted } = lang ? hljs.highlight(lang, source) : hljs.highlightAuto(source);
-    return `<pre><code>${highlighted}</code></pre>`;
-  };
+const getPost = async (fileName) => {
+  const post = await import(`/src/posts/${fileName}.md`);
 
   return {
-    ...postFrontMatter.attributes,
-    html: marked(postFrontMatter.body, { renderer }).replace(/^\t{3}/gm, ""),
+    ...post.metadata,
+    html: post.default.render().html,
     // Add html if needed
   };
 };
 
-export function get(req, res, next) {
+export async function get(req, res, next) {
   // the `slug` parameter is available because
   // this file is called [slug].json.js
   const { slug } = req.params;
-  const post = getPost(slug);
+  const post = await getPost(slug);
   if (post.html) {
     return {
       body: post,

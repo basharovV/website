@@ -68,7 +68,7 @@
     {:else}
       <span class="price"
         ><p style="opacity:0.7;margin-right: 0.5em">Price:</p>
-        <p class="price-pwyw">up to you :)</p></span
+        <p class="price-pwyw">up to you</p></span
       >
     {/if}
   </content>

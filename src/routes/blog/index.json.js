@@ -1,38 +1,34 @@
-import fs from "fs";
-import frontMatter from "front-matter";
-import path from "path";
 import { dev } from "$app/env";
 
-const getAllPosts = (isWip) => {
+const getAllPosts = () => {
   try {
-    return fs
-      .readdirSync(isWip ? "static/posts-wip/" : "static/posts/")
-      .map((fileName) => {
-        const post = fs.readFileSync(
-          path.resolve(isWip ? "static/posts-wip/" : "static/posts/", fileName),
-          "utf-8"
-        );
-        const postFrontMatter = frontMatter(post);
+    const posts = import.meta.globEager("/src/posts/*.md");
+    return Object.entries(posts)
+      .map(([filepath, post]) => {
+        console.log('metapost', post.metadata);
         return {
-          title: postFrontMatter.attributes.title,
-          slug: postFrontMatter.attributes.slug,
-          tags: postFrontMatter.attributes.tags,
-          published: isWip ? false : postFrontMatter.attributes.published,
+          title: post.metadata.title,
+          slug: post.metadata.slug,
+          tags: post.metadata.tags,
+          published: post.metadata.published,
           // Add html if needed
         };
       })
-      .filter((post) => isWip ? true : post.published);
+      .filter((post) => dev ? true : post.published);
   } catch (e) {
+    console.log('err', e);
     return [];
   }
 };
 
 export async function get() {
-  const posts = getAllPosts(false);
-  if (dev) {
-    const wipPosts = getAllPosts(true);
-    if (wipPosts.length) posts.unshift(...wipPosts);
-  }
+  const posts = getAllPosts();
+  console.log('posts', posts);
+
+  // if (dev) {
+  //   const wipPosts = getAllPosts(true);
+  //   if (wipPosts.length) posts.unshift(...wipPosts);
+  // }
   return {
     body: posts,
   };

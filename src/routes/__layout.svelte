@@ -152,7 +152,6 @@
 <!-- <GdprBanner cookieName="foo" description="bar" /> -->
 <style lang="scss">
   main {
-    // position: relative;
     max-width: 56em;
     min-height: 100vh;
     background-color: none;

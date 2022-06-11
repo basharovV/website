@@ -21,6 +21,7 @@
     "highlight.js": "^11.5.1",
     "highlightjs-svelte": "^1.0.6",
     "marked": "^3.0.4",
+    "mdsvex": "^0.10.6",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

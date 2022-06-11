@@ -5,7 +5,7 @@ date: "2022-05-01"
 tags: music,live,looping,daw,keys
 description: "Everyone's talking about DAWless live setups, but that doesn't mean the DAW is useless."
 author: "Slav"
-published: true
+published: false
 ---
 
 Here is a rundown of my mega REAPER setup that does the job of: 

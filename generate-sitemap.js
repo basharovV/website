@@ -1,7 +1,7 @@
 import fs from "fs";
 const BASE_URL = "https://vyacheslavbasharov.com/";
 const ROUTES = "./src/routes";
-const POSTS = "./static/posts";
+const POSTS = "./src/posts";
 import products from "./src/routes/shop/_products.js";
 
 const pages = [""];
