@@ -4,7 +4,7 @@ import path from "path";
 
 
 const getPost = async (fileName) => {
-  const post = await import(`/src/posts/${fileName}.md`);
+  const post = await import(`../../posts/${fileName}.md`);
 
   return {
     ...post.metadata,

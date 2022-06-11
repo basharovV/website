@@ -1,5 +1,5 @@
 // svelte.config.js
-import adapter from "@sveltejs/adapter-vercel";
+import adapter from "@sveltejs/adapter-static";
 import preprocess from "svelte-preprocess";
 import mdsvexConfig from "./mdsvex.config.js";
 import { mdsvex } from "mdsvex";
@@ -26,6 +26,11 @@ const config = {
       build: {
         sourcemap: false,
       },
+      server: {
+        fs: {
+          allow: ['./']
+        }
+      }
     },
   },
   preprocess: [mdsvex(mdsvexConfig), preprocess()],
