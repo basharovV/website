@@ -1,7 +1,3 @@
-<script context="module">
-  export const prerender = false;
-</script>
-
 <script>
   import { isDarkModeEnabled } from "../../store/state.js";
   import SampleLib from 'sample-web-player/src/SampleLib.svelte';
