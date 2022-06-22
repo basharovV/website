@@ -10,7 +10,7 @@
         iframeSrc:
           response.html.match(new RegExp('src="' + "(.*)" + '"'))[1] +
           `&sharing=false&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false`,
-      }));
+      })).catch(err=>{});
   };
 
   export async function load({ params, fetch }) {

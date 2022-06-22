@@ -85,11 +85,13 @@
 
   $: {
     if (isProduct) {
+      isDark = true;
+      console.log("forcing dark mode");
       if (
         typeof window !== "undefined" &&
         typeof window.CUSDIS !== "undefined"
       ) {
-        isDark = true;
+        console.log("forcing dark mode here");
         window.CUSDIS.setTheme("dark");
       }
     } else {
@@ -98,7 +100,11 @@
         typeof window.CUSDIS !== "undefined"
       ) {
         isDark = $isDarkModeEnabled;
-        window.CUSDIS.setTheme(isDark ? 'dark' : 'light');
+        try {
+          window.CUSDIS.setTheme(isDark ? "dark" : "light");
+        } catch (err) {
+          console.error(err);
+        }
       }
     }
   }
@@ -109,10 +115,11 @@
       typeof window.CUSDIS !== "undefined" &&
       enabled !== isDark
     ) {
-      //changed
-      typeof window !== "undefined" &&
-        typeof window.CUSDIS !== "undefined" &&
+      try {
         window.CUSDIS.setTheme(enabled ? "dark" : "light");
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     isDark = enabled;

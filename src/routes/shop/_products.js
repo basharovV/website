@@ -1,22 +1,22 @@
 const products = [
   {
-    id: "rhodesian-keys",
+    id: "vintage-electric",
     description:
       "The original soft sound of the 1973 Rhodes Mark I as a sample library for Kontakt. Nothing more, nothing less.",
     longDescription:
       "<h4>Features</h4><ul><li>Kontakt 5+ instrument</li><li>73 keys</li><li>511 samples. 6-10 velocity layers</li><li>Key press + release noises</li></ul><small>Disclaimer: I don't have any association or endorsement by the Rhodes brand. Any references to the Rhodes brand are provided for description purposes only.</small>",
-    image: "/product-assets/rhodesian-keys/rhodesian-keys-bg.png",
-    bannerImage: "/product-assets/rhodesian-keys/banner.png",
-    screenshot: "/product-assets/rhodesian-keys/screenshot.png",
-    name: "Rhodesian Keys (Edition I)",
+    image: "/product-assets/vintage-electric/square.png",
+    bannerImage: "/product-assets/vintage-electric/banner.png",
+    screenshot: "/product-assets/vintage-electric/screenshot.png",
+    name: "Vintage Electric",
     price: "",
-    url: "shop/rhodesian-keys",
+    url: "shop/vintage-electric",
     tags: ["Kontakt instrument", "Sample library"],
     type: 'Rhodes sample library',
     size: "682.9 MB",
     video: "https://www.youtube-nocookie.com/embed/2PP0OrzS_k8",
     productId: "MxG8Z",
-    trackUrls: ["https://soundcloud.com/vbash/rhodesian-keys-edition-i-demos"],
+    trackUrls: ["https://soundcloud.com/vbash/vintage-electric-demos"],
     color: "#00bbff",
     paymentDescription: "🦊 Thanks Internet stranger! You can take this product for free, or pay what you want. If you have any feedback, email me on contact@vyacheslavbasharov.com"
   },
