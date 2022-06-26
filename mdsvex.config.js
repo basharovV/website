@@ -1,8 +1,7 @@
 
-import marked from "marked";
 import hljs from "highlight.js";
 import hljs_svelte from "highlightjs-svelte";
-import { escapeSvelte } from 'mdsvex'
+import { escapeSvelte } from 'mdsvex';
 hljs_svelte(hljs);
 
 function highlighter(code, lang) {

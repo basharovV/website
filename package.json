@@ -20,7 +20,6 @@
     "front-matter": "^4.0.2",
     "highlight.js": "^11.5.1",
     "highlightjs-svelte": "^1.0.6",
-    "marked": "^3.0.4",
     "mdsvex": "^0.10.6",
     "svelte-piano": "^0.0.1",
     "tslib": "^2.3.0"

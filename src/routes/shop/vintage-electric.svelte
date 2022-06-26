@@ -83,6 +83,15 @@
   };
 </script>
 
+<svelte:head>
+  <title>Vintage Electric • Kontakt library • VB Instruments</title>
+  <meta
+    name="description"
+    content="The original soft sound of the 1973 Rhodes Mark I as a sample library for
+    Kontakt. Nothing more, nothing less."
+  />
+</svelte:head>
+
 <div class="container">
   <div class="header">
     <img class="banner" src="/product-assets/vintage-electric/banner.png" />
@@ -209,6 +218,9 @@
     border-radius: 2px;
     padding: 10px 20px;
     width: fit-content;
+    :global(.payhip-buy-button) {
+      background-color: transparent;
+    }
   }
 
   .download-label {
