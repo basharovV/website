@@ -22,7 +22,7 @@
     "highlightjs-svelte": "^1.0.6",
     "marked": "^3.0.4",
     "mdsvex": "^0.10.6",
-    "sample-web-player": "github:basharovV/svelte-piano",
+    "svelte-piano": "^0.0.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
