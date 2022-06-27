@@ -7,6 +7,7 @@
 
   import Nav from "../components/Nav.svelte";
   import { isDarkModeEnabled } from "../store/state";
+  import PageTransition from "../components/PageTransition.svelte";
 
   let isClient = false;
   let pageId;
@@ -86,13 +87,15 @@
   $: {
     if (isProduct) {
       isDark = true;
-      console.log("forcing dark mode");
       if (
         typeof window !== "undefined" &&
         typeof window.CUSDIS !== "undefined"
       ) {
-        console.log("forcing dark mode here");
-        window.CUSDIS.setTheme("dark");
+        try {
+          window.CUSDIS.setTheme("dark");
+        } catch (err) {
+          console.error(err);
+        }
       }
     } else {
       if (
@@ -130,7 +133,7 @@
   */
   $: {
     if (typeof window !== "undefined") {
-      if ($page.url) {
+      if ($page.url.href) {
         setPageId();
       }
     }
@@ -140,7 +143,9 @@
 <Nav />
 
 <main>
-  <slot />
+  <PageTransition url={$page.url.href}>
+    <slot />
+  </PageTransition>
   {#if isClient && pageId}
     <div
       bind:this={cusdisElement}

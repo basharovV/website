@@ -163,7 +163,6 @@
     }
   }
 
-
   h3 {
     margin-top: 0;
     background-color: black;
@@ -176,7 +175,6 @@
     border-radius: 4px;
     display: inline-block;
   }
-
 
   .improv-videos {
     display: grid;
@@ -305,15 +303,20 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 200px;
+    bottom: 0;
+    height: 100%;
     z-index: -1;
-
+    opacity: 0;
+    animation: fadeInFull 0.3s ease-out 0.2s forwards;
+    filter: blur(4px) sepia(100%) invert(10%);
     #image {
       height: 100%;
       opacity: 0.1;
       background-image: url("/header-bg.jpg");
       background-size: cover;
       background-position-y: bottom;
+      background-position-x: center;
+      background-repeat: no-repeat;
 
       &.invert {
         opacity: 0.3;
@@ -327,15 +330,30 @@
       top: 0;
       left: 0;
       right: 0;
-      /* transition: all cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.3s; */
-
       &.invert {
         background: linear-gradient(to top, rgb(24, 24, 24), transparent);
         /* filter: invert(1); */
+        opacity: 0; //disable
       }
     }
   }
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.1;
+    }
+  }
+  @keyframes fadeInFull {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   button {
     padding: 0.2em 1em;
     background-color: white;

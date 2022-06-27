@@ -1,11 +1,12 @@
 <script>
   import { isDarkModeEnabled } from "../../store/state.js";
-  import SampleLib from 'svelte-piano/SampleLib.svelte';
-  import DevicePicker from 'svelte-piano/components/DevicePicker.svelte';
+  import SampleLib from "svelte-piano/SampleLib.svelte";
+  import DevicePicker from "svelte-piano/components/DevicePicker.svelte";
 
   let player;
   let selectedSong;
   let inputId;
+  let reverbOn;
 
   const urls = {
     A1: "RhodesMK1_A1_60.mp3",
@@ -125,7 +126,8 @@
   >
 
   <img class="arrow-prompt" src="/icons/arrow_up.svg" />
-  <SampleLib samplesPath="/audio/rhodes/" {inputId} {urls} bind:this={player} />
+  <button class="reverb-button" on:click={() => {player?.toggleReverb()}}>Reverb {reverbOn ? 'ON' : 'OFF'}</button>
+  <SampleLib samplesPath="/audio/rhodes/" {inputId} {urls} bind:this={player} bind:reverbOn={reverbOn}/>
   <div class="player-info">
     <h3 class="left">Just play it</h3>
     <img class="arrow" src="/icons/arrow_up.svg" />
@@ -140,18 +142,20 @@
     <div>
       <select bind:value={selectedSong}>
         <option value="vb_improv_1" selected>Improvisation 1</option>
-        <option value="Bossa Improvisation" selected>Bossa improvisation</option
-        >
-        <option value="vb_improv_2" selected>Fast rundown in C minor</option>
+        <option value="Bossa Improvisation" selected>
+          Bossa improvisation
+        </option>
+        <option value="vb_improv_2" selected>Fast rundown in C minor </option>
         <option value="twinkle-twinkle-little-star" selected
-          >Twinkle Twinke Little Star</option
-        >
+          >Twinkle Twinke Little Star
+        </option>
         <option value="georgia_short">Georgia</option>
       </select>
 
       <button on:click={() => player.playMidiFile(`/midi/${selectedSong}.midi`)}
         >Play it</button
       >
+      <button on:click={() => player.stop()}>Stop</button>
     </div>
     <div />
     <div class="device-picker">
@@ -270,6 +274,17 @@
     top: 0;
     transform: rotate(180deg);
     position: relative;
+  }
+
+  .reverb-button {
+    float: right;
+    margin-right: 1em;
+    top: -1em;
+    position: relative;
+    background:none;
+    border: 2px solid rgb(141, 141, 141);
+    color: rgb(164, 164, 164);
+    
   }
 
   .player-info {

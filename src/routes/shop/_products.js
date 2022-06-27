@@ -9,7 +9,7 @@ const products = [
     bannerImage: "/product-assets/vintage-electric/banner.png",
     screenshot: "/product-assets/vintage-electric/screenshot.png",
     name: "Vintage Electric",
-    price: "",
+    price: "5.99",
     url: "shop/vintage-electric",
     tags: ["Kontakt instrument", "Sample library"],
     type: 'Rhodes sample library',
