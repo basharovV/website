@@ -1,7 +1,7 @@
 <script>
   import { isDarkModeEnabled } from "../../store/state.js";
-  import SampleLib from "svelte-piano/SampleLib.svelte";
-  import DevicePicker from "svelte-piano/components/DevicePicker.svelte";
+  import SampleLib from "svelte-sampler/SampleLib.svelte";
+  import DevicePicker from "svelte-sampler/components/DevicePicker.svelte";
 
   let player;
   let selectedSong;
