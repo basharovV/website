@@ -31,17 +31,22 @@
 <section>
   <h3>♪ Music tech</h3>
   <p>
-    💡 Integrating <span style="color: #00ffb3">REAPER</span> and a smart bulb to turn <span style="color: red">red</span> when recording.
+    🎹 Sample library player on the web. Check it out on <a
+      href="/shop/vintage-electric">Vintage Electric</a
+    >
+  </p>
+  <p>
+    💡 Integrating <span style="color: #00ffb3">REAPER</span> and a smart bulb
+    to turn <span style="color: red">red</span> when recording.
   </p>
 
-  <YoutubeVideo videoId="CaTaeP-j7Uk" platform="yt" showTitle={false}/>
+  <YoutubeVideo videoId="CaTaeP-j7Uk" platform="yt" showTitle={false} />
   <p>
     More info on the <a href="https://forum.cockos.com/showthread.php?t=261061"
       >Cockos forums</a
     >
   </p>
-  <br/>
-
+  <br />
 
   <h3>👨‍💻 Apps & Extensions</h3>
   <div class="products">
@@ -57,7 +62,7 @@
     </a>
     <a href="https://github.com/basharovV/StumbleUponAwesome">
       <div>
-        <img src="/dev/logo-sua.png" alt="StumbleUponAwesome logo"/>
+        <img src="/dev/logo-sua.png" alt="StumbleUponAwesome logo" />
         <p>StumbleUponAwesome</p>
         <small>
           A fun StumbleUpon-like extension for those interested in development,
@@ -124,7 +129,7 @@
       </p>
       <Images images={["/designs/nlp_2.png", "/designs/nlp_1.png"]} />
     </li>
-   
+
     <li>
       <p>
         Modos: a concept I started thinking about to re-imagine window and

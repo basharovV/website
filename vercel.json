@@ -1,3 +1,10 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { 
+      "source": "/shop/rhodesian-keys",
+      "destination": "/shop/vintage-electric", 
+      "permanent": true
+    }
+  ]
 }

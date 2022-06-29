@@ -15,7 +15,8 @@
 
   $: pathname = $page?.url?.pathname;
 
-  // console.log($page);
+  $: isLarge = pathname.includes("/shop/vintage-electric");
+
   $: isProduct = pathname.includes("/shop/");
 
   const setPageId = () => {
@@ -142,7 +143,7 @@
 
 <Nav />
 
-<main>
+<main class={isLarge ? "large" : ""}>
   <PageTransition url={$page.url.href}>
     <slot />
   </PageTransition>
@@ -170,6 +171,10 @@
     padding: 0 2em 2em 2em;
     margin: 0 auto;
     box-sizing: border-box;
+  }
+
+  .large {
+    max-width: 70em;
   }
 
   :global(#cusdis_thread) {

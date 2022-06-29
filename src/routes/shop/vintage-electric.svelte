@@ -358,10 +358,6 @@
     }
   }
 
-  :global(main) {
-    max-width: 70em !important;
-  }
-
   .circle-red {
     background-color: #ff0000;
     opacity: 0.1;
