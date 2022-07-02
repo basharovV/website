@@ -1,9 +1,90 @@
 <script>
   import { onMount } from "svelte";
+  import DevicePicker from "svelte-sampler/components/DevicePicker.svelte";
+  import SampleLib from "svelte-sampler/SampleLib.svelte";
 
   import Images from "../components/Images.svelte";
   import YoutubeVideo from "../components/YoutubeVideo.svelte";
   import { isDarkModeEnabled } from "../store/state.js";
+
+  let player;
+  let selectedSong;
+  let inputId;
+
+  const urls = {
+    A1: "RhodesMK1_A1_60.mp3",
+    A2: "RhodesMK1_A2_70.mp3",
+    A3: "RhodesMK1_A3_70.mp3",
+    A4: "RhodesMK1_A4_60.mp3",
+    A5: "RhodesMK1_A5_60.mp3",
+    A6: "RhodesMK1_A6_70.mp3",
+    "A#1": "RhodesMK1_As1_60.mp3",
+    "A#2": "RhodesMK1_As2_70.mp3",
+    "A#3": "RhodesMK1_As3_70.mp3",
+    "A#4": "RhodesMK1_As4_60.mp3",
+    "A#5": "RhodesMK1_As5_60.mp3",
+    "A#6": "RhodesMK1_As6_70.mp3",
+    B1: "RhodesMK1_B1_60.mp3",
+    B2: "RhodesMK1_B2_70.mp3",
+    B3: "RhodesMK1_B3_70.mp3",
+    B4: "RhodesMK1_B4_70.mp3",
+    B5: "RhodesMK1_B5_60.mp3",
+    B6: "RhodesMK1_B6_60.mp3",
+    C2: "RhodesMK1_C2_60.mp3",
+    C3: "RhodesMK1_C3_70.mp3",
+    C4: "RhodesMK1_C4_70.mp3",
+    C5: "RhodesMK1_C5_60.mp3",
+    C6: "RhodesMK1_C6_60.mp3",
+    C7: "RhodesMK1_C7_60.mp3",
+    "C#2": "RhodesMK1_Cs2_70.mp3",
+    "C#3": "RhodesMK1_Cs3_60.mp3",
+    "C#4": "RhodesMK1_Cs4_60.mp3",
+    "C#5": "RhodesMK1_Cs5_70.mp3",
+    "C#6": "RhodesMK1_Cs6_60.mp3",
+    "C#7": "RhodesMK1_Cs7_60.mp3",
+    D2: "RhodesMK1_D2_70.mp3",
+    D3: "RhodesMK1_D3_60.mp3",
+    D4: "RhodesMK1_D4_60.mp3",
+    D5: "RhodesMK1_D5_70.mp3",
+    D6: "RhodesMK1_D6_60.mp3",
+    D7: "RhodesMK1_D7_60.mp3",
+    "D#2": "RhodesMK1_Ds2_60.mp3",
+    "D#3": "RhodesMK1_Ds3_70.mp3",
+    "D#4": "RhodesMK1_Ds4_60.mp3",
+    "D#5": "RhodesMK1_Ds5_60.mp3",
+    "D#6": "RhodesMK1_Ds6_60.mp3",
+    "D#7": "RhodesMK1_Ds7_60.mp3",
+    E1: "RhodesMK1_E1_60.mp3",
+    E3: "RhodesMK1_E3_70.mp3",
+    E4: "RhodesMK1_E4_60.mp3",
+    E5: "RhodesMK1_E5_60.mp3",
+    E6: "RhodesMK1_E6_60.mp3",
+    E7: "RhodesMK1_E7_70.mp3",
+    F1: "RhodesMK1_F1_60.mp3",
+    F2: "RhodesMK1_F2_70.mp3",
+    F3: "RhodesMK1_F3_60.mp3",
+    F4: "RhodesMK1_F4_60.mp3",
+    F5: "RhodesMK1_F5_70.mp3",
+    F6: "RhodesMK1_F6_60.mp3",
+    "F#1": "RhodesMK1_Fs1_60.mp3",
+    "F#2": "RhodesMK1_Fs2_70.mp3",
+    "F#3": "RhodesMK1_Fs3_70.mp3",
+    "F#4": "RhodesMK1_Fs4_60.mp3",
+    "F#5": "RhodesMK1_Fs5_70.mp3",
+    "F#6": "RhodesMK1_Fs6_60.mp3",
+    G1: "RhodesMK1_G1_60.mp3",
+    G2: "RhodesMK1_G2_70.mp3",
+    G3: "RhodesMK1_G3_70.mp3",
+    G4: "RhodesMK1_G4_80.mp3",
+    G5: "RhodesMK1_G5_60.mp3",
+    G6: "RhodesMK1_G6_60.mp3",
+    "G#1": "RhodesMK1_Gs1_60.mp3",
+    "G#2": "RhodesMK1_Gs2_60.mp3",
+    "G#3": "RhodesMK1_Gs3_60.mp3",
+    "G#4": "RhodesMK1_Gs4_60.mp3",
+    "G#5": "RhodesMK1_Gs5_60.mp3",
+    "G#6": "RhodesMK1_Gs6_70.mp3",
+  };
 </script>
 
 <svelte:head>
@@ -30,16 +111,79 @@
 
 <section>
   <h3>♪ Music tech</h3>
-  <p>
-    🎹 Sample library player on the web. Check it out on <a
+  <p>🎹 Sample library player on the web.</p>
+
+  <small style="display: block;line-height: 1.5em;"
+    >I like sampling instruments, like my Rhodes electric piano which I've made
+    into a sample library for Kontakt. Typically, a "demo" of a plugin or sample
+    library is a pre-recorded track or video featuring the instrument. To
+    actually try the virtual instrument, you need to download and install it.
+    <br />As a weekend project, I wanted to create a
+    <b> <i>fully interactive demo that you can play in the browser</i></b>.
+  </small>
+  <div class="sample-lib-demo">
+    <SampleLib
+      samplesPath="/audio/rhodes/"
+      {urls}
+      startNote="E1"
+      endNote="D6"
+      {inputId}
+      bind:this={player}
+    />
+  </div>
+  <div class="player-info">
+    <p class="left">Just play it</p>
+    <img class="arrow" src="/icons/arrow_up.svg" />
+
+    <p class="or">or</p>
+    <p class="middle">Let it play for you</p>
+    <p class="or">or</p>
+    <p class="right">use a MIDI keyboard!</p>
+
+    <div />
+    <div />
+    <div>
+      <select bind:value={selectedSong}>
+        <option value="vb_improv_1" selected>Improvisation 1</option>
+        <option value="Bossa Improvisation" selected>
+          Bossa improvisation
+        </option>
+        <option value="vb_improv_2" selected>Fast rundown in C minor </option>
+        <option value="twinkle-twinkle-little-star" selected
+          >Twinkle Twinke Little Star
+        </option>
+        <option value="georgia_short">Georgia</option>
+      </select>
+
+      <button on:click={() => player.playMidiFile(`/midi/${selectedSong}.midi`)}
+        >Play it</button
+      >
+      <button on:click={() => player.stop()}>Stop</button>
+    </div>
+    <div />
+    <div class="device-picker">
+      <DevicePicker type="input" bind:value={inputId} />
+    </div>
+  </div>
+
+  <small class="demo-mobile-hint" style="margin-top: 2em;">
+    *demo is only available on desktop, sorry! Check out the full demo of <a
       href="/shop/vintage-electric">Vintage Electric</a
-    >
-  </p>
-  <p>
+    >, which has MIDI file playback and MIDI keyboard support.</small
+  >
+  <small class="demo-desktop-hint" style="margin-top: 2em;">
+    Play around with this demo or check out the product demo of <a
+      href="/shop/vintage-electric">Vintage Electric</a
+    >, which has some extra features.</small
+  >
+  <p style="margin-top: 4em;">
     💡 Integrating <span style="color: #00ffb3">REAPER</span> and a smart bulb
     to turn <span style="color: red">red</span> when recording.
   </p>
 
+  <small style="display: block;margin-top: 1em;margin-bottom: 2em;">
+  When your DAW telling you it's recording clearly isn't enough</small
+  >
   <YoutubeVideo videoId="CaTaeP-j7Uk" platform="yt" showTitle={false} />
   <p>
     More info on the <a href="https://forum.cockos.com/showthread.php?t=261061"
@@ -174,6 +318,84 @@
   section {
     padding: 1em 0;
     position: relative;
+  }
+
+  .sample-lib-demo {
+    @media only screen and (max-width: 975px) {
+      display: none;
+    }
+    :global(piano) {
+      box-shadow: none;
+    }
+    :global(piano .white-key) {
+      background-color: white;
+    }
+  }
+
+  .player-info {
+     @media only screen and (max-width: 975px) {
+      display: none;
+    }
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: 200px 100px 1fr 40px 1fr;
+    justify-content: space-between;
+    position: relative;
+
+    .arrow {
+      position: absolute;
+      left: 150px;
+      top: -20px;
+      transform: rotateY(180deg);
+    }
+    .or {
+      justify-self: center;
+    }
+
+    h3 {
+      font-size: 24px;
+      opacity: 0.5;
+      margin: 0.2em 0;
+    }
+    button {
+      margin: 0.6em 0;
+    }
+    * {
+      width: fit-content;
+    }
+    .left {
+      justify-self: left;
+    }
+    .middle {
+      justify-self: left;
+    }
+    .right,
+    .device-picker {
+      justify-self: right;
+
+      :global(select) {
+        background-color: white;
+        font-family: Arial;
+        color: black;
+        font-size: small;
+        padding: 0;
+      }
+    }
+  }
+
+  .demo-mobile-hint {
+    display: none;
+     @media only screen and (max-width: 975px) {
+      display: block;
+    }
+    
+  }
+  .demo-desktop-hint {
+    display: block;
+     @media only screen and (max-width: 975px) {
+      display: none;
+    }
+
   }
 
   .products {
