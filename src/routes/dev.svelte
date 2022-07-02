@@ -327,9 +327,6 @@
     :global(piano) {
       box-shadow: none !important;
     }
-    :global(piano .white-key) {
-      background-color: white !important;
-    }
   }
 
   .player-info {
