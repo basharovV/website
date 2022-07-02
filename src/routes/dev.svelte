@@ -325,10 +325,10 @@
       display: none;
     }
     :global(piano) {
-      box-shadow: none;
+      box-shadow: none !important;
     }
     :global(piano .white-key) {
-      background-color: white;
+      background-color: white !important;
     }
   }
 
