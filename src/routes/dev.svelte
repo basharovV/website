@@ -129,6 +129,7 @@
       endNote="D6"
       {inputId}
       bind:this={player}
+      theme='light'
     />
   </div>
   <div class="player-info">
