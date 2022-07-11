@@ -16,6 +16,7 @@
   $: pathname = $page?.url?.pathname;
 
   $: isLarge = pathname.includes("/shop/vintage-electric");
+  $: isFullWidth = pathname.includes("/blog/full-albums-worth-listening-to");
 
   $: isProduct = pathname.includes("/shop/");
 
@@ -143,7 +144,7 @@
 
 <Nav />
 
-<main class={isLarge ? "large" : ""}>
+<main class:large={isLarge} class:full-width={isFullWidth}>
   <PageTransition url={$page.url.href}>
     <slot />
   </PageTransition>
@@ -176,8 +177,16 @@
   .large {
     max-width: 70em;
   }
+  .full-width {
+    max-width: 100vw;
+
+    :global(post) {
+    }
+  }
 
   :global(#cusdis_thread) {
     margin-top: 2em;
+    max-width: 56em;
+    margin: auto;
   }
 </style>

@@ -107,12 +107,12 @@
       50;
   };
 
-  onMount(() => calculateLayout());
+  // onMount(() => calculateLayout());
 </script>
 
 <svelte:window on:resize={() => calculateLayout()} />
 
-<div class="post" style="height: {postHeight}px;">
+<div class="post">
   <a
     bind:this={youtubeLink}
     class="playlist"
@@ -148,9 +148,9 @@
 </div>
 
 <style lang="scss">
-
   .container {
     position: relative;
+    width: 100%;
   }
   .playlist {
     margin: 1em auto;
@@ -162,9 +162,10 @@
     text-decoration: none;
   }
   .full-albums {
-    position: absolute;
-    left: 0;
-    right: 0;
+    /* position: absolute; */
+    /* left: 0;
+    right: 0; */
+    width: 100%;
     margin-top: 4em;
   }
   .albums {

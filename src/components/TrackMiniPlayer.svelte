@@ -53,7 +53,6 @@
       alt={track.title}
       title={track.title}
     />
-    <button>License</button>
     {#if isLoading}
       <p class="loading">loading...</p>
     {/if}

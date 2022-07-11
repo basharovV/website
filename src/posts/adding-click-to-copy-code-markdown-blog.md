@@ -19,7 +19,7 @@ If you're writing posts with code examples, you should make your code blocks cop
 It's become a common practice on many developer sites around the web, and you can easily add it to your blog. Here's how!
 
 ### Copying to clipboard
-To be able to copy to the clipboard, the `copy-to-clipnboard` npm package does the job quite nicely. Install it first:
+To be able to copy to the clipboard, the `copy-to-clipboard` npm package does the job quite nicely. Install it first:
 ```txt
 npm i copy-to-clipboard
 ```

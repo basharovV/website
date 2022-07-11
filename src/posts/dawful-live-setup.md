@@ -16,11 +16,9 @@ Here is a rundown of my mega REAPER setup that does the job of:
 
 ... and all of this controlled with a single MIDI controller. Although this one does have a lot of buttons and knobs!
 
-
 Relying on a laptop for live performance can be a precarious thing, and with DAW-less setups becoming more compact and affordable, it's tempting to ditch your VSTs, sample libraries and start doing music on dedicated hardware. 
 
 
 ```
-
 
 ```

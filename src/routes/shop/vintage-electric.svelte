@@ -1,12 +1,51 @@
+<script context="module">
+  const artistFilter = "by Vyacheslav Basharov | composer";
+
+  const getTrack = async (url, fetch) => {
+    return fetch(`https://soundcloud.com/oembed.json?url=${url}`)
+      .then((response) => response.json())
+      .then((response) => ({
+        ...response,
+        title: response.title.replace(artistFilter, ""),
+        iframeSrc:
+          response.html.match(new RegExp('src="' + "(.*)" + '"'))[1] +
+          `&sharing=false&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false`,
+      }))
+      .catch((err) => {});
+  };
+
+  export async function load({ params, fetch }) {
+    const data = await getTrack(
+      "https://soundcloud.com/vbash/vintage-electric-demos",
+      fetch
+    );
+
+    console.log("data", data);
+    if (data) {
+      return {
+        props: {
+          track: data,
+        },
+      };
+    } else {
+      return {
+        error: "Not found",
+      };
+    }
+  }
+</script>
+
 <script>
   import { isDarkModeEnabled } from "../../store/state.js";
   import SampleLib from "svelte-sampler/SampleLib.svelte";
   import DevicePicker from "svelte-sampler/components/DevicePicker.svelte";
+  import TrackMiniPlayer from "../../components/TrackMiniPlayer.svelte";
 
   let player;
   let selectedSong;
   let inputId;
   let reverbOn;
+  export let track;
 
   const urls = {
     A1: "RhodesMK1_A1_60.mp3",
@@ -126,8 +165,23 @@
   >
 
   <img class="arrow-prompt" src="/icons/arrow_up.svg" />
-  <button class="reverb-button" on:click={() => {player?.toggleReverb()}}>Reverb {reverbOn ? 'ON' : 'OFF'}</button>
-  <SampleLib samplesPath="/audio/rhodes/" {inputId} {urls} bind:this={player} bind:reverbOn={reverbOn}/>
+  <button
+    class="reverb-button"
+    on:click={() => {
+      player?.toggleReverb();
+    }}>Reverb {reverbOn ? "ON" : "OFF"}</button
+  >
+  <div style="position:relative;">
+    <div class="circle-keybed-1" />
+    <div class="circle-keybed-2" />
+    <SampleLib
+      samplesPath="/audio/rhodes/"
+      {inputId}
+      {urls}
+      bind:this={player}
+      bind:reverbOn
+    />
+  </div>
   <div class="player-info">
     <h3 class="left">Just play it</h3>
     <img class="arrow" src="/icons/arrow_up.svg" />
@@ -163,6 +217,18 @@
     </div>
   </div>
 
+  <div class="demos-listen">
+    <h1 class="demos-listen-title">Listen to demo recordings</h1>
+  
+    <div class="circle-demos" />
+    <!-- <img class="arrow-prompt" src="/icons/arrow_up.svg" /> -->
+    <TrackMiniPlayer
+      {track}
+      accent="1e2424"
+      isDarkModeEnabled={$isDarkModeEnabled}
+    />
+  </div>
+
   <section>
     <h2>
       Kontakt 5+ instrument
@@ -177,6 +243,12 @@
     </h2>
     <img src="/product-assets/vintage-electric/screenshot.png" />
   </section>
+  <small
+    style="opacity: 0.2;margin:  8em auto 0;display: block;text-align:center;max-width: 40em; "
+    >Disclaimer: I don't have any association or endorsement by the Rhodes
+    brand. Any references to the Rhodes brand are provided for description
+    purposes only.</small
+  >
 
   <footer class="invert">
     <p>Vyacheslav Basharov</p>
@@ -203,6 +275,9 @@
   @font-face {
     font-family: "Lunatic Superstar";
     src: url("/fonts/LunaticSuperstar/LunaticSuperstar.otf");
+  }
+
+  .container {
   }
 
   .download-container {
@@ -259,6 +334,23 @@
     top: 1em;
   }
 
+  .demos-listen {
+    display: grid;
+    flex-direction: column;
+    margin: 8em auto;
+    align-items: center;
+    max-width: 40em;
+    text-align: center;
+    position: relative;
+  }
+
+  .demos-listen-title {
+    font-family: "Lunatic Superstar", Tahoma, Geneva, Verdana, sans-serif;
+    opacity: 0.5;
+    position: relative;
+    margin: 0;
+  }
+
   .prompt-label {
     font-family: "Lunatic Superstar", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.2em;
@@ -281,10 +373,9 @@
     margin-right: 1em;
     top: -1em;
     position: relative;
-    background:none;
+    background: none;
     border: 2px solid rgb(141, 141, 141);
     color: rgb(164, 164, 164);
-    
   }
 
   .player-info {
@@ -368,6 +459,42 @@
     position: absolute;
     top: 40px;
     right: -50px;
+  }
+
+  .circle-keybed-1 {
+    background-color: #00ffbf;
+    opacity: 0.1;
+    filter: blur(20px);
+    width: 177px;
+    height: 177px;
+    border-radius: 200px;
+    position: absolute;
+    top: -40px;
+    right: -50px;
+  }
+
+  .circle-keybed-2 {
+    background-color: #f6ff00;
+    opacity: 0.1;
+    filter: blur(30px);
+    width: 277px;
+    height: 277px;
+    border-radius: 200px;
+    position: absolute;
+    top: 10px;
+    left: -50px;
+  }
+  .circle-demos {
+    background-color: #ff0022;
+    opacity: 0.05;
+    filter: blur(50px);
+    width: 577px;
+    height: 177px;
+    border-radius: 300px;
+    position: absolute;
+    top: -50px;
+    left: 50px;
+    right: 0;
   }
 
   .header {

@@ -34,7 +34,7 @@
     }
   }
   // console.log($page);
-  $: isProduct = pathname.includes("/shop/");
+  $: isProduct = pathname.includes("/shop/");  
   $: forceDarkMode = isProduct;
 </script>
 
