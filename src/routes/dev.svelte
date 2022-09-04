@@ -113,14 +113,10 @@
   <h3>♪ Music tech</h3>
   <p>🎹 Sample library player on the web.</p>
 
-  <small style="display: block;line-height: 1.5em;"
-    >I like sampling instruments, like my Rhodes electric piano which I've made
-    into a sample library for Kontakt. Typically, a "demo" of a plugin or sample
-    library is a pre-recorded track or video featuring the instrument. To
-    actually try the virtual instrument, you need to download and install it.
-    <br />As a weekend project, I wanted to create a
-    <b> <i>fully interactive demo that you can play in the browser</i></b>.
-  </small>
+  <p style="display: block;line-height: 1.5em;"
+    >Sample libraries are great, but in order to try a product you typically need to download and install it. 
+    As I was making my own wample library I wanted a fully playable interactive demo that works in the browser.
+  </p>
   <div class="sample-lib-demo">
     <SampleLib
       samplesPath="/audio/rhodes/"
@@ -175,7 +171,7 @@
   <small class="demo-desktop-hint" style="margin-top: 2em;">
     Play around with this demo or check out the product demo of <a
       href="/shop/vintage-electric">Vintage Electric</a
-    >, which has some extra features.</small
+    > (Rhodes Mark I), which has some extra features.</small
   >
   <p style="margin-top: 4em;">
     💡 Integrating <span style="color: #00ffb3">REAPER</span> and a smart bulb

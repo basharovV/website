@@ -73,14 +73,6 @@
           />
         </a>
       </p>
-
-      <h3>Latest article</h3>
-      <p>On self-tracking, exobrains and quantified self</p>
-      <a
-        href="https://existentialist.xyz/on-self-tracking-exobrains-and-quantified-self/"
-      >
-        Read ->
-      </a>
     </section>
     <section style="grid-area: d;">
       <img
