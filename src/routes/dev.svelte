@@ -111,6 +111,18 @@
 
 <section>
   <h3>♪ Music tech</h3>
+
+  <p></p>
+
+  <p>🪕 musicat - a sleek desktop music player for musicians.</p>
+  <img src="/dev/musicat-screenshot.jpg" alt="musicat screenshot"/>
+  <p>A desktop music player with metadata tagging, powerful smart query and features for artists and musicians to manage their own tracks.</p>
+  <small>(Currently building, <a href="https://github.com/basharovV/musicat">pre-release availabe</a>)</small>
+
+  <br/>
+  <br/>
+  <br/>
+  <br/>
   <p>🎹 Sample library player on the web.</p>
 
   <p style="display: block;line-height: 1.5em;"
@@ -173,7 +185,11 @@
       href="/shop/vintage-electric">Vintage Electric</a
     > (Rhodes Mark I), which has some extra features.</small
   >
-  <p style="margin-top: 4em;">
+
+  <br/>
+  <br/>
+  <br/>
+  <p>
     💡 Integrating <span style="color: #00ffb3">REAPER</span> and a smart bulb
     to turn <span style="color: red">red</span> when recording.
   </p>
