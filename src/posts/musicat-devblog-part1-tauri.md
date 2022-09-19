@@ -7,7 +7,7 @@ description: "Part 1 of the devblog for Musicat"
 framework: "Tauri"
 language: "Typescript"
 author: "Slav"
-published: true
+published: false
 ---
 
 I recently came across this framework called [Tauri](tauri.app), which is like Electron for building desktop apps, using a web frontend and a Rust backend. As a music nerd that still hoardes local files, I set out to build a cross-platform music player that I can use to manage my library and also as a playground to explore some new UX ideas. 
