@@ -54,7 +54,7 @@
                 sleek desktop music player for artists and musicians
             </p>
             <small
-                >/read the <a href="/blog/musicat-devblog-part1-initial-commit"
+                >/read the <a href="/blog/building-music-player-tauri-svelte"
                     >devblog</a
                 >/</small
             >
@@ -82,15 +82,12 @@
             <br />
             <br />
             <div>
-                <iframe
-                    style="border: 0; width: 100%; height: 442px;"
-                    src="https://bandcamp.com/EmbeddedPlayer/track=821474887/size=large/bgcol=ffffff/linkcol=63b2cc/tracklist=false/transparent=true/"
-                    seamless
-                    ><a
-                        href="https://vyacheslavbasharov.bandcamp.com/track/improv-i"
-                        >Improv I by Vyacheslav Basharov</a
-                    ></iframe
+                <a
+                    class="image-link"
+                    href="https://vyacheslavbasharov.bandcamp.com/track/improv-i"
                 >
+                    <img src="/music/ImprovI.jpeg" />
+                </a>
                 <TrackMiniPlayer
                     trackUrl="https://soundcloud.com/elpatorecords/cause-studio-outtake"
                     isDarkModeEnabled={$isDarkModeEnabled}
@@ -177,6 +174,13 @@
         width: 100%;
     }
 
+    .image-link {
+        > img {
+            display: block;
+            width: 100%;
+        }
+    }
+
     .separator {
         position: absolute;
         left: 50%;
@@ -201,7 +205,6 @@
 
     h2 {
         display: inline-block;
-        
     }
 
     h3 {

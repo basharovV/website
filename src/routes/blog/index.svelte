@@ -2,7 +2,7 @@
   export async function load({ params, query, fetch }) {
     const posts = await fetch(`/blog.json`).then((r) => r.json());
     return {
-      props: { posts },
+      props: { posts: posts.sort((a, b) => a.date.localeCompare(b.date)) },
     };
   }
 </script>
@@ -27,6 +27,7 @@
 				waiting for the 'click' event -->
     <li>
       <a rel="prefetch" href="/blog/{post.slug}">{post.title}</a>
+      <small>{post.date}</small>
       {#if !post.published}
         <small class="wip">WIP</small>
       {/if}

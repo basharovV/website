@@ -1,5 +1,5 @@
 ---
-slug: musicat-devblog-part1-initial-commit
+slug: building-music-player-tauri-svelte
 title: "Building a music player with Tauri + Svelte"
 date: "2022-09-04"
 tags: tauri,app,music,player,svelte

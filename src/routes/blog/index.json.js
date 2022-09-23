@@ -11,6 +11,7 @@ const getAllPosts = () => {
           slug: post.metadata.slug,
           tags: post.metadata.tags,
           published: post.metadata.published,
+          date: post.metadata.date,
           // Add html if needed
         };
       })

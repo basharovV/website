@@ -59,6 +59,7 @@
       let js = document.createElement("script");
       js.id = "cusdis-sdk";
       js.async = true;
+      js.defer = true;
       js.src = "https://website-comments.vercel.app/js/cusdis.es.js";
       head.appendChild(js);
     }
