@@ -7,8 +7,27 @@
   let isLoading = false;
 
   let isExpanded = false;
+  const artistFilter = "by Vyacheslav Basharov | composer";
 
   export let track;
+  export let trackUrl;
+
+  const getTrack = async (url) => {
+    track = await fetch(`https://soundcloud.com/oembed.json?url=${url}`)
+      .then((response) => response.json())
+      .then((response) => ({
+        ...response,
+        title: response.title.replace(artistFilter, ""),
+        iframeSrc:
+          response.html.match(new RegExp('src="' + "(.*)" + '"'))[1] +
+          `&sharing=false&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false`,
+      })).catch(err=>{});
+  };
+
+  if (!track && trackUrl) {
+    getTrack(trackUrl);
+  }
+
   export let isDarkModeEnabled = false;
   export let autoPlay = false;
 
