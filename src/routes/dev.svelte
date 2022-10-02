@@ -127,7 +127,7 @@
 
   <p style="display: block;line-height: 1.5em;"
     >Sample libraries are great, but in order to try a product you typically need to download and install it. 
-    As I was making my own wample library I wanted a fully playable interactive demo that works in the browser.
+    As I was making my own sample library I wanted a fully playable interactive demo that works in the browser.
   </p>
   <div class="sample-lib-demo">
     <SampleLib
