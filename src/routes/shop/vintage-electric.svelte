@@ -154,7 +154,7 @@
       >
     </div>
     <div class="download-label">
-      <p class="price">$5.99</p>
+      <p class="price">Pay what you want</p>
       <p class="specs">684 MB download. Requires Kontakt 5+</p>
     </div>
   </div>
