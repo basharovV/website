@@ -159,7 +159,9 @@ We use a good old HTML `table`, with columns for the song fields, and show the s
 
 # The `audio` player
 
-The HTML5 `audio` element has decent support for audio codecs, including MP3, AAC, OGG, FLAC, WAV in modern browsers. Although for basic purposes of the app we just need to be able to play files, the Web Audio API also allows for more complex audio use cases. It is actually a familiar system to DAWs - there are nodes with inputs, outputs and channels, and we route things together to create our signal chain, and create a buffer to play sounds.
+The `audio` element has decent support for audio codecs, including MP3, AAC, OGG, FLAC, WAV in modern browsers. Although for basic purposes of the app we just need to be able to play files, we can also connect the audio element to the Web Audio API for signal chaining, or passing the audio data through an analyser for visualisation.
+
+⚠️ Note that WebAudio is particularly [buggy](https://bugs.webkit.org/show_bug.cgi?id=215314) on [Safari](https://bugs.webkit.org/show_bug.cgi?id=221334). I've had issues with pops, clicks and audio playing back at the wrong speed. 
 
 So let's set up a basic audio player, which contains:
 
