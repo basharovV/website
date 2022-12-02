@@ -23,8 +23,10 @@
         ]
     }}
 />
+
 <div class="container {$isDarkModeEnabled ? 'invert' : ''}">
     <img
+        class="icon"
         style="grid-area: a;margin:auto;width: 30px;"
         alt="Logo"
         src="/logo.svg"
@@ -47,7 +49,7 @@
 
     <div class="sections">
         <section>
-            <h3>Recent tech</h3>
+            <h3>currently building:</h3>
 
             <p>
                 <a href="https://github.com/basharovV/musicat">musicat</a>: a
@@ -59,6 +61,7 @@
                 >/</small
             >
 
+            <h3>other tech:</h3>
             <p>
                 <a href="https://tbxproject.com">tbx</a>: browser extension for
                 collaborative browsing
@@ -104,13 +107,13 @@
         <p>Vyacheslav Basharov</p>
         <div>
             <a href="https://github.com/basharovV"
-                ><img alt="github" src="/github.svg" /></a
+                ><img class="icon" alt="github" src="/github.svg" /></a
             >
             <a href="https://soundcloud.com/vbash"
-                ><img alt="soundcloud" src="/soundcloud.svg" /></a
+                ><img class="icon" alt="soundcloud" src="/soundcloud.svg" /></a
             >
             <a href="mailto:contact@vyacheslavbasharov.com"
-                ><img alt="email" src="/email.svg" /></a
+                ><img class="icon" alt="email" src="/email.svg" /></a
             >
         </div>
     </footer>
@@ -246,7 +249,7 @@
         }
     }
 
-    .invert img {
+    .invert .icon {
         filter: invert(1);
     }
 

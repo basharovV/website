@@ -87,53 +87,62 @@
     }}
 />
 <div class="container">
-    {#if !$isDarkModeEnabled}
-        <FlyingBirds />
-    {/if}
-    <GlobalPlayer />
-    <div class="background">
-        {#if $isDarkModeEnabled}
-            <div class={$isDarkModeEnabled ? "invert" : ""} id="image" />
+    <div class="grid">
+        {#if !$isDarkModeEnabled}
+            <FlyingBirds />
         {/if}
-        <div class={$isDarkModeEnabled ? "invert" : ""} id="gradient" />
+        <GlobalPlayer />
+        <!-- <div class="background">
+            {#if $isDarkModeEnabled}
+                <div class={$isDarkModeEnabled ? "invert" : ""} id="image" />
+            {/if}
+            <div class={$isDarkModeEnabled ? "invert" : ""} id="gradient" />
+        </div> -->
+        <!-- <header /> -->
+        <section>
+            <div class="live">
+                <div class="big-video">
+                    <YoutubeVideo videoId="bSN3eBiGWIM" platform="yt" />
+                    <div class="vignette" />
+                </div>
+                <br />
+                <p>
+                    I play the keys, with a focus on jazz, fusion and
+                    minimalism. Happy to be performing and jamming with some
+                    wonderful friends and musicians, including
+                    <a href="https://unclejohnsband.xyz">Uncle John's Band</a>,
+                    <a href="https://www.instagram.com/crazygluecollective/"
+                        >Crazy Glue Collective</a
+                    >,
+                    <a href="https://www.instagram.com/mixelle/">Mixelle</a>.
+                    Check them out!
+                </p>
+            </div>
+        </section>
+        <section>
+            <h2>⌟ some original music:</h2>
+            <div class="featured-tracks">
+                <!-- <div class="warp-speed"><WarpSpeed /></div> -->
+                <FeaturedTracks tracks={filteredTracks} />
+                <small>
+                    Want to use some of my music in your projects? Send me an
+                    email to <a
+                        style="text-decoration: none"
+                        href="mailto:contact@vyacheslavbasharov.com"
+                        >contact@vyacheslavbasharov.com</a
+                    >
+                </small>
+            </div>
+        </section>
+        <section>
+            <h2>⌟ videos</h2>
+            <div class="improv-videos">
+                <YoutubeVideo videoId="oM5dvsEMG8M" platform="yt" />
+                <YoutubeVideo videoId="-imEDkQukVY" platform="yt" />
+                <YoutubeVideo videoId="aJnmdwpU9WU" platform="yt" />
+            </div>
+        </section>
     </div>
-    <header />
-    <div class="live">
-        <h2>
-            I play the 🎹 with some wonderful friends and musicians in the south
-            of Spain.
-        </h2>
-        <a href="https://www.instagram.com/unclejohns.band/"
-            >Uncle John's Band</a
-        >
-        <a href="https://www.instagram.com/crazygluecollective/"
-            >Crazy Glue Collective</a
-        >
-        <a href="https://www.instagram.com/mixelle/">Mixelle</a>
-    </div>
-    <h2>I also make music as a solo artist:</h2>
-    <div class="heading">
-        <!-- <input type="text" placeholder="Search" bind:value={searchQuery} />
-    <div></div> -->
-    </div>
-    <div class="featured-tracks">
-        <!-- <div class="warp-speed"><WarpSpeed /></div> -->
-        <FeaturedTracks tracks={filteredTracks} />
-        <small>
-            Want to use some of my music in your projects? Send me an email to <a
-                style="text-decoration: none"
-                href="mailto:contact@vyacheslavbasharov.com"
-                >contact@vyacheslavbasharov.com</a
-            >
-        </small>
-    </div>
-
-    <h1>videos</h1>
-    <div class="improv-videos">
-        <YoutubeVideo videoId="bSN3eBiGWIM" platform="yt" />
-        <YoutubeVideo videoId="-imEDkQukVY" platform="yt" />
-    </div>
-
     <footer class={$isDarkModeEnabled ? "invert" : ""}>
         <p>Vyacheslav Basharov</p>
         <div>
@@ -151,6 +160,51 @@
 </div>
 
 <style lang="scss">
+    .container {
+        /* position: relative; */
+        /* background-color: rgba(32, 25, 108, 0.847); */
+        /* background-color: rgba(108, 25, 25, 0.764); */
+        padding: 1em;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 5px;
+    }
+
+    section {
+        &:nth-of-type(1) {
+            grid-column: 1 / 5;
+            grid-row: 1;
+            background: none;
+        }
+        &:nth-of-type(2) {
+            grid-column: 1 / 5;
+            grid-row: 2;
+        }
+        &:nth-of-type(3) {
+            grid-column: 1 / 5;
+            grid-row: 3;
+        }
+    }
+    .big-video {
+        position: relative;
+        .vignette {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: radial-gradient(transparent 20%, white 95%);
+            pointer-events: none;
+
+            :global(.dark-mode) & {
+                background: radial-gradient(transparent 20%, #181818 95%);
+            }
+        }
+    }
+
     a {
         &:hover {
             opacity: 0.6;
@@ -173,20 +227,22 @@
     .improv-videos {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 5px;
     }
 
     .live {
         padding: 1em;
         padding-top: 0.5em;
         border-radius: 4px;
-        background-color: rgba(51, 49, 47, 0.98);
-        color: rgba(250, 235, 215, 1);
-        h2, p, a {
-          margin: 0;
+        /* background-color: rgba(51, 49, 47, 0.98); */
+        h2,
+        p,
+        a {
+            margin: 0;
         }
         h2 {
-          max-width: 500px;
-          margin-bottom: 1em;
+            max-width: 500px;
+            margin-bottom: 1em;
         }
     }
     .featured-tracks {
@@ -217,14 +273,14 @@
 
     :global(.dark-mode) {
         section {
-            background: rgba(0, 0, 0, 0.74) !important;
+            /* background: rgba(0, 0, 0, 0.74) !important; */
         }
     }
     section {
         margin: 0.5em 0;
         padding: 1em;
-        border: 1px solid rgba(121, 121, 121, 0.475);
-        background: rgba(255, 255, 255, 0.776) !important;
+        /* border: 1px solid rgba(121, 121, 121, 0.475); */
+        /* background: rgba(255, 255, 255, 0.776) !important; */
     }
 
     figure {
@@ -308,7 +364,6 @@
 
     .background {
         position: absolute;
-        top: 0;
         left: 0;
         right: 0;
         bottom: 0;
@@ -316,18 +371,18 @@
         z-index: -1;
         opacity: 0;
         animation: fadeInFull 0.3s ease-out 0.2s forwards;
-        filter: blur(4px) sepia(100%) invert(10%);
+        /* filter: blur(4px) sepia(100%) invert(10%); */
         #image {
             height: 100%;
             opacity: 0.1;
             background-image: url("/header-bg.jpg");
-            background-size: cover;
-            background-position-y: bottom;
-            background-position-x: center;
+            background-size: auto;
+            background-position-y: top;
+            background-position-x: right;
             background-repeat: no-repeat;
 
             &.invert {
-                opacity: 0.3;
+                opacity: 0.6;
             }
         }
 

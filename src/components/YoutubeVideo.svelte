@@ -97,6 +97,7 @@
       background: rgba(0, 0, 0, 0.72);
       padding: 0 0.3em;
       border-radius: 5px;
+      font-size: 0.9em;
     }
 
     &:hover {
