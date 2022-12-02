@@ -1,7 +1,7 @@
 ---
 slug: the-problem-with-music-metadata
 title: "The problem with music metadata"
-date: "2022-09-04"
+date: "2022-12-02"
 tags: metadata,music,player,musicat
 description: "Part 2 of the devblog for Musicat"
 author: "Slav"
