@@ -155,7 +155,7 @@
       id="cusdis_thread"
       name="comments"
       data-host="https://website-comments.vercel.app"
-      data-app-id="d95890c3-822f-40ee-81ad-2432b0ff0244"
+      data-app-id="870bd117-7a77-4923-adc7-5d294e64608d"
       data-page-id={pageId}
       data-page-url={window.location.href}
       data-page-title={document.title}
