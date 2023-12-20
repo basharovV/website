@@ -74,7 +74,7 @@
         title: "Vyacheslav Basharov | Music",
         description:
             "I make thought-provoking music for use in your projects. Listen to tracks, license music or hire me as a composer.",
-        url: `https://vyacheslavbasharov.com/music`,
+        url: `https://slavbasharov.com/music`,
         type: "website",
         images: [
             {

@@ -23,7 +23,7 @@
       "vb shop | free sample packs, libraries and instruments | Vyacheslav Basharov",
     description:
       "Free sample packs, sample libraries and instruments. An independent creative outlet by Vyacheslav Basharov",
-    url: `https://vyacheslavbasharov.com/shop`,
+    url: `https://slavbasharov.com/shop`,
     type: "website",
     images: [
       {

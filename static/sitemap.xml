@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <url><loc>https://vyacheslavbasharov.com/</loc></url>
-<url><loc>https://vyacheslavbasharov.com/blog</loc></url>
-<url><loc>https://vyacheslavbasharov.com/shop/vintage-electric</loc></url>
-<url><loc>https://vyacheslavbasharov.com/shop/not-alone-in-space</loc></url>
-<url><loc>https://vyacheslavbasharov.com/shop/glass-and-metal</loc></url>
-<url><loc>https://vyacheslavbasharov.com/dev</loc></url>
-<url><loc>https://vyacheslavbasharov.com/music</loc></url>
-<url><loc>https://vyacheslavbasharov.com/shop</loc></url>
-<url><loc>https://vyacheslavbasharov.com/shop/vintage-electric</loc></url>
-<url><loc>https://vyacheslavbasharov.com/shop/not-alone-in-space</loc></url>
-<url><loc>https://vyacheslavbasharov.com/shop/glass-and-metal</loc></url>
-<url><loc>https://vyacheslavbasharov.com/blog/adding-click-to-copy-code-markdown-blog</loc></url>
-<url><loc>https://vyacheslavbasharov.com/blog/adding-comments-to-static-site</loc></url>
-<url><loc>https://vyacheslavbasharov.com/blog/building-a-modern-portfolio-site</loc></url>
-<url><loc>https://vyacheslavbasharov.com/blog/building-music-player-tauri-svelte</loc></url>
-<url><loc>https://vyacheslavbasharov.com/blog/full-albums-worth-listening-to</loc></url>
-<url><loc>https://vyacheslavbasharov.com/blog/the-problem-with-music-metadata</loc></url>
+  <url><loc>https://slavbasharov.com/</loc></url>
+<url><loc>https://slavbasharov.com/blog</loc></url>
+<url><loc>https://slavbasharov.com/shop/vintage-electric</loc></url>
+<url><loc>https://slavbasharov.com/shop/not-alone-in-space</loc></url>
+<url><loc>https://slavbasharov.com/shop/glass-and-metal</loc></url>
+<url><loc>https://slavbasharov.com/dev</loc></url>
+<url><loc>https://slavbasharov.com/music</loc></url>
+<url><loc>https://slavbasharov.com/shop</loc></url>
+<url><loc>https://slavbasharov.com/shop/vintage-electric</loc></url>
+<url><loc>https://slavbasharov.com/shop/not-alone-in-space</loc></url>
+<url><loc>https://slavbasharov.com/shop/glass-and-metal</loc></url>
+<url><loc>https://slavbasharov.com/blog/adding-click-to-copy-code-markdown-blog</loc></url>
+<url><loc>https://slavbasharov.com/blog/adding-comments-to-static-site</loc></url>
+<url><loc>https://slavbasharov.com/blog/building-a-modern-portfolio-site</loc></url>
+<url><loc>https://slavbasharov.com/blog/building-music-player-tauri-svelte</loc></url>
+<url><loc>https://slavbasharov.com/blog/full-albums-worth-listening-to</loc></url>
+<url><loc>https://slavbasharov.com/blog/the-problem-with-music-metadata</loc></url>
 </urlset>

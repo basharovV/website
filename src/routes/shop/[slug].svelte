@@ -63,7 +63,7 @@
   openGraph={{
     title: seoTitle,
     description: product.description,
-    url: `https://vyacheslavbasharov.com/${product.url}`,
+    url: `https://slavbasharov.com/${product.url}`,
     type: "website",
     images: [
       {

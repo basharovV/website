@@ -1,7 +1,7 @@
 const fs = require("fs");
 const frontMatter = require("front-matter");
 
-const BASE_URL = "https://vyacheslavbasharov.com/";
+const BASE_URL = "https://slavbasharov.com/";
 const ROUTES = "./src/routes";
 const POSTS = "./src/posts";
 

@@ -23,8 +23,8 @@
   const setPageId = () => {
     // Get the page from the URL
     if (typeof window !== "undefined") {
-      if (window.location.href.includes("https://vyacheslavbasharov.com")) {
-        pageId = window.location.href.split("https://vyacheslavbasharov.com");
+      if (window.location.href.includes("https://slavbasharov.com")) {
+        pageId = window.location.href.split("https://slavbasharov.com");
       } else if (window.location.href.includes("http://localhost:3000")) {
         pageId = window.location.href.split("http://localhost:3000");
       }

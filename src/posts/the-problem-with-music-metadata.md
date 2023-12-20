@@ -11,9 +11,9 @@ Music metadata is a bit of a mess.
 
 In an ideal w🌎rld, it would magically tell you everything you need to know about a piece of music, and the content would always be rich, meaningful and complete. 
 
-In reality, the information is scattered, and by the time a recording reaches the listener, some data may be wrong or incomplete. In addition, software isn't always great at managing and displaying it to listeners. Spotify didn't show songwriter credits until 2018, more than a decade after its initial release. Not blaming them, I'm just pointing out that it's a challenge to fix and enrich data at such a scale if you don't have the right data to begin with. 
+In reality, the information is scattered, and by the time a recording reaches the listener, some data may be wrong or incomplete. In addition, software isn't always great at managing and displaying it to listeners. Spotify didn't show songwriter credits until 2018, more than a decade after its initial release. Not putting the blame entirely on Spotify, it's also a challenge to fix and enrich data at such a scale if you don't have the right data to begin with. As a general rule of thumb - capture good quality data at the source, and thank yourself later. 
 
-Besides the essentials - title, artist, album - you can't force every artist, label and publisher to capture all the extra information for every recording. Is it really that important to put the mixing engineer in the metadata? Maybe few actually care about it, especially in the streaming era. Maybe the only thing that's really essential is the audio file itself? 
+Besides the essentials - title, artist, album, genre and such, what other data should we care about? Tags aim to describe both the origin and contents of the audio file. 
 
 For those of us that keep music on a hard drive in 2022, there is still a good reason to keep metadata in check - it just looks ugly if you don't:
 

@@ -11,7 +11,7 @@
     openGraph={{
         title: "Vyacheslav Basharov | Developer & Composer",
         description: "I make music, software and musical software.",
-        url: `https://vyacheslavbasharov.com`,
+        url: `https://slavbasharov.com`,
         type: "website",
         images: [
             {

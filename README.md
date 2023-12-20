@@ -2,4 +2,4 @@
 
 A portfolio of my dev work and music.
 
-https://vyacheslavbasharov.com
+https://slavbasharov.com

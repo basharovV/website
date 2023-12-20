@@ -74,16 +74,16 @@ let cusdisElement; # The comments frame itself
 
 ## Dynamic pageId
 
-And now let's write a function that will set the `pageId`. This could be a unique ID, or based on the URL. I used the URL path (without the domain) as the `pageId`. Eg. if the current URL is **https://vyacheslavbasharov.com/blog/adding-comments-to-static-site** the `pageId` is **blog/adding-comments-to-static-site**
+And now let's write a function that will set the `pageId`. This could be a unique ID, or based on the URL. I used the URL path (without the domain) as the `pageId`. Eg. if the current URL is **https://slavbasharov.com/blog/adding-comments-to-static-site** the `pageId` is **blog/adding-comments-to-static-site**
 
 ```
 let pageId;
 const setPageId = () => {
     // Get the page from the URL
     if (typeof window !== "undefined") {
-        if (window.location.href.includes("https://vyacheslavbasharov.com")) {
+        if (window.location.href.includes("https://slavbasharov.com")) {
         pageId = window.location.href
-            .split("https://vyacheslavbasharov.com")
+            .split("https://slavbasharov.com")
             .filter((a) => a.length && a !== "/");
         } else if (window.location.href.includes("http://localhost:3000")) {
         pageId = window.location.href
