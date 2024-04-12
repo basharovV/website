@@ -114,11 +114,13 @@
 
   <p></p>
 
-  <p>🪕 musicat - a sleek desktop music player for musicians.</p>
-  <img src="/dev/musicat-screenshot.jpg" alt="musicat screenshot"/>
-  <p>A desktop music player with metadata tagging, powerful smart query and features for artists and musicians to manage their own tracks.</p>
+  <p>🪕 musicat - a sleek player for your local music library</p>
+  <img src="/dev/musicat-feb-2024.jpg" alt="musicat screenshot"/>
+  <p>A desktop music player with metadata tagging, smart playlists, map view, stats, and features for artists and musicians to manage their own tracks.</p>
   <small>(Currently building, <a href="https://github.com/basharovV/musicat">pre-release availabe</a>)</small>
-
+  <small><a href="/blog/building-music-player-tauri-svelte">Devlog 1</a></small>
+  <small><a href="/blog/the-problem-with-music-metadata">Devlog 2</a></small>
+  <small><a href="/blog/musicat-road-to-gapless">Devlog 3</a></small>
   <br/>
   <br/>
   <br/>
