@@ -1,11 +1,11 @@
-import posts from "./_products.js";
+import posts from "../_products.js";
 
 const lookup = new Map();
 posts.forEach((post) => {
-  lookup.set(post.id, JSON.stringify(post));
+  lookup.set(post.id, post);
 });
 
-export function get(req, res, next) {
+export function load(req, res, next) {
   // the `slug` parameter is available because
   // this file is called [slug].json.js
   const { slug } = req.params;

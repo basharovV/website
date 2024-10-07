@@ -36,6 +36,8 @@
   .container {
     overflow: visible;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1em;
@@ -72,7 +74,6 @@
   .comingsoon {
     margin: auto;
     width: 100%;
-    flex: 1 1 220px;
     padding: 2em 0;
     p {
       text-align: center;

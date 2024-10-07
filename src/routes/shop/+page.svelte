@@ -12,7 +12,7 @@
   import WarpSpeed from "../../components/WarpSpeed.svelte";
   import { isDarkModeEnabled } from "../../store/state.js";
   import SvelteSeo from "svelte-seo";
-  export let products;
+  export let data;
 </script>
 
 <SvelteSeo
@@ -76,7 +76,7 @@
 <section>
   <!-- <h2>📦 Products</h2> -->
 
-  <FeaturedProducts {products} />
+  <FeaturedProducts products={data.body } />
 </section>
 
 <small style="text-align:center;">Thanks for stopping by!</small>

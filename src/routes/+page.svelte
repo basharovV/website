@@ -26,10 +26,10 @@
 
 <div class="container {$isDarkModeEnabled ? 'invert' : ''}">
     <img
+        alt="cd"
         class="icon"
+        src="icons/cd6.gif"
         style="grid-area: a;margin:auto;width: 30px;"
-        alt="Logo"
-        src="/logo.svg"
     />
     <header>
         <h3
@@ -37,74 +37,33 @@
         >
             Hello! I'm Slav
         </h3>
+
         <br />
-        <h2 style="text-align: center;">
+
+        <p style="text-align: center;">
             I
             <a href="/dev">make software</a>
             and
             <a href="/music">write music</a>
-        </h2>
-        <img alt="cd" src="icons/cd6.gif" />
+        </p>
     </header>
 
-    <div class="sections">
-        <section>
-            <h3>currently building:</h3>
-
-            <p>
-                <a href="https://github.com/basharovV/musicat">musicat</a>: a
-                sleek desktop music player for artists and musicians
-            </p>
-            <small
-                >/read the <a href="/blog/building-music-player-tauri-svelte"
-                    >devblog</a
-                >/</small
+    <section>
+        <p>
+            Currently working on <a href="https://github.com/basharovV/musicat"
+                >Musicat</a
             >
-
-            <h3>other tech:</h3>
-            <p>
-                <a href="https://tbxproject.com">tbx</a>: browser extension for
-                collaborative browsing
-            </p>
-
-            <p>
-                <a href="https://github.com/basharovV/StumbleUponAwesome"
-                    >StumbleUponAwesome</a
-                >: remember StumbleUpon? It's like that, but for tech sites.
-                <a href="https://github.com/basharovV/StumbleUponAwesome">
-                    <img
-                        class="stars"
-                        src="https://img.shields.io/github/stars/basharovV/stumbleuponawesome.svg?style=social&label=Star&maxAge=2592000"
-                        alt=""
-                    />
-                </a>
-            </p>
-        </section>
-        <div class="separator" />
-        <section style="grid-area: d;">
             <br />
-            <br />
-            <div>
-                <a
-                    class="image-link"
-                    href="https://vyacheslavbasharov.bandcamp.com/track/improv-i"
-                >
-                    <img src="/music/ImprovI.jpeg" />
-                </a>
-                <TrackMiniPlayer
-                    trackUrl="https://soundcloud.com/elpatorecords/cause-studio-outtake"
-                    isDarkModeEnabled={$isDarkModeEnabled}
-                />
-                <TrackMiniPlayer
-                    trackUrl="https://soundcloud.com/vbash/mind-wandering"
-                    isDarkModeEnabled={$isDarkModeEnabled}
-                />
-            </div>
-        </section>
-    </div>
+            <img
+                class="stars"
+                src="https://img.shields.io/github/stars/basharovV/musicat.svg?style=social&label=Stars&maxAge=2592000{$isDarkModeEnabled ? '&color=black&labelColor=white' : ''}"
+                alt=""
+            />
+        </p>
+    </section>
 
     <footer class={$isDarkModeEnabled ? "invert" : ""}>
-        <p>Vyacheslav Basharov</p>
+        <p>Slav Basharov</p>
         <div>
             <a href="https://github.com/basharovV"
                 ><img class="icon" alt="github" src="/github.svg" /></a
@@ -122,10 +81,10 @@
 <style lang="scss">
     .container {
         padding-top: 4em;
-        max-width: 900px;
         display: flex;
         flex-direction: column;
         margin: auto;
+        width: 100%;
 
         .subtitle {
             opacity: 0.6;
@@ -163,6 +122,7 @@
 
     .stars {
         height: 21px;
+        margin-top: 0.5em;
         width: auto;
         object-fit: contain;
         vertical-align: sub;
@@ -175,6 +135,9 @@
     section {
         margin: 0;
         width: 100%;
+        p {
+            text-align: center;
+        }
     }
 
     .image-link {

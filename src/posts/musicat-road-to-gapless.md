@@ -2,11 +2,12 @@
 slug: musicat-road-to-gapless
 title: "The road to gapless"
 date: "2024-04-12"
-tags: rust,music,webaudio,gapless
+tags: webaudio, rust, webrtc, musicat
 description: "Part 3 of the devblog for Musicat"
 author: "Slav"
 published: true
 ---
+_Originally published on [Github discussions](https://github.com/basharovV/musicat/discussions/6)_
 
 Ever since I started working on musicat, the audiophile in me wanted to implement gapless playback. Yet I decided to park it, live with the gaps on The Dark Side Of The Moon and just use the `<audio>` element. That way I could focus on building out features that I needed first. 
 
@@ -32,11 +33,12 @@ So over the past few months I have played around with a few ideas to try and ena
    - Requires flow control on both sides, to make sure that sender can keep up with playback, but not so fast that it overflows the ring buffer. I had to implement an VLC-like algorithm where the consumer sends the producer it's "receive rate" at regular intervals, and the decoder slows down or speeds up accordingly, between 0.8x and 3x playback speed. 
    - The approach generally worked, and since it's a local app there weren't any "lost packets". So technically we could do gapless. But the CPU usage increased heavily due to WebRTC, and when moving the app to the background I sometimes experienced the WebKit WebView throttling the connection, causing the playback to stutter. 
 - **Final approach: [rust-audio-backend](https://github.com/basharovV/musicat/tree/rust-audio-backend)**
-  - Decoding, playback and resampling is done in Rust using Symphonia + cpal on a separate thread. I got to re-use the flow-control mechanism from the previous approach, making sure that decoding rate is around playback rate.
+  - Decoding, playback and resampling is done in Rust using Symphonia + cpal on a separate thread. 
   - Direct control over the raw audio stream sent to the native device
+  - No flow control required, since we're now using a ring buffer to send samples to the device
   - Frontend communicates necessary file, volume, seek information
   - WebRTC is still used, but only for streaming the real-time FFT viz data for the spectroscope visualization on the frontend. 
   - CPU usage is acceptable 15-20%
   - Road to gapless and other audio features paved ahead!
 
-Essentially, I went down a rabbit hole, progressively getting closer to the raw audio stream in the process. And I'm so glad I did, because I feel like I have peeled off all the layers of abstraction and browser limitations that were getting in the way. This leads to a hybrid architecture where Rust is the I/O, audio, heavy-lifting layer, and the Svelte app is just the presentation layer. Granted, the database is still using IndexedDB which is in the browser, but that's something for another day. 
+Essentially, I went down a rabbit hole, progressively getting closer to the raw audio stream in the process. And I'm so glad I did, because I feel like I have peeled off all the layers of abstraction and browser limitations that were getting in the way. In hindsight, building a desktop audio player using web technologies probably wasn't the best idea. But I'm happy with a hybrid architecture where Rust is the I/O, audio, heavy-lifting layer, and the Svelte app is just the presentation layer. Granted, the database is still using IndexedDB which is in the browser, but that's something for another day. 

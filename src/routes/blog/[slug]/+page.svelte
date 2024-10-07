@@ -1,29 +1,6 @@
-<script context="module">
-    export async function load({ params, fetch }) {
-        // the `slug` parameter is available because
-        // this file is called [slug].svelte
-        try {
-            const res = await fetch(`/blog/${params.slug}.json`).then((r) =>
-                r.json()
-            );
-            return {
-                props: {
-                    post: res,
-                    slug: params.slug
-                }
-            };
-        } catch (err) {
-            return {
-                status: 404,
-                error: "Not found!"
-            };
-        }
-    }
-</script>
-
 <script>
-    import FullAlbums from "../../components/FullAlbums.svelte";
-    import { isDarkModeEnabled } from "../../store/state.js";
+    import FullAlbums from "../../../components/FullAlbums.svelte";
+    import { isDarkModeEnabled } from "../../../store/state.js";
     import copy from "copy-to-clipboard";
     import { onMount } from "svelte";
     import "highlight.js/styles/atom-one-dark-reasonable.css";
@@ -59,8 +36,9 @@
         });
     });
 
-    export let post;
-    export let slug;
+    export let data;
+    export let post = data.body;
+    export let slug = data.slug;
     let tags = post.tags
         .split(",")
         .map((t) => `#${t}`)
@@ -98,7 +76,7 @@
         {#if slug === "full-albums-worth-listening-to"}
             <FullAlbums />
         {:else}
-            {@html post.html}
+            <svelte:component this={post.content} />
         {/if}
     </div>
 </post>
@@ -147,11 +125,11 @@
     }
     post {
         display: block;
-        max-width: 50em;
+        max-width: 70em;
         margin: auto;
 
         .content {
-            max-width: 45em;
+            max-width: 65em;
             margin: auto;
         }
     }
@@ -214,7 +192,7 @@
         font-family: "IBM Plex Sans", Tahoma, Geneva, Verdana, sans-serif;
         letter-spacing: 0.04em;
     }
-    
+
     .content :global(p) {
         line-height: 2em;
         opacity: 0.85;
@@ -232,7 +210,8 @@
         overflow-x: auto;
         line-height: 1.7em;
         font-size: 1rem;
-        border-left: 2px dashed rgba(106, 106, 106, 0.379);
+        border: 2px dashed rgba(106, 106, 106, 0.379);
+        border-radius: 4px;
         position: relative;
 
         :global(.dark-mode) & {
@@ -322,7 +301,7 @@
     }
   } */
 
-    .content :global(ul) {
+    .content > :global(ul) {
         line-height: 1.5;
         border-left: 1px solid rgb(93, 91, 91);
 
@@ -336,7 +315,7 @@
         position: relative;
     }
 
-    .content :global(ul) :global(li)::before {
+    .content > :global(ul) > :global(li)::before {
         content: "";
         width: 30px;
         height: 1px;
@@ -350,7 +329,7 @@
         }
     }
 
-    .content :global(ul) :global(li)::marker {
+    .content > :global(ul) > :global(li)::marker {
         color: rgb(93, 91, 91);
 
         :global(.dark-mode) & {

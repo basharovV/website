@@ -3,14 +3,14 @@
   "description": "My personal website.",
   "version": "1.0.0",
   "engines": {
-    "node": ">=16.x"
+    "node": "16.x"
   },
   "scripts": {
-    "dev": "svelte-kit dev",
+    "dev": "vite dev",
     "post:dev": "node generate-sitemap.js",
-    "build": "svelte-kit build",
-    "export": "svelte-kit build",
-    "start": "svelte-kit preview"
+    "build": "vite build",
+    "export": "vite build",
+    "start": "vite preview"
   },
   "type": "module",
   "dependencies": {
@@ -20,7 +20,7 @@
     "front-matter": "^4.0.2",
     "highlight.js": "^11.5.1",
     "highlightjs-svelte": "^1.0.6",
-    "mdsvex": "^0.10.6",
+    "mdsvex": "^0.11.0",
     "svelte-sampler": "^0.0.10",
     "tslib": "^2.3.0"
   },
@@ -32,19 +32,22 @@
     "@babel/runtime": "^7.0.0",
     "@beyonk/gdpr-cookie-consent-banner": "^7.1.1",
     "@beyonk/svelte-carousel": "git+https://github.com/beyonk-adventures/svelte-carousel.git",
-    "@sveltejs/adapter-static": "^1.0.0-next.34",
-    "@sveltejs/adapter-vercel": "^1.0.0-next.58",
-    "@sveltejs/kit": "1.0.0-next.354",
+    "@sveltejs/adapter-static": "^3.0.1",
+    "@sveltejs/adapter-vercel": "^5.3.0",
+		"@sveltejs/kit": "^2.5.7",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
     "@tsconfig/svelte": "^2.0.1",
     "autoprefixer": "^9.8.6",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "sass": "1.52.1",
-    "svelte": "^3.48.0",
-    "svelte-check": "^2.2.4",
+		"svelte": "^4.2.7",
+		"svelte-check": "^3.6.0",
+		"tslib": "^2.4.1",
     "svelte-clipboard": "^1.0.0",
-    "svelte-preprocess": "^4.7.4",
+    "svelte-preprocess": "^5.1.4",
     "svelte-seo": "^1.2.1",
-    "typescript": "^4.3.5"
+		"typescript": "^5.0.0",
+		"vite": "^5.0.3"
   }
 }

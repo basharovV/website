@@ -12,7 +12,7 @@ published: true
 
 I recently came across this framework called [Tauri](https://tauri.app), which is similar to Electron for building desktop apps, using a web frontend and a Rust backend.
 
-As a music nerd with a bunch of local music, I set out to build a cross-platform music player that I can use to listen to and manage my library. I'm also using this project as a playground to explore some new UX ideas.
+As an avid listener with a bunch of local music, I set out to build a cross-platform music player that I can use to listen to and manage my library. I'm also using this project as a playground to explore some new UX ideas.
 
 # Why build a new desktop music player in 2022?
 

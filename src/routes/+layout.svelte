@@ -25,8 +25,8 @@
     if (typeof window !== "undefined") {
       if (window.location.href.includes("https://slavbasharov.com")) {
         pageId = window.location.href.split("https://slavbasharov.com");
-      } else if (window.location.href.includes("http://localhost:3000")) {
-        pageId = window.location.href.split("http://localhost:3000");
+      } else if (window.location.href.includes("http://localhost:5173")) {
+        pageId = window.location.href.split("http://localhost:5173");
       }
       pageId = pageId.filter((a) => a.length && a !== "/");
 
@@ -149,7 +149,7 @@
   <PageTransition url={$page.url.href}>
     <slot />
   </PageTransition>
-  {#if isClient && pageId}
+  {#if isClient && pageId && pageId !== "home"}
     <div
       bind:this={cusdisElement}
       id="cusdis_thread"
@@ -167,7 +167,7 @@
 <!-- <GdprBanner cookieName="foo" description="bar" /> -->
 <style lang="scss">
   main {
-    max-width: 56em;
+    /* max-width: 56em; */
     min-height: 100vh;
     background-color: none;
     padding: 0 2em 2em 2em;

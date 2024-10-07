@@ -78,7 +78,8 @@
   .container {
     position: relative;
     /* padding: 2em; */
-    width: 100%;
+    align-self: center;
+    max-width: 300px;
     flex: 1 1 200px;
     /* border: 1px solid rgba(0, 0, 0, 0.09); */
     /* border-right: 1px solid rgba(0, 0, 0, 0.09); */

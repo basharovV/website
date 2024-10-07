@@ -8,7 +8,9 @@
 </script>
 
 <script>
-  export let posts;
+  export let data;
+
+  console.log('data', data);
   import { isDarkModeEnabled } from "../../store/state";
 </script>
 
@@ -20,7 +22,7 @@
 <p>Some words about tech & music.</p>
 
 <ul>
-  {#each posts as post}
+  {#each data.body as post}
     <!-- we're using the non-standard `rel=prefetch` attribute to
 				tell Sapper to load the data for the page as soon as
 				the user hovers over the link or taps it, instead of

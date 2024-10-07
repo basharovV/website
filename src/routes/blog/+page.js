@@ -1,8 +1,8 @@
-import { dev } from "$app/env";
+import { dev } from "$app/environment";
 
 const getAllPosts = () => {
   try {
-    const posts = import.meta.globEager("/src/posts/*.md");
+    const posts = import.meta.glob("/src/posts/*.md", { eager: true });
     return Object.entries(posts)
       .map(([filepath, post]) => {
         console.log('metapost', post.metadata);
@@ -22,7 +22,7 @@ const getAllPosts = () => {
   }
 };
 
-export async function get() {
+export async function load() {
   const posts = getAllPosts();
   console.log('posts', posts);
 

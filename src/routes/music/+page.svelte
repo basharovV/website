@@ -1,14 +1,14 @@
 <script>
-    import FeaturedTracks from "../components/FeaturedTracks.svelte";
+    import FeaturedTracks from "../../components/FeaturedTracks.svelte";
 
-    import TrackMiniPlayer from "../components/TrackMiniPlayer.svelte";
-    import YoutubeVideo from "../components/YoutubeVideo.svelte";
-    import { isDarkModeEnabled } from "../store/state.js";
+    import TrackMiniPlayer from "../../components/TrackMiniPlayer.svelte";
+    import YoutubeVideo from "../../components/YoutubeVideo.svelte";
+    import { isDarkModeEnabled } from "../../store/state.js";
     import SvelteSeo from "svelte-seo";
-    import GlobalPlayer from "../components/GlobalPlayer.svelte";
-    import tracks from "../tracks";
-    import WarpSpeed from "../components/WarpSpeed.svelte";
-    import FlyingBirds from "../components/FlyingBirds.svelte";
+    import GlobalPlayer from "../../components/GlobalPlayer.svelte";
+    import tracks from "../../tracks";
+    import WarpSpeed from "../../components/WarpSpeed.svelte";
+    import FlyingBirds from "../../components/FlyingBirds.svelte";
 
     const urls = [
         "https://soundcloud.com/vbash/improv-i",
@@ -101,21 +101,11 @@
         <!-- <header /> -->
         <section>
             <div class="live">
-                <div class="big-video">
-                    <YoutubeVideo videoId="bSN3eBiGWIM" platform="yt" />
-                    <div class="vignette" />
-                </div>
+                <img class="main-img" src="/main.jpeg" />
                 <br />
                 <p>
                     I play the keys, with a focus on jazz, fusion and
-                    minimalism. Happy to be performing and jamming with some
-                    wonderful friends and musicians, including
-                    <a href="https://unclejohnsband.xyz">Uncle John's Band</a>,
-                    <a href="https://www.instagram.com/crazygluecollective/"
-                        >Crazy Glue Collective</a
-                    >,
-                    <a href="https://www.instagram.com/mixelle/">Mixelle</a>.
-                    Check them out!
+                    minimalism.
                 </p>
             </div>
         </section>
@@ -137,9 +127,9 @@
         <section>
             <h2>⌟ videos</h2>
             <div class="improv-videos">
-                <YoutubeVideo videoId="oM5dvsEMG8M" platform="yt" />
+                <YoutubeVideo videoId="bSN3eBiGWIM" platform="yt" />
+                <YoutubeVideo videoId="eGMIoFEElvo" platform="yt" />
                 <YoutubeVideo videoId="-imEDkQukVY" platform="yt" />
-                <YoutubeVideo videoId="aJnmdwpU9WU" platform="yt" />
             </div>
         </section>
     </div>
@@ -165,6 +155,8 @@
         /* background-color: rgba(32, 25, 108, 0.847); */
         /* background-color: rgba(108, 25, 25, 0.764); */
         padding: 1em;
+        max-width: 1200px;
+        margin: auto;
     }
 
     .grid {
@@ -187,6 +179,13 @@
             grid-column: 1 / 5;
             grid-row: 3;
         }
+    }
+    .main-img {
+        width: 100%;
+        max-width: 1100px;
+        margin: 2em auto;
+        object-fit: cover;
+        z-index: -1;
     }
     .big-video {
         position: relative;
