@@ -10,16 +10,19 @@ const config = {
     extensions: [".svelte", ...mdsvexConfig.extensions],
 
     kit: {
+        prerender: {
+            handleMissingId: "ignore"
+        },
         adapter: adapter({
             // default options are shown
             pages: "build",
             assets: "build",
             fallback: undefined,
             precompress: true
-        }),
+        })
     },
-    preprocess: [mdsvex(mdsvexConfig), preprocess()],
-    
+    preprocess: [mdsvex(mdsvexConfig), preprocess()]
+
     // ...other svelte options
 };
 
