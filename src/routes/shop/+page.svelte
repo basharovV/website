@@ -16,13 +16,13 @@
 </script>
 
 <SvelteSeo
-  title="vb shop | free sample packs, libraries and instruments | Vyacheslav Basharov"
-  description="Free sample packs, sample libraries and instruments. An independent creative outlet by Vyacheslav Basharov"
+  title="vb shop | free sample packs, libraries and instruments | Slav Basharov"
+  description="Free sample packs, sample libraries and instruments. An independent creative outlet by Slav Basharov"
   openGraph={{
     title:
-      "vb shop | free sample packs, libraries and instruments | Vyacheslav Basharov",
+      "vb shop | free sample packs, libraries and instruments | Slav Basharov",
     description:
-      "Free sample packs, sample libraries and instruments. An independent creative outlet by Vyacheslav Basharov",
+      "Free sample packs, sample libraries and instruments. An independent creative outlet by Slav Basharov",
     url: `https://slavbasharov.com/shop`,
     type: "website",
     images: [
@@ -82,7 +82,7 @@
 <small style="text-align:center;">Thanks for stopping by!</small>
 
 <footer class={$isDarkModeEnabled ? "invert" : ""}>
-  <p>Vyacheslav Basharov</p>
+  <p>Slav Basharov</p>
   <div>
     <a href="https://github.com/basharovV"
       ><img alt="github" src="/github.svg" /></a

@@ -251,7 +251,7 @@
   >
 
   <footer class="invert">
-    <p>Vyacheslav Basharov</p>
+    <p>Slav Basharov</p>
     <div>
       <a href="https://github.com/basharovV"
         ><img alt="github" src="/github.svg" /></a

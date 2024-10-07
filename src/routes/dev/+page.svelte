@@ -88,7 +88,7 @@
 </script>
 
 <svelte:head>
-    <title>Vyacheslav Basharov • dev portfolio</title>
+    <title>Slav Basharov • dev portfolio</title>
     <meta
         name="description"
         content="A collecion of software, not-so-crazy ideas and concepts. "
@@ -96,7 +96,7 @@
 </svelte:head>
 <header class={$isDarkModeEnabled ? "invert" : ""}>
     <!-- <div>
-    <h2 style="margin-bottom: 0;">Vyacheslav Basharov</h2>
+    <h2 style="margin-bottom: 0;">Slav Basharov</h2>
     <small style="margin-bottom: 0;">Full-stack developer</small>
   </div> -->
     <!-- <a style="display: flex;" href="/"
@@ -323,7 +323,7 @@
 </section>
 
 <footer class={$isDarkModeEnabled ? "invert" : ""}>
-    <p>Vyacheslav Basharov</p>
+    <p>Slav Basharov</p>
     <div>
         <a href="https://github.com/basharovV"
             ><img alt="github" src="/github.svg" /></a

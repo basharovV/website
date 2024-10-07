@@ -6,10 +6,10 @@
 </script>
 
 <SvelteSeo
-    title="Vyacheslav Basharov | Developer & Composer"
+    title="Slav Basharov | Developer & Composer"
     description="I make music, software and musical software."
     openGraph={{
-        title: "Vyacheslav Basharov | Developer & Composer",
+        title: "Slav Basharov | Developer & Composer",
         description: "I make music, software and musical software.",
         url: `https://slavbasharov.com`,
         type: "website",
