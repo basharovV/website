@@ -15,6 +15,7 @@ const getAllPosts = () => {
           // Add html if needed
         };
       })
+      .sort((a, b) => a.date.localeCompare(b.date))
       .filter((post) => dev ? true : post.published);
   } catch (e) {
     console.log('err', e);

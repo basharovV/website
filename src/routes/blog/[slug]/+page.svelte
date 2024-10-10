@@ -4,6 +4,7 @@
     import copy from "copy-to-clipboard";
     import { onMount } from "svelte";
     import "highlight.js/styles/atom-one-dark-reasonable.css";
+    import TooltipNote from "../../../components/TooltipNote.svelte";
 
     let content;
     /**
@@ -11,6 +12,9 @@
      * on the page and add a copy button to them.
      */
     onMount(() => {
+        if (!customElements.get("tooltip-note")) {
+            customElements.define("tooltip-note", TooltipNote.element);
+        }
         const codeBlocks = document.querySelectorAll("pre");
         codeBlocks.forEach((block) => {
             const copyPrompt = document.createElement("div");
@@ -39,6 +43,9 @@
     export let data;
     export let post = data.body;
     export let slug = data.slug;
+
+    let focusModeEnabled = post.focus || false; // Override in blog frontmatter
+
     let tags = post.tags
         .split(",")
         .map((t) => `#${t}`)
@@ -72,7 +79,11 @@
             <p>{post.framework}</p>
         {/if}
     </div>
-    <div class="content" bind:this={content}>
+    <div
+        class="content"
+        class:focus-mode={focusModeEnabled}
+        bind:this={content}
+    >
         {#if slug === "full-albums-worth-listening-to"}
             <FullAlbums />
         {:else}
@@ -131,6 +142,24 @@
         .content {
             max-width: 65em;
             margin: auto;
+            // only on desktops, no touch devices
+            &.focus-mode {
+                @media (hover: hover) {
+                    &:hover {
+                        :global(p),
+                        :global(li),
+                        :global(h1),
+                        :global(h2),
+                        :global(h3),
+                        :global(h4) {
+                            opacity: 0.5;
+                            &:hover {
+                                opacity: 1 !important;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -199,6 +228,8 @@
         font-size: 1.1rem;
         font-family: "IBM Plex Sans", Tahoma, Geneva, Verdana, sans-serif;
         letter-spacing: 0.04em;
+        margin: 0;
+        padding: 0.5em 0;
     }
 
     .content :global(pre) {

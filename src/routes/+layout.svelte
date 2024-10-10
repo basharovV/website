@@ -25,8 +25,8 @@
     if (typeof window !== "undefined") {
       if (window.location.href.includes("https://slavbasharov.com")) {
         pageId = window.location.href.split("https://slavbasharov.com");
-      } else if (window.location.href.includes("http://localhost:5173")) {
-        pageId = window.location.href.split("http://localhost:5173");
+      } else if (window.location.href.includes("http://localhost:5174")) {
+        pageId = window.location.href.split("http://localhost:5174");
       }
       pageId = pageId.filter((a) => a.length && a !== "/");
 
