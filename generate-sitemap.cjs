@@ -15,7 +15,7 @@ const getRoutes = async (root) => {
     const excluded = ["index", "rss", "sitemap", "images", "[slug]"];
     const fileStart = file.split(".")[0];
 
-    if (fileStart.charAt(0) !== "_" && !excluded.includes(fileStart)) {
+    if (fileStart.charAt(0) !== "_" && fileStart.charAt(0) !== "+" && !excluded.includes(fileStart)) {
       const directory = `${root}/${file}`;
 
       // Add shop products
