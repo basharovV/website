@@ -236,3 +236,13 @@ Thanks for reading the first entry in the musicat devblog series! This post cove
 <img src="/dev/logo-musicat.png" style="height: 200px;width: fit-content;margin: auto;display:block;"/>
 
 🪕 musicat is [open-source](https://github.com/basharovV/musicat). If you're using the app and find any bugs or want to suggest a feature or improvement, [create an issue](https://github.com/basharovV/musicat/issues) or if you'd like to contribute code,  [open a pull request](https://github.com/basharovV/musicat/pulls), thanks :) 
+
+
+<callout>
+<p>
+other Musicat devblogs:
+<a href="/blog/the-problem-with-music-metadata">part 2</a>
+<a href="/blog/musicat-road-to-gapless">part 3</a>
+<a href="/blog/musicat-progress-update">part 4</a>
+</p>
+</callout>

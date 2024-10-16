@@ -337,7 +337,7 @@
         border-left: 1px solid rgb(93, 91, 91);
 
         :global(.dark-mode) & {
-            border-left: 1px solid rgb(196, 187, 187);
+            border-left: 1px solid rgba(127, 125, 125, 0.452);
         }
     }
 
@@ -356,7 +356,7 @@
         background-color: rgb(93, 91, 91);
         z-index: -1;
         :global(.dark-mode) & {
-            background-color: rgb(196, 187, 187);
+            background-color: rgba(127, 125, 125, 0.452);
         }
     }
 
@@ -386,6 +386,32 @@
         background-color: rgb(93, 91, 91);
         :global(.dark-mode) & {
             background-color: rgb(196, 187, 187);
+        }
+    }
+
+    .content :global(callout) {
+        display: flex;
+        position: relative;
+        /* border: 1px solid rgba(123, 122, 122, 0.478); */
+        /* border-radius: 5px; */
+        padding: 0.75em;
+        margin: 0.5em;
+        color: rgb(155, 155, 155);
+        :global(p),
+        :global(small) {
+            margin: 0;
+            width: 100%;
+            line-height: initial;
+            text-align: center;
+            padding: 0;
+            &::before {
+                content: "💿";
+                margin-right: 1em;
+            }
+        }
+
+        :global(.dark-mode) & {
+            border-bottom: 1px dashed rgba(123, 122, 122, 0.478);
         }
     }
 

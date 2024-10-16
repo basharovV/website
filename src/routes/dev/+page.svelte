@@ -131,6 +131,7 @@
     >
     <small><a href="/blog/the-problem-with-music-metadata">Devlog 2</a></small>
     <small><a href="/blog/musicat-road-to-gapless">Devlog 3</a></small>
+    <small><a href="/blog/musicat-progress-update">Devlog 3</a></small>
     <br />
     <br />
     <br />

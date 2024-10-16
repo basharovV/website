@@ -12,7 +12,7 @@ published: true
   <a href="/blog/adding-comments-to-static-site#cusdis_thread">👇See an exampe at the bottom of this page.👇</a>
 </p>
 
-This tutorial is for a [Svelte + Sapper] site, but code examples can easily be adapted to other frameworks.
+This tutorial is for a SvelteKit site, but code examples can easily be adapted to other frameworks.
 
 At the end of this tutorial you'll have:
 
@@ -29,8 +29,8 @@ At the end of this tutorial you'll have:
 
 ### Pre-requisite:
 
-1. [Self-host Cusdis](https://cusdis.com/doc#/self-host/vercel).
-2. Get yourself a database - the free [Heroku](https://heroku.com) Postgres will do.
+1. Get yourself a database - <s>the free [Heroku](https://heroku.com) Postgres will do.</s>. Update 2024: Get a free PostgresDB on [Railway](https://railway.app/pricing)
+2. [Self-host Cusdis](https://cusdis.com/doc#/self-host/vercel).
 
 <br/>
 
@@ -40,7 +40,7 @@ At the end of this tutorial you'll have:
 
 ## Adding Cusdis to Svelte site
 
-To add comments support on any page of your static site, you need to add the Cusdis element in your `_layout.svelte` template - this is where the comments secion iframe will be loaded into. This is also how we pass our config to the SDK (it will read from this element).
+To add comments support on any page of your static site, you need to add the Cusdis element in your `+layout.svelte` template - this is where the comments secion iframe will be loaded into. This is also how we pass our config to the SDK (it will read from this element).
 
 ```
 <main>
@@ -109,9 +109,9 @@ const setPageId = () => {
 We need to update the `pageId` automatically whenever the route changes. To do this, we import the `page` store which will fire on update:
 
 ```
-import { stores } from "@sapper/app";
+import { getStores } from "$app/stores";
 
-const { page } = stores();
+const { page } = getStores();
 ```
 
 We can now perform the update in two steps:

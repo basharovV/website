@@ -3,11 +3,17 @@ slug: musicat-progress-update
 title: "Progress update on Musicat"
 date: "2024-10-10"
 tags: musicat,progress
-description: "+ what it's been like working on a side project I use every day"
+description: "Part 4 of the devblog + finding the perfect side project"
 author: "Slav"
 published: true
 focus: true
 ---
+
+<callout>
+<small>
+If you just want to see the list of features,&nbsp;<a href="#features">skip to the end of the post</a>
+</small>
+</callout>
 
 I'm sure programmers can relate that doing programming as a hobby isn't exactly the first thing on one's mind after a long day of work... programming. It's especially hard to make it feel as relaxing as going for a walk, or sitting on the sofa watching a movie, while also being stimulating and creative. I think I managed to find that sweet spot with Musicat - it blends my two worlds quite nicely, the programming sessions make me want to _keep tinkering_, and I get to listen to music while doing it. Sometimes I'll go off on tangents and build experimental features that don't really belong in a music player, other times I'll come back to the core functionality and polish things. It's all part of the fun.
 
@@ -67,11 +73,11 @@ I must admit that the Tauri framework shifted my perspective on desktop apps. Th
 <img src="/icons/cd6.gif" style="width:40px;"/>
 </p>
 
-Over the past year, I've learned about a whole deal about audio decoding and playback, dealt with the intricacies of audio file tagging, played around with WebAudio, WebRTC, IndexedDB, got better at drawing on the HTML5 Canvas. I got interested in the semantic web and extracting data from the public domain, as well as using public APIs like Internet Archive and Wikipedia / DBPedia. Started actually learning Rust<tooltip-note content="Instead of blindly copying from ChatGPT"/>, cpal, Symphonia and Objective-C bindings to macOS APIs. I got comfortable with dealing with audio at the sample-level, applying FFTs, using ring buffers, and became obsessed with gapless playback. Stopped designing features in Figma - instead I began to code as soon as I came up with something. All in all, I enjoyed getting my hands dirty in things I have no idea about - it made me a better developer. 
+Over the past year, I've learned about a whole deal about audio decoding and playback, dealt with the intricacies of audio file tagging, played around with WebAudio, WebRTC, IndexedDB, got better at drawing on the HTML5 Canvas. I got interested in the semantic web and extracting data from the public domain, as well as using public APIs like Internet Archive and Wikipedia / DBPedia. Started actually learning Rust<tooltip-note content="Instead of blindly copying from ChatGPT"/>, cpal, Symphonia and Objective-C bindings to macOS APIs. I got comfortable with dealing with audio at the sample-level, applying FFTs, using ring buffers, and became obsessed with gapless playback. Stopped designing features in Figma - instead I began to code as soon as I came up with something. All in all, I enjoyed getting my hands dirty in things I have no idea about - it made me a better developer.
 
-I'm really happy with how the app is turning out, and I'm looking forward to 1.0 in the not-too-distant future. Next on my radar is probably support for DSP plugins (EQ, pitch shifter, time stretching). 
+I'm really happy with how the app is turning out, and I'm looking forward to 1.0 in the not-too-distant future. Next on my radar is probably support for DSP plugins (EQ, pitch shifter, time stretching).
 
-I hope you enjoyed my ramblings 👾 I'll try to document the app better and make a website for it soon. Until then, here's a full list of features so far:
+<p id="features">I hope you enjoyed my ramblings 👾 I'll try to document the app better and make a website for it soon. Until then, here's a full list of features so far:</p>
 
 -   Gapless playback. Only between files of the same sample rate and codec.
 -   Switchable audio device, or follow system default
@@ -99,3 +105,12 @@ I hope you enjoyed my ramblings 👾 I'll try to document the app better and mak
 -   "Open with" file explorer association
 -   Favourite tracks
 -   Recently added playlists
+
+<callout>
+<p>
+other Musicat devblogs:
+<a href="/blog/building-music-player-tauri-svelte">part 1</a>,
+<a href="/blog/the-problem-with-music-metadata">part 2</a>
+<a href="/blog/musicat-road-to-gapless">part 3</a>
+</p>
+</callout>
