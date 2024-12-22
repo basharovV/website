@@ -10,6 +10,16 @@ author: "Slav"
 published: true
 ---
 
+<callout>
+<p>
+Update 2024: The app has come a long way since this article. <br />See other devblogs:
+<a href="/blog/the-problem-with-music-metadata">part 2</a>,
+<a href="/blog/musicat-road-to-gapless">part 3</a>,
+<a href="/blog/musicat-progress-update">part 4</a> and check out <a href="https://github.com/basharovV/musicat">the repo</a>
+
+</p>
+</callout>
+
 I recently came across this framework called [Tauri](https://tauri.app), which is similar to Electron for building desktop apps, using a web frontend and a Rust backend.
 
 As an avid listener with a bunch of local music, I set out to build a cross-platform music player that I can use to listen to and manage my library. I'm also using this project as a playground to explore some new UX ideas.
@@ -161,7 +171,7 @@ We use a good old HTML `table`, with columns for the song fields, and show the s
 
 The `audio` element has decent support for audio codecs, including MP3, AAC, OGG, FLAC, WAV in modern browsers. Although for basic purposes of the app we just need to be able to play files, we can also connect the audio element to the Web Audio API for signal chaining, or passing the audio data through an analyser for visualisation.
 
-⚠️ Note that WebAudio is particularly [buggy](https://bugs.webkit.org/show_bug.cgi?id=215314) on [Safari](https://bugs.webkit.org/show_bug.cgi?id=221334). I've had issues with pops, clicks and audio playing back at the wrong speed. 
+⚠️ Note that WebAudio is particularly [buggy](https://bugs.webkit.org/show_bug.cgi?id=215314) on [Safari](https://bugs.webkit.org/show_bug.cgi?id=221334). I've had issues with pops, clicks and audio playing back at the wrong speed.
 
 So let's set up a basic audio player, which contains:
 
@@ -226,17 +236,15 @@ And here is our player UI with all of these elements. Quite sleek, compact and e
 
 <img src="/post-media/musicat-devblog-1/seekbar.png" />
 
-Wait, what is that visualiser?! That's [`audiomotion-analyzer`](https://github.com/hvianna/audioMotion-analyzer), an awesome open-source library that's great for showing the spectrum in real time. 
+Wait, what is that visualiser?! That's [`audiomotion-analyzer`](https://github.com/hvianna/audioMotion-analyzer), an awesome open-source library that's great for showing the spectrum in real time.
 
-----
+---
 
-Thanks for reading the first entry in the musicat devblog series! This post covered the basics of setting up the music player, with a basic library and an audio component. In the next post(s) the focus will be more on the product side, talking about the inspiration for some of the new features like the mini player, Smart Query, and the Artist's toolkit. 
-
+Thanks for reading the first entry in the musicat devblog series! This post covered the basics of setting up the music player, with a basic library and an audio component. In the next post(s) the focus will be more on the product side, talking about the inspiration for some of the new features like the mini player, Smart Query, and the Artist's toolkit.
 
 <img src="/dev/logo-musicat.png" style="height: 200px;width: fit-content;margin: auto;display:block;"/>
 
-🪕 musicat is [open-source](https://github.com/basharovV/musicat). If you're using the app and find any bugs or want to suggest a feature or improvement, [create an issue](https://github.com/basharovV/musicat/issues) or if you'd like to contribute code,  [open a pull request](https://github.com/basharovV/musicat/pulls), thanks :) 
-
+🪕 musicat is [open-source](https://github.com/basharovV/musicat). If you're using the app and find any bugs or want to suggest a feature or improvement, [create an issue](https://github.com/basharovV/musicat/issues) or if you'd like to contribute code, [open a pull request](https://github.com/basharovV/musicat/pulls), thanks :)
 
 <callout>
 <p>
